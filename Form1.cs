@@ -24,19 +24,30 @@ namespace ArcGIS_System_Profiler
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            String token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
             String agsServerURL = txtBox_agsServerhostname.Text + "?f=json";
-
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
             var encoding = ASCIIEncoding.ASCII;
             using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
             {
-                String JSONresults = reader.ReadToEnd();
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+                        try
+                        {
+                            dataGridView2.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (dataGridView2.Rows.Count > 1);
 
+                String JSONresults = reader.ReadToEnd();
                 JObject rss = JObject.Parse(JSONresults);
-                
                 var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresults);
                 string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
                 System.Object[] ItemObject = new System.Object[dict.Count];
@@ -49,10 +60,44 @@ namespace ArcGIS_System_Profiler
                         foreach (var item in categories)
                         {
                             agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item);
-                            DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
-                            row.Cells[1].Value = item;
-                            row.Cells[2].Value = "Folder";
-                            dataGridView2.Rows.Add(row);
+
+                            //include folders checkbox is checked then web request to each of them and get the serivces
+                            //includeFolderscheckBox  /services/
+                            if (includeFolderscheckBox.Checked)
+                            {
+                                //get the arcgis server url and make web request and get services
+                                //String token = "NK-S6TK4XN80WMjSLPaMptbtyq_tsxJRehc3tyskU9KkIc8BE08KeqOJnR9ZlsXH9AZKKGGIn5i_g0HYMAt0LMigrxDIgSV8-1UJffEENGjBkRSUhzVe3AyeP7X-PXEkJitEukLhRSVQePehUKcwMZPAiYQbon3ltSWxZhvbsgTeBlLMCCS99QeZMfmJ0Qk_fN5tiNHHYBuQZieIUlQrOmF3K4L7JauFZg1f8mdRpP8.";
+                                String agsServerFolderURL = txtBox_agsServerhostname.Text + "/services/" + item + "?f=json&token=" + token;
+                                HttpWebRequest requestFolder = (HttpWebRequest)WebRequest.Create(agsServerFolderURL);
+                                HttpWebResponse responseFolder = (HttpWebResponse)requestFolder.GetResponse();
+                                using (var readerFolder = new System.IO.StreamReader(responseFolder.GetResponseStream(), encoding))
+                                {
+                                    String JSONresultsFolder = readerFolder.ReadToEnd();
+                                    JObject rssFolder = JObject.Parse(JSONresultsFolder);
+                                    var dictFolder = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolder);
+                                    string[] resultFolder = dictFolder.Select(kv => kv.Value.ToString()).ToArray();
+                                    System.Object[] ItemObjectFolder = new System.Object[dictFolder.Count];
+
+                                    JArray servicesCollectionFolder = (JArray)rssFolder["services"];
+                                    foreach (var itemFolder in servicesCollectionFolder)
+                                    {
+                                        DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                                        row.Cells[1].Value = itemFolder["name"];
+                                        row.Cells[2].Value = itemFolder["type"];
+                                        dataGridView2.Rows.Add(row);
+                                    }
+
+                                }
+
+                            }
+                            else
+                            {
+                                DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                                row.Cells[1].Value = item;
+                                row.Cells[2].Value = "Folder";
+                                dataGridView2.Rows.Add(row);
+                            }
+
                         }
                     }
                     if (i == 2)
@@ -61,7 +106,7 @@ namespace ArcGIS_System_Profiler
                         JArray servicesCollection = (JArray)rss["services"];
                         foreach (var item in servicesCollection)
                         {
-                            agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"] );
+                            agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"]);
                             DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
                             row.Cells[1].Value = item["name"];
                             row.Cells[2].Value = item["type"];
@@ -76,5 +121,48 @@ namespace ArcGIS_System_Profiler
 
 
         }
+
+        private string GetToken()
+        {
+            //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
+            String agsServerURL = txtBox_agsEnterprisehostname.Text + "sharing/rest/generateToken";
+            var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+
+            var postData = "username=portaladmin"; //required
+            postData += "&password=password123"; //required
+            postData += "&client=referer"; //required
+            postData += "&referer=requestip"; //required
+            postData += "&expiration=600"; //optional, default
+            postData += "&f=json"; //optional, default
+
+            var data = Encoding.ASCII.GetBytes(postData);
+
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+             
+            JObject rss = JObject.Parse(responseString);
+            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
+            String tokenStr = dict["token"].ToString();
+            //ESRITokenResponse eToken = Newtonsoft.Json.JsonConvert.DeserializeObject<ESRITokenResponse>(responseString);
+
+            //return eToken.access_token;
+            return tokenStr;
+        }
+
+        //public class ESRITokenResponse
+        //{
+        //    public string access_token { get; set; }
+        //    public string expires_in { get; set; }
+        //}
     }
 }
