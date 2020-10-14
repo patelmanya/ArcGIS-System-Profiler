@@ -38,10 +38,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
             this.agsServerlistBox = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.agsEnterpriselistBox = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -82,7 +84,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 110);
+            this.label4.Location = new System.Drawing.Point(14, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(184, 17);
             this.label4.TabIndex = 1;
@@ -97,7 +99,7 @@
             // 
             // txtBox_agsEnterprisehostname
             // 
-            this.txtBox_agsEnterprisehostname.Location = new System.Drawing.Point(221, 107);
+            this.txtBox_agsEnterprisehostname.Location = new System.Drawing.Point(222, 135);
             this.txtBox_agsEnterprisehostname.Name = "txtBox_agsEnterprisehostname";
             this.txtBox_agsEnterprisehostname.Size = new System.Drawing.Size(375, 20);
             this.txtBox_agsEnterprisehostname.TabIndex = 2;
@@ -111,11 +113,12 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Get Services";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Location = new System.Drawing.Point(602, 104);
+            this.button2.Location = new System.Drawing.Point(603, 132);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 23);
             this.button2.TabIndex = 3;
@@ -143,6 +146,14 @@
             this.tabPage1.Text = "ArcGIS Server";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // agsServerlistBox
+            // 
+            this.agsServerlistBox.FormattingEnabled = true;
+            this.agsServerlistBox.Location = new System.Drawing.Point(7, 7);
+            this.agsServerlistBox.Name = "agsServerlistBox";
+            this.agsServerlistBox.Size = new System.Drawing.Size(751, 381);
+            this.agsServerlistBox.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.agsEnterpriselistBox);
@@ -154,6 +165,14 @@
             this.tabPage2.Text = "ArcGIS Portal";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // agsEnterpriselistBox
+            // 
+            this.agsEnterpriselistBox.FormattingEnabled = true;
+            this.agsEnterpriselistBox.Location = new System.Drawing.Point(7, 8);
+            this.agsEnterpriselistBox.Name = "agsEnterpriselistBox";
+            this.agsEnterpriselistBox.Size = new System.Drawing.Size(751, 381);
+            this.agsEnterpriselistBox.TabIndex = 1;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -164,27 +183,33 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Details";
             // 
-            // agsServerlistBox
+            // label6
             // 
-            this.agsServerlistBox.FormattingEnabled = true;
-            this.agsServerlistBox.Location = new System.Drawing.Point(7, 7);
-            this.agsServerlistBox.Name = "agsServerlistBox";
-            this.agsServerlistBox.Size = new System.Drawing.Size(751, 381);
-            this.agsServerlistBox.TabIndex = 0;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(219, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(351, 16);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Example: https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/";
             // 
-            // agsEnterpriselistBox
+            // label7
             // 
-            this.agsEnterpriselistBox.FormattingEnabled = true;
-            this.agsEnterpriselistBox.Location = new System.Drawing.Point(7, 8);
-            this.agsEnterpriselistBox.Name = "agsEnterpriselistBox";
-            this.agsEnterpriselistBox.Size = new System.Drawing.Size(751, 381);
-            this.agsEnterpriselistBox.TabIndex = 1;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(218, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(351, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Example: https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 630);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -221,6 +246,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox agsEnterpriselistBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
