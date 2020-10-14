@@ -48,7 +48,6 @@ namespace ArcGIS_System_Profiler
                     }
                     if (i == 1)
                     {
-                        var dictionary = dict["folders"] as Dictionary<string, object>;
                         JArray categories = (JArray)rss["folders"];
                         foreach (var item in categories)
                         {
@@ -57,7 +56,12 @@ namespace ArcGIS_System_Profiler
                     }
                     if (i == 2)
                     {
-                        agsServerlistBox.Items.Insert(0, dict["services"]);
+                        //agsServerlistBox.Items.Insert(0, dict["services"]);
+                        JArray servicesCollection = (JArray)rss["services"];
+                        foreach (var item in servicesCollection)
+                        {
+                            agsServerlistBox.Items.Insert(0, item["name"] );
+                        }
                     }
 
 
