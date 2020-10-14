@@ -26,38 +26,34 @@ namespace ArcGIS_System_Profiler
         {
             //get the arcgis server url and make web request and get services
             String agsServerURL = txtBox_agsServerhostname.Text + "?f=json";
-            //WebRequest request = WebRequest.Create(agsServerURL);
-            //request.ContentType = "application/json; charset=utf-8";
-            //WebResponse response = request.GetResponse();
-
-            //var webRequest = WebRequest.Create(agsServerURL) as HttpWebRequest;
-            //if (webRequest == null)
-            //{
-            //    return;
-            //}
-
-            //webRequest.ContentType = "application/json";
-            //webRequest.UserAgent = "Nothing";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            var encoding = ASCIIEncoding.ASCII;
 
+            var encoding = ASCIIEncoding.ASCII;
             using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
             {
                 String JSONresults = reader.ReadToEnd();
 
+                JObject rss = JObject.Parse(JSONresults);
+                
                 var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresults);
+                string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
                 System.Object[] ItemObject = new System.Object[dict.Count];
                 for (int i = 0; i <= dict.Count; i++)
                 {
-                    if (i==0)
+                    if (i == 0)
                     {
-                        agsServerlistBox.Items.Insert(0, dict["currentVersion"]); 
+                        agsServerlistBox.Items.Insert(0, dict["currentVersion"]);
                     }
                     if (i == 1)
                     {
-                        agsServerlistBox.Items.Insert(0, dict["folders"]);
+                        var dictionary = dict["folders"] as Dictionary<string, object>;
+                        JArray categories = (JArray)rss["folders"];
+                        foreach (var item in categories)
+                        {
+                            agsServerlistBox.Items.Insert(0, item);
+                        }
                     }
                     if (i == 2)
                     {

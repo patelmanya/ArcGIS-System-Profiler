@@ -38,12 +38,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.agsServerlistBox = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.agsEnterpriselistBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.agsServerlistBox = new System.Windows.Forms.CheckedListBox();
+            this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -74,7 +75,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 79);
+            this.label3.Location = new System.Drawing.Point(12, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 17);
             this.label3.TabIndex = 1;
@@ -92,10 +93,11 @@
             // 
             // txtBox_agsServerhostname
             // 
-            this.txtBox_agsServerhostname.Location = new System.Drawing.Point(221, 79);
+            this.txtBox_agsServerhostname.Location = new System.Drawing.Point(221, 72);
             this.txtBox_agsServerhostname.Name = "txtBox_agsServerhostname";
             this.txtBox_agsServerhostname.Size = new System.Drawing.Size(375, 20);
             this.txtBox_agsServerhostname.TabIndex = 2;
+            this.txtBox_agsServerhostname.Text = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/";
             // 
             // txtBox_agsEnterprisehostname
             // 
@@ -107,7 +109,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Location = new System.Drawing.Point(603, 75);
+            this.button1.Location = new System.Drawing.Point(603, 68);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 23);
             this.button1.TabIndex = 3;
@@ -146,14 +148,6 @@
             this.tabPage1.Text = "ArcGIS Server";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // agsServerlistBox
-            // 
-            this.agsServerlistBox.FormattingEnabled = true;
-            this.agsServerlistBox.Location = new System.Drawing.Point(7, 7);
-            this.agsServerlistBox.Name = "agsServerlistBox";
-            this.agsServerlistBox.Size = new System.Drawing.Size(751, 381);
-            this.agsServerlistBox.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.agsEnterpriselistBox);
@@ -187,7 +181,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(219, 102);
+            this.label6.Location = new System.Drawing.Point(219, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(351, 16);
             this.label6.TabIndex = 5;
@@ -203,11 +197,30 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Example: https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/";
             // 
+            // agsServerlistBox
+            // 
+            this.agsServerlistBox.FormattingEnabled = true;
+            this.agsServerlistBox.Location = new System.Drawing.Point(7, 7);
+            this.agsServerlistBox.Name = "agsServerlistBox";
+            this.agsServerlistBox.Size = new System.Drawing.Size(747, 379);
+            this.agsServerlistBox.TabIndex = 1;
+            // 
+            // includeFolderscheckBox
+            // 
+            this.includeFolderscheckBox.AutoSize = true;
+            this.includeFolderscheckBox.Location = new System.Drawing.Point(222, 114);
+            this.includeFolderscheckBox.Name = "includeFolderscheckBox";
+            this.includeFolderscheckBox.Size = new System.Drawing.Size(95, 17);
+            this.includeFolderscheckBox.TabIndex = 6;
+            this.includeFolderscheckBox.Text = "Include folders";
+            this.includeFolderscheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 630);
+            this.Controls.Add(this.includeFolderscheckBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
@@ -242,12 +255,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ListBox agsServerlistBox;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox agsEnterpriselistBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckedListBox agsServerlistBox;
+        private System.Windows.Forms.CheckBox includeFolderscheckBox;
     }
 }
 
