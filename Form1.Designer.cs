@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,9 +46,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.agsServerlistBox = new System.Windows.Forms.CheckedListBox();
             this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.FolderORServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.lbl_agsServerVer = new System.Windows.Forms.Label();
+            this.lbl_agsEnterVer = new System.Windows.Forms.Label();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,25 +144,27 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(15, 196);
+            this.tabControl1.Location = new System.Drawing.Point(15, 241);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(772, 422);
+            this.tabControl1.Size = new System.Drawing.Size(772, 377);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Controls.Add(this.agsServerlistBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(764, 396);
+            this.tabPage1.Size = new System.Drawing.Size(764, 351);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ArcGIS Server";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.agsEnterpriselistBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -162,16 +177,16 @@
             // agsEnterpriselistBox
             // 
             this.agsEnterpriselistBox.FormattingEnabled = true;
-            this.agsEnterpriselistBox.Location = new System.Drawing.Point(7, 8);
+            this.agsEnterpriselistBox.Location = new System.Drawing.Point(7, 242);
             this.agsEnterpriselistBox.Name = "agsEnterpriselistBox";
-            this.agsEnterpriselistBox.Size = new System.Drawing.Size(751, 381);
+            this.agsEnterpriselistBox.Size = new System.Drawing.Size(751, 147);
             this.agsEnterpriselistBox.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 167);
+            this.label5.Location = new System.Drawing.Point(14, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 17);
             this.label5.TabIndex = 1;
@@ -202,8 +217,9 @@
             this.agsServerlistBox.FormattingEnabled = true;
             this.agsServerlistBox.Location = new System.Drawing.Point(7, 7);
             this.agsServerlistBox.Name = "agsServerlistBox";
-            this.agsServerlistBox.Size = new System.Drawing.Size(747, 379);
+            this.agsServerlistBox.Size = new System.Drawing.Size(747, 94);
             this.agsServerlistBox.TabIndex = 1;
+            this.agsServerlistBox.Visible = false;
             // 
             // includeFolderscheckBox
             // 
@@ -214,6 +230,97 @@
             this.includeFolderscheckBox.TabIndex = 6;
             this.includeFolderscheckBox.Text = "Include folders";
             this.includeFolderscheckBox.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.FolderORServiceName,
+            this.ItemType});
+            this.dataGridView1.Location = new System.Drawing.Point(9, 57);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(747, 179);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            // 
+            // FolderORServiceName
+            // 
+            this.FolderORServiceName.HeaderText = "Folder OR Service Name";
+            this.FolderORServiceName.Name = "FolderORServiceName";
+            this.FolderORServiceName.Width = 400;
+            // 
+            // ItemType
+            // 
+            this.ItemType.HeaderText = "Item Type";
+            this.ItemType.Name = "ItemType";
+            this.ItemType.Width = 200;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.ColumnHeadersHeight = 30;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGridView2.Location = new System.Drawing.Point(7, 6);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(747, 384);
+            this.dataGridView2.TabIndex = 4;
+            // 
+            // lbl_agsServerVer
+            // 
+            this.lbl_agsServerVer.AutoSize = true;
+            this.lbl_agsServerVer.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_agsServerVer.Location = new System.Drawing.Point(16, 211);
+            this.lbl_agsServerVer.Name = "lbl_agsServerVer";
+            this.lbl_agsServerVer.Size = new System.Drawing.Size(160, 17);
+            this.lbl_agsServerVer.TabIndex = 1;
+            this.lbl_agsServerVer.Text = "ArcGIS Server version: ";
+            // 
+            // lbl_agsEnterVer
+            // 
+            this.lbl_agsEnterVer.AutoSize = true;
+            this.lbl_agsEnterVer.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_agsEnterVer.Location = new System.Drawing.Point(414, 211);
+            this.lbl_agsEnterVer.Name = "lbl_agsEnterVer";
+            this.lbl_agsEnterVer.Size = new System.Drawing.Size(184, 17);
+            this.lbl_agsEnterVer.TabIndex = 1;
+            this.lbl_agsEnterVer.Text = "ArcGIS Enterprise version: ";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.FillWeight = 38.07107F;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 130.9645F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Folder OR Service Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.FillWeight = 130.9645F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Item Type";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // Form1
             // 
@@ -228,6 +335,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBox_agsEnterprisehostname);
             this.Controls.Add(this.txtBox_agsServerhostname);
+            this.Controls.Add(this.lbl_agsEnterVer);
+            this.Controls.Add(this.lbl_agsServerVer);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -238,6 +347,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,6 +373,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckedListBox agsServerlistBox;
         private System.Windows.Forms.CheckBox includeFolderscheckBox;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FolderORServiceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemType;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label lbl_agsServerVer;
+        private System.Windows.Forms.Label lbl_agsEnterVer;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
 

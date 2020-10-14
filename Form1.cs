@@ -40,18 +40,19 @@ namespace ArcGIS_System_Profiler
                 var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresults);
                 string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
                 System.Object[] ItemObject = new System.Object[dict.Count];
+                lbl_agsServerVer.Text = "ArcGIS Server version: " + dict["currentVersion"];
                 for (int i = 0; i <= dict.Count; i++)
                 {
-                    if (i == 0)
-                    {
-                        agsServerlistBox.Items.Insert(0, dict["currentVersion"]);
-                    }
                     if (i == 1)
                     {
                         JArray categories = (JArray)rss["folders"];
                         foreach (var item in categories)
                         {
-                            agsServerlistBox.Items.Insert(0, item);
+                            agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item);
+                            DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                            row.Cells[1].Value = item;
+                            row.Cells[2].Value = "Folder";
+                            dataGridView2.Rows.Add(row);
                         }
                     }
                     if (i == 2)
@@ -60,12 +61,17 @@ namespace ArcGIS_System_Profiler
                         JArray servicesCollection = (JArray)rss["services"];
                         foreach (var item in servicesCollection)
                         {
-                            agsServerlistBox.Items.Insert(0, item["name"] );
+                            agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"] );
+                            DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                            row.Cells[1].Value = item["name"];
+                            row.Cells[2].Value = item["type"];
+                            dataGridView2.Rows.Add(row);
+                            //agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"] + " Type: " + item["type"]);
                         }
                     }
-
-
                 }
+
+                dataGridView2.ReadOnly = true;
             }
 
 
