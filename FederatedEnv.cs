@@ -18,6 +18,10 @@ namespace ArcGIS_System_Profiler
 {
     public partial class FederatedEnv : Form
     {
+
+        public static string selectedSserviceURL = "";
+        public static string token = "";
+
         public FederatedEnv()
         {
             InitializeComponent();
@@ -26,7 +30,7 @@ namespace ArcGIS_System_Profiler
         private void button1_Click(object sender, EventArgs e)
         {
 
-            String token = GetToken(); // generateTokenFromPortal();
+            token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
             String agsServerURL = txtBox_agsServerhostname.Text + "?f=json";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
@@ -161,6 +165,14 @@ namespace ArcGIS_System_Profiler
 
             //return eToken.access_token;
             return tokenStr;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/services/SampleWorldCities/MapServer?f=html&token" + token;
+            selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/portal/portaladmin/healthCheck";
+            ScreenCaptureForm sc = new ScreenCaptureForm();
+            sc.ShowDialog();
         }
 
         //public class ESRITokenResponse

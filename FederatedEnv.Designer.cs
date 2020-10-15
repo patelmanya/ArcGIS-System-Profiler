@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
             this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.lbl_agsServerVer = new System.Windows.Forms.Label();
             this.lbl_agsEnterVer = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -111,7 +112,7 @@
             // txtBox_agsServerhostname
             // 
             this.txtBox_agsServerhostname.Location = new System.Drawing.Point(295, 89);
-            this.txtBox_agsServerhostname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBox_agsServerhostname.Margin = new System.Windows.Forms.Padding(4);
             this.txtBox_agsServerhostname.Name = "txtBox_agsServerhostname";
             this.txtBox_agsServerhostname.Size = new System.Drawing.Size(499, 22);
             this.txtBox_agsServerhostname.TabIndex = 2;
@@ -120,7 +121,7 @@
             // txtBox_agsEnterprisehostname
             // 
             this.txtBox_agsEnterprisehostname.Location = new System.Drawing.Point(296, 166);
-            this.txtBox_agsEnterprisehostname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBox_agsEnterprisehostname.Margin = new System.Windows.Forms.Padding(4);
             this.txtBox_agsEnterprisehostname.Name = "txtBox_agsEnterprisehostname";
             this.txtBox_agsEnterprisehostname.Size = new System.Drawing.Size(499, 22);
             this.txtBox_agsEnterprisehostname.TabIndex = 2;
@@ -128,11 +129,13 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Location = new System.Drawing.Point(804, 84);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(803, 87);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 28);
+            this.button1.Size = new System.Drawing.Size(175, 34);
             this.button1.TabIndex = 3;
             this.button1.Text = "Get Services";
             this.button1.UseVisualStyleBackColor = false;
@@ -140,11 +143,13 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Location = new System.Drawing.Point(804, 162);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(803, 165);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 28);
+            this.button2.Size = new System.Drawing.Size(175, 34);
             this.button2.TabIndex = 3;
             this.button2.Text = "Get Items";
             this.button2.UseVisualStyleBackColor = false;
@@ -153,8 +158,8 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(20, 297);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Location = new System.Drawing.Point(21, 284);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1029, 464);
@@ -165,9 +170,9 @@
             this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Controls.Add(this.agsServerlistBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1021, 435);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ArcGIS Server";
@@ -177,26 +182,28 @@
             // 
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeight = 30;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.dataGridView2.Location = new System.Drawing.Point(9, 7);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(996, 473);
+            this.dataGridView2.RowHeadersWidth = 55;
+            this.dataGridView2.Size = new System.Drawing.Size(996, 420);
             this.dataGridView2.TabIndex = 4;
             // 
             // dataGridViewCheckBoxColumn1
@@ -205,6 +212,7 @@
             this.dataGridViewCheckBoxColumn1.HeaderText = "";
             this.dataGridViewCheckBoxColumn1.MinimumWidth = 6;
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -212,6 +220,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Folder OR Service Name";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -219,12 +228,13 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Item Type";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // agsServerlistBox
             // 
             this.agsServerlistBox.FormattingEnabled = true;
             this.agsServerlistBox.Location = new System.Drawing.Point(9, 9);
-            this.agsServerlistBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.agsServerlistBox.Margin = new System.Windows.Forms.Padding(4);
             this.agsServerlistBox.Name = "agsServerlistBox";
             this.agsServerlistBox.Size = new System.Drawing.Size(995, 106);
             this.agsServerlistBox.TabIndex = 1;
@@ -235,9 +245,9 @@
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.agsEnterpriselistBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1021, 435);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ArcGIS Portal";
@@ -252,7 +262,7 @@
             this.FolderORServiceName,
             this.ItemType});
             this.dataGridView1.Location = new System.Drawing.Point(12, 70);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(996, 220);
@@ -284,7 +294,7 @@
             this.agsEnterpriselistBox.FormattingEnabled = true;
             this.agsEnterpriselistBox.ItemHeight = 16;
             this.agsEnterpriselistBox.Location = new System.Drawing.Point(9, 298);
-            this.agsEnterpriselistBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.agsEnterpriselistBox.Margin = new System.Windows.Forms.Padding(4);
             this.agsEnterpriselistBox.Name = "agsEnterpriselistBox";
             this.agsEnterpriselistBox.Size = new System.Drawing.Size(1000, 180);
             this.agsEnterpriselistBox.TabIndex = 1;
@@ -293,7 +303,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 228);
+            this.label5.Location = new System.Drawing.Point(20, 215);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 22);
@@ -326,7 +336,7 @@
             // 
             this.includeFolderscheckBox.AutoSize = true;
             this.includeFolderscheckBox.Location = new System.Drawing.Point(296, 140);
-            this.includeFolderscheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.includeFolderscheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.includeFolderscheckBox.Name = "includeFolderscheckBox";
             this.includeFolderscheckBox.Size = new System.Drawing.Size(122, 21);
             this.includeFolderscheckBox.TabIndex = 6;
@@ -337,7 +347,7 @@
             // 
             this.lbl_agsServerVer.AutoSize = true;
             this.lbl_agsServerVer.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_agsServerVer.Location = new System.Drawing.Point(21, 260);
+            this.lbl_agsServerVer.Location = new System.Drawing.Point(22, 247);
             this.lbl_agsServerVer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_agsServerVer.Name = "lbl_agsServerVer";
             this.lbl_agsServerVer.Size = new System.Drawing.Size(210, 22);
@@ -348,22 +358,39 @@
             // 
             this.lbl_agsEnterVer.AutoSize = true;
             this.lbl_agsEnterVer.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_agsEnterVer.Location = new System.Drawing.Point(552, 260);
+            this.lbl_agsEnterVer.Location = new System.Drawing.Point(553, 247);
             this.lbl_agsEnterVer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_agsEnterVer.Name = "lbl_agsEnterVer";
             this.lbl_agsEnterVer.Size = new System.Drawing.Size(241, 22);
             this.lbl_agsEnterVer.TabIndex = 1;
             this.lbl_agsEnterVer.Text = "ArcGIS Enterprise version: ";
             // 
-            // Form1
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(871, 761);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(175, 34);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Perform Operations";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // FederatedEnv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 775);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.ClientSize = new System.Drawing.Size(1067, 808);
             this.Controls.Add(this.includeFolderscheckBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBox_agsEnterprisehostname);
@@ -375,8 +402,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FederatedEnv";
             this.Text = "ArcGIS System Profiler";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -417,6 +444,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

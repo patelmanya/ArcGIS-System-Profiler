@@ -190,8 +190,9 @@
             // 
             // btn_agsServer
             // 
-            this.btn_agsServer.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_agsServer.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.btn_agsServer.BackColor = System.Drawing.Color.DimGray;
+            this.btn_agsServer.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agsServer.ForeColor = System.Drawing.Color.Black;
             this.btn_agsServer.Location = new System.Drawing.Point(261, 136);
             this.btn_agsServer.Margin = new System.Windows.Forms.Padding(4);
             this.btn_agsServer.Name = "btn_agsServer";
@@ -239,6 +240,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(260, 22);
             this.textBox3.TabIndex = 4;
+            this.textBox3.Text = "portaladmin";
             // 
             // textBox4
             // 
@@ -246,11 +248,13 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(260, 22);
             this.textBox4.TabIndex = 5;
+            this.textBox4.Text = "password123";
             // 
             // btn_agsEnt
             // 
-            this.btn_agsEnt.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_agsEnt.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.btn_agsEnt.BackColor = System.Drawing.Color.DimGray;
+            this.btn_agsEnt.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agsEnt.ForeColor = System.Drawing.Color.Black;
             this.btn_agsEnt.Location = new System.Drawing.Point(250, 136);
             this.btn_agsEnt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_agsEnt.Name = "btn_agsEnt";
@@ -302,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(821, 490);
             this.Controls.Add(this.panel_Enterprise);

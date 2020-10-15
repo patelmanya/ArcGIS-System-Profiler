@@ -20,7 +20,7 @@ namespace ArcGIS_System_Profiler
             InitializeComponent();
             textBox2.Text = "";
             textBox2.PasswordChar = '*';
-            textBox4.Text = "";
+            //textBox4.Text = "";
             textBox4.PasswordChar = '*';
         }
 
