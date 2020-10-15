@@ -20,25 +20,11 @@ namespace ArcGIS_System_Profiler
             
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            Bitmap bmp = new Bitmap(1024, 728);
-            webBrowser1.DrawToBitmap(bmp, new Rectangle(webBrowser1.Location.X, webBrowser1.Location.Y, webBrowser1.Width, webBrowser1.Height));
-            bmp.Save("D:/temp/myfileDocCompleted.jpg");
-        }
-
-        private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
-        {
-            Bitmap bmp = new Bitmap(1024, 728);
-            webBrowser1.DrawToBitmap(bmp, new Rectangle(webBrowser1.Location.X, webBrowser1.Location.Y, webBrowser1.Width, webBrowser1.Height));
-            bmp.Save("D:/temp/myfileDocNavigated.jpg");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Bitmap bmp = new Bitmap(1024, 728);
             webBrowser1.DrawToBitmap(bmp, new Rectangle(webBrowser1.Location.X, webBrowser1.Location.Y, webBrowser1.Width, webBrowser1.Height));
-            bmp.Save("D:/temp/myfileButton.jpg");
+            bmp.Save("D:/temp/myfileButton2.jpg");
         }
     }
 }
