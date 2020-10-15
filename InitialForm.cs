@@ -32,6 +32,17 @@ namespace ArcGIS_System_Profiler
             agsEnterprisePassword = textBox4.Text;
             Fedform.Show();
         }
- 
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            panel_Server.Visible = true;
+            btn_agsEnt.Visible = false;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            panel_Server.Visible = false;
+            btn_agsEnt.Visible = true;
+        }
     }
 }
