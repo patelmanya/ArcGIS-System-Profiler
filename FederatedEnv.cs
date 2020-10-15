@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -15,9 +16,9 @@ using System.Windows.Forms;
 
 namespace ArcGIS_System_Profiler
 {
-    public partial class Form1 : Form
+    public partial class FederatedEnv : Form
     {
-        public Form1()
+        public FederatedEnv()
         {
             InitializeComponent();
         }
@@ -52,6 +53,7 @@ namespace ArcGIS_System_Profiler
                 string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
                 System.Object[] ItemObject = new System.Object[dict.Count];
                 lbl_agsServerVer.Text = "ArcGIS Server version: " + dict["currentVersion"];
+                lbl_agsEnterVer.Text = "ArcGIS Enterprise version: " + dict["currentVersion"];
                 for (int i = 0; i <= dict.Count; i++)
                 {
                     if (i == 1)
@@ -124,12 +126,14 @@ namespace ArcGIS_System_Profiler
 
         private string GetToken()
         {
+            var userPortalName = InitialForm.agsEnterpriseUserName;
+            var userPortalPassword = InitialForm.agsEnterprisePassword;
             //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
             String agsServerURL = txtBox_agsEnterprisehostname.Text + "sharing/rest/generateToken";
             var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
 
-            var postData = "username=portaladmin"; //required
-            postData += "&password=password123"; //required
+            var postData = "username=" + userPortalName; //required
+            postData += "&password=" + userPortalPassword; //required
             postData += "&client=referer"; //required
             postData += "&referer=requestip"; //required
             postData += "&expiration=600"; //optional, default
@@ -149,7 +153,7 @@ namespace ArcGIS_System_Profiler
             var response = (HttpWebResponse)request.GetResponse();
 
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-             
+
             JObject rss = JObject.Parse(responseString);
             var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
             String tokenStr = dict["token"].ToString();
@@ -163,6 +167,7 @@ namespace ArcGIS_System_Profiler
         //{
         //    public string access_token { get; set; }
         //    public string expires_in { get; set; }
-        //}
+        //} 
+
     }
 }
