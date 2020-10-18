@@ -45,8 +45,10 @@ namespace ArcGIS_System_Profiler
         {
             globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
             this.Hide();
-            ScreenCaptureForm sc = new ScreenCaptureForm();
-            sc.ShowDialog();
+            //ScreenCaptureForm sc = new ScreenCaptureForm();
+            //sc.ShowDialog();
+            FederatedEnv fEnv = new FederatedEnv();
+            fEnv.ShowDialog();
         }
     }
 }

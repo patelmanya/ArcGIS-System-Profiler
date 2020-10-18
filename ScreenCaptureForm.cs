@@ -13,21 +13,16 @@ namespace ArcGIS_System_Profiler
 {
     public partial class ScreenCaptureForm : Form
     {
+        Bitmap serverBMP = new Bitmap(1024, 728);
+        Bitmap portalBMP = new Bitmap(1024, 728);
+
         public ScreenCaptureForm()
         {
             InitializeComponent();
             labelStep.Text = labelStep.Text + globalVariables.stepsCounter;
-            webBrowser1.Navigate(globalVariables.selectedSserviceURL);
-            button3.Visible = false;
-            button2.Enabled = true;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            webBrowser1.Navigate(globalVariables.selectedSserviceURL);
-            button3.Visible = false;
-            button2.Enabled = true;
-
+            webBrowser1.Navigate(globalVariables.portalCheckURL);
+            //btnPortalCheck.Visible = false;
+            btnNextStep.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,7 +81,7 @@ namespace ArcGIS_System_Profiler
 
             // And paste it to the target Range
             docRange.Paste();
-           // docobj.SaveAs2(@"c:\temp\test.docx");
+            // docobj.SaveAs2(@"c:\temp\test.docx");
             //appobj.Quit();
 
         }
@@ -159,6 +154,29 @@ namespace ArcGIS_System_Profiler
                 //para.Range.InsertParagraphAfter();
                 //docRange.InsertBreak(ref oPageBreak);
             }
+        }
+
+        private void btnPortalCheck_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Visible = true;
+            webBrowser1.Navigate(globalVariables.portalCheckURL);
+            btnServerCheck.Enabled = true;
+
+        }
+
+        private void btnServerCheck_Click(object sender, EventArgs e)
+        {
+            portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
+            portalBMP.Save("C:/temp/myPortalCheck.jpg");
+            webBrowser1.Navigate(globalVariables.ArcGISServerCheckURL);
+            btnNextStep.Enabled = true;
+
+        }
+
+        private void btnNextStep_Click(object sender, EventArgs e)
+        {
+            serverBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
+            serverBMP.Save("C:/temp/myServerCheck.jpg");
         }
     }
 }

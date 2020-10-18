@@ -9,7 +9,11 @@ namespace ArcGIS_System_Profiler
     public class globalVariables
     {
 
-        public static string selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/portal/portaladmin/healthCheck";
+        public static string selectedSserviceURL = "";
+        public static string portalCheckURL = "";
+        public static string ArcGISServerCheckURL = "";
         public static string stepsCounter = "";
+        public static string portalHostName = "";
+        public static string agsServerHostName = "";
     }
 }

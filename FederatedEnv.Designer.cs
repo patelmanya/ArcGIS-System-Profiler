@@ -94,9 +94,9 @@
             this.label3.Location = new System.Drawing.Point(16, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(212, 22);
+            this.label3.Size = new System.Drawing.Size(222, 22);
             this.label3.TabIndex = 1;
-            this.label3.Text = "ArcGIS Server endpoint";
+            this.label3.Text = "ArcGIS Server hostname";
             // 
             // label4
             // 
@@ -105,9 +105,9 @@
             this.label4.Location = new System.Drawing.Point(19, 170);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(243, 22);
+            this.label4.Size = new System.Drawing.Size(253, 22);
             this.label4.TabIndex = 1;
-            this.label4.Text = "ArcGIS Enterprise endpoint";
+            this.label4.Text = "ArcGIS Enterprise hostname";
             // 
             // txtBox_agsServerhostname
             // 
@@ -116,7 +116,7 @@
             this.txtBox_agsServerhostname.Name = "txtBox_agsServerhostname";
             this.txtBox_agsServerhostname.Size = new System.Drawing.Size(499, 22);
             this.txtBox_agsServerhostname.TabIndex = 2;
-            this.txtBox_agsServerhostname.Text = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/";
+            this.txtBox_agsServerhostname.Text = "minint-4ja7213.services.esriaustralia.com.au";
             // 
             // txtBox_agsEnterprisehostname
             // 
@@ -125,7 +125,7 @@
             this.txtBox_agsEnterprisehostname.Name = "txtBox_agsEnterprisehostname";
             this.txtBox_agsEnterprisehostname.Size = new System.Drawing.Size(499, 22);
             this.txtBox_agsEnterprisehostname.TabIndex = 2;
-            this.txtBox_agsEnterprisehostname.Text = "https://minint-4ja7213.services.esriaustralia.com.au/portal/";
+            this.txtBox_agsEnterprisehostname.Text = "minint-4ja7213.services.esriaustralia.com.au";
             // 
             // button1
             // 

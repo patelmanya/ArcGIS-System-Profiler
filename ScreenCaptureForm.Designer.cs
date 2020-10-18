@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnNextStep = new System.Windows.Forms.Button();
+            this.btnPortalCheck = new System.Windows.Forms.Button();
             this.labelStep = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btnServerCheck = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -41,37 +46,38 @@
             this.webBrowser1.Location = new System.Drawing.Point(12, 34);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1139, 554);
+            this.webBrowser1.Size = new System.Drawing.Size(845, 554);
             this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Visible = false;
             // 
-            // button2
+            // btnNextStep
             // 
-            this.button2.BackColor = System.Drawing.Color.DimGray;
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(958, 615);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 34);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Next";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnNextStep.BackColor = System.Drawing.Color.DimGray;
+            this.btnNextStep.Enabled = false;
+            this.btnNextStep.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btnNextStep.ForeColor = System.Drawing.Color.Black;
+            this.btnNextStep.Location = new System.Drawing.Point(962, 615);
+            this.btnNextStep.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNextStep.Name = "btnNextStep";
+            this.btnNextStep.Size = new System.Drawing.Size(175, 34);
+            this.btnNextStep.TabIndex = 4;
+            this.btnNextStep.Text = "Next";
+            this.btnNextStep.UseVisualStyleBackColor = false;
+            this.btnNextStep.Click += new System.EventHandler(this.btnNextStep_Click);
             // 
-            // button3
+            // btnPortalCheck
             // 
-            this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(778, 615);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(355, 34);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Perform Portal System Health Check";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnPortalCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btnPortalCheck.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btnPortalCheck.ForeColor = System.Drawing.Color.Black;
+            this.btnPortalCheck.Location = new System.Drawing.Point(236, 615);
+            this.btnPortalCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPortalCheck.Name = "btnPortalCheck";
+            this.btnPortalCheck.Size = new System.Drawing.Size(355, 34);
+            this.btnPortalCheck.TabIndex = 4;
+            this.btnPortalCheck.Text = "Perform Portal System Health Check";
+            this.btnPortalCheck.UseVisualStyleBackColor = false;
+            this.btnPortalCheck.Click += new System.EventHandler(this.btnPortalCheck_Click);
             // 
             // labelStep
             // 
@@ -89,10 +95,10 @@
             this.button1.BackColor = System.Drawing.Color.DimGray;
             this.button1.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(330, 614);
+            this.button1.Location = new System.Drawing.Point(12, 595);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 34);
+            this.button1.Size = new System.Drawing.Size(140, 34);
             this.button1.TabIndex = 6;
             this.button1.Text = "Save to Word";
             this.button1.UseVisualStyleBackColor = false;
@@ -103,28 +109,80 @@
             this.button4.BackColor = System.Drawing.Color.DimGray;
             this.button4.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(12, 615);
+            this.button4.Location = new System.Drawing.Point(12, 627);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(274, 34);
+            this.button4.Size = new System.Drawing.Size(174, 34);
             this.button4.TabIndex = 6;
             this.button4.Text = "Save multi image";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btnServerCheck
+            // 
+            this.btnServerCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btnServerCheck.Enabled = false;
+            this.btnServerCheck.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btnServerCheck.ForeColor = System.Drawing.Color.Black;
+            this.btnServerCheck.Location = new System.Drawing.Point(599, 615);
+            this.btnServerCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.btnServerCheck.Name = "btnServerCheck";
+            this.btnServerCheck.Size = new System.Drawing.Size(355, 34);
+            this.btnServerCheck.TabIndex = 7;
+            this.btnServerCheck.Text = "Perform ArcGIS Server System Health Check";
+            this.btnServerCheck.UseVisualStyleBackColor = false;
+            this.btnServerCheck.Click += new System.EventHandler(this.btnServerCheck_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(864, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(281, 554);
+            this.panel1.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.MaximumSize = new System.Drawing.Size(270, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(269, 44);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "1. Click Perform Portal System Health Check button";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 70);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.MaximumSize = new System.Drawing.Size(270, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(257, 66);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "2. Click Perform ArcGIS Server System Health Check button";
+            // 
             // ScreenCaptureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 661);
+            this.ClientSize = new System.Drawing.Size(1157, 662);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnServerCheck);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelStep);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPortalCheck);
+            this.Controls.Add(this.btnNextStep);
             this.Controls.Add(this.webBrowser1);
             this.Name = "ScreenCaptureForm";
             this.Text = "ScreenCaptureForm";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,10 +191,14 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnNextStep;
+        private System.Windows.Forms.Button btnPortalCheck;
         private System.Windows.Forms.Label labelStep;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnServerCheck;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

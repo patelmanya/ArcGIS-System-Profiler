@@ -32,7 +32,7 @@ namespace ArcGIS_System_Profiler
 
             token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
-            String agsServerURL = txtBox_agsServerhostname.Text + "?f=json";
+            String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/arcgis/rest/?f=json";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             var encoding = ASCIIEncoding.ASCII;
@@ -73,7 +73,7 @@ namespace ArcGIS_System_Profiler
                             {
                                 //get the arcgis server url and make web request and get services
                                 //String token = "NK-S6TK4XN80WMjSLPaMptbtyq_tsxJRehc3tyskU9KkIc8BE08KeqOJnR9ZlsXH9AZKKGGIn5i_g0HYMAt0LMigrxDIgSV8-1UJffEENGjBkRSUhzVe3AyeP7X-PXEkJitEukLhRSVQePehUKcwMZPAiYQbon3ltSWxZhvbsgTeBlLMCCS99QeZMfmJ0Qk_fN5tiNHHYBuQZieIUlQrOmF3K4L7JauFZg1f8mdRpP8.";
-                                String agsServerFolderURL = txtBox_agsServerhostname.Text + "/services/" + item + "?f=json&token=" + token;
+                                String agsServerFolderURL = "https://" + txtBox_agsServerhostname.Text + "/arcgis/rest/services/" + item + "?f=json&token=" + token;
                                 HttpWebRequest requestFolder = (HttpWebRequest)WebRequest.Create(agsServerFolderURL);
                                 HttpWebResponse responseFolder = (HttpWebResponse)requestFolder.GetResponse();
                                 using (var readerFolder = new System.IO.StreamReader(responseFolder.GetResponseStream(), encoding))
@@ -133,7 +133,7 @@ namespace ArcGIS_System_Profiler
             var userPortalName = InitialForm.agsEnterpriseUserName;
             var userPortalPassword = InitialForm.agsEnterprisePassword;
             //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
-            String agsServerURL = txtBox_agsEnterprisehostname.Text + "sharing/rest/generateToken";
+            String agsServerURL = "https://" + txtBox_agsEnterprisehostname.Text + "/portal/sharing/rest/generateToken";
             var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
 
             var postData = "username=" + userPortalName; //required
@@ -169,8 +169,13 @@ namespace ArcGIS_System_Profiler
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/services/SampleWorldCities/MapServer?f=html&token" + token;
-            globalVariables.selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/portal/portaladmin/healthCheck";
+            this.Hide();
+            globalVariables.portalHostName = "";
+            globalVariables.agsServerHostName = "";
+            globalVariables.portalHostName = txtBox_agsEnterprisehostname.Text;
+            globalVariables.agsServerHostName = txtBox_agsServerhostname.Text;
+            globalVariables.portalCheckURL = "https://" + globalVariables.portalHostName + "/portal/portaladmin/healthCheck";
+            globalVariables.ArcGISServerCheckURL = "https://" + globalVariables.agsServerHostName + "/arcgis/rest/info/healthCheck";
             ScreenCaptureForm sc = new ScreenCaptureForm();
             sc.ShowDialog();
         }
