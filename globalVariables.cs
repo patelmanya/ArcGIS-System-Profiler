@@ -15,5 +15,7 @@ namespace ArcGIS_System_Profiler
         public static string stepsCounter = "";
         public static string portalHostName = "";
         public static string agsServerHostName = "";
+        public static string portalInstanceName = "";
+        public static string agsServerInstanceName = "";
     }
 }

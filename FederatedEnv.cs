@@ -19,12 +19,14 @@ namespace ArcGIS_System_Profiler
     public partial class FederatedEnv : Form
     {
 
-        
+
         public static string token = "";
 
         public FederatedEnv()
         {
             InitializeComponent();
+            globalVariables.agsServerInstanceName = txtServerInstanceName.Text;
+            globalVariables.portalInstanceName = txtPortalInstanceName.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +34,7 @@ namespace ArcGIS_System_Profiler
 
             token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
-            String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/arcgis/rest/?f=json";
+            String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/" + globalVariables.agsServerInstanceName + "/rest/?f=json";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             var encoding = ASCIIEncoding.ASCII;
@@ -73,7 +75,7 @@ namespace ArcGIS_System_Profiler
                             {
                                 //get the arcgis server url and make web request and get services
                                 //String token = "NK-S6TK4XN80WMjSLPaMptbtyq_tsxJRehc3tyskU9KkIc8BE08KeqOJnR9ZlsXH9AZKKGGIn5i_g0HYMAt0LMigrxDIgSV8-1UJffEENGjBkRSUhzVe3AyeP7X-PXEkJitEukLhRSVQePehUKcwMZPAiYQbon3ltSWxZhvbsgTeBlLMCCS99QeZMfmJ0Qk_fN5tiNHHYBuQZieIUlQrOmF3K4L7JauFZg1f8mdRpP8.";
-                                String agsServerFolderURL = "https://" + txtBox_agsServerhostname.Text + "/arcgis/rest/services/" + item + "?f=json&token=" + token;
+                                String agsServerFolderURL = "https://" + txtBox_agsServerhostname.Text + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + item + "?f=json&token=" + token;
                                 HttpWebRequest requestFolder = (HttpWebRequest)WebRequest.Create(agsServerFolderURL);
                                 HttpWebResponse responseFolder = (HttpWebResponse)requestFolder.GetResponse();
                                 using (var readerFolder = new System.IO.StreamReader(responseFolder.GetResponseStream(), encoding))
@@ -175,9 +177,27 @@ namespace ArcGIS_System_Profiler
             globalVariables.portalHostName = txtBox_agsEnterprisehostname.Text;
             globalVariables.agsServerHostName = txtBox_agsServerhostname.Text;
             globalVariables.portalCheckURL = "https://" + globalVariables.portalHostName + "/portal/portaladmin/healthCheck";
-            globalVariables.ArcGISServerCheckURL = "https://" + globalVariables.agsServerHostName + "/arcgis/rest/info/healthCheck";
+            globalVariables.ArcGISServerCheckURL = "https://" + globalVariables.agsServerHostName + "/" + globalVariables.agsServerInstanceName + "/rest/info/healthCheck";
             ScreenCaptureForm sc = new ScreenCaptureForm();
             sc.ShowDialog();
+        }
+
+        private void btnEditInstanceName_Click(object sender, EventArgs e)
+        {
+            if (btnEditInstanceName.Text == "Edit instance")
+            {
+                txtPortalInstanceName.Enabled = true;
+                txtServerInstanceName.Enabled = true;
+                btnEditInstanceName.Text = "Update & Save";
+            }
+            else if (btnEditInstanceName.Text == "Update & Save")
+            {
+                globalVariables.agsServerInstanceName = txtServerInstanceName.Text;
+                globalVariables.portalInstanceName = txtPortalInstanceName.Text;
+                txtPortalInstanceName.Enabled = false;
+                txtServerInstanceName.Enabled = false;
+                btnEditInstanceName.Text = "Edit instance";
+            }
         }
 
         //public class ESRITokenResponse
