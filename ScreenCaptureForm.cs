@@ -15,16 +15,25 @@ namespace ArcGIS_System_Profiler
         public ScreenCaptureForm()
         {
             InitializeComponent();
-            //webBrowser1.Url = new Uri(FederatedEnv.selectedSserviceURL);
-            webBrowser1.Navigate(FederatedEnv.selectedSserviceURL);
-            
+            labelStep.Text = labelStep.Text + globalVariables.stepsCounter;
+            webBrowser1.Navigate(globalVariables.selectedSserviceURL);
+            button3.Visible = false;
+            button2.Enabled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate(globalVariables.selectedSserviceURL);
+            button3.Visible = false;
+            button2.Enabled = true;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             Bitmap bmp = new Bitmap(1024, 728);
             webBrowser1.DrawToBitmap(bmp, new Rectangle(webBrowser1.Location.X, webBrowser1.Location.Y, webBrowser1.Width, webBrowser1.Height));
-            bmp.Save("D:/temp/myfileButton2.jpg");
+            bmp.Save("C:/temp/myfileButton2.jpg");
         }
     }
 }

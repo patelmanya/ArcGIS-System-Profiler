@@ -27,10 +27,10 @@ namespace ArcGIS_System_Profiler
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FederatedEnv Fedform = new FederatedEnv();
             agsEnterpriseUserName = textBox3.Text;
             agsEnterprisePassword = textBox4.Text;
-            Fedform.Show();
+            StepsConfirmationForm sCnFm = new StepsConfirmationForm();
+            sCnFm.Show();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)

@@ -84,6 +84,7 @@
     <Compile Include="FederatedEnv.Designer.cs">
       <DependentUpon>FederatedEnv.cs</DependentUpon>
     </Compile>
+    <Compile Include="globalVariables.cs" />
     <Compile Include="InitialForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +100,12 @@
       <DependentUpon>ScreenCaptureForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScreenshotCapturer.cs" />
+    <Compile Include="StepsConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepsConfirmationForm.Designer.cs">
+      <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FederatedEnv.resx">
       <DependentUpon>FederatedEnv.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +123,9 @@
     </Compile>
     <EmbeddedResource Include="ScreenCaptureForm.resx">
       <DependentUpon>ScreenCaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepsConfirmationForm.resx">
+      <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ArcGIS System Profiler_TemporaryKey.pfx" />
     <None Include="packages.config" />

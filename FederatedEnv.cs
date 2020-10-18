@@ -19,7 +19,7 @@ namespace ArcGIS_System_Profiler
     public partial class FederatedEnv : Form
     {
 
-        public static string selectedSserviceURL = "";
+        
         public static string token = "";
 
         public FederatedEnv()
@@ -170,7 +170,7 @@ namespace ArcGIS_System_Profiler
         private void button3_Click(object sender, EventArgs e)
         {
             //selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/rest/services/SampleWorldCities/MapServer?f=html&token" + token;
-            selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/portal/portaladmin/healthCheck";
+            globalVariables.selectedSserviceURL = "https://minint-4ja7213.services.esriaustralia.com.au/portal/portaladmin/healthCheck";
             ScreenCaptureForm sc = new ScreenCaptureForm();
             sc.ShowDialog();
         }
