@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -50,15 +51,17 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel_Server = new System.Windows.Forms.Panel();
             this.panel_Enterprise = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_Server.SuspendLayout();
             this.panel_Enterprise.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(13, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(804, 19);
@@ -71,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 43);
+            this.label2.Location = new System.Drawing.Point(13, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(406, 22);
@@ -84,7 +87,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.checkBox1.Location = new System.Drawing.Point(17, 88);
+            this.checkBox1.Location = new System.Drawing.Point(17, 134);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(156, 26);
             this.checkBox1.TabIndex = 2;
@@ -97,7 +100,7 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.checkBox2.Location = new System.Drawing.Point(179, 88);
+            this.checkBox2.Location = new System.Drawing.Point(179, 134);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(176, 26);
             this.checkBox2.TabIndex = 2;
@@ -108,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 133);
+            this.label3.Location = new System.Drawing.Point(13, 179);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(263, 22);
@@ -120,7 +123,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.radioButton1.Location = new System.Drawing.Point(17, 174);
+            this.radioButton1.Location = new System.Drawing.Point(17, 220);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(62, 26);
             this.radioButton1.TabIndex = 3;
@@ -133,7 +136,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.radioButton2.Location = new System.Drawing.Point(94, 174);
+            this.radioButton2.Location = new System.Drawing.Point(94, 220);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(55, 26);
             this.radioButton2.TabIndex = 3;
@@ -145,7 +148,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 219);
+            this.label4.Location = new System.Drawing.Point(13, 265);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(250, 22);
@@ -283,7 +286,7 @@
             this.panel_Server.Controls.Add(this.textBox1);
             this.panel_Server.Controls.Add(this.label6);
             this.panel_Server.Controls.Add(this.btn_agsServer);
-            this.panel_Server.Location = new System.Drawing.Point(409, 255);
+            this.panel_Server.Location = new System.Drawing.Point(409, 301);
             this.panel_Server.Name = "panel_Server";
             this.panel_Server.Size = new System.Drawing.Size(394, 182);
             this.panel_Server.TabIndex = 7;
@@ -297,10 +300,20 @@
             this.panel_Enterprise.Controls.Add(this.label8);
             this.panel_Enterprise.Controls.Add(this.label9);
             this.panel_Enterprise.Controls.Add(this.btn_agsEnt);
-            this.panel_Enterprise.Location = new System.Drawing.Point(17, 255);
+            this.panel_Enterprise.Location = new System.Drawing.Point(17, 301);
             this.panel_Enterprise.Name = "panel_Enterprise";
             this.panel_Enterprise.Size = new System.Drawing.Size(386, 182);
             this.panel_Enterprise.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(762, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 34);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // InitialForm
             // 
@@ -308,7 +321,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(821, 490);
+            this.ClientSize = new System.Drawing.Size(830, 541);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel_Enterprise);
             this.Controls.Add(this.panel_Server);
             this.Controls.Add(this.radioButton2);
@@ -325,6 +339,7 @@
             this.panel_Server.PerformLayout();
             this.panel_Enterprise.ResumeLayout(false);
             this.panel_Enterprise.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +369,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel_Server;
         private System.Windows.Forms.Panel panel_Enterprise;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

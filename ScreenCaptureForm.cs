@@ -64,8 +64,8 @@ namespace ArcGIS_System_Profiler
 
             tableObj.Rows[1].Range.Font.Bold = 1;
 
-            Range docRange = docobj.Range();
-
+            //Range docRange = docobj.Range();
+            Range docRange = docobj.Bookmarks.get_Item(ref objEndOfDocument).Range;
             // Create an InlineShape in the InlineShapes collection where the picture should be added later
             // It is used to get automatically scaled sizes.
             InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(imagePath);
@@ -86,6 +86,8 @@ namespace ArcGIS_System_Profiler
 
             // And paste it to the target Range
             docRange.Paste();
+           // docobj.SaveAs2(@"c:\temp\test.docx");
+            //appobj.Quit();
 
         }
 
@@ -115,6 +117,48 @@ namespace ArcGIS_System_Profiler
 
             tableObj.Rows[1].Range.Font.Bold = 1;
             //this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            List<string> Images = new List<string>();
+            Images.Add(@"C:\temp\images\1.jpg");
+            Images.Add(@"C:\temp\images\2.jpg");
+            Images.Add(@"C:\temp\images\3.jpg");
+
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            wordApp.Visible = true;
+            Document wordDoc = wordApp.Documents.Add();
+            Range docRange = wordDoc.Range();
+
+            float mHeight = 0;
+            for (int i = 0; i <= Images.Count - 1; i++)
+            {
+                // Create an InlineShape in the InlineShapes collection where the picture should be added later
+                // It is used to get automatically scaled sizes.
+                InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(Images[i]);
+                float scaledWidth = autoScaledInlineShape.Width;
+                float scaledHeight = autoScaledInlineShape.Height;
+                mHeight += scaledHeight;
+                autoScaledInlineShape.Delete();
+
+                // Create a new Shape and fill it with the picture
+                Shape newShape = wordDoc.Shapes.AddShape(1, 0, 0, scaledWidth, mHeight);
+                newShape.Fill.UserPicture(Images[i]);
+
+                // Convert the Shape to an InlineShape and optional disable Border
+                InlineShape finalInlineShape = newShape.ConvertToInlineShape();
+                //finalInlineShape.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse;
+
+                // Cut the range of the InlineShape to clipboard
+                finalInlineShape.Range.Cut();
+
+                // And paste it to the target Range
+                docRange.Paste();
+                //object oPageBreak = Microsoft.Office.Interop.Word.WdBreakType.wdPageBreak;
+                //para.Range.InsertParagraphAfter();
+                //docRange.InsertBreak(ref oPageBreak);
+            }
         }
     }
 }
