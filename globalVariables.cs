@@ -17,5 +17,6 @@ namespace ArcGIS_System_Profiler
         public static string agsServerHostName = "";
         public static string portalInstanceName = "";
         public static string agsServerInstanceName = "";
+        public static List<string> ImageList = new List<string>();
     }
 }

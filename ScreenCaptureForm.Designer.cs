@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,17 +167,32 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "2. Click Perform ArcGIS Server System Health Check button";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(599, 657);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(355, 34);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Next";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // ScreenCaptureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 662);
+            this.ClientSize = new System.Drawing.Size(1157, 735);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnServerCheck);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelStep);
             this.Controls.Add(this.btnPortalCheck);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnNextStep);
             this.Controls.Add(this.webBrowser1);
             this.Name = "ScreenCaptureForm";
@@ -200,5 +216,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
     }
 }

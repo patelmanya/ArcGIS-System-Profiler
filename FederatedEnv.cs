@@ -29,9 +29,79 @@ namespace ArcGIS_System_Profiler
             globalVariables.portalInstanceName = txtPortalInstanceName.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private string GetToken()
         {
+            var userPortalName = InitialForm.agsEnterpriseUserName;
+            var userPortalPassword = InitialForm.agsEnterprisePassword;
+            //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
+            String agsServerURL = "https://" + txtBox_agsEnterprisehostname.Text + "/portal/sharing/rest/generateToken";
+            var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
 
+            var postData = "username=" + userPortalName; //required
+            postData += "&password=" + userPortalPassword; //required
+            postData += "&client=referer"; //required
+            postData += "&referer=requestip"; //required
+            postData += "&expiration=600"; //optional, default
+            postData += "&f=json"; //optional, default
+
+            var data = Encoding.ASCII.GetBytes(postData);
+
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            JObject rss = JObject.Parse(responseString);
+            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
+            String tokenStr = dict["token"].ToString();
+            //ESRITokenResponse eToken = Newtonsoft.Json.JsonConvert.DeserializeObject<ESRITokenResponse>(responseString);
+
+            //return eToken.access_token;
+            return tokenStr;
+        }
+
+
+        private void btnEditInstanceName_Click(object sender, EventArgs e)
+        {
+            if (btnEditInstanceName.Text == "Edit instance")
+            {
+                txtPortalInstanceName.Enabled = true;
+                txtServerInstanceName.Enabled = true;
+                btnEditInstanceName.Text = "Update & Save";
+            }
+            else if (btnEditInstanceName.Text == "Update & Save")
+            {
+                globalVariables.agsServerInstanceName = txtServerInstanceName.Text;
+                globalVariables.portalInstanceName = txtPortalInstanceName.Text;
+                txtPortalInstanceName.Enabled = false;
+                txtServerInstanceName.Enabled = false;
+                btnEditInstanceName.Text = "Edit instance";
+            }
+        }
+
+        private void btnPerformOps_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            globalVariables.portalHostName = "";
+            globalVariables.agsServerHostName = "";
+            globalVariables.portalHostName = txtBox_agsEnterprisehostname.Text;
+            globalVariables.agsServerHostName = txtBox_agsServerhostname.Text;
+            globalVariables.portalCheckURL = "https://" + globalVariables.portalHostName + "/portal/portaladmin/healthCheck";
+            globalVariables.ArcGISServerCheckURL = "https://" + globalVariables.agsServerHostName + "/" + globalVariables.agsServerInstanceName + "/rest/info/healthCheck";
+            ScreenCaptureForm sc = new ScreenCaptureForm();
+            sc.ShowDialog();
+        }
+
+        private void btnGetServices_Click(object sender, EventArgs e)
+        {
             token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
             String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/" + globalVariables.agsServerInstanceName + "/rest/?f=json";
@@ -125,78 +195,6 @@ namespace ArcGIS_System_Profiler
                 }
 
                 dataGridView2.ReadOnly = true;
-            }
-
-
-        }
-
-        private string GetToken()
-        {
-            var userPortalName = InitialForm.agsEnterpriseUserName;
-            var userPortalPassword = InitialForm.agsEnterprisePassword;
-            //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
-            String agsServerURL = "https://" + txtBox_agsEnterprisehostname.Text + "/portal/sharing/rest/generateToken";
-            var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
-
-            var postData = "username=" + userPortalName; //required
-            postData += "&password=" + userPortalPassword; //required
-            postData += "&client=referer"; //required
-            postData += "&referer=requestip"; //required
-            postData += "&expiration=600"; //optional, default
-            postData += "&f=json"; //optional, default
-
-            var data = Encoding.ASCII.GetBytes(postData);
-
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            var response = (HttpWebResponse)request.GetResponse();
-
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            JObject rss = JObject.Parse(responseString);
-            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
-            String tokenStr = dict["token"].ToString();
-            //ESRITokenResponse eToken = Newtonsoft.Json.JsonConvert.DeserializeObject<ESRITokenResponse>(responseString);
-
-            //return eToken.access_token;
-            return tokenStr;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            globalVariables.portalHostName = "";
-            globalVariables.agsServerHostName = "";
-            globalVariables.portalHostName = txtBox_agsEnterprisehostname.Text;
-            globalVariables.agsServerHostName = txtBox_agsServerhostname.Text;
-            globalVariables.portalCheckURL = "https://" + globalVariables.portalHostName + "/portal/portaladmin/healthCheck";
-            globalVariables.ArcGISServerCheckURL = "https://" + globalVariables.agsServerHostName + "/" + globalVariables.agsServerInstanceName + "/rest/info/healthCheck";
-            ScreenCaptureForm sc = new ScreenCaptureForm();
-            sc.ShowDialog();
-        }
-
-        private void btnEditInstanceName_Click(object sender, EventArgs e)
-        {
-            if (btnEditInstanceName.Text == "Edit instance")
-            {
-                txtPortalInstanceName.Enabled = true;
-                txtServerInstanceName.Enabled = true;
-                btnEditInstanceName.Text = "Update & Save";
-            }
-            else if (btnEditInstanceName.Text == "Update & Save")
-            {
-                globalVariables.agsServerInstanceName = txtServerInstanceName.Text;
-                globalVariables.portalInstanceName = txtPortalInstanceName.Text;
-                txtPortalInstanceName.Enabled = false;
-                txtServerInstanceName.Enabled = false;
-                btnEditInstanceName.Text = "Edit instance";
             }
         }
 

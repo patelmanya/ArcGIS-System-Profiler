@@ -167,7 +167,10 @@ namespace ArcGIS_System_Profiler
         private void btnServerCheck_Click(object sender, EventArgs e)
         {
             portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
-            portalBMP.Save("C:/temp/myPortalCheck.jpg");
+            string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+            globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
+            portalBMP.Save("C:/temp/myPortalCheck_" + fileName + ".jpg");
+
             webBrowser1.Navigate(globalVariables.ArcGISServerCheckURL);
             btnNextStep.Enabled = true;
 
@@ -176,7 +179,14 @@ namespace ArcGIS_System_Profiler
         private void btnNextStep_Click(object sender, EventArgs e)
         {
             serverBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
-            serverBMP.Save("C:/temp/myServerCheck.jpg");
+            string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+            globalVariables.ImageList.Add("C:/temp/myServerCheck_" + fileName + ".jpg");
+            serverBMP.Save("C:/temp/myServerCheck_" + fileName + ".jpg");
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate("https://minint-4ja7213.services.esriaustralia.com.au/arcgis/manager/site.html");
         }
     }
 }

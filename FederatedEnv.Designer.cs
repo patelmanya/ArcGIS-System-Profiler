@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtBox_agsServerhostname = new System.Windows.Forms.TextBox();
             this.txtBox_agsEnterprisehostname = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetServices = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -55,7 +55,7 @@
             this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.lbl_agsServerVer = new System.Windows.Forms.Label();
             this.lbl_agsEnterVer = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPerformOps = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPortalInstanceName = new System.Windows.Forms.TextBox();
             this.txtServerInstanceName = new System.Windows.Forms.TextBox();
@@ -121,19 +121,19 @@
             this.txtBox_agsEnterprisehostname.TabIndex = 2;
             this.txtBox_agsEnterprisehostname.Text = "minint-4ja7213.services.esriaustralia.com.au";
             // 
-            // button1
+            // btnGetServices
             // 
-            this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(812, 101);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 34);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Get Services";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGetServices.BackColor = System.Drawing.Color.DimGray;
+            this.btnGetServices.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btnGetServices.ForeColor = System.Drawing.Color.Black;
+            this.btnGetServices.Location = new System.Drawing.Point(812, 101);
+            this.btnGetServices.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGetServices.Name = "btnGetServices";
+            this.btnGetServices.Size = new System.Drawing.Size(175, 34);
+            this.btnGetServices.TabIndex = 3;
+            this.btnGetServices.Text = "Get Services";
+            this.btnGetServices.UseVisualStyleBackColor = false;
+            this.btnGetServices.Click += new System.EventHandler(this.btnGetServices_Click);
             // 
             // button2
             // 
@@ -359,19 +359,19 @@
             this.lbl_agsEnterVer.TabIndex = 1;
             this.lbl_agsEnterVer.Text = "ArcGIS Enterprise version: ";
             // 
-            // button3
+            // btnPerformOps
             // 
-            this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(871, 761);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(175, 34);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Perform Operations";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnPerformOps.BackColor = System.Drawing.Color.DimGray;
+            this.btnPerformOps.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btnPerformOps.ForeColor = System.Drawing.Color.Black;
+            this.btnPerformOps.Location = new System.Drawing.Point(871, 761);
+            this.btnPerformOps.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPerformOps.Name = "btnPerformOps";
+            this.btnPerformOps.Size = new System.Drawing.Size(175, 34);
+            this.btnPerformOps.TabIndex = 3;
+            this.btnPerformOps.Text = "Perform Operations";
+            this.btnPerformOps.UseVisualStyleBackColor = false;
+            this.btnPerformOps.Click += new System.EventHandler(this.btnPerformOps_Click);
             // 
             // label2
             // 
@@ -454,10 +454,10 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnPerformOps);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnEditInstanceName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGetServices);
             this.Controls.Add(this.txtBox_agsEnterprisehostname);
             this.Controls.Add(this.txtBox_agsServerhostname);
             this.Controls.Add(this.lbl_agsEnterVer);
@@ -489,7 +489,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBox_agsServerhostname;
         private System.Windows.Forms.TextBox txtBox_agsEnterprisehostname;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGetServices;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -510,7 +510,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPerformOps;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPortalInstanceName;
         private System.Windows.Forms.TextBox txtServerInstanceName;
