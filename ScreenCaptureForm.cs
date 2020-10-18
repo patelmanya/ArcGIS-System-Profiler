@@ -23,6 +23,7 @@ namespace ArcGIS_System_Profiler
             webBrowser1.Navigate(globalVariables.portalCheckURL);
             //btnPortalCheck.Visible = false;
             btnNextStep.Enabled = true;
+            txtBox_WebUrl.Text = globalVariables.portalCheckURL;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -166,6 +167,7 @@ namespace ArcGIS_System_Profiler
 
         private void btnServerCheck_Click(object sender, EventArgs e)
         {
+            txtBox_WebUrl.Text = globalVariables.ArcGISServerCheckURL;
             portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
             string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
             globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
@@ -186,7 +188,22 @@ namespace ArcGIS_System_Profiler
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            txtBox_WebUrl.Text = "https://minint-4ja7213.services.esriaustralia.com.au/arcgis/manager/site.html";
             webBrowser1.Navigate("https://minint-4ja7213.services.esriaustralia.com.au/arcgis/manager/site.html");
+        }
+
+        private void btnUpdateURL_Click(object sender, EventArgs e)
+        {
+            if (btnUpdateURL.Text == "Edit")
+            {
+                txtBox_WebUrl.Enabled = true;
+                btnUpdateURL.Text = "Update";
+            }
+            else if (btnUpdateURL.Text == "Update")
+            {
+                txtBox_WebUrl.Enabled = false;
+                btnUpdateURL.Text = "Edit";
+            }
         }
     }
 }
