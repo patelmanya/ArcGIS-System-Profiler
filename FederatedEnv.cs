@@ -89,6 +89,16 @@ namespace ArcGIS_System_Profiler
 
         private void btnPerformOps_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["dataGridViewCheckBoxColumn1"].Value);
+                if (isSelected)
+                {
+                    globalVariables.checkedAGSServices.Add(row.Cells["dataGridViewTextBoxColumn1"].Value.ToString());
+                }
+
+            }
+
             this.Hide();
             globalVariables.portalHostName = "";
             globalVariables.agsServerHostName = "";
@@ -113,15 +123,15 @@ namespace ArcGIS_System_Profiler
                 //remove the existing rows in the datagridview
                 do
                 {
-                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                     {
                         try
                         {
-                            dataGridView2.Rows.Remove(row);
+                            AGS_dataGridView.Rows.Remove(row);
                         }
                         catch (Exception) { }
                     }
-                } while (dataGridView2.Rows.Count > 1);
+                } while (AGS_dataGridView.Rows.Count > 1);
 
                 String JSONresults = reader.ReadToEnd();
                 JObject rss = JObject.Parse(JSONresults);
@@ -159,10 +169,10 @@ namespace ArcGIS_System_Profiler
                                     JArray servicesCollectionFolder = (JArray)rssFolder["services"];
                                     foreach (var itemFolder in servicesCollectionFolder)
                                     {
-                                        DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                                        DataGridViewRow row = (DataGridViewRow)AGS_dataGridView.Rows[0].Clone();
                                         row.Cells[1].Value = itemFolder["name"];
                                         row.Cells[2].Value = itemFolder["type"];
-                                        dataGridView2.Rows.Add(row);
+                                        AGS_dataGridView.Rows.Add(row);
                                     }
 
                                 }
@@ -170,10 +180,10 @@ namespace ArcGIS_System_Profiler
                             }
                             else
                             {
-                                DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                                DataGridViewRow row = (DataGridViewRow)AGS_dataGridView.Rows[0].Clone();
                                 row.Cells[1].Value = item;
                                 row.Cells[2].Value = "Folder";
-                                dataGridView2.Rows.Add(row);
+                                AGS_dataGridView.Rows.Add(row);
                             }
 
                         }
@@ -185,19 +195,55 @@ namespace ArcGIS_System_Profiler
                         foreach (var item in servicesCollection)
                         {
                             agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"]);
-                            DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[0].Clone();
+                            DataGridViewRow row = (DataGridViewRow)AGS_dataGridView.Rows[0].Clone();
                             row.Cells[1].Value = item["name"];
                             row.Cells[2].Value = item["type"];
-                            dataGridView2.Rows.Add(row);
+                            AGS_dataGridView.Rows.Add(row);
                             //agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"] + " Type: " + item["type"]);
                         }
                     }
                 }
 
-                dataGridView2.ReadOnly = true;
+                //AGS_dataGridView.ReadOnly = true;
+
+                btn_SelectAll.Enabled = true;
+                btn_ClearSelection.Enabled = true;
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //https://minint-4ja7213.services.esriaustralia.com.au/arcgis/admin/data/items/enterpriseDatabases
+            token = GetToken(); // generateTokenFromPortal();
+            //get the arcgis server url and make web request and get services
+            String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/" + globalVariables.agsServerInstanceName + "/rest/?f=json";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/arcgis/admin/data/items/enterpriseDatabases?f=json&token=" + token);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            var encoding = ASCIIEncoding.ASCII;
+            using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
+            {
+                String JSONresults = reader.ReadToEnd();
+                JObject rss = JObject.Parse(JSONresults);
+                var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresults);
+                string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
+            }
+        }
+
+        private void btn_SelectAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                row.Cells["dataGridViewCheckBoxColumn1"].Value = true;
+            }
+        }
+
+        private void btn_ClearSelection_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                row.Cells["dataGridViewCheckBoxColumn1"].Value = false;
+            }
+        }
         //public class ESRITokenResponse
         //{
         //    public string access_token { get; set; }

@@ -20,6 +20,7 @@ namespace ArcGIS_System_Profiler
         {
             InitializeComponent();
             labelStep.Text = labelStep.Text + globalVariables.stepsCounter;
+            globalVariables.checkedAGSServices.Add("test");
             webBrowser1.Navigate(globalVariables.portalCheckURL);
             //btnPortalCheck.Visible = false;
             btnNextStep.Enabled = true;
