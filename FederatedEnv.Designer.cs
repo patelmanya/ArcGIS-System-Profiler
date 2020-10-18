@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,11 +59,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnEditInstanceName = new System.Windows.Forms.Button();
+            this.btn_SelectAll = new System.Windows.Forms.Button();
+            this.btn_ClearSelection = new System.Windows.Forms.Button();
+            this.btn_GenerateReport = new System.Windows.Forms.Button();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_SelectAll = new System.Windows.Forms.Button();
-            this.btn_ClearSelection = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGS_dataGridView)).BeginInit();
@@ -180,14 +181,14 @@
             this.AGS_dataGridView.AllowUserToDeleteRows = false;
             this.AGS_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AGS_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AGS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AGS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.AGS_dataGridView.ColumnHeadersHeight = 30;
             this.AGS_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
@@ -201,6 +202,7 @@
             this.AGS_dataGridView.RowHeadersWidth = 55;
             this.AGS_dataGridView.Size = new System.Drawing.Size(996, 420);
             this.AGS_dataGridView.TabIndex = 4;
+            this.AGS_dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AGS_dataGridView_CellContentClick);
             // 
             // agsServerlistBox
             // 
@@ -419,38 +421,13 @@
             this.btnEditInstanceName.UseVisualStyleBackColor = false;
             this.btnEditInstanceName.Click += new System.EventHandler(this.btnEditInstanceName_Click);
             // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.FillWeight = 38.07107F;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 130.9645F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Folder OR Service Name";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.FillWeight = 130.9645F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Item Type";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // btn_SelectAll
             // 
             this.btn_SelectAll.BackColor = System.Drawing.Color.DimGray;
             this.btn_SelectAll.Enabled = false;
             this.btn_SelectAll.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
             this.btn_SelectAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_SelectAll.Location = new System.Drawing.Point(29, 752);
+            this.btn_SelectAll.Location = new System.Drawing.Point(29, 761);
             this.btn_SelectAll.Margin = new System.Windows.Forms.Padding(4);
             this.btn_SelectAll.Name = "btn_SelectAll";
             this.btn_SelectAll.Size = new System.Drawing.Size(121, 34);
@@ -465,7 +442,7 @@
             this.btn_ClearSelection.Enabled = false;
             this.btn_ClearSelection.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
             this.btn_ClearSelection.ForeColor = System.Drawing.Color.Black;
-            this.btn_ClearSelection.Location = new System.Drawing.Point(158, 752);
+            this.btn_ClearSelection.Location = new System.Drawing.Point(158, 761);
             this.btn_ClearSelection.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ClearSelection.Name = "btn_ClearSelection";
             this.btn_ClearSelection.Size = new System.Drawing.Size(147, 34);
@@ -473,6 +450,45 @@
             this.btn_ClearSelection.Text = "Clear Selection";
             this.btn_ClearSelection.UseVisualStyleBackColor = false;
             this.btn_ClearSelection.Click += new System.EventHandler(this.btn_ClearSelection_Click);
+            // 
+            // btn_GenerateReport
+            // 
+            this.btn_GenerateReport.BackColor = System.Drawing.Color.DimGray;
+            this.btn_GenerateReport.Enabled = false;
+            this.btn_GenerateReport.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
+            this.btn_GenerateReport.ForeColor = System.Drawing.Color.Black;
+            this.btn_GenerateReport.Location = new System.Drawing.Point(700, 761);
+            this.btn_GenerateReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_GenerateReport.Name = "btn_GenerateReport";
+            this.btn_GenerateReport.Size = new System.Drawing.Size(163, 34);
+            this.btn_GenerateReport.TabIndex = 3;
+            this.btn_GenerateReport.Text = "Generate Report";
+            this.btn_GenerateReport.UseVisualStyleBackColor = false;
+            this.btn_GenerateReport.Click += new System.EventHandler(this.btn_GenerateReport_Click);
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.FillWeight = 38.07107F;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 130.9645F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Folder OR Service Name";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.FillWeight = 130.9645F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Item Type";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // FederatedEnv
             // 
@@ -487,6 +503,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btn_GenerateReport);
             this.Controls.Add(this.btn_ClearSelection);
             this.Controls.Add(this.btn_SelectAll);
             this.Controls.Add(this.btnPerformOps);
@@ -549,11 +566,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnEditInstanceName;
+        private System.Windows.Forms.Button btn_SelectAll;
+        private System.Windows.Forms.Button btn_ClearSelection;
+        private System.Windows.Forms.Button btn_GenerateReport;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Button btn_SelectAll;
-        private System.Windows.Forms.Button btn_ClearSelection;
     }
 }
 

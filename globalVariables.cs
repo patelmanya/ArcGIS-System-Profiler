@@ -19,5 +19,6 @@ namespace ArcGIS_System_Profiler
         public static string agsServerInstanceName = "";
         public static List<string> ImageList = new List<string>();
         public static List<string> checkedAGSServices = new List<string>();
+        public static List<Object> checkedAGSServicesArray = new List<Object>();
     }
 }

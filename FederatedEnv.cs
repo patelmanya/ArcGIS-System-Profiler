@@ -18,8 +18,6 @@ namespace ArcGIS_System_Profiler
 {
     public partial class FederatedEnv : Form
     {
-
-
         public static string token = "";
 
         public FederatedEnv()
@@ -68,7 +66,6 @@ namespace ArcGIS_System_Profiler
             return tokenStr;
         }
 
-
         private void btnEditInstanceName_Click(object sender, EventArgs e)
         {
             if (btnEditInstanceName.Text == "Edit instance")
@@ -112,6 +109,9 @@ namespace ArcGIS_System_Profiler
 
         private void btnGetServices_Click(object sender, EventArgs e)
         {
+            btn_SelectAll.Enabled = false;
+            btn_ClearSelection.Enabled = false;
+            btn_GenerateReport.Enabled = false;
             token = GetToken(); // generateTokenFromPortal();
             //get the arcgis server url and make web request and get services
             String agsServerURL = "https://" + txtBox_agsServerhostname.Text + "/" + globalVariables.agsServerInstanceName + "/rest/?f=json";
@@ -172,6 +172,12 @@ namespace ArcGIS_System_Profiler
                                         DataGridViewRow row = (DataGridViewRow)AGS_dataGridView.Rows[0].Clone();
                                         row.Cells[1].Value = itemFolder["name"];
                                         row.Cells[2].Value = itemFolder["type"];
+                                        var dictionary = new Dictionary<string, object>();
+                                        dictionary["name"] = itemFolder["name"];
+                                        dictionary["type"] = itemFolder["type"];
+                                        dictionary["checked"] = "false";
+                                        dictionary["id"] = itemFolder["name"] + "_" + itemFolder["type"];
+                                        globalVariables.checkedAGSServicesArray.Add(dictionary);
                                         AGS_dataGridView.Rows.Add(row);
                                     }
 
@@ -198,6 +204,12 @@ namespace ArcGIS_System_Profiler
                             DataGridViewRow row = (DataGridViewRow)AGS_dataGridView.Rows[0].Clone();
                             row.Cells[1].Value = item["name"];
                             row.Cells[2].Value = item["type"];
+                            var dictionary = new Dictionary<string, object>();
+                            dictionary["name"] = item["name"];
+                            dictionary["type"] = item["type"];
+                            dictionary["checked"] = "false";
+                            dictionary["id"] = item["name"] + "_" + item["type"];
+                            globalVariables.checkedAGSServicesArray.Add(dictionary);
                             AGS_dataGridView.Rows.Add(row);
                             //agsServerlistBox.Items.Insert(agsServerlistBox.Items.Count, item["name"] + " Type: " + item["type"]);
                         }
@@ -208,6 +220,7 @@ namespace ArcGIS_System_Profiler
 
                 btn_SelectAll.Enabled = true;
                 btn_ClearSelection.Enabled = true;
+                btn_GenerateReport.Enabled = true;
             }
         }
 
@@ -244,6 +257,63 @@ namespace ArcGIS_System_Profiler
                 row.Cells["dataGridViewCheckBoxColumn1"].Value = false;
             }
         }
+
+        private void btn_GenerateReport_Click(object sender, EventArgs e)
+        {
+            //call admin url for generating report for selected services
+            //https://minint-4ja7213.services.esriaustralia.com.au/arcgis/admin/services/Hosted/report
+
+            //get selected services - globalVariables.checkedAGSServicesArray
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["dataGridViewCheckBoxColumn1"].Value);
+                if (isSelected)
+                {
+                    foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+                    {
+                        if (obj["id"].ToString() == row.Cells["dataGridViewTextBoxColumn1"].Value.ToString() + "_" + row.Cells["dataGridViewTextBoxColumn2"].Value.ToString())
+                        {
+                            obj["checked"] = "true";
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        private void AGS_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AGS_dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dataGridViewSites_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateDataGridViewSite();
+        }
+
+        private void UpdateDataGridViewSite()
+        {
+            //get selected services - globalVariables.checkedAGSServicesArray
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["dataGridViewCheckBoxColumn1"].Value);
+                if (isSelected)
+                {
+                    foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+                    {
+                        if (obj["id"].ToString() == row.Cells["dataGridViewTextBoxColumn1"].Value.ToString() + "_" + row.Cells["dataGridViewTextBoxColumn2"].Value.ToString())
+                        {
+                            obj["checked"] = "true";
+                        }
+                    }
+
+                }
+
+            }
+        }
+
         //public class ESRITokenResponse
         //{
         //    public string access_token { get; set; }
