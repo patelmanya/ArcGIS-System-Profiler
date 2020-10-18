@@ -37,6 +37,8 @@ namespace ArcGIS_System_Profiler
             bmp = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
             //webBrowser1.DrawToBitmap(bmp, new Rectangle(webBrowser1.Location.X, webBrowser1.Location.Y, webBrowser1.Width, webBrowser1.Height));
             bmp.Save("C:/temp/myfileButton2.jpg");
+            string imagePath = "C:/temp/myfileButton2.jpg";
+
 
             object objMissing = System.Reflection.Missing.Value;
             object objEndOfDocument = "\\endofdoc";
@@ -61,6 +63,30 @@ namespace ArcGIS_System_Profiler
 
 
             tableObj.Rows[1].Range.Font.Bold = 1;
+
+            Range docRange = docobj.Range();
+
+            // Create an InlineShape in the InlineShapes collection where the picture should be added later
+            // It is used to get automatically scaled sizes.
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(imagePath);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = docobj.Shapes.AddShape(1, 0, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(imagePath);
+
+            // Convert the Shape to an InlineShape and optional disable Border
+            InlineShape finalInlineShape = newShape.ConvertToInlineShape();
+            //finalInlineShape.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse;
+
+            // Cut the range of the InlineShape to clipboard
+            finalInlineShape.Range.Cut();
+
+            // And paste it to the target Range
+            docRange.Paste();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
