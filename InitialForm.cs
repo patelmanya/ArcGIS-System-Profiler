@@ -67,13 +67,25 @@ namespace ArcGIS_System_Profiler
 
         private void btn_agsEnt_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             globalVariables.agsEntUserName = txtPortalUserName.Text;
             globalVariables.agsEntUserPassword = txtPortalPassword.Text;
             agsEnterpriseUserName = txtPortalUserName.Text;
             agsEnterprisePassword = txtPortalPassword.Text;
-            StepsConfirmationForm sCnFm = new StepsConfirmationForm();
-            sCnFm.Show();
+            timer1.Enabled = true;
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            progressBar1.Value = progressBar1.Value + 10;
+            if (progressBar1.Value>99)
+            {
+                this.Hide();
+                StepsConfirmationForm sCnFm = new StepsConfirmationForm();
+                sCnFm.Show();
+                timer1.Enabled = false;
+            }
         }
     }
 }
