@@ -348,7 +348,13 @@ namespace ArcGIS_System_Profiler
 
                         string TableExpression = "<table[^>]*>(.*?)</table>";
                         MatchCollection Tables = Regex.Matches(data, TableExpression, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
-
+                        foreach (var item in Tables)
+                        {
+                            string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                            TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
+                            txt.Write(item);
+                            txt.Close();
+                        }
 
                         //string myStr = HttpMethods.Get("https://www.marktplaats.nl/account/login.html", "https://www.marktplaats.nl/account/login.html", ref myCookies);
                         //string regex = "<input type\\=\\\"hidden\\\" name=\\\"xsrf\\.token\\\" value\\=\\\"([^\\\"]+)\\\"";
