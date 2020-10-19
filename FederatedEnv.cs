@@ -1,5 +1,4 @@
-﻿using ExtensionMethods;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -16,32 +15,6 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-
-namespace ExtensionMethods
-{
-    public static class MyExtensions
-    {
-        public static int WordCount(this String str)
-        {
-            return str.Split(new char[] { ' ', '.', '?' },
-                             StringSplitOptions.RemoveEmptyEntries).Length;
-        }
-
-        public static List<int> AllIndexesOf(this string str, string value)
-        {
-            if (String.IsNullOrEmpty(value))
-                throw new ArgumentException("the string to find may not be empty", "value");
-            List<int> indexes = new List<int>();
-            for (int index = 0; ; index += value.Length)
-            {
-                index = str.IndexOf(value, index);
-                if (index == -1)
-                    return indexes;
-                indexes.Add(index);
-            }
-        }
-    }
-}
 
 namespace ArcGIS_System_Profiler
 {
@@ -343,9 +316,6 @@ namespace ArcGIS_System_Profiler
                             readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
 
                         string data = readStream.ReadToEnd();
-                        List<int> indexes = data.AllIndexesOf("fieldset");
-
-
                         string TableExpression = "<table[^>]*>(.*?)</table>";
                         MatchCollection Tables = Regex.Matches(data, TableExpression, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
                         foreach (var item in Tables)
@@ -371,7 +341,7 @@ namespace ArcGIS_System_Profiler
 
         }
 
-        
+
 
         private void AGS_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
