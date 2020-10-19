@@ -17,6 +17,7 @@ namespace ArcGIS_System_Profiler
 
         public InitialForm()
         {
+            //this.CenterToParent();
             InitializeComponent();
             txtAGSServerPassword.Text = "";
             txtAGSServerPassword.PasswordChar = '*';
@@ -82,9 +83,12 @@ namespace ArcGIS_System_Profiler
             if (progressBar1.Value>99)
             {
                 this.Hide();
-                StepsConfirmationForm sCnFm = new StepsConfirmationForm();
-                sCnFm.Show();
+                //StepsConfirmationForm sCnFm = new StepsConfirmationForm();
+                //sCnFm.Show();
                 timer1.Enabled = false;
+                Page2 pg2 = new Page2();
+                pg2.ShowDialog();
+                
             }
         }
     }

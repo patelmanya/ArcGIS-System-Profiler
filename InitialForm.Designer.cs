@@ -66,7 +66,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 53);
+            this.label1.Location = new System.Drawing.Point(31, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1019, 22);
@@ -80,7 +80,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(30, 102);
+            this.label2.Location = new System.Drawing.Point(31, 56);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(449, 22);
@@ -94,7 +94,7 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(35, 167);
+            this.checkBox1.Location = new System.Drawing.Point(37, 95);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(161, 26);
@@ -109,7 +109,7 @@
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(258, 167);
+            this.checkBox2.Location = new System.Drawing.Point(260, 95);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(184, 26);
@@ -122,7 +122,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(30, 232);
+            this.label3.Location = new System.Drawing.Point(33, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(287, 22);
@@ -135,7 +135,7 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(35, 290);
+            this.radioButton1.Location = new System.Drawing.Point(330, 140);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(62, 26);
@@ -150,7 +150,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(141, 290);
+            this.radioButton2.Location = new System.Drawing.Point(436, 140);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(53, 26);
@@ -164,7 +164,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(30, 355);
+            this.label4.Location = new System.Drawing.Point(31, 185);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(278, 22);
@@ -313,7 +313,7 @@
             this.panel_Server.Controls.Add(this.txtAGSServerUserName);
             this.panel_Server.Controls.Add(this.label6);
             this.panel_Server.Controls.Add(this.btn_agsServer);
-            this.panel_Server.Location = new System.Drawing.Point(574, 407);
+            this.panel_Server.Location = new System.Drawing.Point(570, 226);
             this.panel_Server.Margin = new System.Windows.Forms.Padding(4);
             this.panel_Server.Name = "panel_Server";
             this.panel_Server.Size = new System.Drawing.Size(542, 262);
@@ -328,7 +328,7 @@
             this.panel_Enterprise.Controls.Add(this.label8);
             this.panel_Enterprise.Controls.Add(this.label9);
             this.panel_Enterprise.Controls.Add(this.btn_agsEnt);
-            this.panel_Enterprise.Location = new System.Drawing.Point(35, 407);
+            this.panel_Enterprise.Location = new System.Drawing.Point(31, 226);
             this.panel_Enterprise.Margin = new System.Windows.Forms.Padding(4);
             this.panel_Enterprise.Name = "panel_Enterprise";
             this.panel_Enterprise.Size = new System.Drawing.Size(531, 262);
@@ -338,7 +338,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 684);
+            this.panel1.Location = new System.Drawing.Point(0, 546);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 10);
             this.panel1.TabIndex = 9;
@@ -349,7 +349,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1128, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 674);
+            this.panel2.Size = new System.Drawing.Size(10, 536);
             this.panel2.TabIndex = 9;
             // 
             // panel3
@@ -367,14 +367,14 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 10);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 674);
+            this.panel4.Size = new System.Drawing.Size(10, 536);
             this.panel4.TabIndex = 9;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(574, 270);
+            this.progressBar1.Location = new System.Drawing.Point(31, 504);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(542, 23);
+            this.progressBar1.Size = new System.Drawing.Size(1081, 23);
             this.progressBar1.TabIndex = 10;
             // 
             // timer1
@@ -388,7 +388,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1138, 694);
+            this.ClientSize = new System.Drawing.Size(1138, 556);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
