@@ -192,7 +192,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\closebutton.png" />
     <Content Include="resources\help.png" />
+    <None Include="resources\icon.png" />
     <None Include="resources\help1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

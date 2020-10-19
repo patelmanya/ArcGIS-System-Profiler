@@ -316,18 +316,6 @@ namespace ArcGIS_System_Profiler
                             string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                             TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
                             globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
-                            //Microsoft.Office.Interop.Word._Application appobj;
-                            //Microsoft.Office.Interop.Word._Document docobj;
-                            //appobj = new Microsoft.Office.Interop.Word.Application();
-
-
-                            //docobj = appobj.Documents.Open(@"C:\temp\Template.docx");
-                            //string bookmark = "ServiceReport";
-
-                            //Bookmark bm = docobj.Bookmarks[bookmark];
-                            //Range range = bm.Range;
-                            //range.Text = item.ToString();
-                            //docobj.Bookmarks.Add(bookmark, range);
                             txt.Write(item);
                             txt.Close();
                         }
@@ -335,23 +323,11 @@ namespace ArcGIS_System_Profiler
                         response.Close();
                         readStream.Close();
                     }
+
                     foreach (string objArr in globalVariables.generateReportList)
                     {
 
-                        Microsoft.Office.Interop.Word._Application appobj;
-                        Microsoft.Office.Interop.Word._Document docobj;
-                        appobj = new Microsoft.Office.Interop.Word.Application();
-
-
-                        docobj = appobj.Documents.Open(@"C:\temp\Template.docx");
-                        string bookmark = "ServiceReport";
-
-                        Bookmark bm = docobj.Bookmarks[bookmark];
-                        Range range = bm.Range;
-                        range.Text = "Hello World";
-                        docobj.Bookmarks.Add(bookmark, range);
-                        docobj.SaveAs2(@"C:\temp\TemplateUpdated.docx");
-                        docobj.Close();
+                        
 
                     }
 
