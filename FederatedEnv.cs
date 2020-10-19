@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ExtensionMethods;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,37 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+
+
+namespace ExtensionMethods
+{
+    public static class MyExtensions
+    {
+        public static int WordCount(this String str)
+        {
+            return str.Split(new char[] { ' ', '.', '?' },
+                             StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+
+        public static List<int> AllIndexesOf(this string str, string value)
+        {
+            if (String.IsNullOrEmpty(value))
+                throw new ArgumentException("the string to find may not be empty", "value");
+            List<int> indexes = new List<int>();
+            for (int index = 0; ; index += value.Length)
+            {
+                index = str.IndexOf(value, index);
+                if (index == -1)
+                    return indexes;
+                indexes.Add(index);
+            }
+        }
+    }
+}
 
 namespace ArcGIS_System_Profiler
 {
@@ -25,6 +54,8 @@ namespace ArcGIS_System_Profiler
             InitializeComponent();
             globalVariables.agsServerInstanceName = txtServerInstanceName.Text;
             globalVariables.portalInstanceName = txtPortalInstanceName.Text;
+            globalVariables.agsServerHostName = txtBox_agsServerhostname.Text;
+            globalVariables.portalHostName = txtBox_agsEnterprisehostname.Text;
         }
 
         private string GetToken()
@@ -281,7 +312,60 @@ namespace ArcGIS_System_Profiler
 
             }
 
+            //generate the report for each service selected
+            foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+            {
+                if (obj["checked"].ToString() == "true")
+                {
+                    token = GetToken();
+                    //get the arcgis server url and make web request and get services
+                    String urlAddress = "https://" + globalVariables.agsServerHostName + "/" + globalVariables.agsServerInstanceName + "/admin/services/report?token=" + token;
+                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+                    //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    //var encoding = ASCIIEncoding.ASCII;
+                    //using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
+                    //{
+
+                    //}
+                    //string urlAddress = "http://google.com";
+
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        Stream receiveStream = response.GetResponseStream();
+                        StreamReader readStream = null;
+
+                        if (String.IsNullOrWhiteSpace(response.CharacterSet))
+                            readStream = new StreamReader(receiveStream);
+                        else
+                            readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+
+                        string data = readStream.ReadToEnd();
+                        List<int> indexes = data.AllIndexesOf("fieldset");
+
+
+                        string TableExpression = "<table[^>]*>(.*?)</table>";
+                        MatchCollection Tables = Regex.Matches(data, TableExpression, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+
+                        //string myStr = HttpMethods.Get("https://www.marktplaats.nl/account/login.html", "https://www.marktplaats.nl/account/login.html", ref myCookies);
+                        //string regex = "<input type\\=\\\"hidden\\\" name=\\\"xsrf\\.token\\\" value\\=\\\"([^\\\"]+)\\\"";
+                        //string regXHTML = "<fieldset class=\\\"body\\\" style=\\\"width: 800px; \\\">";
+                        //var xsrfToken = Regex.Match(data, regXHTML).Groups[1].Value;
+
+                        //Console.WriteLine(xsrfToken);
+
+                        response.Close();
+                        readStream.Close();
+                    }
+                }
+            }
+
         }
+
+        
 
         private void AGS_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
