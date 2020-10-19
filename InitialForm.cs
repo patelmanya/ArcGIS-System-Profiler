@@ -18,20 +18,12 @@ namespace ArcGIS_System_Profiler
         public InitialForm()
         {
             InitializeComponent();
-            textBox2.Text = "";
-            textBox2.PasswordChar = '*';
+            txtAGSServerPassword.Text = "";
+            txtAGSServerPassword.PasswordChar = '*';
             //textBox4.Text = "";
-            textBox4.PasswordChar = '*';
+            txtPortalPassword.PasswordChar = '*';
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            agsEnterpriseUserName = textBox3.Text;
-            agsEnterprisePassword = textBox4.Text;
-            StepsConfirmationForm sCnFm = new StepsConfirmationForm();
-            sCnFm.Show();
-        }
+         
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -60,6 +52,28 @@ namespace ArcGIS_System_Profiler
             // Set up the ToolTip text for the Button and Checkbox.
             toolTip1.SetToolTip(this.btn_agsEnt, "My button1");
             toolTip1.SetToolTip(this.checkBox1, "My checkBox1");
+        }
+
+        private void btn_agsServer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            globalVariables.agsServerUserName = txtAGSServerUserName.Text;
+            globalVariables.agsServerUserPassword = txtAGSServerPassword.Text;
+            agsEnterpriseUserName = txtPortalUserName.Text;
+            agsEnterprisePassword = txtPortalPassword.Text;
+            StepsConfirmationForm sCnFm = new StepsConfirmationForm();
+            sCnFm.Show();
+        }
+
+        private void btn_agsEnt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            globalVariables.agsEntUserName = txtPortalUserName.Text;
+            globalVariables.agsEntUserPassword = txtPortalPassword.Text;
+            agsEnterpriseUserName = txtPortalUserName.Text;
+            agsEnterprisePassword = txtPortalPassword.Text;
+            StepsConfirmationForm sCnFm = new StepsConfirmationForm();
+            sCnFm.Show();
         }
     }
 }

@@ -38,14 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAGSServerUserName = new System.Windows.Forms.TextBox();
+            this.txtAGSServerPassword = new System.Windows.Forms.TextBox();
             this.btn_agsServer = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPortalUserName = new System.Windows.Forms.TextBox();
+            this.txtPortalPassword = new System.Windows.Forms.TextBox();
             this.btn_agsEnt = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.panel_Server = new System.Windows.Forms.Panel();
@@ -192,21 +192,21 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Password:";
             // 
-            // textBox1
+            // txtAGSServerUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 92);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(356, 26);
-            this.textBox1.TabIndex = 4;
+            this.txtAGSServerUserName.Location = new System.Drawing.Point(175, 92);
+            this.txtAGSServerUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAGSServerUserName.Name = "txtAGSServerUserName";
+            this.txtAGSServerUserName.Size = new System.Drawing.Size(356, 26);
+            this.txtAGSServerUserName.TabIndex = 4;
             // 
-            // textBox2
+            // txtAGSServerPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(175, 141);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(356, 26);
-            this.textBox2.TabIndex = 5;
+            this.txtAGSServerPassword.Location = new System.Drawing.Point(175, 141);
+            this.txtAGSServerPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAGSServerPassword.Name = "txtAGSServerPassword";
+            this.txtAGSServerPassword.Size = new System.Drawing.Size(356, 26);
+            this.txtAGSServerPassword.TabIndex = 5;
             // 
             // btn_agsServer
             // 
@@ -220,6 +220,7 @@
             this.btn_agsServer.TabIndex = 6;
             this.btn_agsServer.Text = "Start";
             this.btn_agsServer.UseVisualStyleBackColor = false;
+            this.btn_agsServer.Click += new System.EventHandler(this.btn_agsServer_Click);
             // 
             // label7
             // 
@@ -257,23 +258,23 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "Password:";
             // 
-            // textBox3
+            // txtPortalUserName
             // 
-            this.textBox3.Location = new System.Drawing.Point(160, 92);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(356, 26);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "portaladmin";
+            this.txtPortalUserName.Location = new System.Drawing.Point(160, 92);
+            this.txtPortalUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPortalUserName.Name = "txtPortalUserName";
+            this.txtPortalUserName.Size = new System.Drawing.Size(356, 26);
+            this.txtPortalUserName.TabIndex = 4;
+            this.txtPortalUserName.Text = "portaladmin";
             // 
-            // textBox4
+            // txtPortalPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 141);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(356, 26);
-            this.textBox4.TabIndex = 5;
-            this.textBox4.Text = "password123";
+            this.txtPortalPassword.Location = new System.Drawing.Point(160, 141);
+            this.txtPortalPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPortalPassword.Name = "txtPortalPassword";
+            this.txtPortalPassword.Size = new System.Drawing.Size(356, 26);
+            this.txtPortalPassword.TabIndex = 5;
+            this.txtPortalPassword.Text = "password123";
             // 
             // btn_agsEnt
             // 
@@ -287,7 +288,7 @@
             this.btn_agsEnt.TabIndex = 6;
             this.btn_agsEnt.Text = "Start";
             this.btn_agsEnt.UseVisualStyleBackColor = false;
-            this.btn_agsEnt.Click += new System.EventHandler(this.button2_Click);
+            this.btn_agsEnt.Click += new System.EventHandler(this.btn_agsEnt_Click);
             // 
             // label10
             // 
@@ -303,10 +304,10 @@
             // 
             // panel_Server
             // 
-            this.panel_Server.Controls.Add(this.textBox2);
+            this.panel_Server.Controls.Add(this.txtAGSServerPassword);
             this.panel_Server.Controls.Add(this.label7);
             this.panel_Server.Controls.Add(this.label5);
-            this.panel_Server.Controls.Add(this.textBox1);
+            this.panel_Server.Controls.Add(this.txtAGSServerUserName);
             this.panel_Server.Controls.Add(this.label6);
             this.panel_Server.Controls.Add(this.btn_agsServer);
             this.panel_Server.Location = new System.Drawing.Point(574, 407);
@@ -318,8 +319,8 @@
             // 
             // panel_Enterprise
             // 
-            this.panel_Enterprise.Controls.Add(this.textBox4);
-            this.panel_Enterprise.Controls.Add(this.textBox3);
+            this.panel_Enterprise.Controls.Add(this.txtPortalPassword);
+            this.panel_Enterprise.Controls.Add(this.txtPortalUserName);
             this.panel_Enterprise.Controls.Add(this.label10);
             this.panel_Enterprise.Controls.Add(this.label8);
             this.panel_Enterprise.Controls.Add(this.label9);
@@ -414,15 +415,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtAGSServerUserName;
+        private System.Windows.Forms.TextBox txtAGSServerPassword;
         private System.Windows.Forms.Button btn_agsServer;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_agsEnt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPortalPassword;
+        private System.Windows.Forms.TextBox txtPortalUserName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel_Server;
         private System.Windows.Forms.Panel panel_Enterprise;

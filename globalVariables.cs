@@ -9,7 +9,10 @@ namespace ArcGIS_System_Profiler
 
     public class globalVariables
     {
-
+        public static string agsEntUserName = "";
+        public static string agsEntUserPassword = "";
+        public static string agsServerUserName = "";
+        public static string agsServerUserPassword = "";
         public static string selectedSserviceURL = "";
         public static string portalCheckURL = "";
         public static string ArcGISServerCheckURL = "";
