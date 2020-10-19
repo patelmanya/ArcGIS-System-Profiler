@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Office.Interop.Word;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -293,14 +294,6 @@ namespace ArcGIS_System_Profiler
                     token = GetToken();
                     //get the arcgis server url and make web request and get services
                     String urlAddress = "https://" + globalVariables.agsServerHostName + "/" + globalVariables.agsServerInstanceName + "/admin/services/report?token=" + token;
-                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(agsServerURL);
-                    //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                    //var encoding = ASCIIEncoding.ASCII;
-                    //using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
-                    //{
-
-                    //}
-                    //string urlAddress = "http://google.com";
 
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -322,20 +315,46 @@ namespace ArcGIS_System_Profiler
                         {
                             string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                             TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
+                            globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                            //Microsoft.Office.Interop.Word._Application appobj;
+                            //Microsoft.Office.Interop.Word._Document docobj;
+                            //appobj = new Microsoft.Office.Interop.Word.Application();
+
+
+                            //docobj = appobj.Documents.Open(@"C:\temp\Template.docx");
+                            //string bookmark = "ServiceReport";
+
+                            //Bookmark bm = docobj.Bookmarks[bookmark];
+                            //Range range = bm.Range;
+                            //range.Text = item.ToString();
+                            //docobj.Bookmarks.Add(bookmark, range);
                             txt.Write(item);
                             txt.Close();
                         }
 
-                        //string myStr = HttpMethods.Get("https://www.marktplaats.nl/account/login.html", "https://www.marktplaats.nl/account/login.html", ref myCookies);
-                        //string regex = "<input type\\=\\\"hidden\\\" name=\\\"xsrf\\.token\\\" value\\=\\\"([^\\\"]+)\\\"";
-                        //string regXHTML = "<fieldset class=\\\"body\\\" style=\\\"width: 800px; \\\">";
-                        //var xsrfToken = Regex.Match(data, regXHTML).Groups[1].Value;
-
-                        //Console.WriteLine(xsrfToken);
-
                         response.Close();
                         readStream.Close();
                     }
+                    foreach (string objArr in globalVariables.generateReportList)
+                    {
+
+                        Microsoft.Office.Interop.Word._Application appobj;
+                        Microsoft.Office.Interop.Word._Document docobj;
+                        appobj = new Microsoft.Office.Interop.Word.Application();
+
+
+                        docobj = appobj.Documents.Open(@"C:\temp\Template.docx");
+                        string bookmark = "ServiceReport";
+
+                        Bookmark bm = docobj.Bookmarks[bookmark];
+                        Range range = bm.Range;
+                        range.Text = "Hello World";
+                        docobj.Bookmarks.Add(bookmark, range);
+                        docobj.SaveAs2(@"C:\temp\TemplateUpdated.docx");
+                        docobj.Close();
+
+                    }
+
                 }
             }
 
