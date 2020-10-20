@@ -86,8 +86,10 @@ namespace ArcGIS_System_Profiler
                 //StepsConfirmationForm sCnFm = new StepsConfirmationForm();
                 //sCnFm.Show();
                 timer1.Enabled = false;
-                Page2 pg2 = new Page2();
-                pg2.ShowDialog();
+                PortCheckForm pCF = new PortCheckForm();
+                pCF.ShowDialog();
+                //Page2 pg2 = new Page2();
+                //pg2.ShowDialog();
                 
             }
         }
