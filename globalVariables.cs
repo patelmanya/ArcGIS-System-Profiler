@@ -11,6 +11,7 @@ namespace ArcGIS_System_Profiler
 
     public class globalVariables
     {
+        public static string iconFlag= "";
         public static string agsEntUserName = "";
         public static string agsEntUserPassword = "";
         public static string agsServerUserName = "";

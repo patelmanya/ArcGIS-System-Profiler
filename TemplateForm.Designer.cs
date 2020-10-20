@@ -109,6 +109,7 @@
             // 
             this.btn_Publish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Publish.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Publish.Enabled = false;
             this.btn_Publish.FlatAppearance.BorderSize = 0;
             this.btn_Publish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Publish.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,6 +129,7 @@
             // 
             this.btn_HealthChecks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_HealthChecks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_HealthChecks.Enabled = false;
             this.btn_HealthChecks.FlatAppearance.BorderSize = 0;
             this.btn_HealthChecks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_HealthChecks.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,6 +149,7 @@
             // 
             this.btn_Configuration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Configuration.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Configuration.Enabled = false;
             this.btn_Configuration.FlatAppearance.BorderSize = 0;
             this.btn_Configuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Configuration.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,6 +169,7 @@
             // 
             this.btn_Tasks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Tasks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Tasks.Enabled = false;
             this.btn_Tasks.FlatAppearance.BorderSize = 0;
             this.btn_Tasks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Tasks.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
