@@ -41,6 +41,7 @@
             this.topPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.btn_PerformPortCheck = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
             this.richTextBox1.Location = new System.Drawing.Point(18, 5);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(1050, 312);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "port\nused in\nstatus";
@@ -172,6 +174,20 @@
             this.btn_PerformPortCheck.UseVisualStyleBackColor = false;
             this.btn_PerformPortCheck.Click += new System.EventHandler(this.btn_PerformPortCheck_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(908, 24);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 30);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Perform Port checks";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PortCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +196,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(1106, 478);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_PerformPortCheck);
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.rightPanel);
@@ -211,5 +228,6 @@
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Button btn_PerformPortCheck;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -99,5 +99,12 @@ namespace ArcGIS_System_Profiler
         {
             timer1.Enabled = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Page2 pg2 = new Page2();
+            pg2.ShowDialog();
+        }
     }
 }
