@@ -16,11 +16,18 @@ namespace ArcGIS_System_Profiler
 {
     public partial class PortCheckForm : Form
     {
+        private MakeMovable _move;
         public PortCheckForm()
         {
             InitializeComponent();
             label1.Text = "";
             richTextBox1.Text = "";
+            _move = new MakeMovable(this);
+            _move.SetMovable(panel2);
+            _move.SetMovable(panel3);
+            _move.SetMovable(panel4);
+            _move.SetMovable(panel5);
+
         }
 
 
@@ -56,8 +63,8 @@ namespace ArcGIS_System_Profiler
                     }
                     catch (Exception)
                     {
-                        label1.Text = label1.Text + "in Use : " + endPoint.Port + " - Port closed\n";
-                        richTextBox1.Text = richTextBox1.Text + "in Use : " + endPoint.Port + " - Port closed\n";
+                        label1.Text = label1.Text + "Not in Use : " + endPoint.Port + " - Port closed\n";
+                        richTextBox1.Text = richTextBox1.Text + "Not in Use : " + endPoint.Port + " - Port closed\n";
                     }
                 }
                 timer1.Enabled = false;

@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
@@ -40,7 +41,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_PerformPortCheck = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,17 +69,18 @@
             this.panel1.Size = new System.Drawing.Size(1071, 364);
             this.panel1.TabIndex = 2;
             // 
-            // label2
+            // richTextBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(89, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 22);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Port Number";
-            this.label2.Visible = false;
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
+            this.richTextBox1.Location = new System.Drawing.Point(18, 5);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1050, 312);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "port\nused in\nstatus";
+            this.richTextBox1.Visible = false;
             // 
             // label3
             // 
@@ -92,6 +93,18 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Status";
             this.label3.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(89, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 22);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Port Number";
+            this.label2.Visible = false;
             // 
             // progressBar1
             // 
@@ -149,7 +162,7 @@
             this.btn_PerformPortCheck.BackColor = System.Drawing.Color.DimGray;
             this.btn_PerformPortCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PerformPortCheck.ForeColor = System.Drawing.Color.Black;
-            this.btn_PerformPortCheck.Location = new System.Drawing.Point(25, 24);
+            this.btn_PerformPortCheck.Location = new System.Drawing.Point(31, 24);
             this.btn_PerformPortCheck.Margin = new System.Windows.Forms.Padding(6);
             this.btn_PerformPortCheck.Name = "btn_PerformPortCheck";
             this.btn_PerformPortCheck.Size = new System.Drawing.Size(173, 30);
@@ -157,19 +170,6 @@
             this.btn_PerformPortCheck.Text = "Perform Port checks";
             this.btn_PerformPortCheck.UseVisualStyleBackColor = false;
             this.btn_PerformPortCheck.Click += new System.EventHandler(this.btn_PerformPortCheck_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(18, 5);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1050, 312);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "port\nused in\nstatus";
-            this.richTextBox1.Visible = false;
             // 
             // PortCheckForm
             // 
