@@ -336,7 +336,7 @@
             // 
             // bottomPanel
             // 
-            this.bottomPanel.BackColor = System.Drawing.Color.White;
+            this.bottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 546);
             this.bottomPanel.Name = "bottomPanel";
@@ -345,7 +345,7 @@
             // 
             // rightPanel
             // 
-            this.rightPanel.BackColor = System.Drawing.Color.White;
+            this.rightPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.rightPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.rightPanel.Location = new System.Drawing.Point(1128, 10);
             this.rightPanel.Name = "rightPanel";
@@ -354,7 +354,7 @@
             // 
             // topPanel
             // 
-            this.topPanel.BackColor = System.Drawing.Color.White;
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Name = "topPanel";
@@ -363,7 +363,7 @@
             // 
             // leftPanel
             // 
-            this.leftPanel.BackColor = System.Drawing.Color.White;
+            this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel.Location = new System.Drawing.Point(0, 10);
             this.leftPanel.Name = "leftPanel";
@@ -386,7 +386,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1138, 556);
             this.Controls.Add(this.progressBar1);

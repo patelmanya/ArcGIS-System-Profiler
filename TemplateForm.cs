@@ -71,7 +71,7 @@ namespace ArcGIS_System_Profiler
             btn_Tasks.Enabled = true;
         }
 
-        private void btn_Tasks_Click(object sender, EventArgs e)
+        public void btn_Tasks_Click(object sender, EventArgs e)
         {
             //set the icon flag for changing the form in the container in the template
             globalVariables.iconFlag = "TASKS";
@@ -154,7 +154,7 @@ namespace ArcGIS_System_Profiler
             panelCurrentStep.Top = btn_Publish.Top;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        public void timer1_Tick(object sender, EventArgs e)
         {
             progressBar1.Value = progressBar1.Value + 10;
             if (progressBar1.Value > 99)
@@ -229,6 +229,11 @@ namespace ArcGIS_System_Profiler
                 }
 
             }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

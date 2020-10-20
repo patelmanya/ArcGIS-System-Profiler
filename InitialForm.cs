@@ -95,6 +95,8 @@ namespace ArcGIS_System_Profiler
                 //pCF.ShowDialog();
                 //Page2 pg2 = new Page2();
                 //pg2.ShowDialog();
+                TemplateForm tForm = new TemplateForm();
+                tForm.btn_Tasks_Click(this,new EventArgs());
                 
             }
         }
