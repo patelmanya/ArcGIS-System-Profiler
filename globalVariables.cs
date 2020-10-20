@@ -27,8 +27,7 @@ namespace ArcGIS_System_Profiler
         public static List<string> checkedAGSServices = new List<string>();
         public static List<Object> checkedAGSServicesArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();
-
-
+        public static MakeMovable _move;
     }
 
     public class MakeMovable

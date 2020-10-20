@@ -16,17 +16,18 @@ namespace ArcGIS_System_Profiler
 {
     public partial class PortCheckForm : Form
     {
-        private MakeMovable _move;
+       
         public PortCheckForm()
         {
             InitializeComponent();
             label1.Text = "";
             richTextBox1.Text = "";
-            _move = new MakeMovable(this);
-            _move.SetMovable(panel2);
-            _move.SetMovable(panel3);
-            _move.SetMovable(panel4);
-            _move.SetMovable(panel5);
+            
+            globalVariables._move = new MakeMovable(this);
+            globalVariables._move.SetMovable(rightPanel);
+            globalVariables._move.SetMovable(topPanel);
+            globalVariables._move.SetMovable(leftPanel);
+            globalVariables._move.SetMovable(bottomPanel);
 
         }
 

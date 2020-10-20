@@ -23,6 +23,11 @@ namespace ArcGIS_System_Profiler
             txtAGSServerPassword.PasswordChar = '*';
             //textBox4.Text = "";
             txtPortalPassword.PasswordChar = '*';
+            globalVariables._move = new MakeMovable(this);
+            globalVariables._move.SetMovable(rightPanel);
+            globalVariables._move.SetMovable(topPanel);
+            globalVariables._move.SetMovable(leftPanel);
+            globalVariables._move.SetMovable(bottomPanel);
         }
          
 
