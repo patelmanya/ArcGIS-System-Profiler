@@ -40,6 +40,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_PerformPortCheck = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +55,12 @@
             this.label1.Size = new System.Drawing.Size(65, 22);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            this.label1.Visible = false;
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -76,6 +79,7 @@
             this.label2.Size = new System.Drawing.Size(127, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Port Number";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -87,6 +91,7 @@
             this.label3.Size = new System.Drawing.Size(69, 22);
             this.label3.TabIndex = 2;
             this.label3.Text = "Status";
+            this.label3.Visible = false;
             // 
             // progressBar1
             // 
@@ -153,6 +158,19 @@
             this.btn_PerformPortCheck.UseVisualStyleBackColor = false;
             this.btn_PerformPortCheck.Click += new System.EventHandler(this.btn_PerformPortCheck_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
+            this.richTextBox1.Location = new System.Drawing.Point(18, 5);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1050, 312);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "port\nused in\nstatus";
+            this.richTextBox1.Visible = false;
+            // 
             // PortCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,5 +208,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btn_PerformPortCheck;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

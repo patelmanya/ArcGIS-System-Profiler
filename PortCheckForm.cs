@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,18 +20,20 @@ namespace ArcGIS_System_Profiler
         {
             InitializeComponent();
             label1.Text = "";
+            richTextBox1.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-
-
-
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (!progressBar1.Visible)
+            {
+                progressBar1.Visible = true;
+                progressBar1.Value = 0; 
+            }
+            richTextBox1.Visible = false;
+            label1.Text = "";
+            richTextBox1.Text = "";
             progressBar1.Value = progressBar1.Value + 2;
             if (progressBar1.Value > 99)
             {
@@ -47,16 +50,34 @@ namespace ArcGIS_System_Profiler
                         {
                             tcpClient.Connect("127.0.0.1", endPoint.Port);
                             label1.Text = label1.Text + "in Use : " + endPoint.Port + " - Port open\n";
+                            richTextBox1.Text = richTextBox1.Text + "in Use : " + endPoint.Port + " - Port open\n";
                             //label1.Text = label1.Text + "in Use : " + endPoint.Port + " -< span style = \"color: green; \" >  Port open</ span >\n";
                         }
                     }
                     catch (Exception)
                     {
                         label1.Text = label1.Text + "in Use : " + endPoint.Port + " - Port closed\n";
+                        richTextBox1.Text = richTextBox1.Text + "in Use : " + endPoint.Port + " - Port closed\n";
                     }
                 }
                 timer1.Enabled = false;
+                int index = richTextBox1.Text.IndexOf("Port closed");
+                richTextBox1.Select(index, 11);
+                richTextBox1.SelectionColor = Color.BlueViolet;
+                string pattern = @"Port closed";
+                Regex rgx = new Regex(pattern);
+                string sentence = richTextBox1.Text;
 
+                foreach (Match match in rgx.Matches(sentence))
+                {
+                    Console.WriteLine("Found '{0}' at position {1}",
+                                      match.Value, match.Index);
+                    richTextBox1.Select(match.Index, 11);
+                    richTextBox1.SelectionColor = Color.Red;
+                }
+                    
+
+                richTextBox1.Visible = true;
             }
 
 
