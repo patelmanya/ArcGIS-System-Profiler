@@ -59,6 +59,12 @@ namespace ArcGIS_System_Profiler
             //current step panel to show the current step
             panelCurrentStep.Height = btn_Home.Height;
             panelCurrentStep.Top = btn_Home.Top;
+            InitialForm frm = new InitialForm();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            frm.Visible = true;
+            formContainer.Controls.Add(frm);
         }
 
         private void btn_Tasks_Click(object sender, EventArgs e)

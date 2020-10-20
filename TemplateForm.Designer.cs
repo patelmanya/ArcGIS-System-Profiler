@@ -45,6 +45,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.formContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             this.rightPanel.BackColor = System.Drawing.Color.White;
             this.rightPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rightPanel.Location = new System.Drawing.Point(1265, 8);
+            this.rightPanel.Location = new System.Drawing.Point(1611, 8);
             this.rightPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Size = new System.Drawing.Size(8, 718);
@@ -76,7 +77,7 @@
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1273, 8);
+            this.topPanel.Size = new System.Drawing.Size(1619, 8);
             this.topPanel.TabIndex = 12;
             // 
             // bottomPanel
@@ -86,7 +87,7 @@
             this.bottomPanel.Location = new System.Drawing.Point(0, 726);
             this.bottomPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(1273, 8);
+            this.bottomPanel.Size = new System.Drawing.Size(1619, 8);
             this.bottomPanel.TabIndex = 13;
             // 
             // panel1
@@ -228,13 +229,14 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.formContainer);
             this.panel2.Controls.Add(this.progressBar1);
             this.panel2.Controls.Add(this.panelCurrentStep);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(211, 8);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1054, 718);
+            this.panel2.Size = new System.Drawing.Size(1400, 718);
             this.panel2.TabIndex = 15;
             // 
             // progressBar1
@@ -242,7 +244,7 @@
             this.progressBar1.Location = new System.Drawing.Point(4, 682);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1046, 30);
+            this.progressBar1.Size = new System.Drawing.Size(1391, 30);
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
             // 
@@ -250,13 +252,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // formContainer
+            // 
+            this.formContainer.Location = new System.Drawing.Point(15, 5);
+            this.formContainer.Name = "formContainer";
+            this.formContainer.Size = new System.Drawing.Size(1380, 672);
+            this.formContainer.TabIndex = 2;
+            // 
             // TemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1273, 734);
+            this.ClientSize = new System.Drawing.Size(1619, 734);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.leftPanel);
@@ -290,5 +299,6 @@
         private System.Windows.Forms.Button btn_Tasks;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel formContainer;
     }
 }
