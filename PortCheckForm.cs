@@ -192,6 +192,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = "Description";
                                 row.Cells[2].Value = obj["status"].ToString();
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                 dataGridViewPorts.Rows.Add(row);
                             }
                             else if (txtBx_Filter.Text == "")
@@ -199,6 +200,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = "Description";
                                 row.Cells[2].Value = obj["status"].ToString();
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                 dataGridViewPorts.Rows.Add(row);
                             }
                         }
@@ -209,6 +211,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = "Description";
                                 row.Cells[2].Value = obj["status"].ToString();
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                 dataGridViewPorts.Rows.Add(row);
                             }
                             else if (txtBx_Filter.Text == "")
@@ -216,6 +219,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = "Description";
                                 row.Cells[2].Value = obj["status"].ToString();
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                 dataGridViewPorts.Rows.Add(row);
                             }
                         }
@@ -324,6 +328,10 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = "Description";
                             row.Cells[2].Value = obj["status"].ToString();
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
                             dataGridViewPorts.Rows.Add(row);
                         }
                         else if (txtBx_Filter.Text == "")
@@ -331,6 +339,10 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = "Description";
                             row.Cells[2].Value = obj["status"].ToString();
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
                             dataGridViewPorts.Rows.Add(row);
                         }
                     }
@@ -341,6 +353,10 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = "Description";
                             row.Cells[2].Value = obj["status"].ToString();
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
                             dataGridViewPorts.Rows.Add(row);
                         }
                         else if (txtBx_Filter.Text == "")
@@ -348,6 +364,10 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = "Description";
                             row.Cells[2].Value = obj["status"].ToString();
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
                             dataGridViewPorts.Rows.Add(row);
                         }
                     }
@@ -400,6 +420,10 @@ namespace ArcGIS_System_Profiler
                         row.Cells[0].Value = obj["portNo"].ToString();
                         row.Cells[1].Value = "Description";
                         row.Cells[2].Value = obj["status"].ToString();
+                        if (obj["status"].ToString() == "Closed")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                        }
                         dataGridViewPorts.Rows.Add(row);
                     }
                 }
@@ -411,6 +435,10 @@ namespace ArcGIS_System_Profiler
                         row.Cells[0].Value = obj["portNo"].ToString();
                         row.Cells[1].Value = "Description";
                         row.Cells[2].Value = obj["status"].ToString();
+                        if (obj["status"].ToString() == "Closed")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                        }
                         dataGridViewPorts.Rows.Add(row);
                     }
                 }
