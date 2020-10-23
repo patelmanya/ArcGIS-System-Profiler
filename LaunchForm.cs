@@ -56,6 +56,11 @@ namespace ArcGIS_System_Profiler
             chidlForm.Show();
             currentStepLabel.Text = chidlForm.Text;
             lbl_loggedInUser.Text = globalVariables.agsEntUserName;
+            if (globalVariables.agsEntUserName != "")
+            {
+                lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
+                lbl_LoginUser.Visible = true; 
+            }
 
         }
 
@@ -115,6 +120,7 @@ namespace ArcGIS_System_Profiler
 
             lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
             //lbl_LoginUser.Visible = true;
+            btn_Tasks.PerformClick();
         }
 
         public void btn_Home_Click(object sender, EventArgs e)
@@ -123,36 +129,36 @@ namespace ArcGIS_System_Profiler
             OpenChildForm(new InitialForm());
         }
 
-        private void btn_Tasks_Click(object sender, EventArgs e)
+        public void btn_Tasks_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color2);
             OpenChildForm(new StepsConfirmationForm());
         }
 
-        private void btn_Services_Click(object sender, EventArgs e)
+        public void btn_Services_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color3);
             OpenChildForm(new FederatedEnv());
         }
 
-        private void btn_HealthChecks_Click(object sender, EventArgs e)
+        public void btn_HealthChecks_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color4);
             OpenChildForm(new HealthChecksForm());
         }
 
-        private void btn_PortChecks_Click(object sender, EventArgs e)
+        public void btn_PortChecks_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color5);
             OpenChildForm(new PortCheckForm());
         }
 
-        private void btn_Publish_Click(object sender, EventArgs e)
+        public void btn_Publish_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color6);
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        public void iconButton1_Click(object sender, EventArgs e)
         {
             Reset();
         }

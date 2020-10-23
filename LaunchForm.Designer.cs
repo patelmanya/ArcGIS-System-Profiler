@@ -54,11 +54,13 @@
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.lbl_LoginUser = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelDesktop.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -366,10 +368,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.panelTitleBar.Controls.Add(this.lbl_LoginUser);
-            this.panelTitleBar.Controls.Add(this.btn_Minimize);
-            this.panelTitleBar.Controls.Add(this.btn_Maximize);
-            this.panelTitleBar.Controls.Add(this.btn_Close);
+            this.panelTitleBar.Controls.Add(this.panel1);
             this.panelTitleBar.Controls.Add(this.lbl_loggedInUser);
             this.panelTitleBar.Controls.Add(this.currentStepLabel);
             this.panelTitleBar.Controls.Add(this.iconCurrentChildForm);
@@ -393,7 +392,7 @@
             this.btn_Minimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Minimize.IconSize = 22;
             this.btn_Minimize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Minimize.Location = new System.Drawing.Point(990, 0);
+            this.btn_Minimize.Location = new System.Drawing.Point(226, 0);
             this.btn_Minimize.Name = "btn_Minimize";
             this.btn_Minimize.Rotation = 0D;
             this.btn_Minimize.Size = new System.Drawing.Size(31, 50);
@@ -416,7 +415,7 @@
             this.btn_Maximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Maximize.IconSize = 22;
             this.btn_Maximize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Maximize.Location = new System.Drawing.Point(1021, 0);
+            this.btn_Maximize.Location = new System.Drawing.Point(257, 0);
             this.btn_Maximize.Name = "btn_Maximize";
             this.btn_Maximize.Rotation = 0D;
             this.btn_Maximize.Size = new System.Drawing.Size(31, 50);
@@ -439,7 +438,7 @@
             this.btn_Close.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Close.IconSize = 22;
             this.btn_Close.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Close.Location = new System.Drawing.Point(1052, 0);
+            this.btn_Close.Location = new System.Drawing.Point(288, 0);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Rotation = 0D;
             this.btn_Close.Size = new System.Drawing.Size(31, 50);
@@ -454,10 +453,12 @@
             this.lbl_loggedInUser.AutoSize = true;
             this.lbl_loggedInUser.Font = new System.Drawing.Font("Arial", 12F);
             this.lbl_loggedInUser.ForeColor = System.Drawing.Color.White;
-            this.lbl_loggedInUser.Location = new System.Drawing.Point(799, 16);
+            this.lbl_loggedInUser.Location = new System.Drawing.Point(646, 15);
             this.lbl_loggedInUser.Name = "lbl_loggedInUser";
-            this.lbl_loggedInUser.Size = new System.Drawing.Size(0, 18);
+            this.lbl_loggedInUser.Size = new System.Drawing.Size(20, 18);
             this.lbl_loggedInUser.TabIndex = 1;
+            this.lbl_loggedInUser.Text = "jjjj";
+            this.lbl_loggedInUser.Visible = false;
             // 
             // currentStepLabel
             // 
@@ -517,17 +518,28 @@
             // 
             // lbl_LoginUser
             // 
-            this.lbl_LoginUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LoginUser.AutoSize = true;
-            this.lbl_LoginUser.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_LoginUser.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LoginUser.ForeColor = System.Drawing.Color.Aqua;
-            this.lbl_LoginUser.Location = new System.Drawing.Point(941, 12);
+            this.lbl_LoginUser.Location = new System.Drawing.Point(32, 17);
             this.lbl_LoginUser.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_LoginUser.Name = "lbl_LoginUser";
-            this.lbl_LoginUser.Size = new System.Drawing.Size(40, 22);
+            this.lbl_LoginUser.Size = new System.Drawing.Size(26, 17);
             this.lbl_LoginUser.TabIndex = 20;
             this.lbl_LoginUser.Text = "llllll";
             this.lbl_LoginUser.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbl_LoginUser);
+            this.panel1.Controls.Add(this.btn_Minimize);
+            this.panel1.Controls.Add(this.btn_Maximize);
+            this.panel1.Controls.Add(this.btn_Close);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(764, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(319, 50);
+            this.panel1.TabIndex = 21;
             // 
             // LaunchForm
             // 
@@ -546,6 +558,8 @@
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.panelDesktop.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -577,5 +591,6 @@
         private FontAwesome.Sharp.IconButton btn_Maximize;
         private FontAwesome.Sharp.IconButton btn_Close;
         internal System.Windows.Forms.Label lbl_LoginUser;
+        private System.Windows.Forms.Panel panel1;
     }
 }

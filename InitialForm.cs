@@ -76,7 +76,8 @@ namespace ArcGIS_System_Profiler
                         lbl_LoginStatus.Text = "Login successful";
                         lbl_LoginStatus.Visible = true;
                         LaunchForm lForm = new LaunchForm();
-                        lForm.updateLoggedInUser();
+                        //lForm.updateLoggedInUser();
+                        globalVariables.globalForm.btn_Tasks.PerformClick();
                         //lForm.lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
                         //lForm.lbl_LoginUser.Visible = true;
                     }
