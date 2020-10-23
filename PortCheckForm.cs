@@ -16,7 +16,7 @@ namespace ArcGIS_System_Profiler
 {
     public partial class PortCheckForm : Form
     {
-
+        private string textFilterFlag = "portNo";
         public PortCheckForm()
         {
             InitializeComponent();
@@ -89,6 +89,7 @@ namespace ArcGIS_System_Profiler
 
                                 var dictionary = new Dictionary<string, object>();
                                 dictionary["portNo"] = endPoint.Port;
+                                dictionary["description"] = "Description";
                                 dictionary["status"] = "Open";
                                 bool portExists = false;
                                 foreach (Dictionary<string, object> obj in globalVariables.portsList)
@@ -101,6 +102,7 @@ namespace ArcGIS_System_Profiler
 
                                 DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                                 row.Cells[0].Value = endPoint.Port;
+                                row.Cells[1].Value = "Description";
                                 row.Cells[2].Value = "Open";
 
                                 if (!portExists)
@@ -116,10 +118,12 @@ namespace ArcGIS_System_Profiler
                         {
                             var dictionary = new Dictionary<string, object>();
                             dictionary["portNo"] = endPoint.Port;
+                            dictionary["description"] = "Description";
                             dictionary["status"] = "Closed";
                             bool portExists = false;
                             DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                             row.Cells[0].Value = endPoint.Port;
+                            row.Cells[1].Value = "Description";
                             row.Cells[2].Value = "Closed";
                             foreach (Dictionary<string, object> obj in globalVariables.portsList)
                             {
@@ -182,6 +186,7 @@ namespace ArcGIS_System_Profiler
                     {
                         DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                         row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[1].Value = "Description";
                         row.Cells[2].Value = obj["status"].ToString();
                         dataGridViewPorts.Rows.Add(row);
                     }
@@ -218,6 +223,7 @@ namespace ArcGIS_System_Profiler
                     {
                         DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                         row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[1].Value = "Description";
                         row.Cells[2].Value = obj["status"].ToString();
                         dataGridViewPorts.Rows.Add(row);
                     }
@@ -252,6 +258,7 @@ namespace ArcGIS_System_Profiler
                 {
                     DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                     row.Cells[0].Value = obj["portNo"].ToString();
+                    row.Cells[1].Value = "Description";
                     row.Cells[2].Value = obj["status"].ToString();
                     dataGridViewPorts.Rows.Add(row);
 
@@ -262,6 +269,73 @@ namespace ArcGIS_System_Profiler
 
                 throw;
             }
+        }
+
+        private void txtBx_Filter_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    MessageBox.Show("Enter key pressed");
+            //}
+
+            if (e.KeyCode.ToString().Length > 3)
+            {
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //remove the existing rows in the datagridview
+            do
+            {
+                foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                {
+                    try
+                    {
+                        dataGridViewPorts.Rows.Remove(row);
+                    }
+                    catch (Exception) { }
+                }
+            } while (dataGridViewPorts.Rows.Count > 1);
+
+            //add only the closed one from the globalVariables.portsList
+            foreach (Dictionary<string, object> obj in globalVariables.portsList)
+            {
+                if (textFilterFlag == "portNo")
+                {
+                    if (obj["portNo"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                        row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[1].Value = "Description";
+                        row.Cells[2].Value = obj["status"].ToString();
+                        dataGridViewPorts.Rows.Add(row);
+                    }
+                }
+                if (textFilterFlag == "description")
+                {
+                    if (obj["description"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                        row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[1].Value = "Description";
+                        row.Cells[2].Value = obj["status"].ToString();
+                        dataGridViewPorts.Rows.Add(row);
+                    }
+                }
+
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            textFilterFlag = "description";
+        }
+
+        private void radioButtonPortNoFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            textFilterFlag = "portNo";
         }
     }
 }
