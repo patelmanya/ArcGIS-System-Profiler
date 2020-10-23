@@ -185,10 +185,40 @@ namespace ArcGIS_System_Profiler
                     if (obj["status"].ToString() == "Closed")
                     {
                         DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
-                        row.Cells[0].Value = obj["portNo"].ToString();
-                        row.Cells[1].Value = "Description";
-                        row.Cells[2].Value = obj["status"].ToString();
-                        dataGridViewPorts.Rows.Add(row);
+                        if (textFilterFlag == "portNo")
+                        {
+                            if (obj["portNo"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                            else if (txtBx_Filter.Text == "")
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
+                        if (textFilterFlag == "description")
+                        {
+                            if (obj["description"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                            else if (txtBx_Filter.Text == "")
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
                     }
                 }
             }
@@ -222,10 +252,40 @@ namespace ArcGIS_System_Profiler
                     if (obj["status"].ToString() == "Open")
                     {
                         DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
-                        row.Cells[0].Value = obj["portNo"].ToString();
-                        row.Cells[1].Value = "Description";
-                        row.Cells[2].Value = obj["status"].ToString();
-                        dataGridViewPorts.Rows.Add(row);
+                        if (textFilterFlag == "portNo")
+                        {
+                            if (obj["portNo"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                            else if (txtBx_Filter.Text == "")
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
+                        if (textFilterFlag == "description")
+                        {
+                            if (obj["description"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                            else if (txtBx_Filter.Text == "")
+                            {
+                                row.Cells[0].Value = obj["portNo"].ToString();
+                                row.Cells[1].Value = "Description";
+                                row.Cells[2].Value = obj["status"].ToString();
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
                     }
                 }
             }
@@ -257,10 +317,40 @@ namespace ArcGIS_System_Profiler
                 foreach (Dictionary<string, object> obj in globalVariables.portsList)
                 {
                     DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
-                    row.Cells[0].Value = obj["portNo"].ToString();
-                    row.Cells[1].Value = "Description";
-                    row.Cells[2].Value = obj["status"].ToString();
-                    dataGridViewPorts.Rows.Add(row);
+                    if (textFilterFlag == "portNo")
+                    {
+                        if (obj["portNo"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = "Description";
+                            row.Cells[2].Value = obj["status"].ToString();
+                            dataGridViewPorts.Rows.Add(row);
+                        }
+                        else if (txtBx_Filter.Text == "")
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = "Description";
+                            row.Cells[2].Value = obj["status"].ToString();
+                            dataGridViewPorts.Rows.Add(row);
+                        }
+                    }
+                    if (textFilterFlag == "description")
+                    {
+                        if (obj["description"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = "Description";
+                            row.Cells[2].Value = obj["status"].ToString();
+                            dataGridViewPorts.Rows.Add(row);
+                        }
+                        else if (txtBx_Filter.Text == "")
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = "Description";
+                            row.Cells[2].Value = obj["status"].ToString();
+                            dataGridViewPorts.Rows.Add(row);
+                        }
+                    }
 
                 }
             }
