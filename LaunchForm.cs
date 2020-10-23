@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,9 +30,10 @@ namespace ArcGIS_System_Profiler
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            OpenChildForm(new InitialForm());
         }
 
-        private void OpenChildForm(Form chidlForm)
+        public void OpenChildForm(Form chidlForm)
         {
             if (currentChildForm != null)
             {
@@ -46,6 +48,7 @@ namespace ArcGIS_System_Profiler
             chidlForm.BringToFront();
             chidlForm.Show();
             currentStepLabel.Text = chidlForm.Text;
+            lbl_loggedInUser.Text = globalVariables.agsEntUserName;
 
         }
 
@@ -100,10 +103,11 @@ namespace ArcGIS_System_Profiler
 
         }
 
-        private void btn_Home_Click(object sender, EventArgs e)
+        public void btn_Home_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color1);
-            OpenChildForm(new InitialForm());
+            //OpenChildForm(new InitialForm());
+            OpenChildForm(new Home());
         }
 
         private void btn_Tasks_Click(object sender, EventArgs e)
@@ -147,6 +151,7 @@ namespace ArcGIS_System_Profiler
             //add to the title bar the current step title
             iconCurrentChildForm.IconChar = IconChar.Home;
             iconCurrentChildForm.IconColor = Color.White;
+            OpenChildForm(new InitialForm());
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -161,6 +166,39 @@ namespace ArcGIS_System_Profiler
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void globalTimer1_Tick(object sender, EventArgs e)
+        {
+            globalProgressBar1.Value = globalProgressBar1.Value + 10;
+            if (globalProgressBar1.Value > 99)
+            {
+                this.Hide();
+                globalVariables.globalForm.globalTimer1.Enabled = false;
+                globalVariables.globalForm.btn_Tasks.PerformClick();
+            }
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_Maximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btn_Minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

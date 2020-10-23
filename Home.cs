@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ArcGIS_System_Profiler
 {
-    public class ScreenshotCapturer
+    public partial class Home : Form
     {
-
-        //private static Bitmap bmpScreenshot;
-        //private static Graphics gfxScreenshot;
-
-
+        public Home()
+        {
+            InitializeComponent();
+        }
     }
 }

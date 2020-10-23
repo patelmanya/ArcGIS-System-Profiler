@@ -79,7 +79,7 @@ namespace ArcGIS_System_Profiler
             agsEnterpriseUserName = txtPortalUserName.Text;
             agsEnterprisePassword = txtPortalPassword.Text;
             //timer1.Enabled = true;
-            globalVariables.globalForm.globalTimer1.Enabled = true;
+            //globalVariables.globalForm.globalTimer1.Enabled = true;
 
 
 

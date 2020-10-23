@@ -16,19 +16,22 @@ namespace ArcGIS_System_Profiler
 {
     public partial class PortCheckForm : Form
     {
-       
+
         public PortCheckForm()
         {
             InitializeComponent();
-            label1.Text = "";
-            richTextBox1.Text = "";
-            
-            globalVariables._move = new MakeMovable(this);
-            globalVariables._move.SetMovable(rightPanel);
-            globalVariables._move.SetMovable(topPanel);
-            globalVariables._move.SetMovable(leftPanel);
-            globalVariables._move.SetMovable(bottomPanel);
-
+            //remove the existing rows in the datagridview
+            do
+            {
+                foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                {
+                    try
+                    {
+                        dataGridViewPorts.Rows.Remove(row);
+                    }
+                    catch (Exception) { }
+                }
+            } while (dataGridViewPorts.Rows.Count > 1);
         }
 
 
@@ -37,55 +40,108 @@ namespace ArcGIS_System_Profiler
             if (!progressBar1.Visible)
             {
                 progressBar1.Visible = true;
-                progressBar1.Value = 0; 
+                progressBar1.Value = 0;
             }
-            richTextBox1.Visible = false;
-            label1.Text = "";
-            richTextBox1.Text = "";
+            
             progressBar1.Value = progressBar1.Value + 2;
             if (progressBar1.Value > 99)
             {
-                label1.Text = "";
+
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    {
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (dataGridViewPorts.Rows.Count > 1);
+                globalVariables.portsList.Clear();
+
+
                 IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
                 IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
 
                 foreach (IPEndPoint endPoint in ipEndPoints)
                 {
                     //label1.Text = label1.Text + "\n" + endPoint.Port + " in Use";
+
                     try
                     {
                         using (TcpClient tcpClient = new TcpClient())
                         {
                             tcpClient.Connect("127.0.0.1", endPoint.Port);
-                            label1.Text = label1.Text + "in Use : " + endPoint.Port + " - Port open\n";
-                            richTextBox1.Text = richTextBox1.Text + "in Use : " + endPoint.Port + " - Port open\n";
-                            //label1.Text = label1.Text + "in Use : " + endPoint.Port + " -< span style = \"color: green; \" >  Port open</ span >\n";
+                            
+                            var dictionary = new Dictionary<string, object>();
+                            dictionary["portNo"] = endPoint.Port;
+                            dictionary["status"] = "Open";
+                            bool portExists = false;
+                            foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                            {
+                                if (obj["portNo"].ToString() == endPoint.Port.ToString())
+                                {
+                                    portExists = true;
+                                }
+                            }
+
+                            DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                            row.Cells[0].Value = endPoint.Port;
+                            row.Cells[2].Value = "Open";
+
+                            if (!portExists)
+                            {
+                                globalVariables.portsList.Add(dictionary);
+                                //row.DefaultCellStyle.BackColor = Color.FromArgb(137, 189, 123);
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                            
                         }
                     }
                     catch (Exception)
                     {
-                        label1.Text = label1.Text + "Not in Use : " + endPoint.Port + " - Port closed\n";
-                        richTextBox1.Text = richTextBox1.Text + "Not in Use : " + endPoint.Port + " - Port closed\n";
+                        var dictionary = new Dictionary<string, object>();
+                        dictionary["portNo"] = endPoint.Port;
+                        dictionary["status"] = "Closed";
+                        bool portExists = false;
+                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                        row.Cells[0].Value = endPoint.Port;
+                        row.Cells[2].Value = "Closed";
+                        foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                        {
+                            if (obj["portNo"].ToString() == endPoint.Port.ToString())
+                            {
+                                portExists = true;
+                            }
+                        }
+                        if (!portExists)
+                        {
+                            globalVariables.portsList.Add(dictionary);
+                            row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            dataGridViewPorts.Rows.Add(row);
+                        }
                     }
                 }
                 timer1.Enabled = false;
-                int index = richTextBox1.Text.IndexOf("Port closed");
-                richTextBox1.Select(index, 11);
-                richTextBox1.SelectionColor = Color.BlueViolet;
-                string pattern = @"Port closed";
-                Regex rgx = new Regex(pattern);
-                string sentence = richTextBox1.Text;
+                //int index = richTextBox1.Text.IndexOf("Port closed");
+                //richTextBox1.Select(index, 11);
+                //richTextBox1.SelectionColor = Color.BlueViolet;
+                //string pattern = @"Port closed";
+                //Regex rgx = new Regex(pattern);
+                //string sentence = richTextBox1.Text;
 
-                foreach (Match match in rgx.Matches(sentence))
-                {
-                    Console.WriteLine("Found '{0}' at position {1}",
-                                      match.Value, match.Index);
-                    richTextBox1.Select(match.Index, 11);
-                    richTextBox1.SelectionColor = Color.Red;
-                }
-                    
+                //foreach (Match match in rgx.Matches(sentence))
+                //{
+                //    Console.WriteLine("Found '{0}' at position {1}",
+                //                      match.Value, match.Index);
+                //    richTextBox1.Select(match.Index, 11);
+                //    richTextBox1.SelectionColor = Color.Red;
+                //}
 
-                richTextBox1.Visible = true;
+
+                //richTextBox1.Visible = true;
             }
 
 
@@ -98,13 +154,20 @@ namespace ArcGIS_System_Profiler
         private void btn_PerformPortCheck_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+
+            //remove the existing rows in the datagridview
+            //do
+            //{
+            //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+            //    {
+            //        try
+            //        {
+            //            dataGridViewPorts.Rows.Remove(row);
+            //        }
+            //        catch (Exception) { }
+            //    }
+            //} while (dataGridViewPorts.Rows.Count > 1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Page2 pg2 = new Page2();
-            pg2.ShowDialog();
-        }
     }
 }

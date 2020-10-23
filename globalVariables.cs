@@ -30,7 +30,9 @@ namespace ArcGIS_System_Profiler
         public static List<string> generateReportList = new List<string>();
         public static MakeMovable _move;
         public static String globalTokenStr = "";
-        public static TemplateForm globalForm = (TemplateForm)Application.OpenForms["TemplateForm"];
+        //public static TemplateForm globalForm = (TemplateForm)Application.OpenForms["TemplateForm"];
+        public static LaunchForm globalForm = (LaunchForm)Application.OpenForms["LaunchForm"];
+        public static List<Object> portsList = new List<Object>();
     }
 
     public class MakeMovable
