@@ -33,6 +33,7 @@ namespace ArcGIS_System_Profiler
         //public static TemplateForm globalForm = (TemplateForm)Application.OpenForms["TemplateForm"];
         public static LaunchForm globalForm = (LaunchForm)Application.OpenForms["LaunchForm"];
         public static List<Object> portsList = new List<Object>();
+        public static List<Object> wkidPortList = new List<Object>();
     }
 
     public class MakeMovable

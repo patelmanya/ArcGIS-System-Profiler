@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btn_PerformPortCheck = new System.Windows.Forms.Button();
@@ -51,6 +52,7 @@
             this.Port_Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Port_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Port_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Port_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPorts)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,7 +104,8 @@
             this.dataGridViewPorts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Port_Number,
             this.Port_Description,
-            this.Port_Status});
+            this.Port_Status,
+            this.Port_Type});
             this.dataGridViewPorts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPorts.Location = new System.Drawing.Point(0, 70);
             this.dataGridViewPorts.Name = "dataGridViewPorts";
@@ -291,6 +294,16 @@
             this.Port_Status.ToolTipText = "Port Status";
             this.Port_Status.Width = 200;
             // 
+            // Port_Type
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Port_Type.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Port_Type.HeaderText = "Port Type";
+            this.Port_Type.Name = "Port_Type";
+            this.Port_Type.ReadOnly = true;
+            this.Port_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Port_Type.Width = 200;
+            // 
             // PortCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,5 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Port_Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn Port_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Port_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Port_Type;
     }
 }
