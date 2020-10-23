@@ -27,6 +27,11 @@ namespace ArcGIS_System_Profiler
         {
             webBrowser1.Visible = true;
             webBrowser1.Navigate("https://lea-305263.services.esriaustralia.com.au/portal/portaladmin/healthCheck");
+
+            //portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
+            //string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+            //globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
+            //portalBMP.Save("C:/temp/myPortalCheck_" + fileName + ".jpg");
         }
 
         private void btn_PerformSrvrHealthCheck_Click(object sender, EventArgs e)
@@ -57,8 +62,17 @@ namespace ArcGIS_System_Profiler
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (e.Url.AbsolutePath != (sender as WebBrowser).Url.AbsolutePath)
+            if (this.webBrowser1.ReadyState != WebBrowserReadyState.Complete)
                 return;
+            //portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
+            //string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+            //globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
+            //portalBMP.Save("C:/temp/myPortalCheck_" + fileName + ".jpg");
+        }
+
+        private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+
         }
     }
 }
