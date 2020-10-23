@@ -16,7 +16,8 @@ namespace ArcGIS_System_Profiler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TemplateForm());
+            //Application.Run(new TemplateForm());
+            Application.Run(new LaunchForm());
         }
     }
 }

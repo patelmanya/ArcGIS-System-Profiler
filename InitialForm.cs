@@ -78,8 +78,11 @@ namespace ArcGIS_System_Profiler
             globalVariables.agsEntUserPassword = txtPortalPassword.Text;
             agsEnterpriseUserName = txtPortalUserName.Text;
             agsEnterprisePassword = txtPortalPassword.Text;
-            timer1.Enabled = true;
-            
+            //timer1.Enabled = true;
+            globalVariables.globalForm.globalTimer1.Enabled = true;
+
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -88,16 +91,8 @@ namespace ArcGIS_System_Profiler
             if (progressBar1.Value>99)
             {
                 this.Hide();
-                //StepsConfirmationForm sCnFm = new StepsConfirmationForm();
-                //sCnFm.Show();
                 timer1.Enabled = false;
-                //PortCheckForm pCF = new PortCheckForm();
-                //pCF.ShowDialog();
-                //Page2 pg2 = new Page2();
-                //pg2.ShowDialog();
-                TemplateForm tForm = new TemplateForm();
-                tForm.btn_Tasks_Click(this,new EventArgs());
-                
+                globalVariables.globalForm.btn_Tasks.PerformClick();                
             }
         }
     }

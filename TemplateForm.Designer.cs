@@ -45,8 +45,8 @@
             this.panelCurrentStep = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.formContainer = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
+            this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -255,7 +255,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.formContainer);
-            this.panel2.Controls.Add(this.progressBar1);
+            this.panel2.Controls.Add(this.globalProgressBar1);
             this.panel2.Controls.Add(this.panelCurrentStep);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(211, 8);
@@ -271,18 +271,18 @@
             this.formContainer.Size = new System.Drawing.Size(1380, 672);
             this.formContainer.TabIndex = 2;
             // 
-            // progressBar1
+            // globalProgressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(4, 682);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1391, 30);
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Visible = false;
+            this.globalProgressBar1.Location = new System.Drawing.Point(4, 682);
+            this.globalProgressBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.globalProgressBar1.Name = "globalProgressBar1";
+            this.globalProgressBar1.Size = new System.Drawing.Size(1391, 30);
+            this.globalProgressBar1.TabIndex = 1;
+            this.globalProgressBar1.Visible = false;
             // 
-            // timer1
+            // globalTimer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.globalTimer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // TemplateForm
             // 
@@ -321,10 +321,10 @@
         private System.Windows.Forms.Button btn_Publish;
         private System.Windows.Forms.Button btn_HealthChecks;
         private System.Windows.Forms.Button btn_Configuration;
-        private System.Windows.Forms.Button btn_Tasks;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel formContainer;
         private System.Windows.Forms.Button btn_Exit;
+        internal System.Windows.Forms.Button btn_Tasks;
+        internal System.Windows.Forms.ProgressBar globalProgressBar1;
+        internal System.Windows.Forms.Timer globalTimer1;
     }
 }

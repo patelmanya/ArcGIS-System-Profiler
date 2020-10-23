@@ -34,40 +34,48 @@ namespace ArcGIS_System_Profiler
 
         private string GetToken()
         {
-            var userPortalName = InitialForm.agsEnterpriseUserName;
-            var userPortalPassword = InitialForm.agsEnterprisePassword;
-            //var request = (HttpWebRequest)WebRequest.Create("https://minint-4ja7213.services.esriaustralia.com.au/portal/sharing/rest/generateToken/");
-            String agsServerURL = "https://" + txtBox_agsEnterprisehostname.Text + "/portal/sharing/rest/generateToken";
-            var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
-
-            var postData = "username=" + userPortalName; //required
-            postData += "&password=" + userPortalPassword; //required
-            postData += "&client=referer"; //required
-            postData += "&referer=requestip"; //required
-            postData += "&expiration=600"; //optional, default
-            postData += "&f=json"; //optional, default
-
-            var data = Encoding.ASCII.GetBytes(postData);
-
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
+            String tokenStr = "";
+            try
             {
-                stream.Write(data, 0, data.Length);
+                var userPortalName = InitialForm.agsEnterpriseUserName;
+                var userPortalPassword = InitialForm.agsEnterprisePassword;
+                String agsServerURL = "https://" + txtBox_agsEnterprisehostname.Text + "/portal/sharing/rest/generateToken";
+                var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+
+                var postData = "username=" + userPortalName; //required
+                postData += "&password=" + userPortalPassword; //required
+                postData += "&client=referer"; //required
+                postData += "&referer=requestip"; //required
+                postData += "&expiration=600"; //optional, default
+                postData += "&f=json"; //optional, default
+
+                var data = Encoding.ASCII.GetBytes(postData);
+
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+
+                using (var stream = request.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+
+                var response = (HttpWebResponse)request.GetResponse();
+
+                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                JObject rss = JObject.Parse(responseString);
+                var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
+                tokenStr = dict["token"].ToString();
+                globalVariables.globalTokenStr = tokenStr;
+
+
             }
+            catch (Exception ex)
+            {
 
-            var response = (HttpWebResponse)request.GetResponse();
-
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            JObject rss = JObject.Parse(responseString);
-            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
-            String tokenStr = dict["token"].ToString();
-            //ESRITokenResponse eToken = Newtonsoft.Json.JsonConvert.DeserializeObject<ESRITokenResponse>(responseString);
-
-            //return eToken.access_token;
+                MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc");
+            } 
             return tokenStr;
         }
 

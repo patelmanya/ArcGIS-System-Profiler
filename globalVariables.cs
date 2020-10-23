@@ -29,6 +29,8 @@ namespace ArcGIS_System_Profiler
         public static List<Object> checkedAGSServicesArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();
         public static MakeMovable _move;
+        public static String globalTokenStr = "";
+        public static TemplateForm globalForm = (TemplateForm)Application.OpenForms["TemplateForm"];
     }
 
     public class MakeMovable
