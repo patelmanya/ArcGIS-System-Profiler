@@ -30,7 +30,14 @@ namespace ArcGIS_System_Profiler
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            OpenChildForm(new InitialForm());
+            //btn_Home.PerformClick();
+            //OpenChildForm(new InitialForm());
+            Load += Form1_Shown;
+        }
+
+        private void Form1_Shown(Object sender, EventArgs e)
+        {
+            btn_Home.PerformClick();
         }
 
         public void OpenChildForm(Form chidlForm)
@@ -103,11 +110,17 @@ namespace ArcGIS_System_Profiler
 
         }
 
+        public void updateLoggedInUser()
+        {
+
+            lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
+            //lbl_LoginUser.Visible = true;
+        }
+
         public void btn_Home_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color1);
-            //OpenChildForm(new InitialForm());
-            OpenChildForm(new Home());
+            OpenChildForm(new InitialForm());
         }
 
         private void btn_Tasks_Click(object sender, EventArgs e)

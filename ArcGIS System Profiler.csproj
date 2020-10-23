@@ -110,12 +110,6 @@
     <Compile Include="HealthChecksForm.Designer.cs">
       <DependentUpon>HealthChecksForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
     <Compile Include="InitialForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,9 +171,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HealthChecksForm.resx">
       <DependentUpon>HealthChecksForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InitialForm.resx">
       <DependentUpon>InitialForm.cs</DependentUpon>

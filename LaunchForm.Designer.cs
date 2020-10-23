@@ -43,6 +43,9 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btn_Minimize = new FontAwesome.Sharp.IconButton();
+            this.btn_Maximize = new FontAwesome.Sharp.IconButton();
+            this.btn_Close = new FontAwesome.Sharp.IconButton();
             this.lbl_loggedInUser = new System.Windows.Forms.Label();
             this.currentStepLabel = new System.Windows.Forms.Label();
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
@@ -50,9 +53,7 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_Close = new FontAwesome.Sharp.IconButton();
-            this.btn_Maximize = new FontAwesome.Sharp.IconButton();
-            this.btn_Minimize = new FontAwesome.Sharp.IconButton();
+            this.lbl_LoginUser = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -365,6 +366,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.panelTitleBar.Controls.Add(this.lbl_LoginUser);
             this.panelTitleBar.Controls.Add(this.btn_Minimize);
             this.panelTitleBar.Controls.Add(this.btn_Maximize);
             this.panelTitleBar.Controls.Add(this.btn_Close);
@@ -377,6 +379,75 @@
             this.panelTitleBar.Size = new System.Drawing.Size(1083, 50);
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            // 
+            // btn_Minimize
+            // 
+            this.btn_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Minimize.FlatAppearance.BorderSize = 0;
+            this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Minimize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Minimize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Minimize.ForeColor = System.Drawing.Color.White;
+            this.btn_Minimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.btn_Minimize.IconColor = System.Drawing.Color.White;
+            this.btn_Minimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Minimize.IconSize = 22;
+            this.btn_Minimize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Minimize.Location = new System.Drawing.Point(990, 0);
+            this.btn_Minimize.Name = "btn_Minimize";
+            this.btn_Minimize.Rotation = 0D;
+            this.btn_Minimize.Size = new System.Drawing.Size(31, 50);
+            this.btn_Minimize.TabIndex = 4;
+            this.btn_Minimize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Minimize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Minimize.UseVisualStyleBackColor = true;
+            this.btn_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            // 
+            // btn_Maximize
+            // 
+            this.btn_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Maximize.FlatAppearance.BorderSize = 0;
+            this.btn_Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Maximize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Maximize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Maximize.ForeColor = System.Drawing.Color.White;
+            this.btn_Maximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btn_Maximize.IconColor = System.Drawing.Color.White;
+            this.btn_Maximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Maximize.IconSize = 22;
+            this.btn_Maximize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Maximize.Location = new System.Drawing.Point(1021, 0);
+            this.btn_Maximize.Name = "btn_Maximize";
+            this.btn_Maximize.Rotation = 0D;
+            this.btn_Maximize.Size = new System.Drawing.Size(31, 50);
+            this.btn_Maximize.TabIndex = 3;
+            this.btn_Maximize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Maximize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Maximize.UseVisualStyleBackColor = true;
+            this.btn_Maximize.Click += new System.EventHandler(this.btn_Maximize_Click);
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Close.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Close.ForeColor = System.Drawing.Color.White;
+            this.btn_Close.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
+            this.btn_Close.IconColor = System.Drawing.Color.White;
+            this.btn_Close.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Close.IconSize = 22;
+            this.btn_Close.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Close.Location = new System.Drawing.Point(1052, 0);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Rotation = 0D;
+            this.btn_Close.Size = new System.Drawing.Size(31, 50);
+            this.btn_Close.TabIndex = 2;
+            this.btn_Close.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Close.UseVisualStyleBackColor = true;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // lbl_loggedInUser
             // 
@@ -444,74 +515,19 @@
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
             // 
-            // btn_Close
+            // lbl_LoginUser
             // 
-            this.btn_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Close.FlatAppearance.BorderSize = 0;
-            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Close.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Close.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.ForeColor = System.Drawing.Color.White;
-            this.btn_Close.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
-            this.btn_Close.IconColor = System.Drawing.Color.White;
-            this.btn_Close.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Close.IconSize = 22;
-            this.btn_Close.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Close.Location = new System.Drawing.Point(1052, 0);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Rotation = 0D;
-            this.btn_Close.Size = new System.Drawing.Size(31, 50);
-            this.btn_Close.TabIndex = 2;
-            this.btn_Close.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Close.UseVisualStyleBackColor = true;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            // 
-            // btn_Maximize
-            // 
-            this.btn_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Maximize.FlatAppearance.BorderSize = 0;
-            this.btn_Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Maximize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Maximize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Maximize.ForeColor = System.Drawing.Color.White;
-            this.btn_Maximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btn_Maximize.IconColor = System.Drawing.Color.White;
-            this.btn_Maximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Maximize.IconSize = 22;
-            this.btn_Maximize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Maximize.Location = new System.Drawing.Point(1021, 0);
-            this.btn_Maximize.Name = "btn_Maximize";
-            this.btn_Maximize.Rotation = 0D;
-            this.btn_Maximize.Size = new System.Drawing.Size(31, 50);
-            this.btn_Maximize.TabIndex = 3;
-            this.btn_Maximize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Maximize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Maximize.UseVisualStyleBackColor = true;
-            this.btn_Maximize.Click += new System.EventHandler(this.btn_Maximize_Click);
-            // 
-            // btn_Minimize
-            // 
-            this.btn_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Minimize.FlatAppearance.BorderSize = 0;
-            this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Minimize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Minimize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_Minimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
-            this.btn_Minimize.IconColor = System.Drawing.Color.White;
-            this.btn_Minimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Minimize.IconSize = 22;
-            this.btn_Minimize.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Minimize.Location = new System.Drawing.Point(990, 0);
-            this.btn_Minimize.Name = "btn_Minimize";
-            this.btn_Minimize.Rotation = 0D;
-            this.btn_Minimize.Size = new System.Drawing.Size(31, 50);
-            this.btn_Minimize.TabIndex = 4;
-            this.btn_Minimize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Minimize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Minimize.UseVisualStyleBackColor = true;
-            this.btn_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.lbl_LoginUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_LoginUser.AutoSize = true;
+            this.lbl_LoginUser.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_LoginUser.ForeColor = System.Drawing.Color.Aqua;
+            this.lbl_LoginUser.Location = new System.Drawing.Point(941, 12);
+            this.lbl_LoginUser.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbl_LoginUser.Name = "lbl_LoginUser";
+            this.lbl_LoginUser.Size = new System.Drawing.Size(40, 22);
+            this.lbl_LoginUser.TabIndex = 20;
+            this.lbl_LoginUser.Text = "llllll";
+            this.lbl_LoginUser.Visible = false;
             // 
             // LaunchForm
             // 
@@ -560,5 +576,6 @@
         private FontAwesome.Sharp.IconButton btn_Minimize;
         private FontAwesome.Sharp.IconButton btn_Maximize;
         private FontAwesome.Sharp.IconButton btn_Close;
+        internal System.Windows.Forms.Label lbl_LoginUser;
     }
 }

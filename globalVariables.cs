@@ -17,6 +17,11 @@ namespace ArcGIS_System_Profiler
         public static string agsServerUserName = "";
         public static string agsServerUserPassword = "";
         public static string selectedSserviceURL = "";
+        
+        public static string global_portalHostname = "";
+        public static string global_serverHostname = "";
+        public static string global_datastoreHostname = "";
+
         public static string portalCheckURL = "";
         public static string ArcGISServerCheckURL = "";
         public static string stepsCounter = "";
