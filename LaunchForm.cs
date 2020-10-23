@@ -125,7 +125,7 @@ namespace ArcGIS_System_Profiler
         private void btn_HealthChecks_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color4);
-            OpenChildForm(new ScreenCaptureForm());
+            OpenChildForm(new HealthChecksForm());
         }
 
         private void btn_PortChecks_Click(object sender, EventArgs e)

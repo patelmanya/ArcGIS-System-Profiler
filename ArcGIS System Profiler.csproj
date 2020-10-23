@@ -104,6 +104,12 @@
       <DependentUpon>FederatedEnv.cs</DependentUpon>
     </Compile>
     <Compile Include="globalVariables.cs" />
+    <Compile Include="HealthChecksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HealthChecksForm.Designer.cs">
+      <DependentUpon>HealthChecksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     <Compile Include="WkidPortList.cs" />
     <EmbeddedResource Include="FederatedEnv.resx">
       <DependentUpon>FederatedEnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HealthChecksForm.resx">
+      <DependentUpon>HealthChecksForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
