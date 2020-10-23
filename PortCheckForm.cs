@@ -20,33 +20,9 @@ namespace ArcGIS_System_Profiler
         public PortCheckForm()
         {
             InitializeComponent();
-            //remove the existing rows in the datagridview
-            do
+            try
             {
-                foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                {
-                    try
-                    {
-                        dataGridViewPorts.Rows.Remove(row);
-                    }
-                    catch (Exception) { }
-                }
-            } while (dataGridViewPorts.Rows.Count > 1);
-        }
-
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (!progressBar1.Visible)
-            {
-                progressBar1.Visible = true;
-                progressBar1.Value = 0;
-            }
-            
-            progressBar1.Value = progressBar1.Value + 2;
-            if (progressBar1.Value > 99)
-            {
-
+                //remove the existing rows in the datagridview
                 do
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
@@ -58,27 +34,93 @@ namespace ArcGIS_System_Profiler
                         catch (Exception) { }
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
-                globalVariables.portsList.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
 
-                IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-                IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
-
-
-                foreach (IPEndPoint endPoint in ipEndPoints)
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!progressBar1.Visible)
                 {
-                    //label1.Text = label1.Text + "\n" + endPoint.Port + " in Use";
+                    progressBar1.Visible = true;
+                    progressBar1.Value = 0;
+                }
 
-                    try
+                progressBar1.Value = progressBar1.Value + 2;
+                if (progressBar1.Value > 99)
+                {
+
+                    do
                     {
-                        using (TcpClient tcpClient = new TcpClient())
+                        foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                         {
-                            tcpClient.Connect("127.0.0.1", endPoint.Port);
-                            
+                            try
+                            {
+                                dataGridViewPorts.Rows.Remove(row);
+                            }
+                            catch (Exception) { }
+                        }
+                    } while (dataGridViewPorts.Rows.Count > 1);
+                    globalVariables.portsList.Clear();
+
+
+                    IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+                    IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
+
+
+
+                    foreach (IPEndPoint endPoint in ipEndPoints)
+                    {
+                        //label1.Text = label1.Text + "\n" + endPoint.Port + " in Use";
+
+                        try
+                        {
+                            using (TcpClient tcpClient = new TcpClient())
+                            {
+                                tcpClient.Connect("127.0.0.1", endPoint.Port);
+
+                                var dictionary = new Dictionary<string, object>();
+                                dictionary["portNo"] = endPoint.Port;
+                                dictionary["status"] = "Open";
+                                bool portExists = false;
+                                foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                                {
+                                    if (obj["portNo"].ToString() == endPoint.Port.ToString())
+                                    {
+                                        portExists = true;
+                                    }
+                                }
+
+                                DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                                row.Cells[0].Value = endPoint.Port;
+                                row.Cells[2].Value = "Open";
+
+                                if (!portExists)
+                                {
+                                    globalVariables.portsList.Add(dictionary);
+                                    //row.DefaultCellStyle.BackColor = Color.FromArgb(137, 189, 123);
+                                    dataGridViewPorts.Rows.Add(row);
+                                }
+
+                            }
+                        }
+                        catch (Exception)
+                        {
                             var dictionary = new Dictionary<string, object>();
                             dictionary["portNo"] = endPoint.Port;
-                            dictionary["status"] = "Open";
+                            dictionary["status"] = "Closed";
                             bool portExists = false;
+                            DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                            row.Cells[0].Value = endPoint.Port;
+                            row.Cells[2].Value = "Closed";
                             foreach (Dictionary<string, object> obj in globalVariables.portsList)
                             {
                                 if (obj["portNo"].ToString() == endPoint.Port.ToString())
@@ -86,68 +128,27 @@ namespace ArcGIS_System_Profiler
                                     portExists = true;
                                 }
                             }
-
-                            DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
-                            row.Cells[0].Value = endPoint.Port;
-                            row.Cells[2].Value = "Open";
-
                             if (!portExists)
                             {
                                 globalVariables.portsList.Add(dictionary);
-                                //row.DefaultCellStyle.BackColor = Color.FromArgb(137, 189, 123);
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                 dataGridViewPorts.Rows.Add(row);
                             }
-                            
                         }
                     }
-                    catch (Exception)
-                    {
-                        var dictionary = new Dictionary<string, object>();
-                        dictionary["portNo"] = endPoint.Port;
-                        dictionary["status"] = "Closed";
-                        bool portExists = false;
-                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
-                        row.Cells[0].Value = endPoint.Port;
-                        row.Cells[2].Value = "Closed";
-                        foreach (Dictionary<string, object> obj in globalVariables.portsList)
-                        {
-                            if (obj["portNo"].ToString() == endPoint.Port.ToString())
-                            {
-                                portExists = true;
-                            }
-                        }
-                        if (!portExists)
-                        {
-                            globalVariables.portsList.Add(dictionary);
-                            row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
-                            dataGridViewPorts.Rows.Add(row);
-                        }
-                    }
+                    timer1.Enabled = false;
                 }
-                timer1.Enabled = false;
-                //int index = richTextBox1.Text.IndexOf("Port closed");
-                //richTextBox1.Select(index, 11);
-                //richTextBox1.SelectionColor = Color.BlueViolet;
-                //string pattern = @"Port closed";
-                //Regex rgx = new Regex(pattern);
-                //string sentence = richTextBox1.Text;
-
-                //foreach (Match match in rgx.Matches(sentence))
-                //{
-                //    Console.WriteLine("Found '{0}' at position {1}",
-                //                      match.Value, match.Index);
-                //    richTextBox1.Select(match.Index, 11);
-                //    richTextBox1.SelectionColor = Color.Red;
-                //}
 
 
-                //richTextBox1.Visible = true;
+                if (progressBar1.Value == 100)
+                {
+                    progressBar1.Hide();
+                }
             }
-
-
-            if (progressBar1.Value == 100)
+            catch (Exception)
             {
-                progressBar1.Hide();
+
+                throw;
             }
         }
 
@@ -155,19 +156,112 @@ namespace ArcGIS_System_Profiler
         {
             timer1.Enabled = true;
 
-            //remove the existing rows in the datagridview
-            //do
-            //{
-            //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-            //    {
-            //        try
-            //        {
-            //            dataGridViewPorts.Rows.Remove(row);
-            //        }
-            //        catch (Exception) { }
-            //    }
-            //} while (dataGridViewPorts.Rows.Count > 1);
         }
 
+        private void radioButtonClosed_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    {
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (dataGridViewPorts.Rows.Count > 1);
+
+                //add only the closed one from the globalVariables.portsList
+                foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                {
+                    if (obj["status"].ToString() == "Closed")
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                        row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[2].Value = obj["status"].ToString();
+                        dataGridViewPorts.Rows.Add(row);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void radioButtonOpen_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    {
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (dataGridViewPorts.Rows.Count > 1);
+
+                //add only the closed one from the globalVariables.portsList
+                foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                {
+                    if (obj["status"].ToString() == "Open")
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                        row.Cells[0].Value = obj["portNo"].ToString();
+                        row.Cells[2].Value = obj["status"].ToString();
+                        dataGridViewPorts.Rows.Add(row);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void radioButtonAll_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    {
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (dataGridViewPorts.Rows.Count > 1);
+
+                //add only the closed one from the globalVariables.portsList
+                foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                    row.Cells[0].Value = obj["portNo"].ToString();
+                    row.Cells[2].Value = obj["status"].ToString();
+                    dataGridViewPorts.Rows.Add(row);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
