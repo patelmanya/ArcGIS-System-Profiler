@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_Enterprise = new System.Windows.Forms.Panel();
             this.txtPortalPassword = new System.Windows.Forms.TextBox();
@@ -64,9 +65,18 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btn_EditInstanceName = new System.Windows.Forms.Button();
             this.lbl_LoginStatus = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel_Enterprise.SuspendLayout();
             this.panel_Server.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,6 +87,9 @@
             this.panel1.Controls.Add(this.txtBx_PortalInstance);
             this.panel1.Controls.Add(this.txtBx_PortalHostName);
             this.panel1.Controls.Add(this.btn_EditInstanceName);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label14);
@@ -107,6 +120,8 @@
             this.panel_Enterprise.Controls.Add(this.label8);
             this.panel_Enterprise.Controls.Add(this.label9);
             this.panel_Enterprise.Controls.Add(this.btn_agsEnt);
+            this.panel_Enterprise.Controls.Add(this.label16);
+            this.panel_Enterprise.Controls.Add(this.label15);
             this.panel_Enterprise.Controls.Add(this.lbl_LoginStatus);
             this.panel_Enterprise.Location = new System.Drawing.Point(28, 385);
             this.panel_Enterprise.Margin = new System.Windows.Forms.Padding(4);
@@ -123,6 +138,7 @@
             this.txtPortalPassword.Size = new System.Drawing.Size(356, 26);
             this.txtPortalPassword.TabIndex = 5;
             this.txtPortalPassword.Text = "password123";
+            this.txtPortalPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPortalPassword_Validating);
             // 
             // txtPortalUserName
             // 
@@ -132,6 +148,7 @@
             this.txtPortalUserName.Size = new System.Drawing.Size(356, 26);
             this.txtPortalUserName.TabIndex = 4;
             this.txtPortalUserName.Text = "portaladmin";
+            this.txtPortalUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtPortalUserName_Validating);
             // 
             // label10
             // 
@@ -403,6 +420,7 @@
             this.txtBx_ServerHostName.Name = "txtBx_ServerHostName";
             this.txtBx_ServerHostName.Size = new System.Drawing.Size(356, 26);
             this.txtBx_ServerHostName.TabIndex = 20;
+            this.txtBx_ServerHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerHostName_Validating);
             // 
             // label13
             // 
@@ -460,6 +478,7 @@
             this.txtBx_PortalHostName.Size = new System.Drawing.Size(356, 26);
             this.txtBx_PortalHostName.TabIndex = 20;
             this.txtBx_PortalHostName.Text = "lea-305263.services.esriaustralia.com.au";
+            this.txtBx_PortalHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalHostName_Validating);
             // 
             // txtBx_PortalInstance
             // 
@@ -470,6 +489,7 @@
             this.txtBx_PortalInstance.Size = new System.Drawing.Size(194, 26);
             this.txtBx_PortalInstance.TabIndex = 20;
             this.txtBx_PortalInstance.Text = "portal";
+            this.txtBx_PortalInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalInstance_Validating);
             // 
             // txtBx_ServerInstance
             // 
@@ -480,6 +500,7 @@
             this.txtBx_ServerInstance.Size = new System.Drawing.Size(194, 26);
             this.txtBx_ServerInstance.TabIndex = 20;
             this.txtBx_ServerInstance.Text = "server";
+            this.txtBx_ServerInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerInstance_Validating);
             // 
             // label14
             // 
@@ -520,6 +541,79 @@
             this.lbl_LoginStatus.Text = "aassassa";
             this.lbl_LoginStatus.Visible = false;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label15.Location = new System.Drawing.Point(115, 63);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(17, 22);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "*";
+            this.label15.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label16.Location = new System.Drawing.Point(115, 115);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(17, 22);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "*";
+            this.label16.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label17.Location = new System.Drawing.Point(289, 200);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 22);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "*";
+            this.label17.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label18.Location = new System.Drawing.Point(271, 247);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(17, 22);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "*";
+            this.label18.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label19.Location = new System.Drawing.Point(1009, 146);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(17, 22);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "*";
+            this.label19.Visible = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // InitialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -540,6 +634,8 @@
             this.panel_Enterprise.PerformLayout();
             this.panel_Server.ResumeLayout(false);
             this.panel_Server.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +678,12 @@
         private System.Windows.Forms.Button btn_EditInstanceName;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lbl_LoginStatus;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

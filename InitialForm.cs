@@ -60,7 +60,7 @@ namespace ArcGIS_System_Profiler
 
             try
             {
-                if (txtBx_PortalHostName.Text != "")
+                if (txtBx_PortalHostName.Text != "" && txtBx_ServerHostName.Text != "")
                 {
                     globalVariables.global_portalHostname = txtBx_PortalHostName.Text;
                     globalVariables.global_serverHostname = txtBx_ServerHostName.Text;
@@ -85,6 +85,17 @@ namespace ArcGIS_System_Profiler
                     {
                         lbl_LoginStatus.Text = "Login failed";
                         lbl_LoginStatus.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (txtBx_PortalHostName.Text.Trim() == String.Empty)
+                    {
+                        errorProvider1.SetError(txtBx_PortalHostName, "Portal Host name is also required");
+                    }
+                    if (txtBx_ServerHostName.Text.Trim() == String.Empty)
+                    {
+                        errorProvider1.SetError(txtBx_ServerHostName, "Server Host name is also required");
                     }
                 }
 
@@ -212,6 +223,152 @@ namespace ArcGIS_System_Profiler
                 //MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
             }
             return tokenStr;
+        }
+
+        private void txtBx_PortalHostName_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtBx_PortalHostName.Text))
+                {
+
+                    //txtBx_PortalHostName.Focus();
+                    errorProvider1.SetError(txtBx_PortalHostName, "Portal host name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtBx_PortalHostName, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtBx_ServerHostName_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtBx_ServerHostName.Text))
+                {
+
+                    //txtBx_ServerHostName.Focus();
+                    errorProvider1.SetError(txtBx_ServerHostName, "Server host name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtBx_ServerHostName, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtPortalUserName_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPortalUserName.Text))
+                {
+
+                    //txtPortalUserName.Focus();
+                    errorProvider1.SetError(txtPortalUserName, "User name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtPortalUserName, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtPortalPassword_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPortalPassword.Text))
+                {
+
+                    //txtPortalPassword.Focus();
+                    errorProvider1.SetError(txtPortalPassword, "User name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtPortalPassword, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtBx_PortalInstance_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPortalPassword.Text))
+                {
+
+                    //txtBx_PortalInstance.Focus();
+                    txtBx_PortalInstance.Text = "portal";
+                    errorProvider1.SetError(txtBx_PortalInstance, "portal instance name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtBx_PortalInstance, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtBx_ServerInstance_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtBx_ServerInstance.Text))
+                {
+
+                    //txtBx_ServerInstance.Focus();
+                    txtBx_ServerInstance.Text = "server";
+                    errorProvider1.SetError(txtBx_ServerInstance, "Server instance name is required!");
+                }
+                else
+                {
+
+                    errorProvider1.SetError(txtBx_ServerInstance, "");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
