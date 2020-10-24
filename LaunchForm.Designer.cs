@@ -43,6 +43,8 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_LoginUser = new System.Windows.Forms.Label();
             this.btn_Minimize = new FontAwesome.Sharp.IconButton();
             this.btn_Maximize = new FontAwesome.Sharp.IconButton();
             this.btn_Close = new FontAwesome.Sharp.IconButton();
@@ -53,14 +55,12 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbl_LoginUser = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelDesktop.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -379,6 +379,31 @@
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbl_LoginUser);
+            this.panel1.Controls.Add(this.btn_Minimize);
+            this.panel1.Controls.Add(this.btn_Maximize);
+            this.panel1.Controls.Add(this.btn_Close);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(764, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(319, 50);
+            this.panel1.TabIndex = 21;
+            // 
+            // lbl_LoginUser
+            // 
+            this.lbl_LoginUser.AutoSize = true;
+            this.lbl_LoginUser.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LoginUser.ForeColor = System.Drawing.Color.Aqua;
+            this.lbl_LoginUser.Location = new System.Drawing.Point(32, 17);
+            this.lbl_LoginUser.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbl_LoginUser.Name = "lbl_LoginUser";
+            this.lbl_LoginUser.Size = new System.Drawing.Size(26, 17);
+            this.lbl_LoginUser.TabIndex = 20;
+            this.lbl_LoginUser.Text = "llllll";
+            this.lbl_LoginUser.Visible = false;
+            // 
             // btn_Minimize
             // 
             this.btn_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
@@ -516,31 +541,6 @@
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
             // 
-            // lbl_LoginUser
-            // 
-            this.lbl_LoginUser.AutoSize = true;
-            this.lbl_LoginUser.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LoginUser.ForeColor = System.Drawing.Color.Aqua;
-            this.lbl_LoginUser.Location = new System.Drawing.Point(32, 17);
-            this.lbl_LoginUser.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lbl_LoginUser.Name = "lbl_LoginUser";
-            this.lbl_LoginUser.Size = new System.Drawing.Size(26, 17);
-            this.lbl_LoginUser.TabIndex = 20;
-            this.lbl_LoginUser.Text = "llllll";
-            this.lbl_LoginUser.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lbl_LoginUser);
-            this.panel1.Controls.Add(this.btn_Minimize);
-            this.panel1.Controls.Add(this.btn_Maximize);
-            this.panel1.Controls.Add(this.btn_Close);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(764, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(319, 50);
-            this.panel1.TabIndex = 21;
-            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,10 +556,10 @@
             this.panelLogo.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
-            this.panelDesktop.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
+            this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -576,7 +576,6 @@
         private FontAwesome.Sharp.IconButton btn_Publish;
         private FontAwesome.Sharp.IconButton btn_PortChecks;
         private FontAwesome.Sharp.IconButton btn_HealthChecks;
-        private FontAwesome.Sharp.IconButton btn_Services;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel panelTitleBar;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
@@ -592,5 +591,6 @@
         private FontAwesome.Sharp.IconButton btn_Close;
         internal System.Windows.Forms.Label lbl_LoginUser;
         private System.Windows.Forms.Panel panel1;
+        internal FontAwesome.Sharp.IconButton btn_Services;
     }
 }

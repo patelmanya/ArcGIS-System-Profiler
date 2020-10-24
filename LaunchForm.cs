@@ -138,7 +138,7 @@ namespace ArcGIS_System_Profiler
         public void btn_Services_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color3);
-            OpenChildForm(new FederatedEnv());
+            OpenChildForm(new GetServicesInfoForm());
         }
 
         public void btn_HealthChecks_Click(object sender, EventArgs e)

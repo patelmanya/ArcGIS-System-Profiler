@@ -43,12 +43,18 @@ namespace ArcGIS_System_Profiler
 
         private void btn_agsServer_Click(object sender, EventArgs e)
         {
-            globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
+            
             this.Hide();
             //ScreenCaptureForm sc = new ScreenCaptureForm();
             //sc.ShowDialog();
             FederatedEnv fEnv = new FederatedEnv();
             fEnv.ShowDialog();
+        }
+
+        private void btn_agsServer_Click_1(object sender, EventArgs e)
+        {
+            globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
+            globalVariables.globalForm.btn_Services.PerformClick();
         }
     }
 }

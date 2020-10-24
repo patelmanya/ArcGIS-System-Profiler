@@ -161,7 +161,7 @@
             this.tabPage1.Controls.Add(this.agsServerlistBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(764, 338);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ArcGIS Server";
@@ -233,7 +233,7 @@
             this.tabPage2.Controls.Add(this.agsEnterpriselistBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(764, 338);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ArcGIS Portal";
@@ -370,7 +370,7 @@
             this.txtPortalInstanceName.Enabled = false;
             this.txtPortalInstanceName.Font = new System.Drawing.Font("Arial", 11.25F);
             this.txtPortalInstanceName.Location = new System.Drawing.Point(208, 46);
-            this.txtPortalInstanceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPortalInstanceName.Margin = new System.Windows.Forms.Padding(2);
             this.txtPortalInstanceName.Name = "txtPortalInstanceName";
             this.txtPortalInstanceName.Size = new System.Drawing.Size(109, 25);
             this.txtPortalInstanceName.TabIndex = 7;
@@ -381,7 +381,7 @@
             this.txtServerInstanceName.Enabled = false;
             this.txtServerInstanceName.Font = new System.Drawing.Font("Arial", 11.25F);
             this.txtServerInstanceName.Location = new System.Drawing.Point(382, 46);
-            this.txtServerInstanceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtServerInstanceName.Margin = new System.Windows.Forms.Padding(2);
             this.txtServerInstanceName.Name = "txtServerInstanceName";
             this.txtServerInstanceName.Size = new System.Drawing.Size(109, 25);
             this.txtServerInstanceName.TabIndex = 7;

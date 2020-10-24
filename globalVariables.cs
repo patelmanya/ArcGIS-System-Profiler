@@ -1,9 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace ArcGIS_System_Profiler
@@ -39,7 +44,58 @@ namespace ArcGIS_System_Profiler
         public static LaunchForm globalForm = (LaunchForm)Application.OpenForms["LaunchForm"];
         public static List<Object> portsList = new List<Object>();
         public static List<Object> wkidPortList = new List<Object>();
+
+        public string GetToken()
+        {
+            String tokenStr = "";
+            try
+            {
+                var userPortalName = globalVariables.agsEntUserName;
+                var userPortalPassword = globalVariables.agsEntUserPassword;
+                String agsServerURL = "https://" + globalVariables.global_portalHostname + "/" + globalVariables.portalInstanceName + "/sharing/rest/generateToken";
+                var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+
+                var postData = "username=" + userPortalName; //required
+                postData += "&password=" + userPortalPassword; //required
+                postData += "&client=referer"; //required
+                postData += "&referer=requestip"; //required
+                postData += "&expiration=600"; //optional, default
+                postData += "&f=json"; //optional, default
+
+                var data = Encoding.ASCII.GetBytes(postData);
+
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                using (var stream = request.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+
+                var response = (HttpWebResponse)request.GetResponse();
+
+                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                JObject rss = JObject.Parse(responseString);
+                var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
+                tokenStr = dict["token"].ToString();
+                globalVariables.globalTokenStr = tokenStr;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
+            }
+            return tokenStr;
+        }
     }
+
+    
 
     public class MakeMovable
     {

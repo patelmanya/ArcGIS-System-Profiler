@@ -70,16 +70,13 @@ namespace ArcGIS_System_Profiler
                     globalVariables.agsEntUserName = txtPortalUserName.Text;
                     globalVariables.agsEntUserPassword = txtPortalPassword.Text;
                     string token = "";
-                    token = GetToken();
+                    globalVariables gV = new globalVariables();
+                    token = gV.GetToken();
                     if (token != "")
                     {
                         lbl_LoginStatus.Text = "Login successful";
-                        lbl_LoginStatus.Visible = true;
-                        LaunchForm lForm = new LaunchForm();
-                        //lForm.updateLoggedInUser();
-                        globalVariables.globalForm.btn_Tasks.PerformClick();
-                        //lForm.lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
-                        //lForm.lbl_LoginUser.Visible = true;
+                        lbl_LoginStatus.Visible = true;  
+                        globalVariables.globalForm.btn_Tasks.PerformClick(); 
                     }
                     else
                     {
