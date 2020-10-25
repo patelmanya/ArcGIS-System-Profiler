@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBx_DataStoreHostName = new System.Windows.Forms.TextBox();
             this.txtBx_ServerHostName = new System.Windows.Forms.TextBox();
@@ -72,15 +73,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel_Enterprise.SuspendLayout();
             this.panel_Server.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.txtBx_DataStoreHostName);
             this.panel1.Controls.Add(this.txtBx_ServerHostName);
             this.panel1.Controls.Add(this.txtBx_ServerInstance);
@@ -531,6 +535,8 @@
             // chkBx_Server
             // 
             this.chkBx_Server.AutoSize = true;
+            this.chkBx_Server.Checked = true;
+            this.chkBx_Server.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBx_Server.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.chkBx_Server.ForeColor = System.Drawing.Color.White;
             this.chkBx_Server.Location = new System.Drawing.Point(681, 247);
@@ -615,6 +621,16 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(827, 62);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(221, 62);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // InitialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -637,6 +653,7 @@
             this.panel_Server.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -686,5 +703,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

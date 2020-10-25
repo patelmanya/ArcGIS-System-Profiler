@@ -38,6 +38,7 @@
             this.btn_Tasks = new FontAwesome.Sharp.IconButton();
             this.btn_Home = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.loadingIconPic = new System.Windows.Forms.PictureBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,14 +53,13 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.loadingIconPic = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelDesktop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -237,6 +237,18 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(220, 140);
             this.panelLogo.TabIndex = 0;
+            // 
+            // loadingIconPic
+            // 
+            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
+            this.loadingIconPic.Location = new System.Drawing.Point(41, 10);
+            this.loadingIconPic.Name = "loadingIconPic";
+            this.loadingIconPic.Size = new System.Drawing.Size(120, 107);
+            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loadingIconPic.TabIndex = 9;
+            this.loadingIconPic.TabStop = false;
+            this.loadingIconPic.Visible = false;
+            this.loadingIconPic.WaitOnLoad = true;
             // 
             // iconButton1
             // 
@@ -437,18 +449,6 @@
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
             // 
-            // loadingIconPic
-            // 
-            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
-            this.loadingIconPic.Location = new System.Drawing.Point(41, 10);
-            this.loadingIconPic.Name = "loadingIconPic";
-            this.loadingIconPic.Size = new System.Drawing.Size(120, 107);
-            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.loadingIconPic.TabIndex = 9;
-            this.loadingIconPic.TabStop = false;
-            this.loadingIconPic.Visible = false;
-            this.loadingIconPic.WaitOnLoad = true;
-            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,13 +462,13 @@
             this.Text = "LaunchForm";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.panelDesktop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.btn_GetServices = new System.Windows.Forms.Button();
@@ -41,13 +40,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.AGS_dataGridView = new System.Windows.Forms.DataGridView();
-            this.checkBoxCol_Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Port_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ClearAll = new System.Windows.Forms.Button();
             this.btn_SelectAll = new System.Windows.Forms.Button();
+            this.includeSystemcheckBox = new System.Windows.Forms.CheckBox();
+            this.btn_NextStep = new System.Windows.Forms.Button();
+            this.btnGenerateServicesReport = new System.Windows.Forms.Button();
+            this.checkBoxCol_Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGS_dataGridView)).BeginInit();
@@ -55,9 +56,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnGenerateServicesReport);
+            this.panel1.Controls.Add(this.btn_NextStep);
             this.panel1.Controls.Add(this.btn_SelectAll);
             this.panel1.Controls.Add(this.btn_ClearAll);
             this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.includeSystemcheckBox);
             this.panel1.Controls.Add(this.includeFolderscheckBox);
             this.panel1.Controls.Add(this.btn_GetServices);
             this.panel1.Controls.Add(this.txtBx_ServicesURL);
@@ -157,8 +161,7 @@
             this.AGS_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkBoxCol_Service,
             this.Service_Name,
-            this.Service_Type,
-            this.Port_Type});
+            this.Service_Type});
             this.AGS_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AGS_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.AGS_dataGridView.Name = "AGS_dataGridView";
@@ -167,46 +170,6 @@
             this.AGS_dataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.AGS_dataGridView.Size = new System.Drawing.Size(1138, 464);
             this.AGS_dataGridView.TabIndex = 32;
-            // 
-            // checkBoxCol_Service
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.NullValue = false;
-            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle2;
-            this.checkBoxCol_Service.HeaderText = "";
-            this.checkBoxCol_Service.Name = "checkBoxCol_Service";
-            this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.checkBoxCol_Service.Width = 150;
-            // 
-            // Service_Name
-            // 
-            this.Service_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Service_Name.HeaderText = "Service Name";
-            this.Service_Name.Name = "Service_Name";
-            this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Service_Name.ToolTipText = "Service Name";
-            // 
-            // Service_Type
-            // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Service_Type.HeaderText = "Type";
-            this.Service_Type.Name = "Service_Type";
-            this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Service_Type.ToolTipText = "Service Type";
-            this.Service_Type.Width = 200;
-            // 
-            // Port_Type
-            // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Port_Type.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Port_Type.HeaderText = "Port Type";
-            this.Port_Type.Name = "Port_Type";
-            this.Port_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Port_Type.Width = 200;
             // 
             // label2
             // 
@@ -248,6 +211,82 @@
             this.btn_SelectAll.UseVisualStyleBackColor = false;
             this.btn_SelectAll.Click += new System.EventHandler(this.btn_SelectAll_Click);
             // 
+            // includeSystemcheckBox
+            // 
+            this.includeSystemcheckBox.AutoSize = true;
+            this.includeSystemcheckBox.Checked = true;
+            this.includeSystemcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.includeSystemcheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.includeSystemcheckBox.ForeColor = System.Drawing.Color.White;
+            this.includeSystemcheckBox.Location = new System.Drawing.Point(420, 88);
+            this.includeSystemcheckBox.Name = "includeSystemcheckBox";
+            this.includeSystemcheckBox.Size = new System.Drawing.Size(171, 26);
+            this.includeSystemcheckBox.TabIndex = 24;
+            this.includeSystemcheckBox.Text = "Include System";
+            this.includeSystemcheckBox.UseVisualStyleBackColor = true;
+            this.includeSystemcheckBox.Visible = false;
+            // 
+            // btn_NextStep
+            // 
+            this.btn_NextStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_NextStep.BackColor = System.Drawing.Color.LightGray;
+            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
+            this.btn_NextStep.Location = new System.Drawing.Point(950, 173);
+            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_NextStep.Name = "btn_NextStep";
+            this.btn_NextStep.Size = new System.Drawing.Size(173, 33);
+            this.btn_NextStep.TabIndex = 27;
+            this.btn_NextStep.Text = "Next Step";
+            this.btn_NextStep.UseVisualStyleBackColor = false;
+            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
+            // 
+            // btnGenerateServicesReport
+            // 
+            this.btnGenerateServicesReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateServicesReport.BackColor = System.Drawing.Color.LightGray;
+            this.btnGenerateServicesReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateServicesReport.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateServicesReport.Location = new System.Drawing.Point(685, 173);
+            this.btnGenerateServicesReport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnGenerateServicesReport.Name = "btnGenerateServicesReport";
+            this.btnGenerateServicesReport.Size = new System.Drawing.Size(253, 33);
+            this.btnGenerateServicesReport.TabIndex = 28;
+            this.btnGenerateServicesReport.Text = "Generate Services Report";
+            this.btnGenerateServicesReport.UseVisualStyleBackColor = false;
+            this.btnGenerateServicesReport.Click += new System.EventHandler(this.btnGenerateServicesReport_Click);
+            // 
+            // checkBoxCol_Service
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.NullValue = false;
+            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle2;
+            this.checkBoxCol_Service.HeaderText = "";
+            this.checkBoxCol_Service.Name = "checkBoxCol_Service";
+            this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.checkBoxCol_Service.Width = 150;
+            // 
+            // Service_Name
+            // 
+            this.Service_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Service_Name.HeaderText = "Service Name";
+            this.Service_Name.Name = "Service_Name";
+            this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Service_Name.ToolTipText = "Service Name";
+            // 
+            // Service_Type
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Service_Type.HeaderText = "Type";
+            this.Service_Type.Name = "Service_Type";
+            this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Service_Type.ToolTipText = "Service Type";
+            this.Service_Type.Width = 200;
+            // 
             // GetServicesInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,7 +297,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GetServicesInfoForm";
-            this.Text = "GetServicesInfoForm";
+            this.Text = "Get Services Info";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -273,10 +312,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView AGS_dataGridView;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxCol_Service;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Service_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Service_Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Port_Type;
         private System.Windows.Forms.TextBox txtBx_ServicesURL;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_GetServices;
@@ -284,5 +319,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_SelectAll;
         private System.Windows.Forms.Button btn_ClearAll;
+        private System.Windows.Forms.CheckBox includeSystemcheckBox;
+        private System.Windows.Forms.Button btnGenerateServicesReport;
+        private System.Windows.Forms.Button btn_NextStep;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxCol_Service;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Service_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Service_Type;
     }
 }

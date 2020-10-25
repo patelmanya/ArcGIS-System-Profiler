@@ -101,11 +101,11 @@
             this.btn_agsServer.BackColor = System.Drawing.Color.LightGray;
             this.btn_agsServer.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agsServer.ForeColor = System.Drawing.Color.Black;
-            this.btn_agsServer.Location = new System.Drawing.Point(1023, 14);
+            this.btn_agsServer.Location = new System.Drawing.Point(1009, 14);
             this.btn_agsServer.Name = "btn_agsServer";
-            this.btn_agsServer.Size = new System.Drawing.Size(94, 28);
+            this.btn_agsServer.Size = new System.Drawing.Size(108, 28);
             this.btn_agsServer.TabIndex = 9;
-            this.btn_agsServer.Text = "Next";
+            this.btn_agsServer.Text = "Next Step";
             this.btn_agsServer.UseVisualStyleBackColor = false;
             this.btn_agsServer.Click += new System.EventHandler(this.btn_agsServer_Click);
             // 

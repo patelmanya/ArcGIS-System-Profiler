@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -104,7 +105,7 @@ namespace ArcGIS_System_Profiler
                                             dictionary["name"] = itemFolder["name"];
                                             dictionary["type"] = itemFolder["type"];
                                             dictionary["checked"] = "false";
-                                            dictionary["id"] = itemFolder["name"] + "_" + itemFolder["type"];
+                                            dictionary["id"] = itemFolder["serviceName"] + "_" + itemFolder["type"];
                                             globalVariables.checkedAGSServicesArray.Add(dictionary);
                                             AGS_dataGridView.Rows.Add(row);
                                         }
@@ -136,7 +137,7 @@ namespace ArcGIS_System_Profiler
                                 dictionary["name"] = item["serviceName"];
                                 dictionary["type"] = item["type"];
                                 dictionary["checked"] = "false";
-                                dictionary["id"] = item["name"] + "_" + item["type"];
+                                dictionary["id"] = item["serviceName"] + "_" + item["type"];
                                 globalVariables.checkedAGSServicesArray.Add(dictionary);
                                 AGS_dataGridView.Rows.Add(row);
                             }
@@ -166,6 +167,103 @@ namespace ArcGIS_System_Profiler
             {
                 row.Cells["checkBoxCol_Service"].Value = false;
             }
+        }
+
+        private void btnGenerateServicesReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //get selected services - globalVariables.checkedAGSServicesArray
+                foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                {
+                    bool isSelected = Convert.ToBoolean(row.Cells["checkBoxCol_Service"].Value);
+                    if (isSelected)
+                    {
+                        foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+                        {
+                            if (obj["id"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
+                            {
+                                obj["checked"] = "true";
+                            }
+                        }
+
+                    }
+
+                }
+
+                //generate the report for each service selected
+                foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+                {
+                    if (obj["checked"].ToString() == "true")
+                    {
+                        string token = "";
+                        globalVariables gV = new globalVariables();
+                        token = gV.GetToken();
+                        //get the arcgis server url and make web request and get services
+                        String urlAddress = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/report?token=" + token;
+
+                        ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+                        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            Stream receiveStream = response.GetResponseStream();
+                            StreamReader readStream = null;
+
+                            if (String.IsNullOrWhiteSpace(response.CharacterSet))
+                                readStream = new StreamReader(receiveStream);
+                            else
+                                readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+
+                            string data = readStream.ReadToEnd();
+                            string TableExpression = "<table[^>]*>(.*?)</table>";
+                            MatchCollection Tables = Regex.Matches(data, TableExpression, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                            var fileCounterLoop = 0;
+                            foreach (var item in Tables)
+                            {
+                                if (fileCounterLoop <2)
+                                {
+                                    fileCounterLoop = fileCounterLoop + 1;
+                                    continue;
+                                }
+                                else if (fileCounterLoop == Tables.Count-1)
+                                {
+                                    continue;
+                                }
+                                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                                TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                txt.Write(item);
+                                txt.Close();
+                                fileCounterLoop = fileCounterLoop + 1;
+                            }
+
+                            response.Close();
+                            readStream.Close();
+                        }
+
+                        foreach (string objArr in globalVariables.generateReportList)
+                        {
+
+
+
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btn_NextStep_Click(object sender, EventArgs e)
+        {
+            globalVariables.globalForm.btn_Publish.PerformClick();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace ArcGIS_System_Profiler
         public LaunchForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
