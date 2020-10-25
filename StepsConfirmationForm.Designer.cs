@@ -98,7 +98,7 @@
             // btn_agsServer
             // 
             this.btn_agsServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_agsServer.BackColor = System.Drawing.Color.DimGray;
+            this.btn_agsServer.BackColor = System.Drawing.Color.LightGray;
             this.btn_agsServer.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agsServer.ForeColor = System.Drawing.Color.Black;
             this.btn_agsServer.Location = new System.Drawing.Point(1023, 14);

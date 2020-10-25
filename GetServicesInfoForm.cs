@@ -143,11 +143,28 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
+                AGS_dataGridView.AllowUserToAddRows = false;
             }
             catch (Exception)
             {
 
                 throw;
+            }
+        }
+
+        private void btn_SelectAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                row.Cells["checkBoxCol_Service"].Value = true;
+            }
+        }
+
+        private void btn_ClearAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            {
+                row.Cells["checkBoxCol_Service"].Value = false;
             }
         }
     }

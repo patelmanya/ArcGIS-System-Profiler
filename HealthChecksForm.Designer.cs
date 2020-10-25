@@ -32,11 +32,11 @@
             this.btnUpdateURL = new System.Windows.Forms.Button();
             this.txtBox_WebUrl = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_NextStep = new System.Windows.Forms.Button();
             this.btn_PerformSrvrHealthCheck = new System.Windows.Forms.Button();
             this.btn_PerformPortHealthCheck = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             // 
             // btnUpdateURL
             // 
-            this.btnUpdateURL.BackColor = System.Drawing.Color.DimGray;
+            this.btnUpdateURL.BackColor = System.Drawing.Color.LightGray;
             this.btnUpdateURL.Font = new System.Drawing.Font("Arial", 9.8F, System.Drawing.FontStyle.Bold);
             this.btnUpdateURL.ForeColor = System.Drawing.Color.Black;
             this.btnUpdateURL.Location = new System.Drawing.Point(884, 11);
@@ -89,9 +89,23 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Web URL";
             // 
+            // btn_NextStep
+            // 
+            this.btn_NextStep.BackColor = System.Drawing.Color.LightGray;
+            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
+            this.btn_NextStep.Location = new System.Drawing.Point(884, 46);
+            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_NextStep.Name = "btn_NextStep";
+            this.btn_NextStep.Size = new System.Drawing.Size(131, 30);
+            this.btn_NextStep.TabIndex = 31;
+            this.btn_NextStep.Text = "Next Step";
+            this.btn_NextStep.UseVisualStyleBackColor = false;
+            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
+            // 
             // btn_PerformSrvrHealthCheck
             // 
-            this.btn_PerformSrvrHealthCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btn_PerformSrvrHealthCheck.BackColor = System.Drawing.Color.LightGray;
             this.btn_PerformSrvrHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PerformSrvrHealthCheck.ForeColor = System.Drawing.Color.Black;
             this.btn_PerformSrvrHealthCheck.Location = new System.Drawing.Point(183, 46);
@@ -106,7 +120,7 @@
             // 
             // btn_PerformPortHealthCheck
             // 
-            this.btn_PerformPortHealthCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btn_PerformPortHealthCheck.BackColor = System.Drawing.Color.LightGray;
             this.btn_PerformPortHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PerformPortHealthCheck.ForeColor = System.Drawing.Color.Black;
             this.btn_PerformPortHealthCheck.Location = new System.Drawing.Point(183, 46);
@@ -136,20 +150,6 @@
             this.webBrowser1.Size = new System.Drawing.Size(1106, 660);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Visible = false;
-            // 
-            // btn_NextStep
-            // 
-            this.btn_NextStep.BackColor = System.Drawing.Color.DimGray;
-            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
-            this.btn_NextStep.Location = new System.Drawing.Point(884, 46);
-            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_NextStep.Name = "btn_NextStep";
-            this.btn_NextStep.Size = new System.Drawing.Size(131, 30);
-            this.btn_NextStep.TabIndex = 31;
-            this.btn_NextStep.Text = "Next Step";
-            this.btn_NextStep.UseVisualStyleBackColor = false;
-            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
             // 
             // HealthChecksForm
             // 

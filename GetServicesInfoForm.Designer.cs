@@ -45,6 +45,9 @@
             this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Port_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_ClearAll = new System.Windows.Forms.Button();
+            this.btn_SelectAll = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGS_dataGridView)).BeginInit();
@@ -52,6 +55,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_SelectAll);
+            this.panel1.Controls.Add(this.btn_ClearAll);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.includeFolderscheckBox);
             this.panel1.Controls.Add(this.btn_GetServices);
             this.panel1.Controls.Add(this.txtBx_ServicesURL);
@@ -60,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1138, 130);
+            this.panel1.Size = new System.Drawing.Size(1138, 212);
             this.panel1.TabIndex = 0;
             // 
             // includeFolderscheckBox
@@ -77,7 +83,7 @@
             // 
             // btn_GetServices
             // 
-            this.btn_GetServices.BackColor = System.Drawing.Color.DimGray;
+            this.btn_GetServices.BackColor = System.Drawing.Color.LightGray;
             this.btn_GetServices.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_GetServices.ForeColor = System.Drawing.Color.Black;
             this.btn_GetServices.Location = new System.Drawing.Point(950, 88);
@@ -127,9 +133,9 @@
             // 
             this.panel2.Controls.Add(this.AGS_dataGridView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 130);
+            this.panel2.Location = new System.Drawing.Point(0, 212);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1138, 546);
+            this.panel2.Size = new System.Drawing.Size(1138, 464);
             this.panel2.TabIndex = 1;
             // 
             // AGS_dataGridView
@@ -156,11 +162,10 @@
             this.AGS_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AGS_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.AGS_dataGridView.Name = "AGS_dataGridView";
-            this.AGS_dataGridView.ReadOnly = true;
             this.AGS_dataGridView.RowHeadersVisible = false;
             this.AGS_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.AGS_dataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.AGS_dataGridView.Size = new System.Drawing.Size(1138, 546);
+            this.AGS_dataGridView.Size = new System.Drawing.Size(1138, 464);
             this.AGS_dataGridView.TabIndex = 32;
             // 
             // checkBoxCol_Service
@@ -171,7 +176,6 @@
             this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle2;
             this.checkBoxCol_Service.HeaderText = "";
             this.checkBoxCol_Service.Name = "checkBoxCol_Service";
-            this.checkBoxCol_Service.ReadOnly = true;
             this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.checkBoxCol_Service.Width = 150;
             // 
@@ -182,7 +186,6 @@
             this.Service_Name.DefaultCellStyle = dataGridViewCellStyle3;
             this.Service_Name.HeaderText = "Service Name";
             this.Service_Name.Name = "Service_Name";
-            this.Service_Name.ReadOnly = true;
             this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Service_Name.ToolTipText = "Service Name";
             // 
@@ -192,7 +195,6 @@
             this.Service_Type.DefaultCellStyle = dataGridViewCellStyle4;
             this.Service_Type.HeaderText = "Type";
             this.Service_Type.Name = "Service_Type";
-            this.Service_Type.ReadOnly = true;
             this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Service_Type.ToolTipText = "Service Type";
             this.Service_Type.Width = 200;
@@ -203,9 +205,48 @@
             this.Port_Type.DefaultCellStyle = dataGridViewCellStyle5;
             this.Port_Type.HeaderText = "Port Type";
             this.Port_Type.Name = "Port_Type";
-            this.Port_Type.ReadOnly = true;
             this.Port_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Port_Type.Width = 200;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(15, 117);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
+            this.label2.Size = new System.Drawing.Size(660, 42);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Select the Map Services from the list below to generate the report for:";
+            // 
+            // btn_ClearAll
+            // 
+            this.btn_ClearAll.BackColor = System.Drawing.Color.LightGray;
+            this.btn_ClearAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClearAll.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClearAll.Location = new System.Drawing.Point(134, 173);
+            this.btn_ClearAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_ClearAll.Name = "btn_ClearAll";
+            this.btn_ClearAll.Size = new System.Drawing.Size(107, 33);
+            this.btn_ClearAll.TabIndex = 26;
+            this.btn_ClearAll.Text = "Clear All";
+            this.btn_ClearAll.UseVisualStyleBackColor = false;
+            this.btn_ClearAll.Click += new System.EventHandler(this.btn_ClearAll_Click);
+            // 
+            // btn_SelectAll
+            // 
+            this.btn_SelectAll.BackColor = System.Drawing.Color.LightGray;
+            this.btn_SelectAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SelectAll.ForeColor = System.Drawing.Color.Black;
+            this.btn_SelectAll.Location = new System.Drawing.Point(15, 173);
+            this.btn_SelectAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_SelectAll.Name = "btn_SelectAll";
+            this.btn_SelectAll.Size = new System.Drawing.Size(107, 33);
+            this.btn_SelectAll.TabIndex = 26;
+            this.btn_SelectAll.Text = "Select All";
+            this.btn_SelectAll.UseVisualStyleBackColor = false;
+            this.btn_SelectAll.Click += new System.EventHandler(this.btn_SelectAll_Click);
             // 
             // GetServicesInfoForm
             // 
@@ -240,5 +281,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_GetServices;
         private System.Windows.Forms.CheckBox includeFolderscheckBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_SelectAll;
+        private System.Windows.Forms.Button btn_ClearAll;
     }
 }

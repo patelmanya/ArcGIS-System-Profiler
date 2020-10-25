@@ -164,7 +164,7 @@
             // 
             // btn_EditInstanceName
             // 
-            this.btn_EditInstanceName.BackColor = System.Drawing.Color.DimGray;
+            this.btn_EditInstanceName.BackColor = System.Drawing.Color.LightGray;
             this.btn_EditInstanceName.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_EditInstanceName.ForeColor = System.Drawing.Color.Black;
             this.btn_EditInstanceName.Location = new System.Drawing.Point(955, 284);
@@ -339,7 +339,7 @@
             // 
             // btn_agsEnt
             // 
-            this.btn_agsEnt.BackColor = System.Drawing.Color.DimGray;
+            this.btn_agsEnt.BackColor = System.Drawing.Color.LightGray;
             this.btn_agsEnt.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agsEnt.ForeColor = System.Drawing.Color.Black;
             this.btn_agsEnt.Location = new System.Drawing.Point(340, 170);
@@ -460,7 +460,7 @@
             // 
             // btn_agsServer
             // 
-            this.btn_agsServer.BackColor = System.Drawing.Color.DimGray;
+            this.btn_agsServer.BackColor = System.Drawing.Color.LightGray;
             this.btn_agsServer.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agsServer.ForeColor = System.Drawing.Color.Black;
             this.btn_agsServer.Location = new System.Drawing.Point(357, 170);

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btn_PerformPortCheck = new System.Windows.Forms.Button();
@@ -42,12 +42,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButtonPortNoFilter = new System.Windows.Forms.RadioButton();
             this.txtBx_Filter = new System.Windows.Forms.TextBox();
             this.radioButtonAll = new System.Windows.Forms.RadioButton();
             this.radioButtonOpen = new System.Windows.Forms.RadioButton();
             this.radioButtonClosed = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewPorts = new System.Windows.Forms.DataGridView();
             this.Port_Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +55,7 @@
             this.Port_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Port_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnShowAGSOnly = new System.Windows.Forms.Button();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,6 +72,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1106, 23);
             this.progressBar1.TabIndex = 3;
+            this.progressBar1.Visible = false;
             // 
             // timer1
             // 
@@ -79,7 +81,7 @@
             // btn_PerformPortCheck
             // 
             this.btn_PerformPortCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PerformPortCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btn_PerformPortCheck.BackColor = System.Drawing.Color.LightGray;
             this.btn_PerformPortCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PerformPortCheck.ForeColor = System.Drawing.Color.Black;
             this.btn_PerformPortCheck.Location = new System.Drawing.Point(778, 6);
@@ -133,7 +135,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(477, 13);
@@ -154,6 +156,19 @@
             this.label1.Size = new System.Drawing.Size(97, 22);
             this.label1.TabIndex = 35;
             this.label1.Text = "Filter by: ";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.radioButton1.ForeColor = System.Drawing.Color.White;
+            this.radioButton1.Location = new System.Drawing.Point(131, 11);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(135, 26);
+            this.radioButton1.TabIndex = 34;
+            this.radioButton1.Text = "Description";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButtonPortNoFilter
             // 
@@ -222,19 +237,6 @@
             this.radioButtonClosed.UseVisualStyleBackColor = true;
             this.radioButtonClosed.CheckedChanged += new System.EventHandler(this.radioButtonClosed_CheckedChanged);
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(131, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(135, 26);
-            this.radioButton1.TabIndex = 34;
-            this.radioButton1.Text = "Description";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.dataGridViewPorts);
@@ -250,14 +252,14 @@
             this.dataGridViewPorts.AllowUserToResizeRows = false;
             this.dataGridViewPorts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.dataGridViewPorts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPorts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPorts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPorts.ColumnHeadersHeight = 33;
             this.dataGridViewPorts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPorts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -277,8 +279,8 @@
             // 
             // Port_Number
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Port_Number.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Port_Number.DefaultCellStyle = dataGridViewCellStyle2;
             this.Port_Number.HeaderText = "Port Number";
             this.Port_Number.Name = "Port_Number";
             this.Port_Number.ReadOnly = true;
@@ -290,8 +292,8 @@
             // Port_Description
             // 
             this.Port_Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Port_Description.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Port_Description.DefaultCellStyle = dataGridViewCellStyle3;
             this.Port_Description.HeaderText = "Port Description";
             this.Port_Description.Name = "Port_Description";
             this.Port_Description.ReadOnly = true;
@@ -300,8 +302,8 @@
             // 
             // Port_Status
             // 
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Port_Status.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Port_Status.DefaultCellStyle = dataGridViewCellStyle4;
             this.Port_Status.HeaderText = "Port Status";
             this.Port_Status.Name = "Port_Status";
             this.Port_Status.ReadOnly = true;
@@ -311,8 +313,8 @@
             // 
             // Port_Type
             // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Port_Type.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Port_Type.DefaultCellStyle = dataGridViewCellStyle5;
             this.Port_Type.HeaderText = "Port Type";
             this.Port_Type.Name = "Port_Type";
             this.Port_Type.ReadOnly = true;
@@ -321,6 +323,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnShowAGSOnly);
             this.panel4.Controls.Add(this.btn_NextStep);
             this.panel4.Controls.Add(this.btn_PerformPortCheck);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -330,10 +333,26 @@
             this.panel4.Size = new System.Drawing.Size(1106, 42);
             this.panel4.TabIndex = 34;
             // 
+            // btnShowAGSOnly
+            // 
+            this.btnShowAGSOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowAGSOnly.BackColor = System.Drawing.Color.LightGray;
+            this.btnShowAGSOnly.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAGSOnly.ForeColor = System.Drawing.Color.Black;
+            this.btnShowAGSOnly.Location = new System.Drawing.Point(485, 6);
+            this.btnShowAGSOnly.Margin = new System.Windows.Forms.Padding(6);
+            this.btnShowAGSOnly.Name = "btnShowAGSOnly";
+            this.btnShowAGSOnly.Size = new System.Drawing.Size(267, 30);
+            this.btnShowAGSOnly.TabIndex = 31;
+            this.btnShowAGSOnly.Text = "Show Ports used by ArcGIS only";
+            this.btnShowAGSOnly.UseVisualStyleBackColor = false;
+            this.btnShowAGSOnly.Visible = false;
+            this.btnShowAGSOnly.Click += new System.EventHandler(this.btnShowAGSOnly_Click);
+            // 
             // btn_NextStep
             // 
             this.btn_NextStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_NextStep.BackColor = System.Drawing.Color.DimGray;
+            this.btn_NextStep.BackColor = System.Drawing.Color.LightGray;
             this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
             this.btn_NextStep.Location = new System.Drawing.Point(963, 6);
@@ -395,5 +414,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Port_Type;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btn_NextStep;
+        private System.Windows.Forms.Button btnShowAGSOnly;
     }
 }
