@@ -24,53 +24,43 @@ namespace ArcGIS_System_Profiler
             {
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services?f=json";
                 txtBx_ServicesURL.Text = agsServerURL;
-            }
-        }
-        private void btn_GetServices3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string token = "";
-                globalVariables gV = new globalVariables();
-                token = gV.GetToken();
-                var request = (HttpWebRequest)WebRequest.Create("https://lea-305263.services.esriaustralia.com.au/server/admin/services?f=json&token=" + token);
 
-                var postData = "username=" + globalVariables.agsEntUserName; //required
-                postData += "&password=" + globalVariables.agsEntUserPassword; //required
-              
-                var data = Encoding.ASCII.GetBytes(postData);
-
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = data.Length;
-
-                using (var stream = request.GetRequestStream())
+                //remove the existing rows in the datagridview
+                do
                 {
-                    stream.Write(data, 0, data.Length);
-                }
-
-                var response = (HttpWebResponse)request.GetResponse();
-
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-                JObject rss = JObject.Parse(responseString);
-                var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseString);
-            }
-            catch (Exception)
-            {
-
-                throw;
+                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                    {
+                        try
+                        {
+                            AGS_dataGridView.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (AGS_dataGridView.Rows.Count > 1);
             }
         }
+
         private void btn_GetServices_Click(object sender, EventArgs e)
         {
             try
             {
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                    {
+                        try
+                        {
+                            AGS_dataGridView.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (AGS_dataGridView.Rows.Count > 1);
+
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(txtBx_ServicesURL.Text + "&token=" + token);
-                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://lea-305263.services.esriaustralia.com.au/server/admin/services?fjson");
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 var encoding = ASCIIEncoding.ASCII;
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });

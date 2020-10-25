@@ -34,17 +34,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
+            this.btn_GetServices = new System.Windows.Forms.Button();
+            this.txtBx_ServicesURL = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.AGS_dataGridView = new System.Windows.Forms.DataGridView();
             this.checkBoxCol_Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Port_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtBx_ServicesURL = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btn_GetServices = new System.Windows.Forms.Button();
-            this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGS_dataGridView)).BeginInit();
@@ -63,14 +63,52 @@
             this.panel1.Size = new System.Drawing.Size(1138, 130);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // includeFolderscheckBox
             // 
-            this.panel2.Controls.Add(this.AGS_dataGridView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 130);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1138, 546);
-            this.panel2.TabIndex = 1;
+            this.includeFolderscheckBox.AutoSize = true;
+            this.includeFolderscheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.includeFolderscheckBox.ForeColor = System.Drawing.Color.White;
+            this.includeFolderscheckBox.Location = new System.Drawing.Point(247, 88);
+            this.includeFolderscheckBox.Name = "includeFolderscheckBox";
+            this.includeFolderscheckBox.Size = new System.Drawing.Size(167, 26);
+            this.includeFolderscheckBox.TabIndex = 24;
+            this.includeFolderscheckBox.Text = "Include folders";
+            this.includeFolderscheckBox.UseVisualStyleBackColor = true;
+            // 
+            // btn_GetServices
+            // 
+            this.btn_GetServices.BackColor = System.Drawing.Color.DimGray;
+            this.btn_GetServices.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GetServices.ForeColor = System.Drawing.Color.Black;
+            this.btn_GetServices.Location = new System.Drawing.Point(950, 88);
+            this.btn_GetServices.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_GetServices.Name = "btn_GetServices";
+            this.btn_GetServices.Size = new System.Drawing.Size(173, 33);
+            this.btn_GetServices.TabIndex = 23;
+            this.btn_GetServices.Text = "Get";
+            this.btn_GetServices.UseVisualStyleBackColor = false;
+            this.btn_GetServices.Click += new System.EventHandler(this.btn_GetServices_Click);
+            // 
+            // txtBx_ServicesURL
+            // 
+            this.txtBx_ServicesURL.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtBx_ServicesURL.Location = new System.Drawing.Point(247, 54);
+            this.txtBx_ServicesURL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_ServicesURL.Name = "txtBx_ServicesURL";
+            this.txtBx_ServicesURL.Size = new System.Drawing.Size(878, 26);
+            this.txtBx_ServicesURL.TabIndex = 22;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(15, 58);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(222, 22);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "ArcGIS Rest Endpoint: ";
             // 
             // label1
             // 
@@ -84,6 +122,15 @@
             this.label1.Size = new System.Drawing.Size(354, 42);
             this.label1.TabIndex = 9;
             this.label1.Text = "Get the services from ArcGIS Server";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.AGS_dataGridView);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 130);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1138, 546);
+            this.panel2.TabIndex = 1;
             // 
             // AGS_dataGridView
             // 
@@ -159,53 +206,6 @@
             this.Port_Type.ReadOnly = true;
             this.Port_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Port_Type.Width = 200;
-            // 
-            // txtBx_ServicesURL
-            // 
-            this.txtBx_ServicesURL.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtBx_ServicesURL.Location = new System.Drawing.Point(247, 54);
-            this.txtBx_ServicesURL.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_ServicesURL.Name = "txtBx_ServicesURL";
-            this.txtBx_ServicesURL.Size = new System.Drawing.Size(878, 26);
-            this.txtBx_ServicesURL.TabIndex = 22;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(15, 58);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(222, 22);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "ArcGIS Rest Endpoint: ";
-            // 
-            // btn_GetServices
-            // 
-            this.btn_GetServices.BackColor = System.Drawing.Color.DimGray;
-            this.btn_GetServices.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_GetServices.ForeColor = System.Drawing.Color.Black;
-            this.btn_GetServices.Location = new System.Drawing.Point(950, 88);
-            this.btn_GetServices.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_GetServices.Name = "btn_GetServices";
-            this.btn_GetServices.Size = new System.Drawing.Size(173, 33);
-            this.btn_GetServices.TabIndex = 23;
-            this.btn_GetServices.Text = "Get";
-            this.btn_GetServices.UseVisualStyleBackColor = false;
-            this.btn_GetServices.Click += new System.EventHandler(this.btn_GetServices_Click);
-            // 
-            // includeFolderscheckBox
-            // 
-            this.includeFolderscheckBox.AutoSize = true;
-            this.includeFolderscheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.includeFolderscheckBox.ForeColor = System.Drawing.Color.White;
-            this.includeFolderscheckBox.Location = new System.Drawing.Point(247, 88);
-            this.includeFolderscheckBox.Name = "includeFolderscheckBox";
-            this.includeFolderscheckBox.Size = new System.Drawing.Size(167, 26);
-            this.includeFolderscheckBox.TabIndex = 24;
-            this.includeFolderscheckBox.Text = "Include folders";
-            this.includeFolderscheckBox.UseVisualStyleBackColor = true;
             // 
             // GetServicesInfoForm
             // 

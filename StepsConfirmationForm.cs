@@ -41,20 +41,11 @@ namespace ArcGIS_System_Profiler
             checkedListBox1.Items.Add("License Management (Manual step) - ArcGIS Desktop (Borrow/Return license)", CheckState.Checked);
         }
 
+
         private void btn_agsServer_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
-            //ScreenCaptureForm sc = new ScreenCaptureForm();
-            //sc.ShowDialog();
-            FederatedEnv fEnv = new FederatedEnv();
-            fEnv.ShowDialog();
-        }
-
-        private void btn_agsServer_Click_1(object sender, EventArgs e)
-        {
             globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
-            globalVariables.globalForm.btn_Services.PerformClick();
+            globalVariables.globalForm.btn_HealthChecks.PerformClick();
         }
     }
 }

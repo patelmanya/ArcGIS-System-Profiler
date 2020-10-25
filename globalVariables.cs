@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,8 @@ namespace ArcGIS_System_Profiler
         public static string portalInstanceName = "";
         public static string agsServerInstanceName = "";
         public static List<string> ImageList = new List<string>();
+        public static string agsPortalHealthCheckStatus = "";
+        public static string agsServerHealthCheckStatus = "";
         public static List<string> checkedAGSServices = new List<string>();
         public static List<Object> checkedAGSServicesArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();

@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_PerformPortHealthCheck = new System.Windows.Forms.Button();
-            this.btn_PerformSrvrHealthCheck = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btnUpdateURL = new System.Windows.Forms.Button();
             this.txtBox_WebUrl = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_PerformSrvrHealthCheck = new System.Windows.Forms.Button();
+            this.btn_PerformPortHealthCheck = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             this.panel1.Controls.Add(this.btnUpdateURL);
             this.panel1.Controls.Add(this.txtBox_WebUrl);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btn_NextStep);
             this.panel1.Controls.Add(this.btn_PerformSrvrHealthCheck);
             this.panel1.Controls.Add(this.btn_PerformPortHealthCheck);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -52,54 +54,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1106, 88);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.webBrowser1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 88);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1106, 660);
-            this.panel2.TabIndex = 1;
-            // 
-            // btn_PerformPortHealthCheck
-            // 
-            this.btn_PerformPortHealthCheck.BackColor = System.Drawing.Color.DimGray;
-            this.btn_PerformPortHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PerformPortHealthCheck.ForeColor = System.Drawing.Color.Black;
-            this.btn_PerformPortHealthCheck.Location = new System.Drawing.Point(183, 46);
-            this.btn_PerformPortHealthCheck.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_PerformPortHealthCheck.Name = "btn_PerformPortHealthCheck";
-            this.btn_PerformPortHealthCheck.Size = new System.Drawing.Size(300, 30);
-            this.btn_PerformPortHealthCheck.TabIndex = 31;
-            this.btn_PerformPortHealthCheck.Text = "Perform Portal for ArcGIS Health Check";
-            this.btn_PerformPortHealthCheck.UseVisualStyleBackColor = false;
-            this.btn_PerformPortHealthCheck.Click += new System.EventHandler(this.btn_PerformPortHealthCheck_Click);
-            // 
-            // btn_PerformSrvrHealthCheck
-            // 
-            this.btn_PerformSrvrHealthCheck.BackColor = System.Drawing.Color.DimGray;
-            this.btn_PerformSrvrHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PerformSrvrHealthCheck.ForeColor = System.Drawing.Color.Black;
-            this.btn_PerformSrvrHealthCheck.Location = new System.Drawing.Point(512, 46);
-            this.btn_PerformSrvrHealthCheck.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_PerformSrvrHealthCheck.Name = "btn_PerformSrvrHealthCheck";
-            this.btn_PerformSrvrHealthCheck.Size = new System.Drawing.Size(300, 30);
-            this.btn_PerformSrvrHealthCheck.TabIndex = 31;
-            this.btn_PerformSrvrHealthCheck.Text = "Perform ArcGIS Server Health Check";
-            this.btn_PerformSrvrHealthCheck.UseVisualStyleBackColor = false;
-            this.btn_PerformSrvrHealthCheck.Click += new System.EventHandler(this.btn_PerformSrvrHealthCheck_Click);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1106, 660);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
-            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
             // btnUpdateURL
             // 
@@ -135,6 +89,68 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Web URL";
             // 
+            // btn_PerformSrvrHealthCheck
+            // 
+            this.btn_PerformSrvrHealthCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btn_PerformSrvrHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PerformSrvrHealthCheck.ForeColor = System.Drawing.Color.Black;
+            this.btn_PerformSrvrHealthCheck.Location = new System.Drawing.Point(183, 46);
+            this.btn_PerformSrvrHealthCheck.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_PerformSrvrHealthCheck.Name = "btn_PerformSrvrHealthCheck";
+            this.btn_PerformSrvrHealthCheck.Size = new System.Drawing.Size(300, 30);
+            this.btn_PerformSrvrHealthCheck.TabIndex = 31;
+            this.btn_PerformSrvrHealthCheck.Text = "Perform ArcGIS Server Health Check";
+            this.btn_PerformSrvrHealthCheck.UseVisualStyleBackColor = false;
+            this.btn_PerformSrvrHealthCheck.Visible = false;
+            this.btn_PerformSrvrHealthCheck.Click += new System.EventHandler(this.btn_PerformSrvrHealthCheck_Click);
+            // 
+            // btn_PerformPortHealthCheck
+            // 
+            this.btn_PerformPortHealthCheck.BackColor = System.Drawing.Color.DimGray;
+            this.btn_PerformPortHealthCheck.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PerformPortHealthCheck.ForeColor = System.Drawing.Color.Black;
+            this.btn_PerformPortHealthCheck.Location = new System.Drawing.Point(183, 46);
+            this.btn_PerformPortHealthCheck.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_PerformPortHealthCheck.Name = "btn_PerformPortHealthCheck";
+            this.btn_PerformPortHealthCheck.Size = new System.Drawing.Size(300, 30);
+            this.btn_PerformPortHealthCheck.TabIndex = 31;
+            this.btn_PerformPortHealthCheck.Text = "Perform Portal for ArcGIS Health Check";
+            this.btn_PerformPortHealthCheck.UseVisualStyleBackColor = false;
+            this.btn_PerformPortHealthCheck.Click += new System.EventHandler(this.btn_PerformPortHealthCheck_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.webBrowser1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 88);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1106, 660);
+            this.panel2.TabIndex = 1;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1106, 660);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Visible = false;
+            // 
+            // btn_NextStep
+            // 
+            this.btn_NextStep.BackColor = System.Drawing.Color.DimGray;
+            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
+            this.btn_NextStep.Location = new System.Drawing.Point(884, 46);
+            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_NextStep.Name = "btn_NextStep";
+            this.btn_NextStep.Size = new System.Drawing.Size(131, 30);
+            this.btn_NextStep.TabIndex = 31;
+            this.btn_NextStep.Text = "Next Step";
+            this.btn_NextStep.UseVisualStyleBackColor = false;
+            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
+            // 
             // HealthChecksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,5 +182,6 @@
         private System.Windows.Forms.Button btnUpdateURL;
         private System.Windows.Forms.TextBox txtBox_WebUrl;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_NextStep;
     }
 }
