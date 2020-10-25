@@ -141,7 +141,7 @@ namespace ArcGIS_System_Profiler
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btn_HealthChecks.PerformClick();
+            globalVariables.globalForm.btn_PortChecks.PerformClick();
         }
     }
 }

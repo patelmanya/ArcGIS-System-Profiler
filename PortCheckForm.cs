@@ -496,5 +496,10 @@ namespace ArcGIS_System_Profiler
         {
             textFilterFlag = "portNo";
         }
+
+        private void btn_NextStep_Click(object sender, EventArgs e)
+        {
+            globalVariables.globalForm.btn_Services.PerformClick();
+        }
     }
 }

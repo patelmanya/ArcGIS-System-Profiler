@@ -30,6 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBx_DataStoreHostName = new System.Windows.Forms.TextBox();
+            this.txtBx_ServerHostName = new System.Windows.Forms.TextBox();
+            this.txtBx_ServerInstance = new System.Windows.Forms.TextBox();
+            this.txtBx_PortalInstance = new System.Windows.Forms.TextBox();
+            this.txtBx_PortalHostName = new System.Windows.Forms.TextBox();
+            this.btn_EditInstanceName = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel_Enterprise = new System.Windows.Forms.Panel();
             this.txtPortalPassword = new System.Windows.Forms.TextBox();
             this.txtPortalUserName = new System.Windows.Forms.TextBox();
@@ -37,39 +50,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btn_agsEnt = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lbl_LoginStatus = new System.Windows.Forms.Label();
+            this.panel_Server = new System.Windows.Forms.Panel();
             this.txtAGSServerPassword = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAGSServerUserName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_agsServer = new System.Windows.Forms.Button();
-            this.panel_Server = new System.Windows.Forms.Panel();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.chkBx_DataStore = new System.Windows.Forms.CheckBox();
+            this.chkBx_Server = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtBx_ServerHostName = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtBx_DataStoreHostName = new System.Windows.Forms.TextBox();
-            this.chkBx_Server = new System.Windows.Forms.CheckBox();
-            this.chkBx_DataStore = new System.Windows.Forms.CheckBox();
-            this.txtBx_PortalHostName = new System.Windows.Forms.TextBox();
-            this.txtBx_PortalInstance = new System.Windows.Forms.TextBox();
-            this.txtBx_ServerInstance = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btn_EditInstanceName = new System.Windows.Forms.Button();
-            this.lbl_LoginStatus = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
@@ -111,6 +111,157 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 676);
             this.panel1.TabIndex = 0;
+            // 
+            // txtBx_DataStoreHostName
+            // 
+            this.txtBx_DataStoreHostName.Location = new System.Drawing.Point(308, 292);
+            this.txtBx_DataStoreHostName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_DataStoreHostName.Name = "txtBx_DataStoreHostName";
+            this.txtBx_DataStoreHostName.Size = new System.Drawing.Size(356, 26);
+            this.txtBx_DataStoreHostName.TabIndex = 20;
+            // 
+            // txtBx_ServerHostName
+            // 
+            this.txtBx_ServerHostName.Location = new System.Drawing.Point(308, 247);
+            this.txtBx_ServerHostName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_ServerHostName.Name = "txtBx_ServerHostName";
+            this.txtBx_ServerHostName.Size = new System.Drawing.Size(356, 26);
+            this.txtBx_ServerHostName.TabIndex = 20;
+            this.txtBx_ServerHostName.Text = "lea-305263.services.esriaustralia.com.au";
+            this.txtBx_ServerHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerHostName_Validating);
+            // 
+            // txtBx_ServerInstance
+            // 
+            this.txtBx_ServerInstance.Enabled = false;
+            this.txtBx_ServerInstance.Location = new System.Drawing.Point(874, 248);
+            this.txtBx_ServerInstance.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_ServerInstance.Name = "txtBx_ServerInstance";
+            this.txtBx_ServerInstance.Size = new System.Drawing.Size(194, 26);
+            this.txtBx_ServerInstance.TabIndex = 20;
+            this.txtBx_ServerInstance.Text = "server";
+            this.txtBx_ServerInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerInstance_Validating);
+            // 
+            // txtBx_PortalInstance
+            // 
+            this.txtBx_PortalInstance.Enabled = false;
+            this.txtBx_PortalInstance.Location = new System.Drawing.Point(874, 196);
+            this.txtBx_PortalInstance.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_PortalInstance.Name = "txtBx_PortalInstance";
+            this.txtBx_PortalInstance.Size = new System.Drawing.Size(194, 26);
+            this.txtBx_PortalInstance.TabIndex = 20;
+            this.txtBx_PortalInstance.Text = "portal";
+            this.txtBx_PortalInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalInstance_Validating);
+            // 
+            // txtBx_PortalHostName
+            // 
+            this.txtBx_PortalHostName.Location = new System.Drawing.Point(308, 196);
+            this.txtBx_PortalHostName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBx_PortalHostName.Name = "txtBx_PortalHostName";
+            this.txtBx_PortalHostName.Size = new System.Drawing.Size(356, 26);
+            this.txtBx_PortalHostName.TabIndex = 20;
+            this.txtBx_PortalHostName.Text = "lea-305263.services.esriaustralia.com.au";
+            this.txtBx_PortalHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalHostName_Validating);
+            // 
+            // btn_EditInstanceName
+            // 
+            this.btn_EditInstanceName.BackColor = System.Drawing.Color.DimGray;
+            this.btn_EditInstanceName.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_EditInstanceName.ForeColor = System.Drawing.Color.Black;
+            this.btn_EditInstanceName.Location = new System.Drawing.Point(955, 284);
+            this.btn_EditInstanceName.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_EditInstanceName.Name = "btn_EditInstanceName";
+            this.btn_EditInstanceName.Size = new System.Drawing.Size(113, 34);
+            this.btn_EditInstanceName.TabIndex = 6;
+            this.btn_EditInstanceName.Text = "Edit";
+            this.btn_EditInstanceName.UseVisualStyleBackColor = false;
+            this.btn_EditInstanceName.Click += new System.EventHandler(this.btn_EditInstanceName_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label19.Location = new System.Drawing.Point(1009, 146);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(17, 22);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "*";
+            this.label19.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label18.Location = new System.Drawing.Point(271, 247);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(17, 22);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "*";
+            this.label18.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label17.Location = new System.Drawing.Point(289, 200);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 22);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "*";
+            this.label17.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(29, 292);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(277, 22);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "ArcGIS DataStore Hostname:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(29, 247);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(247, 22);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "ArcGIS Server Hostname:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(870, 148);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(145, 22);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Instance name";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(29, 196);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(269, 22);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Portal for ArcGIS hostname:";
             // 
             // panel_Enterprise
             // 
@@ -200,6 +351,60 @@
             this.btn_agsEnt.UseVisualStyleBackColor = false;
             this.btn_agsEnt.Click += new System.EventHandler(this.btn_agsEnt_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label16.Location = new System.Drawing.Point(115, 115);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(17, 22);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "*";
+            this.label16.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label15.Location = new System.Drawing.Point(115, 63);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(17, 22);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "*";
+            this.label15.Visible = false;
+            // 
+            // lbl_LoginStatus
+            // 
+            this.lbl_LoginStatus.AutoSize = true;
+            this.lbl_LoginStatus.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_LoginStatus.ForeColor = System.Drawing.Color.Aqua;
+            this.lbl_LoginStatus.Location = new System.Drawing.Point(21, 239);
+            this.lbl_LoginStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbl_LoginStatus.Name = "lbl_LoginStatus";
+            this.lbl_LoginStatus.Size = new System.Drawing.Size(98, 22);
+            this.lbl_LoginStatus.TabIndex = 19;
+            this.lbl_LoginStatus.Text = "aassassa";
+            this.lbl_LoginStatus.Visible = false;
+            // 
+            // panel_Server
+            // 
+            this.panel_Server.Controls.Add(this.txtAGSServerPassword);
+            this.panel_Server.Controls.Add(this.label7);
+            this.panel_Server.Controls.Add(this.label5);
+            this.panel_Server.Controls.Add(this.txtAGSServerUserName);
+            this.panel_Server.Controls.Add(this.label6);
+            this.panel_Server.Controls.Add(this.btn_agsServer);
+            this.panel_Server.Location = new System.Drawing.Point(567, 385);
+            this.panel_Server.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_Server.Name = "panel_Server";
+            this.panel_Server.Size = new System.Drawing.Size(542, 276);
+            this.panel_Server.TabIndex = 17;
+            this.panel_Server.Visible = false;
+            // 
             // txtAGSServerPassword
             // 
             this.txtAGSServerPassword.Location = new System.Drawing.Point(173, 115);
@@ -266,21 +471,6 @@
             this.btn_agsServer.Text = "Start";
             this.btn_agsServer.UseVisualStyleBackColor = false;
             // 
-            // panel_Server
-            // 
-            this.panel_Server.Controls.Add(this.txtAGSServerPassword);
-            this.panel_Server.Controls.Add(this.label7);
-            this.panel_Server.Controls.Add(this.label5);
-            this.panel_Server.Controls.Add(this.txtAGSServerUserName);
-            this.panel_Server.Controls.Add(this.label6);
-            this.panel_Server.Controls.Add(this.btn_agsServer);
-            this.panel_Server.Location = new System.Drawing.Point(567, 385);
-            this.panel_Server.Margin = new System.Windows.Forms.Padding(4);
-            this.panel_Server.Name = "panel_Server";
-            this.panel_Server.Size = new System.Drawing.Size(542, 276);
-            this.panel_Server.TabIndex = 17;
-            this.panel_Server.Visible = false;
-            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -323,6 +513,34 @@
             this.checkBox2.TabIndex = 13;
             this.checkBox2.Text = "Portal for ArcGIS";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // chkBx_DataStore
+            // 
+            this.chkBx_DataStore.AutoSize = true;
+            this.chkBx_DataStore.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.chkBx_DataStore.ForeColor = System.Drawing.Color.White;
+            this.chkBx_DataStore.Location = new System.Drawing.Point(681, 292);
+            this.chkBx_DataStore.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBx_DataStore.Name = "chkBx_DataStore";
+            this.chkBx_DataStore.Size = new System.Drawing.Size(170, 26);
+            this.chkBx_DataStore.TabIndex = 14;
+            this.chkBx_DataStore.Text = "Same as above";
+            this.chkBx_DataStore.UseVisualStyleBackColor = true;
+            this.chkBx_DataStore.CheckedChanged += new System.EventHandler(this.chkBx_DataStore_CheckedChanged);
+            // 
+            // chkBx_Server
+            // 
+            this.chkBx_Server.AutoSize = true;
+            this.chkBx_Server.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.chkBx_Server.ForeColor = System.Drawing.Color.White;
+            this.chkBx_Server.Location = new System.Drawing.Point(681, 247);
+            this.chkBx_Server.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBx_Server.Name = "chkBx_Server";
+            this.chkBx_Server.Size = new System.Drawing.Size(170, 26);
+            this.chkBx_Server.TabIndex = 14;
+            this.chkBx_Server.Text = "Same as above";
+            this.chkBx_Server.UseVisualStyleBackColor = true;
+            this.chkBx_Server.CheckedChanged += new System.EventHandler(this.chkBx_Server_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -388,223 +606,6 @@
             this.label1.Text = "This application is developed for performing ArcGIS System profiling to generate " +
     "report for ArcGIS Enterprise";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(29, 196);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(269, 22);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Portal for ArcGIS hostname:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(29, 247);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(247, 22);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "ArcGIS Server Hostname:";
-            // 
-            // txtBx_ServerHostName
-            // 
-            this.txtBx_ServerHostName.Location = new System.Drawing.Point(308, 247);
-            this.txtBx_ServerHostName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_ServerHostName.Name = "txtBx_ServerHostName";
-            this.txtBx_ServerHostName.Size = new System.Drawing.Size(356, 26);
-            this.txtBx_ServerHostName.TabIndex = 20;
-            this.txtBx_ServerHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerHostName_Validating);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(29, 292);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(277, 22);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "ArcGIS DataStore Hostname:";
-            // 
-            // txtBx_DataStoreHostName
-            // 
-            this.txtBx_DataStoreHostName.Location = new System.Drawing.Point(308, 292);
-            this.txtBx_DataStoreHostName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_DataStoreHostName.Name = "txtBx_DataStoreHostName";
-            this.txtBx_DataStoreHostName.Size = new System.Drawing.Size(356, 26);
-            this.txtBx_DataStoreHostName.TabIndex = 20;
-            // 
-            // chkBx_Server
-            // 
-            this.chkBx_Server.AutoSize = true;
-            this.chkBx_Server.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.chkBx_Server.ForeColor = System.Drawing.Color.White;
-            this.chkBx_Server.Location = new System.Drawing.Point(681, 247);
-            this.chkBx_Server.Margin = new System.Windows.Forms.Padding(4);
-            this.chkBx_Server.Name = "chkBx_Server";
-            this.chkBx_Server.Size = new System.Drawing.Size(170, 26);
-            this.chkBx_Server.TabIndex = 14;
-            this.chkBx_Server.Text = "Same as above";
-            this.chkBx_Server.UseVisualStyleBackColor = true;
-            this.chkBx_Server.CheckedChanged += new System.EventHandler(this.chkBx_Server_CheckedChanged);
-            // 
-            // chkBx_DataStore
-            // 
-            this.chkBx_DataStore.AutoSize = true;
-            this.chkBx_DataStore.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.chkBx_DataStore.ForeColor = System.Drawing.Color.White;
-            this.chkBx_DataStore.Location = new System.Drawing.Point(681, 292);
-            this.chkBx_DataStore.Margin = new System.Windows.Forms.Padding(4);
-            this.chkBx_DataStore.Name = "chkBx_DataStore";
-            this.chkBx_DataStore.Size = new System.Drawing.Size(170, 26);
-            this.chkBx_DataStore.TabIndex = 14;
-            this.chkBx_DataStore.Text = "Same as above";
-            this.chkBx_DataStore.UseVisualStyleBackColor = true;
-            this.chkBx_DataStore.CheckedChanged += new System.EventHandler(this.chkBx_DataStore_CheckedChanged);
-            // 
-            // txtBx_PortalHostName
-            // 
-            this.txtBx_PortalHostName.Location = new System.Drawing.Point(308, 196);
-            this.txtBx_PortalHostName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_PortalHostName.Name = "txtBx_PortalHostName";
-            this.txtBx_PortalHostName.Size = new System.Drawing.Size(356, 26);
-            this.txtBx_PortalHostName.TabIndex = 20;
-            this.txtBx_PortalHostName.Text = "lea-305263.services.esriaustralia.com.au";
-            this.txtBx_PortalHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalHostName_Validating);
-            // 
-            // txtBx_PortalInstance
-            // 
-            this.txtBx_PortalInstance.Enabled = false;
-            this.txtBx_PortalInstance.Location = new System.Drawing.Point(874, 196);
-            this.txtBx_PortalInstance.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_PortalInstance.Name = "txtBx_PortalInstance";
-            this.txtBx_PortalInstance.Size = new System.Drawing.Size(194, 26);
-            this.txtBx_PortalInstance.TabIndex = 20;
-            this.txtBx_PortalInstance.Text = "portal";
-            this.txtBx_PortalInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalInstance_Validating);
-            // 
-            // txtBx_ServerInstance
-            // 
-            this.txtBx_ServerInstance.Enabled = false;
-            this.txtBx_ServerInstance.Location = new System.Drawing.Point(874, 248);
-            this.txtBx_ServerInstance.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBx_ServerInstance.Name = "txtBx_ServerInstance";
-            this.txtBx_ServerInstance.Size = new System.Drawing.Size(194, 26);
-            this.txtBx_ServerInstance.TabIndex = 20;
-            this.txtBx_ServerInstance.Text = "server";
-            this.txtBx_ServerInstance.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_ServerInstance_Validating);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(870, 148);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(145, 22);
-            this.label14.TabIndex = 19;
-            this.label14.Text = "Instance name";
-            // 
-            // btn_EditInstanceName
-            // 
-            this.btn_EditInstanceName.BackColor = System.Drawing.Color.DimGray;
-            this.btn_EditInstanceName.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_EditInstanceName.ForeColor = System.Drawing.Color.Black;
-            this.btn_EditInstanceName.Location = new System.Drawing.Point(955, 284);
-            this.btn_EditInstanceName.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_EditInstanceName.Name = "btn_EditInstanceName";
-            this.btn_EditInstanceName.Size = new System.Drawing.Size(113, 34);
-            this.btn_EditInstanceName.TabIndex = 6;
-            this.btn_EditInstanceName.Text = "Edit";
-            this.btn_EditInstanceName.UseVisualStyleBackColor = false;
-            this.btn_EditInstanceName.Click += new System.EventHandler(this.btn_EditInstanceName_Click);
-            // 
-            // lbl_LoginStatus
-            // 
-            this.lbl_LoginStatus.AutoSize = true;
-            this.lbl_LoginStatus.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.lbl_LoginStatus.ForeColor = System.Drawing.Color.Aqua;
-            this.lbl_LoginStatus.Location = new System.Drawing.Point(21, 239);
-            this.lbl_LoginStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lbl_LoginStatus.Name = "lbl_LoginStatus";
-            this.lbl_LoginStatus.Size = new System.Drawing.Size(98, 22);
-            this.lbl_LoginStatus.TabIndex = 19;
-            this.lbl_LoginStatus.Text = "aassassa";
-            this.lbl_LoginStatus.Visible = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label15.Location = new System.Drawing.Point(115, 63);
-            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(17, 22);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "*";
-            this.label15.Visible = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label16.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label16.Location = new System.Drawing.Point(115, 115);
-            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(17, 22);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "*";
-            this.label16.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label17.Location = new System.Drawing.Point(289, 200);
-            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(17, 22);
-            this.label17.TabIndex = 19;
-            this.label17.Text = "*";
-            this.label17.Visible = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label18.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label18.Location = new System.Drawing.Point(271, 247);
-            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(17, 22);
-            this.label18.TabIndex = 19;
-            this.label18.Text = "*";
-            this.label18.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label19.Location = new System.Drawing.Point(1009, 146);
-            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(17, 22);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "*";
-            this.label19.Visible = false;
             // 
             // errorProvider1
             // 
