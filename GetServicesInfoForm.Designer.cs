@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGenerateServicesReport = new System.Windows.Forms.Button();
+            this.btn_NextStep = new System.Windows.Forms.Button();
+            this.btn_SelectAll = new System.Windows.Forms.Button();
+            this.btn_ClearAll = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.includeSystemcheckBox = new System.Windows.Forms.CheckBox();
             this.includeFolderscheckBox = new System.Windows.Forms.CheckBox();
             this.btn_GetServices = new System.Windows.Forms.Button();
             this.txtBx_ServicesURL = new System.Windows.Forms.TextBox();
@@ -40,12 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.AGS_dataGridView = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_ClearAll = new System.Windows.Forms.Button();
-            this.btn_SelectAll = new System.Windows.Forms.Button();
-            this.includeSystemcheckBox = new System.Windows.Forms.CheckBox();
-            this.btn_NextStep = new System.Windows.Forms.Button();
-            this.btnGenerateServicesReport = new System.Windows.Forms.Button();
             this.checkBoxCol_Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +72,91 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 212);
             this.panel1.TabIndex = 0;
+            // 
+            // btnGenerateServicesReport
+            // 
+            this.btnGenerateServicesReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateServicesReport.BackColor = System.Drawing.Color.LightGray;
+            this.btnGenerateServicesReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateServicesReport.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateServicesReport.Location = new System.Drawing.Point(685, 173);
+            this.btnGenerateServicesReport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnGenerateServicesReport.Name = "btnGenerateServicesReport";
+            this.btnGenerateServicesReport.Size = new System.Drawing.Size(253, 33);
+            this.btnGenerateServicesReport.TabIndex = 28;
+            this.btnGenerateServicesReport.Text = "Generate Services Report";
+            this.btnGenerateServicesReport.UseVisualStyleBackColor = false;
+            this.btnGenerateServicesReport.Click += new System.EventHandler(this.btnGenerateServicesReport_Click);
+            // 
+            // btn_NextStep
+            // 
+            this.btn_NextStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_NextStep.BackColor = System.Drawing.Color.LightGray;
+            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
+            this.btn_NextStep.Location = new System.Drawing.Point(950, 173);
+            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_NextStep.Name = "btn_NextStep";
+            this.btn_NextStep.Size = new System.Drawing.Size(173, 33);
+            this.btn_NextStep.TabIndex = 27;
+            this.btn_NextStep.Text = "Next Step";
+            this.btn_NextStep.UseVisualStyleBackColor = false;
+            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
+            // 
+            // btn_SelectAll
+            // 
+            this.btn_SelectAll.BackColor = System.Drawing.Color.LightGray;
+            this.btn_SelectAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SelectAll.ForeColor = System.Drawing.Color.Black;
+            this.btn_SelectAll.Location = new System.Drawing.Point(15, 173);
+            this.btn_SelectAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_SelectAll.Name = "btn_SelectAll";
+            this.btn_SelectAll.Size = new System.Drawing.Size(107, 33);
+            this.btn_SelectAll.TabIndex = 26;
+            this.btn_SelectAll.Text = "Select All";
+            this.btn_SelectAll.UseVisualStyleBackColor = false;
+            this.btn_SelectAll.Click += new System.EventHandler(this.btn_SelectAll_Click);
+            // 
+            // btn_ClearAll
+            // 
+            this.btn_ClearAll.BackColor = System.Drawing.Color.LightGray;
+            this.btn_ClearAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClearAll.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClearAll.Location = new System.Drawing.Point(134, 173);
+            this.btn_ClearAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_ClearAll.Name = "btn_ClearAll";
+            this.btn_ClearAll.Size = new System.Drawing.Size(107, 33);
+            this.btn_ClearAll.TabIndex = 26;
+            this.btn_ClearAll.Text = "Clear All";
+            this.btn_ClearAll.UseVisualStyleBackColor = false;
+            this.btn_ClearAll.Click += new System.EventHandler(this.btn_ClearAll_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(15, 117);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
+            this.label2.Size = new System.Drawing.Size(660, 42);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Select the Map Services from the list below to generate the report for:";
+            // 
+            // includeSystemcheckBox
+            // 
+            this.includeSystemcheckBox.AutoSize = true;
+            this.includeSystemcheckBox.Checked = true;
+            this.includeSystemcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.includeSystemcheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.includeSystemcheckBox.ForeColor = System.Drawing.Color.White;
+            this.includeSystemcheckBox.Location = new System.Drawing.Point(420, 88);
+            this.includeSystemcheckBox.Name = "includeSystemcheckBox";
+            this.includeSystemcheckBox.Size = new System.Drawing.Size(171, 26);
+            this.includeSystemcheckBox.TabIndex = 24;
+            this.includeSystemcheckBox.Text = "Include System";
+            this.includeSystemcheckBox.UseVisualStyleBackColor = true;
+            this.includeSystemcheckBox.Visible = false;
             // 
             // includeFolderscheckBox
             // 
@@ -170,91 +255,6 @@
             this.AGS_dataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.AGS_dataGridView.Size = new System.Drawing.Size(1138, 464);
             this.AGS_dataGridView.TabIndex = 32;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(15, 117);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.label2.Size = new System.Drawing.Size(660, 42);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Select the Map Services from the list below to generate the report for:";
-            // 
-            // btn_ClearAll
-            // 
-            this.btn_ClearAll.BackColor = System.Drawing.Color.LightGray;
-            this.btn_ClearAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ClearAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_ClearAll.Location = new System.Drawing.Point(134, 173);
-            this.btn_ClearAll.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_ClearAll.Name = "btn_ClearAll";
-            this.btn_ClearAll.Size = new System.Drawing.Size(107, 33);
-            this.btn_ClearAll.TabIndex = 26;
-            this.btn_ClearAll.Text = "Clear All";
-            this.btn_ClearAll.UseVisualStyleBackColor = false;
-            this.btn_ClearAll.Click += new System.EventHandler(this.btn_ClearAll_Click);
-            // 
-            // btn_SelectAll
-            // 
-            this.btn_SelectAll.BackColor = System.Drawing.Color.LightGray;
-            this.btn_SelectAll.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SelectAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_SelectAll.Location = new System.Drawing.Point(15, 173);
-            this.btn_SelectAll.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_SelectAll.Name = "btn_SelectAll";
-            this.btn_SelectAll.Size = new System.Drawing.Size(107, 33);
-            this.btn_SelectAll.TabIndex = 26;
-            this.btn_SelectAll.Text = "Select All";
-            this.btn_SelectAll.UseVisualStyleBackColor = false;
-            this.btn_SelectAll.Click += new System.EventHandler(this.btn_SelectAll_Click);
-            // 
-            // includeSystemcheckBox
-            // 
-            this.includeSystemcheckBox.AutoSize = true;
-            this.includeSystemcheckBox.Checked = true;
-            this.includeSystemcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.includeSystemcheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.includeSystemcheckBox.ForeColor = System.Drawing.Color.White;
-            this.includeSystemcheckBox.Location = new System.Drawing.Point(420, 88);
-            this.includeSystemcheckBox.Name = "includeSystemcheckBox";
-            this.includeSystemcheckBox.Size = new System.Drawing.Size(171, 26);
-            this.includeSystemcheckBox.TabIndex = 24;
-            this.includeSystemcheckBox.Text = "Include System";
-            this.includeSystemcheckBox.UseVisualStyleBackColor = true;
-            this.includeSystemcheckBox.Visible = false;
-            // 
-            // btn_NextStep
-            // 
-            this.btn_NextStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_NextStep.BackColor = System.Drawing.Color.LightGray;
-            this.btn_NextStep.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NextStep.ForeColor = System.Drawing.Color.Black;
-            this.btn_NextStep.Location = new System.Drawing.Point(950, 173);
-            this.btn_NextStep.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_NextStep.Name = "btn_NextStep";
-            this.btn_NextStep.Size = new System.Drawing.Size(173, 33);
-            this.btn_NextStep.TabIndex = 27;
-            this.btn_NextStep.Text = "Next Step";
-            this.btn_NextStep.UseVisualStyleBackColor = false;
-            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
-            // 
-            // btnGenerateServicesReport
-            // 
-            this.btnGenerateServicesReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerateServicesReport.BackColor = System.Drawing.Color.LightGray;
-            this.btnGenerateServicesReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateServicesReport.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerateServicesReport.Location = new System.Drawing.Point(685, 173);
-            this.btnGenerateServicesReport.Margin = new System.Windows.Forms.Padding(6);
-            this.btnGenerateServicesReport.Name = "btnGenerateServicesReport";
-            this.btnGenerateServicesReport.Size = new System.Drawing.Size(253, 33);
-            this.btnGenerateServicesReport.TabIndex = 28;
-            this.btnGenerateServicesReport.Text = "Generate Services Report";
-            this.btnGenerateServicesReport.UseVisualStyleBackColor = false;
-            this.btnGenerateServicesReport.Click += new System.EventHandler(this.btnGenerateServicesReport_Click);
             // 
             // checkBoxCol_Service
             // 

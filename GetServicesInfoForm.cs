@@ -175,6 +175,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
                 //get selected services - globalVariables.checkedAGSServicesArray
                 foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                 {
@@ -246,17 +247,26 @@ namespace ArcGIS_System_Profiler
                                 if ((item.ToString()).Contains(obj["name"].ToString()))
                                 {
                                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                                    string foldername = "tables";
+                                    if (!Directory.Exists(@"C:\\temp\\" + foldername)){
+                                        Directory.CreateDirectory(@"C:\\temp\\" + foldername);
+                                    }
                                     TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
                                     globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
                                     txt.Write(item);
                                     txt.Close();
                                     fileCounterLoop = fileCounterLoop + 1;
                                 }
-                                else if ((obj["name"].ToString()).Contains("/")) 
+                                else if ((obj["name"].ToString()).Contains("/"))
                                 {
                                     if ((item.ToString()).Contains((obj["name"].ToString()).Split('/')[1]))
                                     {
                                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                                        string foldername = "tables";
+                                        if (!Directory.Exists(@"C:/temp/" + foldername))
+                                        {
+                                            Directory.CreateDirectory(@"C:/temp/" + foldername);
+                                        }
                                         TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
                                         globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
                                         txt.Write(item);
@@ -280,6 +290,8 @@ namespace ArcGIS_System_Profiler
 
                     }
                 }
+                globalVariables.globalForm.loadingIconPic.Visible = false;
+                MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
             }
             catch (Exception)
             {

@@ -24,6 +24,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
                 //access the global variables and generate report and create word document and delete all files created by the program
                 //such as 
                 //health check images
@@ -53,7 +54,8 @@ namespace ArcGIS_System_Profiler
 
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 Marshal.ReleaseComObject(tbl);
-                wordDoc.SaveAs2(@"C:\temp\GeneratedReportNEW.docx");
+                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                wordDoc.SaveAs2(@"C:\temp\GeneratedReport_"  + fileName + ".docx");
 
                 for (int i = 0; i < globalVariables.ImageList.Count; i++)
                 {
@@ -62,7 +64,8 @@ namespace ArcGIS_System_Profiler
                         File.Delete(globalVariables.ImageList[i]);
                     } 
                 }
-
+                globalVariables.globalForm.loadingIconPic.Visible = false;
+                MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
             catch (Exception)
             {
