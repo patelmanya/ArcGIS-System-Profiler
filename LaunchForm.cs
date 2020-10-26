@@ -159,6 +159,12 @@ namespace ArcGIS_System_Profiler
             ActivateButton(sender, RGBCOlors.color6);
         }
 
+        private void btnCreateReport_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new GenerateReport());
+        }
+
         public void iconButton1_Click(object sender, EventArgs e)
         {
             Reset();
@@ -220,5 +226,6 @@ namespace ArcGIS_System_Profiler
         {
             WindowState = FormWindowState.Minimized;
         }
+
     }
 }

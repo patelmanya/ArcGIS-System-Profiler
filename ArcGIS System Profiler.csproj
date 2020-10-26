@@ -103,6 +103,12 @@
     <Compile Include="FederatedEnv.Designer.cs">
       <DependentUpon>FederatedEnv.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateReport.Designer.cs">
+      <DependentUpon>GenerateReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetServicesInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="WkidPortList.cs" />
     <EmbeddedResource Include="FederatedEnv.resx">
       <DependentUpon>FederatedEnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateReport.resx">
+      <DependentUpon>GenerateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GetServicesInfoForm.resx">
       <DependentUpon>GetServicesInfoForm.cs</DependentUpon>
