@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -53,7 +54,15 @@ namespace ArcGIS_System_Profiler
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 Marshal.ReleaseComObject(tbl);
                 wordDoc.SaveAs2(@"C:\temp\GeneratedReportNEW.docx");
-                
+
+                for (int i = 0; i < globalVariables.ImageList.Count; i++)
+                {
+                    if (File.Exists(globalVariables.ImageList[i]))
+                    {
+                        File.Delete(globalVariables.ImageList[i]);
+                    } 
+                }
+
             }
             catch (Exception)
             {

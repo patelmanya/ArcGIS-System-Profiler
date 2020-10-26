@@ -29,6 +29,7 @@ namespace ArcGIS_System_Profiler
 
         private void btn_PerformPortHealthCheck_Click(object sender, EventArgs e)
         {
+            btn_PerformPortHealthCheck.Visible = false;
             webBrowser1.Visible = true;
             globalVariables.portalCheckURL = "https://" + globalVariables.global_portalHostname + "/" + globalVariables.portalInstanceName + "/portaladmin/healthCheck";
             var task = DoNavigationAsync(globalVariables.portalCheckURL);
@@ -39,7 +40,7 @@ namespace ArcGIS_System_Profiler
                 string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                 globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
                 portalBMP.Save("C:/temp/myPortalCheck_" + fileName + ".jpg");
-                btn_PerformPortHealthCheck.Visible = false;
+                
                 //https://lea-305263.services.esriaustralia.com.au/server/rest/info/healthCheck?f=pjson
                 //https://lea-305263.services.esriaustralia.com.au/portal/portaladmin/healthCheck
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(globalVariables.portalCheckURL + "?f=json");
