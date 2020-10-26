@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Office.Interop.Word;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -248,7 +249,8 @@ namespace ArcGIS_System_Profiler
                                 {
                                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                                     string foldername = "tables";
-                                    if (!Directory.Exists(@"C:\\temp\\" + foldername)){
+                                    if (!Directory.Exists(@"C:\\temp\\" + foldername))
+                                    {
                                         Directory.CreateDirectory(@"C:\\temp\\" + foldername);
                                     }
                                     TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
@@ -280,16 +282,8 @@ namespace ArcGIS_System_Profiler
                             response.Close();
                             readStream.Close();
                         }
-
-                        //foreach (string objArr in globalVariables.generateReportList)
-                        //{
-
-
-
-                        //}
-
                     }
-                }
+                } 
                 globalVariables.globalForm.loadingIconPic.Visible = false;
                 MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
             }
@@ -304,5 +298,6 @@ namespace ArcGIS_System_Profiler
         {
             globalVariables.globalForm.btn_Publish.PerformClick();
         }
+         
     }
 }

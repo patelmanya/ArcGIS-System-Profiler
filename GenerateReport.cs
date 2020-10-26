@@ -25,6 +25,7 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.globalForm.loadingIconPic.Visible = true;
+                servicesReportFilesGenerator();
                 //access the global variables and generate report and create word document and delete all files created by the program
                 //such as 
                 //health check images
@@ -39,11 +40,11 @@ namespace ArcGIS_System_Profiler
                 Microsoft.Office.Interop.Word.Table tbl;
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                 wordApp.Visible = false;
-                Document wordDoc = wordApp.Documents.Add(@"C:\temp\Report_TemplateNEW2.dotx");
-                
+                Document wordDoc = wordApp.Documents.Add(globalVariables.reportTemplateFileName);
+
                 //ArcGIS Portal Health Check
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
-                Range docRange = tbl.Cell(1, 1).Range; 
+                Range docRange = tbl.Cell(1, 1).Range;
                 InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
 
                 //ArcGIS Server Health Check
@@ -51,23 +52,107 @@ namespace ArcGIS_System_Profiler
                 docRange = tbl.Cell(1, 1).Range;
                 autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
 
+                //add the file object for the selected services and generate report
+                //ArcGIS Server Health Check
+                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
+                docRange = tbl.Cell(1, 1).Range;
+                //autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    var loopcounter = 0;
+                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    {
+                        docRange.InsertFile(objArr);
+                        loopcounter = loopcounter + 1;
+                        docRange = tbl.Cell(loopcounter, 1).Range;
+                    }
+
+                }
+                
+
+
+                //object missing = Type.Missing;
+                //ContentControl contentControl = wordDoc.ContentControls.Add(WdContentControlType.wdContentControlRichText, ref missing);
+                //contentControl.Title = "";
+                //contentControl.Range.InsertFile(globalVariables.generateReportListDoc[0], ref missing, ref missing, ref missing, ref missing);
+                //servicesReportFilesGenerator(wordDoc, docRange, tbl);
+
 
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+
+
+
                 Marshal.ReleaseComObject(tbl);
+
                 string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                wordDoc.SaveAs2(@"C:\temp\GeneratedReport_"  + fileName + ".docx");
+                wordDoc.SaveAs2(@"C:\temp\GeneratedReport_" + fileName + ".docx");
 
                 for (int i = 0; i < globalVariables.ImageList.Count; i++)
                 {
                     if (File.Exists(globalVariables.ImageList[i]))
                     {
                         File.Delete(globalVariables.ImageList[i]);
-                    } 
+                    }
                 }
+
                 globalVariables.globalForm.loadingIconPic.Visible = false;
                 MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        //private void servicesReportFilesGenerator(Microsoft.Office.Interop.Word.Document rdoc, Range docRangeLoc, Microsoft.Office.Interop.Word.Table rtbl)
+        private void servicesReportFilesGenerator()
+        {
+            try
+            {
+                globalVariables.generateReportListDoc.Clear();
+                if (globalVariables.generateReportList.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportList)
+                    {
+
+                        object objMissing = System.Reflection.Missing.Value;
+                        object objEndOfDocument = "\\endofdoc";
+                        Microsoft.Office.Interop.Word._Application appobj;
+                        appobj = new Microsoft.Office.Interop.Word.Application();
+                        appobj.Visible = false;
+                        Document doc = appobj.Documents.Add();
+                        Range rng = appobj.ActiveDocument.Range(0, 0);
+                        rng.Text = "";
+
+                        object missing = Type.Missing;
+                        ContentControl contentControl = doc.ContentControls.Add(WdContentControlType.wdContentControlRichText, ref missing);
+                        contentControl.Title = "";
+                        contentControl.Range.InsertFile(objArr, ref missing, ref missing, ref missing, ref missing);
+                        string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                        doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
+                        globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
+                        Marshal.ReleaseComObject(doc);
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+                }
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    //foreach (string objArr in globalVariables.generateReportListDoc)
+                    //{
+                    //    object missing = Type.Missing;
+
+                    //    docRangeLoc.InsertFile(objArr, ref missing, ref missing, ref missing, ref missing);
+                    //}
+
+                }
+
+            }
+            catch (Exception ex)
             {
 
                 throw;

@@ -17,16 +17,18 @@ namespace ArcGIS_System_Profiler
 
     public class globalVariables
     {
-        public static string iconFlag= "";
+        public static string iconFlag = "";
         public static string agsEntUserName = "";
         public static string agsEntUserPassword = "";
         public static string agsServerUserName = "";
         public static string agsServerUserPassword = "";
         public static string selectedSserviceURL = "";
-        
+
         public static string global_portalHostname = "";
         public static string global_serverHostname = "";
         public static string global_datastoreHostname = "";
+
+        public static string reportTemplateFileName = @"C:\temp\Report_TemplateNEW.dotx";
 
         public static string portalCheckURL = "";
         public static string ArcGISServerCheckURL = "";
@@ -41,6 +43,7 @@ namespace ArcGIS_System_Profiler
         public static List<string> checkedAGSServices = new List<string>();
         public static List<Object> checkedAGSServicesArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();
+        public static List<string> generateReportListDoc = new List<string>();
         public static MakeMovable _move;
         public static String globalTokenStr = "";
         //public static TemplateForm globalForm = (TemplateForm)Application.OpenForms["TemplateForm"];
@@ -98,7 +101,7 @@ namespace ArcGIS_System_Profiler
         }
     }
 
-    
+
 
     public class MakeMovable
     {
