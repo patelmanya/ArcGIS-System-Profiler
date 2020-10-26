@@ -36,37 +36,24 @@ namespace ArcGIS_System_Profiler
 
                 Microsoft.Office.Interop.Word.Table tbl;
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-                wordApp.Visible = true;
-                Document wordDoc = wordApp.Documents.Add(@"C:\temp\DataTemplate.dotx");
-                tbl = findTable(wordApp.ActiveDocument, "Company List");
+                wordApp.Visible = false;
+                Document wordDoc = wordApp.Documents.Add(@"C:\temp\Report_TemplateNEW2.dotx");
+                
+                //ArcGIS Portal Health Check
+                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
+                Range docRange = tbl.Cell(1, 1).Range; 
+                InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
 
-                //Add two columns
-                if (tbl.Columns.Count == 1)
-                {
-                    //1 Column
-                    tbl.Columns.Add();
-                    //2 Columns
-                    tbl.Columns.Add();
+                //ArcGIS Server Health Check
+                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
+                docRange = tbl.Cell(1, 1).Range;
+                autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
 
-                    //pretty basic logic...what happens if the table template had 2 columns?
-                    //with my code...nothing...which would be a problem.
-                    //it's a sample, so make of it what you wish.
-                }
-
-                //We need a counter...
-                int i = 1;
-                //And a table header
-                tbl.Cell(i, 1).Range.Text = "Contact Name";
-                tbl.Cell(i, 2).Range.Text = "Phone Number";
-                tbl.Cell(i, 3).Range.Text = "Email Address";
-                tbl.Rows.Add();
-                tbl.Cell(i, 1).Range.Text = "FullName";
-                tbl.Cell(i, 2).Range.Text = "MobileTelephoneNumber";
-                tbl.Cell(i, 3).Range.Text = "Email1Addess";
 
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 Marshal.ReleaseComObject(tbl);
-                wordDoc.SaveAs2(@"C:\temp\GeneratedReport.docx");
+                wordDoc.SaveAs2(@"C:\temp\GeneratedReportNEW.docx");
+                
             }
             catch (Exception)
             {
