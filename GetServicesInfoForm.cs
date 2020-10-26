@@ -58,6 +58,8 @@ namespace ArcGIS_System_Profiler
                     }
                 } while (AGS_dataGridView.Rows.Count > 1);
 
+                globalVariables.checkedAGSServicesArray.Clear();
+
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
@@ -105,7 +107,7 @@ namespace ArcGIS_System_Profiler
                                             dictionary["name"] = itemFolder["name"];
                                             dictionary["type"] = itemFolder["type"];
                                             dictionary["checked"] = "false";
-                                            dictionary["id"] = itemFolder["serviceName"] + "_" + itemFolder["type"];
+                                            dictionary["id"] = itemFolder["name"] + "_" + itemFolder["type"];
                                             globalVariables.checkedAGSServicesArray.Add(dictionary);
                                             AGS_dataGridView.Rows.Add(row);
                                         }
@@ -199,8 +201,17 @@ namespace ArcGIS_System_Profiler
                         string token = "";
                         globalVariables gV = new globalVariables();
                         token = gV.GetToken();
-                        //get the arcgis server url and make web request and get services
-                        String urlAddress = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/report?token=" + token;
+                        //get the arcgis server url and make web request and get services - (obj["name"].ToString()).Contains("/")
+                        String urlAddress = "";
+                        if ((obj["name"].ToString()).Contains("/"))
+                        {
+                            urlAddress = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/" + (obj["name"].ToString()).Split('/')[0] + "/report?token=" + token;
+                        }
+                        else
+                        {
+                            urlAddress = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/report?token=" + token;
+                        }
+
 
                         ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
 
@@ -223,33 +234,49 @@ namespace ArcGIS_System_Profiler
                             var fileCounterLoop = 0;
                             foreach (var item in Tables)
                             {
-                                if (fileCounterLoop <2)
+                                if (fileCounterLoop < 2)
                                 {
                                     fileCounterLoop = fileCounterLoop + 1;
                                     continue;
                                 }
-                                else if (fileCounterLoop == Tables.Count-1)
+                                else if (fileCounterLoop == Tables.Count - 1)
                                 {
                                     continue;
                                 }
-                                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                                TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
-                                globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
-                                txt.Write(item);
-                                txt.Close();
-                                fileCounterLoop = fileCounterLoop + 1;
+                                if ((item.ToString()).Contains(obj["name"].ToString()))
+                                {
+                                    string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                                    TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                    globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                    txt.Write(item);
+                                    txt.Close();
+                                    fileCounterLoop = fileCounterLoop + 1;
+                                }
+                                else if ((obj["name"].ToString()).Contains("/")) 
+                                {
+                                    if ((item.ToString()).Contains((obj["name"].ToString()).Split('/')[1]))
+                                    {
+                                        string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                                        TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                        globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                        txt.Write(item);
+                                        txt.Close();
+                                        fileCounterLoop = fileCounterLoop + 1;
+                                    }
+                                }
+
                             }
 
                             response.Close();
                             readStream.Close();
                         }
 
-                        foreach (string objArr in globalVariables.generateReportList)
-                        {
+                        //foreach (string objArr in globalVariables.generateReportList)
+                        //{
 
 
 
-                        }
+                        //}
 
                     }
                 }
