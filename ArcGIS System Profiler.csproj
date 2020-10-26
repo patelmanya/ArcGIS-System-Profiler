@@ -163,7 +163,6 @@
     <Compile Include="ScreenCaptureForm.Designer.cs">
       <DependentUpon>ScreenCaptureForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScreenshotCapturer.cs" />
     <Compile Include="StepsConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
