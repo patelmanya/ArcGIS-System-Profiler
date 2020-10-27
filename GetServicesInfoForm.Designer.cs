@@ -81,12 +81,12 @@
             this.btnGenerateServicesExcelReport.BackColor = System.Drawing.Color.LightGray;
             this.btnGenerateServicesExcelReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerateServicesExcelReport.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerateServicesExcelReport.Location = new System.Drawing.Point(422, 173);
+            this.btnGenerateServicesExcelReport.Location = new System.Drawing.Point(399, 173);
             this.btnGenerateServicesExcelReport.Margin = new System.Windows.Forms.Padding(6);
             this.btnGenerateServicesExcelReport.Name = "btnGenerateServicesExcelReport";
-            this.btnGenerateServicesExcelReport.Size = new System.Drawing.Size(253, 33);
+            this.btnGenerateServicesExcelReport.Size = new System.Drawing.Size(276, 33);
             this.btnGenerateServicesExcelReport.TabIndex = 29;
-            this.btnGenerateServicesExcelReport.Text = "Generate Services Excel Report";
+            this.btnGenerateServicesExcelReport.Text = "Generate All Services Excel Report";
             this.btnGenerateServicesExcelReport.UseVisualStyleBackColor = false;
             this.btnGenerateServicesExcelReport.Visible = false;
             this.btnGenerateServicesExcelReport.Click += new System.EventHandler(this.btnGenerateServicesExcelReport_Click);

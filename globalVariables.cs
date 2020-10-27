@@ -42,6 +42,9 @@ namespace ArcGIS_System_Profiler
         public static string agsServerHealthCheckStatus = "";
         public static List<string> checkedAGSServices = new List<string>();
         public static List<Object> checkedAGSServicesArray = new List<Object>();
+        public static List<Object> servicesMainReportArray = new List<Object>();
+        public static List<Object> servicesLayersReportArray = new List<Object>();
+        public static List<Object> servicesFieldsReportArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();
         public static List<string> generateReportListDoc = new List<string>();
         public static MakeMovable _move;

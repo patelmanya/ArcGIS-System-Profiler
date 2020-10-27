@@ -288,7 +288,7 @@ namespace ArcGIS_System_Profiler
                             readStream.Close();
                         }
                     }
-                } 
+                }
                 globalVariables.globalForm.loadingIconPic.Visible = false;
                 MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
             }
@@ -308,18 +308,268 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                string token = "";
+                globalVariables gV = new globalVariables();
+                token = gV.GetToken();
+                string AllServicesReportURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services?f=json";
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(txtBx_ServicesURL.Text + "&token=" + token);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var encoding = ASCIIEncoding.ASCII;
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+                using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
+                {
+                    String JSONresults = reader.ReadToEnd();
+                    JObject rss = JObject.Parse(JSONresults);
+                    var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresults);
+                    string[] result = dict.Select(kv => kv.Value.ToString()).ToArray();
+                    System.Object[] ItemObject = new System.Object[dict.Count];
+                    for (int i = 0; i <= dict.Count; i++)
+                    {
+                        if (i == 1) //folders
+                        {
+                            JArray categories = (JArray)rss["folders"];
+                            foreach (var item in categories)
+                            {
+                                //since this is folder make calls again and create new results so previous one dont overwrite
+                                //get the arcgis server url and make web request and get services
+                                String agsServerFolderURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + item + "?f=json&token=" + token;
+                                HttpWebRequest requestFolder = (HttpWebRequest)WebRequest.Create(agsServerFolderURL);
+                                HttpWebResponse responseFolder = (HttpWebResponse)requestFolder.GetResponse();
+                                using (var readerFolder = new System.IO.StreamReader(responseFolder.GetResponseStream(), encoding))
+                                {
+                                    String JSONresultsFolder = readerFolder.ReadToEnd();
+                                    JObject rssFolder = JObject.Parse(JSONresultsFolder);
+                                    var dictFolder = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolder);
+                                    string[] resultFolder = dictFolder.Select(kv => kv.Value.ToString()).ToArray();
+                                    System.Object[] ItemObjectFolder = new System.Object[dictFolder.Count];
+
+                                    JArray servicesCollectionFolder = (JArray)rssFolder["services"];
+                                    foreach (var itemFolder in servicesCollectionFolder)
+                                    {
+                                        //at service level
+                                        String currentFolderNameStr = "";
+                                        String currentServiceNameStr = "";
+                                        String currentServiceTypeStr = "";
+
+                                        currentFolderNameStr = (itemFolder["name"].ToString()).Split('/')[0];
+                                        currentServiceNameStr = (itemFolder["name"].ToString()).Split('/')[1];
+                                        currentServiceTypeStr = itemFolder["type"].ToString();
+
+                                        var serviceDictionary = new Dictionary<string, object>();
+                                        serviceDictionary["currentFolderNameStr"] = currentFolderNameStr;
+                                        serviceDictionary["currentServiceNameStr"] = currentServiceNameStr;
+                                        serviceDictionary["currentServiceTypeStr"] = currentServiceTypeStr;
+
+                                        String agsServerFolderServiceURL = "";
+
+                                        if (currentServiceTypeStr == "MapServer" || currentServiceTypeStr == "FeatureServer")
+                                        {
+                                            agsServerFolderServiceURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "/layers?f=json&token=" + token;
+                                        }
+                                        else if (currentServiceTypeStr == "GPServer")
+                                        {
+                                            continue;
+                                            //agsServerFolderServiceURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "/layers?f=json&token=" + token;
+                                        }
+
+                                        HttpWebRequest requestFolderService = (HttpWebRequest)WebRequest.Create(agsServerFolderServiceURL);
+                                        HttpWebResponse responseFolderService = (HttpWebResponse)requestFolderService.GetResponse();
+                                        using (var readerFolderService = new System.IO.StreamReader(responseFolderService.GetResponseStream(), encoding))
+                                        {
+                                            String JSONresultsFolderService = readerFolderService.ReadToEnd();
+                                            JObject rssFolderService = JObject.Parse(JSONresultsFolderService);
+                                            var dictFolderService = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolderService);
+                                            string[] resultFolderService = dictFolderService.Select(kv => kv.Value.ToString()).ToArray();
+                                            System.Object[] ItemObjectFolderService = new System.Object[dictFolderService.Count];
+                                            JArray servicesLayersCollectionFolder = (JArray)rssFolderService["layers"];
+
+                                            String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
+                                            serviceDictionary["layerCountStr"] = layerCountStr;
+
+                                            foreach (var itemFolderServLayer in servicesLayersCollectionFolder)
+                                            {
+                                                var layerDictionary = new Dictionary<string, object>();
+                                                String layerIdStr = itemFolderServLayer["id"].ToString();
+                                                String layerNameStr = itemFolderServLayer["name"].ToString();
+                                                String layerGeomtryTypeStr = itemFolderServLayer["geometryType"].ToString();
+                                                String layerMinScaleStr = itemFolderServLayer["minScale"].ToString();
+                                                String layerMaxScaleStr = itemFolderServLayer["maxScale"].ToString();
+                                                String layerDisplayFieldStr = itemFolderServLayer["displayField"].ToString();
+                                                String maxRecordCountStr = itemFolderServLayer["maxRecordCount"].ToString();
+
+                                                layerDictionary["layerIdStr"] = layerIdStr;
+                                                layerDictionary["layerNameStr"] = layerNameStr;
+                                                layerDictionary["layerGeomtryTypeStr"] = layerGeomtryTypeStr;
+                                                layerDictionary["layerMinScaleStr"] = layerMinScaleStr;
+                                                layerDictionary["layerMaxScaleStr"] = layerMaxScaleStr;
+                                                layerDictionary["layerDisplayFieldStr"] = layerDisplayFieldStr;
+                                                layerDictionary["maxRecordCountStr"] = maxRecordCountStr;
+
+                                                //String fieldCountStr = itemFolderServLayer["fields"].Count.ToString();
+                                                var fieldsLoopCounter = 0;
+                                                //List<Object> servicesFieldsReportArray = new List<Object>();
+                                                var servicesFieldsReportArray = new Dictionary<string, object>();
+                                                foreach (var fieldsItem in itemFolderServLayer["fields"])
+                                                {
+                                                    var fieldDictionary = new Dictionary<string, object>();
+                                                    fieldDictionary["name"] = fieldsItem["name"].ToString();
+                                                    fieldDictionary["type"] = fieldsItem["type"].ToString();
+                                                    fieldDictionary["alias"] = fieldsItem["alias"].ToString();
+                                                    fieldDictionary["domain"] = fieldsItem["domain"].ToString();
+                                                    globalVariables.servicesFieldsReportArray.Add(fieldDictionary);
+                                                    fieldsLoopCounter += 1;
+                                                    servicesFieldsReportArray[fieldsLoopCounter.ToString()] = fieldDictionary;
+                                                }
+                                                layerDictionary["fieldDictionary"] = servicesFieldsReportArray;
+                                                String fieldCountStr = fieldsLoopCounter.ToString();
+                                                layerDictionary["fieldCountStr"] = fieldCountStr;
+                                                serviceDictionary["layerDictionary"] = layerDictionary;
+                                            }
+
+                                            globalVariables.servicesMainReportArray.Add(serviceDictionary);
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (i == 2)  //services
+                        {
+                            //agsServerlistBox.Items.Insert(0, dict["services"]);
+                            JArray servicesCollection = (JArray)rss["services"];
+                            foreach (var item in servicesCollection)
+                            {
+                                //call each services and get details
+
+                            }
+                        }
+                    }
+
+                }
                 Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
                 if (excelApp != null)
                 {
                     Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
                     Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
 
-                    excelWorksheet.Cells[1, 1] = "Value1";
-                    excelWorksheet.Cells[2, 1] = "Value2";
-                    excelWorksheet.Cells[3, 1] = "Value3";
-                    excelWorksheet.Cells[4, 1] = "Value4";
+                    //COLUMN HEADERS
+                    excelWorksheet.Cells[1, 1] = "Folder Name";
+                    excelWorksheet.Cells[1, 2] = "Service Name";
+                    excelWorksheet.Cells[1, 3] = "Service Type";
+                    excelWorksheet.Cells[1, 4] = "Max Record Count";
+                    excelWorksheet.Cells[1, 5] = "Layers Count";
+                    excelWorksheet.Cells[1, 6] = "Layer Id";
+                    excelWorksheet.Cells[1, 7] = "Layer Name";
+                    excelWorksheet.Cells[1, 8] = "Geometry Type";
+                    excelWorksheet.Cells[1, 9] = "Min Scale";
+                    excelWorksheet.Cells[1, 10] = "Max Scale";
+                    excelWorksheet.Cells[1, 11] = "Display Field";
+                    excelWorksheet.Cells[1, 12] = "Fields Count";
+                    excelWorksheet.Cells[1, 13] = "Field Name";
+                    excelWorksheet.Cells[1, 14] = "Field Type";
+                    excelWorksheet.Cells[1, 15] = "Field Alias";
+                    excelWorksheet.Cells[1, 15] = "Field Domain";
 
-                    excelApp.ActiveWorkbook.SaveAs(@"C:\temp\abc.xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                    var rowIndex = 2;
+
+                    foreach (Dictionary<string, object> obj in globalVariables.servicesMainReportArray)
+                    {
+
+                        excelWorksheet.Cells[rowIndex, 1] = obj["currentFolderNameStr"].ToString();
+
+                        excelWorksheet.Cells[rowIndex, 2] = obj["currentServiceNameStr"].ToString();
+
+                        excelWorksheet.Cells[rowIndex, 3] = obj["currentServiceTypeStr"].ToString();
+
+                        if ((obj["currentServiceTypeStr"].ToString() == "MapServer") || (obj["currentServiceTypeStr"].ToString() == "FeatureServer"))
+                        {
+                            foreach (var item in (IDictionary<string, object>)obj["layerDictionary"])
+                            {
+                                if (item.Key.ToString() == "maxRecordCountStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 4] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerIdStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 6] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerNameStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 7] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerGeomtryTypeStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 8] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerMinScaleStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 9] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerMaxScaleStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 10] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "layerDisplayFieldStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 11] = item.Value.ToString();
+                                }
+
+                                else if (item.Key.ToString() == "fieldCountStr")
+                                {
+                                    excelWorksheet.Cells[rowIndex, 12] = item.Value.ToString();
+                                }
+                                else if (item.Key.ToString() == "fieldDictionary")
+                                {
+                                    var fieldFilledinCounter = 0;
+                                    //foreach (Dictionary<string, object> fieldItem in (IDictionary<string, object>)item.Value)
+                                    foreach (var fieldItem in (IDictionary<string, object>)item.Value)
+                                    //foreach (Dictionary<string, object>  fieldItem in item.Value)
+                                    {
+                                        foreach (var itemField in (IDictionary<string, object>)fieldItem.Value)
+                                        {
+                                            if (itemField.Key.ToString() == "name")
+                                            {
+                                                excelWorksheet.Cells[rowIndex, 13] = itemField.Value.ToString();
+                                                fieldFilledinCounter = fieldFilledinCounter + 1;
+                                            }
+                                            else if (itemField.Key.ToString() == "type")
+                                            {
+                                                excelWorksheet.Cells[rowIndex, 14] = itemField.Value.ToString();
+                                                fieldFilledinCounter = fieldFilledinCounter + 1;
+                                            }
+                                            else if (itemField.Key.ToString() == "alias")
+                                            {
+                                                excelWorksheet.Cells[rowIndex, 15] = itemField.Value.ToString();
+                                                fieldFilledinCounter = fieldFilledinCounter + 1;
+                                            }
+                                            else if (itemField.Key.ToString() == "domain")
+                                            {
+                                                excelWorksheet.Cells[rowIndex, 16] = itemField.Value.ToString();
+                                                fieldFilledinCounter = fieldFilledinCounter + 1;
+                                            }
+
+                                            if (fieldFilledinCounter == 4)
+                                            {
+                                                rowIndex = rowIndex + 1;
+                                                fieldFilledinCounter = 0;
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                        rowIndex = rowIndex + 1;
+                    }
+
+                    string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                    excelApp.ActiveWorkbook.SaveAs(@"C:\temp\abc_" + fileName + " .xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
 
                     excelWorkbook.Close();
                     excelApp.Quit();
@@ -331,7 +581,7 @@ namespace ArcGIS_System_Profiler
                     GC.WaitForPendingFinalizers();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
