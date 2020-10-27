@@ -693,7 +693,7 @@ namespace ArcGIS_System_Profiler
 
                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                     excelApp.ActiveWorkbook.SaveAs(@"C:\temp\abc_" + fileName + " .xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-
+                    globalVariables.agsServerServicesReportName = @"C:\temp\abc_" + fileName + " .xls";
                     excelWorkbook.Close();
                     excelApp.Quit();
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -60,7 +61,7 @@ namespace ArcGIS_System_Profiler
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
                 docRange = tbl.Cell(1, 1).Range;
-                
+
                 if (globalVariables.generateReportListDoc.Count > 0)
                 {
                     var loopcounter = 0;
@@ -73,8 +74,39 @@ namespace ArcGIS_System_Profiler
 
                 }
 
+
+                //ArcGIS Services Detailed Report
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
+                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
+                docRange = tbl.Cell(1, 1).Range;
+                //docRange.InsertFile(globalVariables.agsServerServicesReportName);
+
+                //var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                //// Make the object visible.
+                //excelApp.Visible = false;
+
+                //// Create a new, empty workbook and add it to the collection returned
+                //// by property Workbooks. The new workbook becomes the active workbook.
+                //// Add has an optional parameter for specifying a praticular template.
+                //// Because no argument is sent in this example, Add creates a new workbook.
+                //excelApp.Workbooks.Add(globalVariables.agsServerServicesReportName);
+
+                //// This example uses a single workSheet.
+                //Microsoft.Office.Interop.Excel._Worksheet workSheet = excelApp.ActiveSheet;
+                //workSheet.Range["A1:M30"].Copy();
+                StringCollection paths = new StringCollection();
+                paths.Add(globalVariables.agsServerServicesReportName);
+                Clipboard.SetFileDropList(paths);
+
+                docRange.PasteSpecial(Link: false, DisplayAsIcon: true);  //working as link icon but original file is required
+                //docRange.Paste();
+                //wordApp.Selection.PasteSpecial(Link: true, DisplayAsIcon: true);
+
+               // excelApp.Quit();
+               // System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelApp);
+
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
-                Marshal.ReleaseComObject(tbl); 
+                Marshal.ReleaseComObject(tbl);
 
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Writing to report complete\r\n";
 
@@ -87,9 +119,15 @@ namespace ArcGIS_System_Profiler
                 object missing = Type.Missing;
                 object saveChanges = WdSaveOptions.wdSaveChanges;
                 wordDoc.Close(saveChanges, missing, missing);
-                 
-                Marshal.ReleaseComObject(docRange);
-                Marshal.ReleaseComObject(wordDoc);
+
+                //Marshal.ReleaseComObject(docRange);
+                //Marshal.ReleaseComObject(wordDoc);
+
+
+                wordApp.Quit();
+                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(docRange);
+                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordDoc);
+                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordApp);
 
                 for (int i = 0; i < globalVariables.ImageList.Count; i++)
                 {
@@ -114,7 +152,7 @@ namespace ArcGIS_System_Profiler
                 }
 
                 globalVariables.globalForm.loadingIconPic.Visible = false;
-              
+
                 MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
             catch (Exception ex)
@@ -151,11 +189,12 @@ namespace ArcGIS_System_Profiler
                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                         doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
                         globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
-                        
+
                         object saveChanges = WdSaveOptions.wdSaveChanges;
                         doc.Close(saveChanges, missing, missing);
-                        Marshal.ReleaseComObject(doc);
-                        Marshal.ReleaseComObject(appobj);
+                        appobj.Quit();
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(doc);
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(appobj);
 
                         //delete the file if it exists
                         if (File.Exists(objArr))
