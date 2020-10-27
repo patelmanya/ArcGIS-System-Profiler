@@ -43,55 +43,71 @@ namespace ArcGIS_System_Profiler
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                 wordApp.Visible = false;
                 Document wordDoc = wordApp.Documents.Add(globalVariables.reportTemplateFileName);
-
+                Range docRange;
+                InlineShape autoScaledInlineShape;
                 //ArcGIS Portal Health Check
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Portal Health Check screens & status\r\n";
-                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
-                Range docRange = tbl.Cell(1, 1).Range;
-                InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
+                if (globalVariables.ImageList.Count > 0)
+                {
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Portal Health Check screens & status\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
+                    docRange = tbl.Cell(1, 1).Range;
+                    autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                }
 
                 //ArcGIS Server Health Check
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Server Health Check screens & status\r\n";
-                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
-                docRange = tbl.Cell(1, 1).Range;
-                autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
+                if (globalVariables.ImageList.Count > 1)
+                {
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Server Health Check screens & status\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
+                    docRange = tbl.Cell(1, 1).Range;
+                    autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                }
 
                 //add the file object for the selected services and generate report
                 //ArcGIS Server Health Check
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
-                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
-                docRange = tbl.Cell(1, 1).Range;
-
-                if (globalVariables.generateReportListDoc.Count > 0)
+                if (globalVariables.generateReportListDoc.Count>0)
                 {
-                    var loopcounter = 0;
-                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
+                    docRange = tbl.Cell(1, 1).Range;
+
+                    if (globalVariables.generateReportListDoc.Count > 0)
                     {
-                        StringCollection pathsService = new StringCollection();
-                        pathsService.Add(objArr);
-                        Clipboard.SetFileDropList(pathsService);
-                        docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
-                        Clipboard.Clear();
+                        var loopcounter = 0;
+                        foreach (string objArr in globalVariables.generateReportListDoc)
+                        {
+                            StringCollection pathsService = new StringCollection();
+                            pathsService.Add(objArr);
+                            Clipboard.SetFileDropList(pathsService);
+                            docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                            Clipboard.Clear();
 
-                        //docRange.InsertFile(objArr);
-                        loopcounter = loopcounter + 1;
-                        docRange = tbl.Cell(loopcounter, 1).Range;
+                            //docRange.InsertFile(objArr);
+                            loopcounter = loopcounter + 1;
+                            docRange = tbl.Cell(loopcounter, 1).Range;
+
+                        }
+
                     }
-
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
 
 
                 //ArcGIS Services Detailed Report
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
-                tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
-                docRange = tbl.Cell(1, 1).Range;              
-                StringCollection paths = new StringCollection();
-                paths.Add(globalVariables.agsServerServicesReportName);
-                Clipboard.SetFileDropList(paths);
-                docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
-                Clipboard.Clear();
-                tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
-                Marshal.ReleaseComObject(tbl);
+                if (globalVariables.agsServerServicesReportName != "")
+                {
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
+                    docRange = tbl.Cell(1, 1).Range;
+                    StringCollection paths = new StringCollection();
+                    paths.Add(globalVariables.agsServerServicesReportName);
+                    Clipboard.SetFileDropList(paths);
+                    docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                    Clipboard.Clear();
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                }
 
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Writing to report complete\r\n";
 
@@ -110,7 +126,7 @@ namespace ArcGIS_System_Profiler
 
 
                 wordApp.Quit();
-                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(docRange);
+                //System.Runtime.InteropServices.Marshal.FinalReleaseComObject(docRange);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordDoc);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordApp);
 
@@ -138,7 +154,7 @@ namespace ArcGIS_System_Profiler
 
                 globalVariables.globalForm.loadingIconPic.Visible = false;
 
-                MessageBox.Show("Report generation completed. Thank you for using the application!");
+                // MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
             catch (Exception ex)
             {

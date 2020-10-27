@@ -290,7 +290,7 @@ namespace ArcGIS_System_Profiler
                     }
                 }
                 globalVariables.globalForm.loadingIconPic.Visible = false;
-                MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
+                //MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
             }
             catch (Exception)
             {
