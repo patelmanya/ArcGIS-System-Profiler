@@ -46,6 +46,11 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                btnGenerateServicesExcelReport.Visible = true;
+                btnGenerateServicesReport.Visible = true;
+                btn_ClearAll.Visible = true;
+                btn_SelectAll.Visible = true;
+                btn_NextStep.Visible = true;
                 //remove the existing rows in the datagridview
                 do
                 {
@@ -296,8 +301,41 @@ namespace ArcGIS_System_Profiler
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btn_Publish.PerformClick();
+            globalVariables.globalForm.btnCreateReport.PerformClick();
         }
-         
+
+        private void btnGenerateServicesExcelReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                if (excelApp != null)
+                {
+                    Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
+                    Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
+
+                    excelWorksheet.Cells[1, 1] = "Value1";
+                    excelWorksheet.Cells[2, 1] = "Value2";
+                    excelWorksheet.Cells[3, 1] = "Value3";
+                    excelWorksheet.Cells[4, 1] = "Value4";
+
+                    excelApp.ActiveWorkbook.SaveAs(@"C:\temp\abc.xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+
+                    excelWorkbook.Close();
+                    excelApp.Quit();
+
+                    System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelWorksheet);
+                    System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelWorkbook);
+                    System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelApp);
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

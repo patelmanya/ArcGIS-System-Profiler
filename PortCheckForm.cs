@@ -52,10 +52,10 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                if (!progressBar1.Visible)
+                if (!globalVariables.globalForm.loadingIconPic.Visible)
                 {
                     globalVariables.globalForm.loadingIconPic.Visible = true;
-                    progressBar1.Visible = true;
+                    //progressBar1.Visible = true;
                     progressBar1.Value = 0;
                 }
 

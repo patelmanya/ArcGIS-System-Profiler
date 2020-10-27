@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_GenerateReport = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.txtBx_GenRepStatus = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -47,15 +47,18 @@
             this.panel1.Size = new System.Drawing.Size(1138, 64);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // btn_GenerateReport
             // 
-            this.panel2.Controls.Add(this.txtBx_GenRepStatus);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.panel2.Size = new System.Drawing.Size(1138, 612);
-            this.panel2.TabIndex = 1;
+            this.btn_GenerateReport.BackColor = System.Drawing.Color.LightGray;
+            this.btn_GenerateReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GenerateReport.ForeColor = System.Drawing.Color.Black;
+            this.btn_GenerateReport.Location = new System.Drawing.Point(280, 14);
+            this.btn_GenerateReport.Name = "btn_GenerateReport";
+            this.btn_GenerateReport.Size = new System.Drawing.Size(178, 28);
+            this.btn_GenerateReport.TabIndex = 10;
+            this.btn_GenerateReport.Text = "Generate Report";
+            this.btn_GenerateReport.UseVisualStyleBackColor = false;
+            this.btn_GenerateReport.Click += new System.EventHandler(this.btn_GenerateReport_Click);
             // 
             // label1
             // 
@@ -70,18 +73,15 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Final step: Generate report ";
             // 
-            // btn_GenerateReport
+            // panel2
             // 
-            this.btn_GenerateReport.BackColor = System.Drawing.Color.LightGray;
-            this.btn_GenerateReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_GenerateReport.ForeColor = System.Drawing.Color.Black;
-            this.btn_GenerateReport.Location = new System.Drawing.Point(280, 14);
-            this.btn_GenerateReport.Name = "btn_GenerateReport";
-            this.btn_GenerateReport.Size = new System.Drawing.Size(178, 28);
-            this.btn_GenerateReport.TabIndex = 10;
-            this.btn_GenerateReport.Text = "Generate Report";
-            this.btn_GenerateReport.UseVisualStyleBackColor = false;
-            this.btn_GenerateReport.Click += new System.EventHandler(this.btn_GenerateReport_Click);
+            this.panel2.Controls.Add(this.txtBx_GenRepStatus);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.panel2.Size = new System.Drawing.Size(1138, 612);
+            this.panel2.TabIndex = 1;
             // 
             // txtBx_GenRepStatus
             // 

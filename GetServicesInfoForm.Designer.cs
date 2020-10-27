@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGenerateServicesExcelReport = new System.Windows.Forms.Button();
             this.btnGenerateServicesReport = new System.Windows.Forms.Button();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.btn_SelectAll = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnGenerateServicesExcelReport);
             this.panel1.Controls.Add(this.btnGenerateServicesReport);
             this.panel1.Controls.Add(this.btn_NextStep);
             this.panel1.Controls.Add(this.btn_SelectAll);
@@ -73,6 +75,22 @@
             this.panel1.Size = new System.Drawing.Size(1138, 212);
             this.panel1.TabIndex = 0;
             // 
+            // btnGenerateServicesExcelReport
+            // 
+            this.btnGenerateServicesExcelReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateServicesExcelReport.BackColor = System.Drawing.Color.LightGray;
+            this.btnGenerateServicesExcelReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateServicesExcelReport.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateServicesExcelReport.Location = new System.Drawing.Point(422, 173);
+            this.btnGenerateServicesExcelReport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnGenerateServicesExcelReport.Name = "btnGenerateServicesExcelReport";
+            this.btnGenerateServicesExcelReport.Size = new System.Drawing.Size(253, 33);
+            this.btnGenerateServicesExcelReport.TabIndex = 29;
+            this.btnGenerateServicesExcelReport.Text = "Generate Services Excel Report";
+            this.btnGenerateServicesExcelReport.UseVisualStyleBackColor = false;
+            this.btnGenerateServicesExcelReport.Visible = false;
+            this.btnGenerateServicesExcelReport.Click += new System.EventHandler(this.btnGenerateServicesExcelReport_Click);
+            // 
             // btnGenerateServicesReport
             // 
             this.btnGenerateServicesReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -86,6 +104,7 @@
             this.btnGenerateServicesReport.TabIndex = 28;
             this.btnGenerateServicesReport.Text = "Generate Services Report";
             this.btnGenerateServicesReport.UseVisualStyleBackColor = false;
+            this.btnGenerateServicesReport.Visible = false;
             this.btnGenerateServicesReport.Click += new System.EventHandler(this.btnGenerateServicesReport_Click);
             // 
             // btn_NextStep
@@ -115,6 +134,7 @@
             this.btn_SelectAll.TabIndex = 26;
             this.btn_SelectAll.Text = "Select All";
             this.btn_SelectAll.UseVisualStyleBackColor = false;
+            this.btn_SelectAll.Visible = false;
             this.btn_SelectAll.Click += new System.EventHandler(this.btn_SelectAll_Click);
             // 
             // btn_ClearAll
@@ -129,6 +149,7 @@
             this.btn_ClearAll.TabIndex = 26;
             this.btn_ClearAll.Text = "Clear All";
             this.btn_ClearAll.UseVisualStyleBackColor = false;
+            this.btn_ClearAll.Visible = false;
             this.btn_ClearAll.Click += new System.EventHandler(this.btn_ClearAll_Click);
             // 
             // label2
@@ -325,5 +346,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxCol_Service;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service_Type;
+        private System.Windows.Forms.Button btnGenerateServicesExcelReport;
     }
 }

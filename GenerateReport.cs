@@ -25,17 +25,18 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.globalForm.loadingIconPic.Visible = true;
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation started.\r\n";
                 servicesReportFilesGenerator();
                 //access the global variables and generate report and create word document and delete all files created by the program
                 //such as 
                 //health check images
                 //port checks
                 //services report HTML files
-                int counter = 0;
-                for (counter = 0; counter < 10; counter++)
-                {
-                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + RandomString(counter) + "\r\n";
-                }
+                //int counter = 0;
+                //for (counter = 0; counter < 10; counter++)
+                //{
+                //    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + RandomString(counter) + "\r\n";
+                //}
 
                 Microsoft.Office.Interop.Word.Table tbl;
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
@@ -43,20 +44,23 @@ namespace ArcGIS_System_Profiler
                 Document wordDoc = wordApp.Documents.Add(globalVariables.reportTemplateFileName);
 
                 //ArcGIS Portal Health Check
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Portal Health Check screens & status\r\n";
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
                 Range docRange = tbl.Cell(1, 1).Range;
                 InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
 
                 //ArcGIS Server Health Check
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Server Health Check screens & status\r\n";
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
                 docRange = tbl.Cell(1, 1).Range;
                 autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
 
                 //add the file object for the selected services and generate report
                 //ArcGIS Server Health Check
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
                 docRange = tbl.Cell(1, 1).Range;
-                //autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
+                
                 if (globalVariables.generateReportListDoc.Count > 0)
                 {
                     var loopcounter = 0;
@@ -68,24 +72,24 @@ namespace ArcGIS_System_Profiler
                     }
 
                 }
-                
-
-
-                //object missing = Type.Missing;
-                //ContentControl contentControl = wordDoc.ContentControls.Add(WdContentControlType.wdContentControlRichText, ref missing);
-                //contentControl.Title = "";
-                //contentControl.Range.InsertFile(globalVariables.generateReportListDoc[0], ref missing, ref missing, ref missing, ref missing);
-                //servicesReportFilesGenerator(wordDoc, docRange, tbl);
-
 
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                Marshal.ReleaseComObject(tbl); 
 
-
-
-                Marshal.ReleaseComObject(tbl);
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Writing to report complete\r\n";
 
                 string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                 wordDoc.SaveAs2(@"C:\temp\GeneratedReport_" + fileName + ".docx");
+
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation completed.\r\n";
+                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report located at: C:\\temp\\GeneratedReport_" + fileName + ".docx\r\n";
+
+                object missing = Type.Missing;
+                object saveChanges = WdSaveOptions.wdSaveChanges;
+                wordDoc.Close(saveChanges, missing, missing);
+                 
+                Marshal.ReleaseComObject(docRange);
+                Marshal.ReleaseComObject(wordDoc);
 
                 for (int i = 0; i < globalVariables.ImageList.Count; i++)
                 {
@@ -95,7 +99,22 @@ namespace ArcGIS_System_Profiler
                     }
                 }
 
+                //delete the file if it exists
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    {
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+
+                }
+
                 globalVariables.globalForm.loadingIconPic.Visible = false;
+              
                 MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
             catch (Exception ex)
@@ -132,7 +151,12 @@ namespace ArcGIS_System_Profiler
                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                         doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
                         globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
+                        
+                        object saveChanges = WdSaveOptions.wdSaveChanges;
+                        doc.Close(saveChanges, missing, missing);
                         Marshal.ReleaseComObject(doc);
+                        Marshal.ReleaseComObject(appobj);
+
                         //delete the file if it exists
                         if (File.Exists(objArr))
                         {

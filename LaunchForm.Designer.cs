@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaunchForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnCreateReport = new FontAwesome.Sharp.IconButton();
             this.btn_Publish = new FontAwesome.Sharp.IconButton();
             this.btn_Services = new FontAwesome.Sharp.IconButton();
             this.btn_PortChecks = new FontAwesome.Sharp.IconButton();
@@ -53,7 +54,6 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnCreateReport = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).BeginInit();
@@ -80,6 +80,31 @@
             this.panelMenu.Size = new System.Drawing.Size(220, 821);
             this.panelMenu.TabIndex = 0;
             // 
+            // btnCreateReport
+            // 
+            this.btnCreateReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCreateReport.FlatAppearance.BorderSize = 0;
+            this.btnCreateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateReport.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnCreateReport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateReport.ForeColor = System.Drawing.Color.White;
+            this.btnCreateReport.IconChar = FontAwesome.Sharp.IconChar.Reacteurope;
+            this.btnCreateReport.IconColor = System.Drawing.Color.White;
+            this.btnCreateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCreateReport.IconSize = 36;
+            this.btnCreateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateReport.Location = new System.Drawing.Point(0, 500);
+            this.btnCreateReport.Name = "btnCreateReport";
+            this.btnCreateReport.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnCreateReport.Rotation = 0D;
+            this.btnCreateReport.Size = new System.Drawing.Size(220, 60);
+            this.btnCreateReport.TabIndex = 9;
+            this.btnCreateReport.Text = "Generate Report";
+            this.btnCreateReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCreateReport.UseVisualStyleBackColor = true;
+            this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
+            // 
             // btn_Publish
             // 
             this.btn_Publish.Dock = System.Windows.Forms.DockStyle.Top;
@@ -103,6 +128,7 @@
             this.btn_Publish.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Publish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Publish.UseVisualStyleBackColor = true;
+            this.btn_Publish.Visible = false;
             this.btn_Publish.Click += new System.EventHandler(this.btn_Publish_Click);
             // 
             // btn_Services
@@ -450,31 +476,6 @@
             // globalTimer1
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
-            // 
-            // btnCreateReport
-            // 
-            this.btnCreateReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreateReport.FlatAppearance.BorderSize = 0;
-            this.btnCreateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateReport.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCreateReport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateReport.ForeColor = System.Drawing.Color.White;
-            this.btnCreateReport.IconChar = FontAwesome.Sharp.IconChar.Reacteurope;
-            this.btnCreateReport.IconColor = System.Drawing.Color.White;
-            this.btnCreateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCreateReport.IconSize = 36;
-            this.btnCreateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateReport.Location = new System.Drawing.Point(0, 500);
-            this.btnCreateReport.Name = "btnCreateReport";
-            this.btnCreateReport.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnCreateReport.Rotation = 0D;
-            this.btnCreateReport.Size = new System.Drawing.Size(220, 60);
-            this.btnCreateReport.TabIndex = 9;
-            this.btnCreateReport.Text = "Generate Report";
-            this.btnCreateReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCreateReport.UseVisualStyleBackColor = true;
-            this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
             // 
             // LaunchForm
             // 
