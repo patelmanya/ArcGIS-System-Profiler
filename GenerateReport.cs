@@ -67,7 +67,13 @@ namespace ArcGIS_System_Profiler
                     var loopcounter = 0;
                     foreach (string objArr in globalVariables.generateReportListDoc)
                     {
-                        docRange.InsertFile(objArr);
+                        StringCollection pathsService = new StringCollection();
+                        pathsService.Add(objArr);
+                        Clipboard.SetFileDropList(pathsService);
+                        docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                        Clipboard.Clear();
+
+                        //docRange.InsertFile(objArr);
                         loopcounter = loopcounter + 1;
                         docRange = tbl.Cell(loopcounter, 1).Range;
                     }
@@ -78,33 +84,12 @@ namespace ArcGIS_System_Profiler
                 //ArcGIS Services Detailed Report
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
                 tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
-                docRange = tbl.Cell(1, 1).Range;
-                //docRange.InsertFile(globalVariables.agsServerServicesReportName);
-
-                //var excelApp = new Microsoft.Office.Interop.Excel.Application();
-                //// Make the object visible.
-                //excelApp.Visible = false;
-
-                //// Create a new, empty workbook and add it to the collection returned
-                //// by property Workbooks. The new workbook becomes the active workbook.
-                //// Add has an optional parameter for specifying a praticular template.
-                //// Because no argument is sent in this example, Add creates a new workbook.
-                //excelApp.Workbooks.Add(globalVariables.agsServerServicesReportName);
-
-                //// This example uses a single workSheet.
-                //Microsoft.Office.Interop.Excel._Worksheet workSheet = excelApp.ActiveSheet;
-                //workSheet.Range["A1:M30"].Copy();
+                docRange = tbl.Cell(1, 1).Range;              
                 StringCollection paths = new StringCollection();
                 paths.Add(globalVariables.agsServerServicesReportName);
                 Clipboard.SetFileDropList(paths);
-
-                docRange.PasteSpecial(Link: false, DisplayAsIcon: true);  //working as link icon but original file is required
-                //docRange.Paste();
-                //wordApp.Selection.PasteSpecial(Link: true, DisplayAsIcon: true);
-
-               // excelApp.Quit();
-               // System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelApp);
-
+                docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                Clipboard.Clear();
                 tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 Marshal.ReleaseComObject(tbl);
 
