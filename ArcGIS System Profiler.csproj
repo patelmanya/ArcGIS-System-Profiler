@@ -97,12 +97,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FederatedEnv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FederatedEnv.Designer.cs">
-      <DependentUpon>FederatedEnv.cs</DependentUpon>
-    </Compile>
     <Compile Include="GenerateReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +136,6 @@
     <Compile Include="LaunchForm.Designer.cs">
       <DependentUpon>LaunchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Page2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Page2.Designer.cs">
-      <DependentUpon>Page2.cs</DependentUpon>
-    </Compile>
     <Compile Include="PortCheckForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,29 +145,14 @@
     <Compile Include="portsInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenCaptureForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScreenCaptureForm.Designer.cs">
-      <DependentUpon>ScreenCaptureForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="StepsConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StepsConfirmationForm.Designer.cs">
       <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TemplateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TemplateForm.Designer.cs">
-      <DependentUpon>TemplateForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="WkidPortList.cs" />
-    <EmbeddedResource Include="FederatedEnv.resx">
-      <DependentUpon>FederatedEnv.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GenerateReport.resx">
       <DependentUpon>GenerateReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,9 +168,6 @@
     <EmbeddedResource Include="LaunchForm.resx">
       <DependentUpon>LaunchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Page2.resx">
-      <DependentUpon>Page2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PortCheckForm.resx">
       <DependentUpon>PortCheckForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,14 +181,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScreenCaptureForm.resx">
-      <DependentUpon>ScreenCaptureForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StepsConfirmationForm.resx">
       <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TemplateForm.resx">
-      <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ArcGIS System Profiler_TemporaryKey.pfx" />
     <None Include="packages.config" />
