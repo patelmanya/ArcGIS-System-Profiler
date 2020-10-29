@@ -61,7 +61,7 @@ namespace ArcGIS_System_Profiler
             if (globalVariables.agsEntUserName != "")
             {
                 lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
-                lbl_LoginUser.Visible = true; 
+                lbl_LoginUser.Visible = true;
             }
 
         }
@@ -244,6 +244,20 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
+
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.agsServerServicesReportName))
+                {
+                    File.Delete(globalVariables.agsServerServicesReportName);
+                }
+
+                string foldername = "tables";
+                if (Directory.Exists(@"C:\\temp\\" + foldername))
+                {
+                    Directory.Delete(@"C:\\temp\\" + foldername);
+                }
+
                 Application.Exit();
             }
             catch (Exception)

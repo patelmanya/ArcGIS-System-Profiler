@@ -308,6 +308,13 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.agsServerServicesReportName))
+                {
+                    File.Delete(globalVariables.agsServerServicesReportName);
+                }
+
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 string token = "";
                 globalVariables gV = new globalVariables();

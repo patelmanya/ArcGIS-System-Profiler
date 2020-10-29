@@ -79,7 +79,7 @@ namespace ArcGIS_System_Profiler
                 {
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "ArcGIS Server Health Check not available\r\n";
                     //tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
-                    //docRange = tbl.Cell(1, 1).Range;
+                    //cccccccc
                     //autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
                     //tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
@@ -90,23 +90,49 @@ namespace ArcGIS_System_Profiler
                 {
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
-                    docRange = tbl.Cell(1, 1).Range;
+
+                    if (tbl.Columns.Count == 1)
+                    {
+                        //1 Column
+                        tbl.Columns.Add();
+                        //pretty basic logic...what happens if the table template had 2 columns?
+                        //with my code...nothing...which would be a problem.
+                        //it's a sample, so make of it what you wish.
+                    }
+
+                    tbl.Cell(1, 1).Range.Text = "Service Name";
+                    tbl.Cell(1, 2).Range.Text = "Report";
+
+                    // docRange = tbl.Cell(1, 1).Range;
+
 
                     if (globalVariables.generateReportListDoc.Count > 0)
                     {
-                        var loopcounter = 0;
+                        int loopcounter = 2;
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
+
+                            //tbl.Rows.Add();
+                            //loopcounter = loopcounter + 1;
+                            
+                            //tbl.Cell(loopcounter, 1).Range.Text = "Service Name goes here " + loopcounter.ToString();
+                            //tbl.Cell(loopcounter, 2).Range.Text = "Report " + loopcounter.ToString();
+                            //tbl.Cell(loopcounter, 3).Range.Text = buddy.Email1Address;
+
+                            tbl.Rows.Add();
+                            loopcounter = loopcounter + 1;
                             Clipboard.Clear();
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
-                            docRange.PasteSpecial(Link: false, DisplayAsIcon: true, IconLabel: "Service Report", IconFileName: @"C:\temp\images\report.ico");
+                            
+                            tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconLabel: "Service Report", IconFileName: @"C:\temp\images\report.ico");
+                            tbl.Cell(loopcounter, 2).Range.Text = "Service Name goes here " + loopcounter.ToString();
                             Clipboard.Clear();
                             loopcounter = loopcounter + 1;
-                            docRange = tbl.Cell(loopcounter, 1).Range;
-
                         }
+
+
 
                     }
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
@@ -146,6 +172,7 @@ namespace ArcGIS_System_Profiler
 
                 wordApp.Quit();
                 //System.Runtime.InteropServices.Marshal.FinalReleaseComObject(docRange);
+                //System.Runtime.InteropServices.Marshal.FinalReleaseComObject(tbl);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordDoc);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordApp);
 
@@ -193,8 +220,8 @@ namespace ArcGIS_System_Profiler
                         appobj = new Microsoft.Office.Interop.Word.Application();
                         appobj.Visible = false;
                         Document doc = appobj.Documents.Add();
-                        Range rng = appobj.ActiveDocument.Range(0, 0);
-                        rng.Text = "";
+                        //Range rng = appobj.ActiveDocument.Range(0, 0);
+                        //rng.Text = "";
 
                         object missing = Type.Missing;
                         ContentControl contentControl = doc.ContentControls.Add(WdContentControlType.wdContentControlRichText, ref missing);
