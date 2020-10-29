@@ -16,8 +16,6 @@ namespace ArcGIS_System_Profiler
 {
     public partial class GenerateReport : Form
     {
-
-
         public GenerateReport()
         {
             InitializeComponent();
@@ -28,7 +26,6 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.globalForm.loadingIconPic.Visible = true;
-                txtBx_GenRepStatus.Text = "";
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation started.\r\n";
                 servicesReportFilesGenerator();
                 //access the global variables and generate report and create word document and delete all files created by the program
@@ -57,14 +54,6 @@ namespace ArcGIS_System_Profiler
                     autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
-                else
-                {
-                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "ArcGIS Portal Health Check not available\r\n";
-                    //tbl = findTable(wordApp.ActiveDocument, "ArcGIS Portal Health Check");
-                    //docRange = tbl.Cell(1, 1).Range;
-                    //autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[0]);
-                    //tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
-                }
 
                 //ArcGIS Server Health Check
                 if (globalVariables.ImageList.Count > 1)
@@ -75,18 +64,10 @@ namespace ArcGIS_System_Profiler
                     autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
-                else
-                {
-                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "ArcGIS Server Health Check not available\r\n";
-                    //tbl = findTable(wordApp.ActiveDocument, "ArcGIS Server Health Check");
-                    //docRange = tbl.Cell(1, 1).Range;
-                    //autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.ImageList[1]);
-                    //tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
-                }
 
                 //add the file object for the selected services and generate report
                 //ArcGIS Server Health Check
-                if (globalVariables.generateReportListDoc.Count > 0)
+                if (globalVariables.generateReportListDoc.Count>0)
                 {
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
@@ -97,12 +78,13 @@ namespace ArcGIS_System_Profiler
                         var loopcounter = 0;
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
-                            Clipboard.Clear();
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
-                            docRange.PasteSpecial(Link: false, DisplayAsIcon: true, IconLabel: "Service Report", IconFileName: @"C:\temp\images\report.ico");
+                            docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
                             Clipboard.Clear();
+
+                            //docRange.InsertFile(objArr);
                             loopcounter = loopcounter + 1;
                             docRange = tbl.Cell(loopcounter, 1).Range;
 
@@ -116,7 +98,6 @@ namespace ArcGIS_System_Profiler
                 //ArcGIS Services Detailed Report
                 if (globalVariables.agsServerServicesReportName != "")
                 {
-                    Clipboard.Clear();
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
                     docRange = tbl.Cell(1, 1).Range;
@@ -149,21 +130,27 @@ namespace ArcGIS_System_Profiler
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordDoc);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordApp);
 
+                for (int i = 0; i < globalVariables.ImageList.Count; i++)
+                {
+                    if (File.Exists(globalVariables.ImageList[i]))
+                    {
+                        File.Delete(globalVariables.ImageList[i]);
+                    }
+                }
 
+                //delete the file if it exists
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    {
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
 
-                ////delete the file if it exists
-                //if (globalVariables.generateReportListDoc.Count > 0)
-                //{
-                //    foreach (string objArr in globalVariables.generateReportListDoc)
-                //    {
-                //        //delete the file if it exists
-                //        if (File.Exists(objArr))
-                //        {
-                //            File.Delete(objArr);
-                //        }
-                //    }
-
-                //}
+                }
 
                 globalVariables.globalForm.loadingIconPic.Visible = false;
 
@@ -211,10 +198,10 @@ namespace ArcGIS_System_Profiler
                         System.Runtime.InteropServices.Marshal.FinalReleaseComObject(appobj);
 
                         //delete the file if it exists
-                        //if (File.Exists(objArr))
-                        //{
-                        //    File.Delete(objArr);
-                        //}
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
                     }
                 }
                 if (globalVariables.generateReportListDoc.Count > 0)
