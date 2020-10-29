@@ -67,7 +67,15 @@ namespace ArcGIS_System_Profiler
                     {
                         foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                         {
-                            dataGridViewPorts.Rows.Remove(row);
+                            try
+                            {
+                                dataGridViewPorts.Rows.Remove(row);
+                            }
+                            catch (Exception)
+                            {
+
+
+                            }
 
                         }
                     } while (dataGridViewPorts.Rows.Count > 1);
@@ -281,7 +289,13 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        dataGridViewPorts.Rows.Remove(row);
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception)
+                        {
+                        }
 
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
@@ -349,7 +363,14 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        dataGridViewPorts.Rows.Remove(row);
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
 
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
@@ -444,7 +465,14 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        dataGridViewPorts.Rows.Remove(row);
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
 
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
