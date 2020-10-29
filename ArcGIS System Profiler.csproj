@@ -63,6 +63,8 @@
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.15.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -223,6 +225,14 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\report.ico" />
+    <None Include="resources\WordIcn.ico" />
+    <None Include="resources\Word.ico" />
+    <None Include="resources\Icon1.ico" />
+    <None Include="resources\WordIcon.png" />
+    <EmbeddedResource Include="resources\Report Template.dotx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="resources\closebutton.png" />
     <Content Include="resources\help.png" />
     <None Include="resources\icon.png" />
