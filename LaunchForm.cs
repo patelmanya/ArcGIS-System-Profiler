@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
@@ -207,7 +208,49 @@ namespace ArcGIS_System_Profiler
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            try
+            {
+                for (int i = 0; i < globalVariables.ImageList.Count; i++)
+                {
+                    if (File.Exists(globalVariables.ImageList[i]))
+                    {
+                        File.Delete(globalVariables.ImageList[i]);
+                    }
+                }
+
+                //delete the file if it exists
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    {
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+
+                }
+
+                if (globalVariables.generateReportList.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportList)
+                    {
+
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+                }
+                Application.Exit();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btn_Maximize_Click(object sender, EventArgs e)

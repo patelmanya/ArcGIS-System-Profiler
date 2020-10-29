@@ -366,70 +366,135 @@ namespace ArcGIS_System_Profiler
                                         if (currentServiceTypeStr == "MapServer" || currentServiceTypeStr == "FeatureServer")
                                         {
                                             agsServerFolderServiceURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "/layers?f=json&token=" + token;
+
+                                            HttpWebRequest requestFolderService = (HttpWebRequest)WebRequest.Create(agsServerFolderServiceURL);
+                                            HttpWebResponse responseFolderService = (HttpWebResponse)requestFolderService.GetResponse();
+                                            using (var readerFolderService = new System.IO.StreamReader(responseFolderService.GetResponseStream(), encoding))
+                                            {
+                                                String JSONresultsFolderService = readerFolderService.ReadToEnd();
+                                                JObject rssFolderService = JObject.Parse(JSONresultsFolderService);
+                                                var dictFolderService = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolderService);
+                                                string[] resultFolderService = dictFolderService.Select(kv => kv.Value.ToString()).ToArray();
+                                                System.Object[] ItemObjectFolderService = new System.Object[dictFolderService.Count];
+                                                JArray servicesLayersCollectionFolder = (JArray)rssFolderService["layers"];
+
+                                                String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
+                                                serviceDictionary["layerCountStr"] = layerCountStr;
+
+                                                foreach (var itemFolderServLayer in servicesLayersCollectionFolder)
+                                                {
+                                                    var layerDictionary = new Dictionary<string, object>();
+                                                    String layerIdStr = itemFolderServLayer["id"].ToString();
+                                                    String layerNameStr = itemFolderServLayer["name"].ToString();
+                                                    String layerGeomtryTypeStr = itemFolderServLayer["geometryType"].ToString();
+                                                    String layerMinScaleStr = itemFolderServLayer["minScale"].ToString();
+                                                    String layerMaxScaleStr = itemFolderServLayer["maxScale"].ToString();
+                                                    String layerDisplayFieldStr = itemFolderServLayer["displayField"].ToString();
+                                                    String maxRecordCountStr = itemFolderServLayer["maxRecordCount"].ToString();
+
+                                                    layerDictionary["layerIdStr"] = layerIdStr;
+                                                    layerDictionary["layerNameStr"] = layerNameStr;
+                                                    layerDictionary["layerGeomtryTypeStr"] = layerGeomtryTypeStr;
+                                                    layerDictionary["layerMinScaleStr"] = layerMinScaleStr;
+                                                    layerDictionary["layerMaxScaleStr"] = layerMaxScaleStr;
+                                                    layerDictionary["layerDisplayFieldStr"] = layerDisplayFieldStr;
+                                                    layerDictionary["maxRecordCountStr"] = maxRecordCountStr;
+
+                                                    //String fieldCountStr = itemFolderServLayer["fields"].Count.ToString();
+                                                    var fieldsLoopCounter = 0;
+                                                    //List<Object> servicesFieldsReportArray = new List<Object>();
+                                                    var servicesFieldsReportArray = new Dictionary<string, object>();
+                                                    foreach (var fieldsItem in itemFolderServLayer["fields"])
+                                                    {
+                                                        var fieldDictionary = new Dictionary<string, object>();
+                                                        fieldDictionary["name"] = fieldsItem["name"].ToString();
+                                                        fieldDictionary["type"] = fieldsItem["type"].ToString();
+                                                        fieldDictionary["alias"] = fieldsItem["alias"].ToString();
+                                                        fieldDictionary["domain"] = fieldsItem["domain"].ToString();
+                                                        globalVariables.servicesFieldsReportArray.Add(fieldDictionary);
+                                                        fieldsLoopCounter += 1;
+                                                        servicesFieldsReportArray[fieldsLoopCounter.ToString()] = fieldDictionary;
+                                                    }
+                                                    layerDictionary["fieldDictionary"] = servicesFieldsReportArray;
+                                                    String fieldCountStr = fieldsLoopCounter.ToString();
+                                                    layerDictionary["fieldCountStr"] = fieldCountStr;
+                                                    serviceDictionary["layerDictionary"] = layerDictionary;
+                                                }
+
+                                                globalVariables.servicesMainReportArray.Add(serviceDictionary);
+
+                                            }
                                         }
                                         else if (currentServiceTypeStr == "GPServer")
                                         {
-                                            continue;
-                                            //agsServerFolderServiceURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "/layers?f=json&token=" + token;
-                                        }
+                                            //continue;
+                                            agsServerFolderServiceURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "?f=json&token=" + token;
 
-                                        HttpWebRequest requestFolderService = (HttpWebRequest)WebRequest.Create(agsServerFolderServiceURL);
-                                        HttpWebResponse responseFolderService = (HttpWebResponse)requestFolderService.GetResponse();
-                                        using (var readerFolderService = new System.IO.StreamReader(responseFolderService.GetResponseStream(), encoding))
-                                        {
-                                            String JSONresultsFolderService = readerFolderService.ReadToEnd();
-                                            JObject rssFolderService = JObject.Parse(JSONresultsFolderService);
-                                            var dictFolderService = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolderService);
-                                            string[] resultFolderService = dictFolderService.Select(kv => kv.Value.ToString()).ToArray();
-                                            System.Object[] ItemObjectFolderService = new System.Object[dictFolderService.Count];
-                                            JArray servicesLayersCollectionFolder = (JArray)rssFolderService["layers"];
-
-                                            String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
-                                            serviceDictionary["layerCountStr"] = layerCountStr;
-
-                                            foreach (var itemFolderServLayer in servicesLayersCollectionFolder)
+                                            HttpWebRequest requestFolderGPService = (HttpWebRequest)WebRequest.Create(agsServerFolderServiceURL);
+                                            HttpWebResponse responseFolderGPService = (HttpWebResponse)requestFolderGPService.GetResponse();
+                                            using (var readerFolderGPService = new System.IO.StreamReader(responseFolderGPService.GetResponseStream(), encoding))
                                             {
-                                                var layerDictionary = new Dictionary<string, object>();
-                                                String layerIdStr = itemFolderServLayer["id"].ToString();
-                                                String layerNameStr = itemFolderServLayer["name"].ToString();
-                                                String layerGeomtryTypeStr = itemFolderServLayer["geometryType"].ToString();
-                                                String layerMinScaleStr = itemFolderServLayer["minScale"].ToString();
-                                                String layerMaxScaleStr = itemFolderServLayer["maxScale"].ToString();
-                                                String layerDisplayFieldStr = itemFolderServLayer["displayField"].ToString();
-                                                String maxRecordCountStr = itemFolderServLayer["maxRecordCount"].ToString();
+                                                String JSONresultsFolderGPService = readerFolderGPService.ReadToEnd();
+                                                JObject rssFolderService = JObject.Parse(JSONresultsFolderGPService);
+                                                var dictFolderService = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolderGPService);
 
-                                                layerDictionary["layerIdStr"] = layerIdStr;
-                                                layerDictionary["layerNameStr"] = layerNameStr;
-                                                layerDictionary["layerGeomtryTypeStr"] = layerGeomtryTypeStr;
-                                                layerDictionary["layerMinScaleStr"] = layerMinScaleStr;
-                                                layerDictionary["layerMaxScaleStr"] = layerMaxScaleStr;
-                                                layerDictionary["layerDisplayFieldStr"] = layerDisplayFieldStr;
-                                                layerDictionary["maxRecordCountStr"] = maxRecordCountStr;
+                                                String serviceDescriptionStr = dictFolderService["serviceDescription"].ToString();
+                                                serviceDictionary["serviceDescriptionStr"] = serviceDescriptionStr;
 
-                                                //String fieldCountStr = itemFolderServLayer["fields"].Count.ToString();
-                                                var fieldsLoopCounter = 0;
-                                                //List<Object> servicesFieldsReportArray = new List<Object>();
-                                                var servicesFieldsReportArray = new Dictionary<string, object>();
-                                                foreach (var fieldsItem in itemFolderServLayer["fields"])
-                                                {
-                                                    var fieldDictionary = new Dictionary<string, object>();
-                                                    fieldDictionary["name"] = fieldsItem["name"].ToString();
-                                                    fieldDictionary["type"] = fieldsItem["type"].ToString();
-                                                    fieldDictionary["alias"] = fieldsItem["alias"].ToString();
-                                                    fieldDictionary["domain"] = fieldsItem["domain"].ToString();
-                                                    globalVariables.servicesFieldsReportArray.Add(fieldDictionary);
-                                                    fieldsLoopCounter += 1;
-                                                    servicesFieldsReportArray[fieldsLoopCounter.ToString()] = fieldDictionary;
-                                                }
-                                                layerDictionary["fieldDictionary"] = servicesFieldsReportArray;
-                                                String fieldCountStr = fieldsLoopCounter.ToString();
-                                                layerDictionary["fieldCountStr"] = fieldCountStr;
-                                                serviceDictionary["layerDictionary"] = layerDictionary;
+                                                //String serviceTasksCountStr = dictFolderService["tasks"].ToString();
+                                                //serviceDictionary["serviceTasksCountStr"] = serviceTasksCountStr;
+
+
+                                                String executionTypeStr = dictFolderService["executionType"].ToString();
+                                                serviceDictionary["executionTypeStr"] = executionTypeStr;
+
+                                                String maximumRecordsStr = dictFolderService["maximumRecords"].ToString();
+                                                serviceDictionary["maximumRecordsStr"] = maximumRecordsStr;
+                                                
+                                                //JArray servicesdictFolderService = (JArray)dictFolderService["tasks"];
+
+                                                // foreach (var itemFolderGPServerTaskServLayer in (IDictionary<string, object>)dictFolderService["tasks"])
+                                                //foreach (String taskNam in dictFolderService["tasks"])
+                                                //{
+                                                //    string agsServerFolderServiceGPTaskURL = "";
+                                                //    agsServerFolderServiceGPTaskURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/" + itemFolder["name"].ToString() + "/" + itemFolder["type"].ToString() + "/" + itemFolderGPServerTaskServLayer.Value.ToString() + "?f=json&token=" + token;
+
+                                                //    HttpWebRequest requestFolderGPTaskService = (HttpWebRequest)WebRequest.Create(agsServerFolderServiceGPTaskURL);
+                                                //    HttpWebResponse responseFolderGPTaskService = (HttpWebResponse)requestFolderGPTaskService.GetResponse();
+                                                //    using (var readerFolderGPTaskService = new System.IO.StreamReader(responseFolderGPTaskService.GetResponseStream(), encoding))
+                                                //    {
+                                                //        String JSONresultsFolderGPTaskService = readerFolderGPTaskService.ReadToEnd();
+                                                //        JObject rssFolderTaskService = JObject.Parse(JSONresultsFolderGPTaskService);
+                                                //        var dictFolderTaskService = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(JSONresultsFolderGPTaskService);
+
+                                                //        JArray servicesGPServerTaskNameFolder = (JArray)rssFolderTaskService["name"];
+                                                //        String serviceGPServerTaskNameStr = servicesGPServerTaskNameFolder.ToString();
+                                                //        serviceDictionary["serviceGPServerTaskNameStr"] = serviceGPServerTaskNameStr;
+
+                                                //        JArray servicesGPServerparametersFolder = (JArray)rssFolderTaskService["parameters"];
+
+                                                //        foreach (var servicesGPServerParamItem in servicesGPServerparametersFolder)
+                                                //        {
+                                                //            var fieldDictionary = new Dictionary<string, object>();
+                                                //            fieldDictionary["name"] = servicesGPServerParamItem["name"].ToString();
+                                                //            fieldDictionary["dataType"] = servicesGPServerParamItem["dataType"].ToString();
+                                                //            fieldDictionary["displayName"] = servicesGPServerParamItem["displayName"].ToString();
+                                                //            fieldDictionary["description"] = servicesGPServerParamItem["description"].ToString();
+                                                //            fieldDictionary["direction"] = servicesGPServerParamItem["direction"].ToString();
+                                                //            fieldDictionary["defaultValue"] = servicesGPServerParamItem["defaultValue"].ToString();
+                                                //            fieldDictionary["parameterType"] = servicesGPServerParamItem["parameterType"].ToString();
+                                                //            fieldDictionary["category"] = servicesGPServerParamItem["category"].ToString();
+
+                                                //            //globalVariables.servicesFieldsReportArray.Add(fieldDictionary);
+                                                //        }
+
+
+                                                //    }
+                                                //}
                                             }
 
-                                            globalVariables.servicesMainReportArray.Add(serviceDictionary);
-
                                         }
+
                                     }
                                 }
                             }
@@ -686,7 +751,7 @@ namespace ArcGIS_System_Profiler
                         if (columnCounter == 15)
                         {
                             columnCounter = 0;
-                            
+
                         }
                         rowIndex = rowIndex + 1;
                     }
