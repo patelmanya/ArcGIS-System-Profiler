@@ -182,6 +182,8 @@
             // includeFolderscheckBox
             // 
             this.includeFolderscheckBox.AutoSize = true;
+            this.includeFolderscheckBox.Checked = true;
+            this.includeFolderscheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.includeFolderscheckBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.includeFolderscheckBox.ForeColor = System.Drawing.Color.White;
             this.includeFolderscheckBox.Location = new System.Drawing.Point(247, 88);

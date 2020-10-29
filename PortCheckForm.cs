@@ -42,8 +42,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -67,11 +67,8 @@ namespace ArcGIS_System_Profiler
                     {
                         foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                         {
-                            try
-                            {
-                                dataGridViewPorts.Rows.Remove(row);
-                            }
-                            catch (Exception) { }
+                            dataGridViewPorts.Rows.Remove(row);
+
                         }
                     } while (dataGridViewPorts.Rows.Count > 1);
                     globalVariables.portsList.Clear();
@@ -181,14 +178,22 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private void btn_PerformPortCheck_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            try
+            {
+                timer1.Enabled = true;
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
 
         }
 
@@ -262,8 +267,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -276,11 +281,8 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
+                        dataGridViewPorts.Rows.Remove(row);
+
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
 
@@ -333,8 +335,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -347,11 +349,8 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
+                        dataGridViewPorts.Rows.Remove(row);
+
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
 
@@ -418,8 +417,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -445,11 +444,8 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in dataGridViewPorts.Rows)
                     {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
+                        dataGridViewPorts.Rows.Remove(row);
+
                     }
                 } while (dataGridViewPorts.Rows.Count > 1);
 
@@ -508,29 +504,61 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            textFilterFlag = "description";
+            try
+            {
+                textFilterFlag = "description";
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
 
         private void radioButtonPortNoFilter_CheckedChanged(object sender, EventArgs e)
         {
-            textFilterFlag = "portNo";
+            try
+            {
+                textFilterFlag = "portNo";
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btn_Services.PerformClick();
+            try
+            {
+                globalVariables.globalForm.btn_Services.PerformClick();
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
 
         private void btnShowAGSOnly_Click(object sender, EventArgs e)
         {
-            textFilterFlag = "agsonly";
+            try
+            {
+                textFilterFlag = "agsonly";
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
     }
 }

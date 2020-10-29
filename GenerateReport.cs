@@ -20,7 +20,15 @@ namespace ArcGIS_System_Profiler
 
         public GenerateReport()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
 
         private void btn_GenerateReport_Click(object sender, EventArgs e)
@@ -111,21 +119,13 @@ namespace ArcGIS_System_Profiler
                         int loopcounter = 2;
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
-
-                            //tbl.Rows.Add();
-                            //loopcounter = loopcounter + 1;
-                            
-                            //tbl.Cell(loopcounter, 1).Range.Text = "Service Name goes here " + loopcounter.ToString();
-                            //tbl.Cell(loopcounter, 2).Range.Text = "Report " + loopcounter.ToString();
-                            //tbl.Cell(loopcounter, 3).Range.Text = buddy.Email1Address;
-
                             tbl.Rows.Add();
                             loopcounter = loopcounter + 1;
                             Clipboard.Clear();
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
-                            
+
                             tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconLabel: "Service Report", IconFileName: @"C:\temp\images\report.ico");
                             tbl.Cell(loopcounter, 2).Range.Text = "Service Name goes here " + loopcounter.ToString();
                             Clipboard.Clear();
@@ -145,11 +145,22 @@ namespace ArcGIS_System_Profiler
                     Clipboard.Clear();
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
-                    docRange = tbl.Cell(1, 1).Range;
+                    if (tbl.Columns.Count == 1)
+                    {
+                        tbl.Columns.Add();
+                    }
+
+                    tbl.Cell(1, 1).Range.Text = "Report";
+                    tbl.Cell(1, 2).Range.Text = "ArcGIS Server Services schema details";
+                    
+                    tbl.Rows.Add();
+                    
                     StringCollection paths = new StringCollection();
                     paths.Add(globalVariables.agsServerServicesReportName);
                     Clipboard.SetFileDropList(paths);
-                    docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                    
+                    tbl.Cell(2, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico");
+
                     Clipboard.Clear();
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
@@ -198,8 +209,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception ex)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -258,54 +269,73 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception ex)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private Microsoft.Office.Interop.Word.Table findTable(Microsoft.Office.Interop.Word.Document doc, string searchText)
         {
-            if (doc.Tables.Count > 0)
+            try
             {
-                int iCount = 1;
-                Microsoft.Office.Interop.Word.Table tbl;
-                do
+                if (doc.Tables.Count > 0)
                 {
-                    tbl = (Microsoft.Office.Interop.Word.Table)doc.Tables[iCount];
-                    //Select first cell and check it's value
-                    string header = tbl.Cell(1, 1).Range.Text;
-                    if (header.Contains(searchText))
+                    int iCount = 1;
+                    Microsoft.Office.Interop.Word.Table tbl;
+                    do
                     {
-                        return tbl;
-                    }
-                    iCount++;
-                    Marshal.ReleaseComObject(tbl);
-                } while (iCount < doc.Tables.Count + 1);
+                        tbl = (Microsoft.Office.Interop.Word.Table)doc.Tables[iCount];
+                        //Select first cell and check it's value
+                        string header = tbl.Cell(1, 1).Range.Text;
+                        if (header.Contains(searchText))
+                        {
+                            return tbl;
+                        }
+                        iCount++;
+                        Marshal.ReleaseComObject(tbl);
+                    } while (iCount < doc.Tables.Count + 1);
+                }
+                return null;
             }
-            return null;
+            catch (Exception)
+            {
+
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+                return null;
+            }
         }
 
         private Microsoft.Office.Interop.Word.Table getTableByBookmarkName(Microsoft.Office.Interop.Word.Document doc, string bookmarkName)
         {
-            Microsoft.Office.Interop.Word.Table tbl = doc.Bookmarks[bookmarkName].Range.Tables[1];
-            if (tbl != null)
-                return tbl;
-            else
-                return null;
-        }
-
-        private static Random random = new Random((int)DateTime.Now.Ticks);//thanks to McAden
-        private string RandomString(int size)
-        {
-            StringBuilder builder = new StringBuilder();
-            char ch;
-            for (int i = 0; i < size; i++)
+            try
             {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
+                Microsoft.Office.Interop.Word.Table tbl = doc.Bookmarks[bookmarkName].Range.Tables[1];
+                if (tbl != null)
+                    return tbl;
+                else
+                    return null;
             }
-
-            return builder.ToString();
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+                return null;
+            }
         }
+
+        //private static Random random = new Random((int)DateTime.Now.Ticks);//thanks to McAden
+        //private string RandomString(int size)
+        //{
+        //    StringBuilder builder = new StringBuilder();
+        //    char ch;
+        //    for (int i = 0; i < size; i++)
+        //    {
+        //        ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+        //        builder.Append(ch);
+        //    }
+
+        //    return builder.ToString();
+        //}
     }
 }

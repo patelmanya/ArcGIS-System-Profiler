@@ -54,6 +54,9 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelSlider = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingIconPic)).BeginInit();
@@ -61,11 +64,13 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelDesktop.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btn_Services);
@@ -477,6 +482,30 @@
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.panelSlider);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 791);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(220, 30);
+            this.panel2.TabIndex = 10;
+            this.panel2.Visible = false;
+            // 
+            // panelSlider
+            // 
+            this.panelSlider.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelSlider.Location = new System.Drawing.Point(0, 0);
+            this.panelSlider.Name = "panelSlider";
+            this.panelSlider.Size = new System.Drawing.Size(55, 30);
+            this.panelSlider.TabIndex = 11;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +526,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.panelDesktop.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -527,5 +557,8 @@
         internal FontAwesome.Sharp.IconButton btn_HealthChecks;
         internal System.Windows.Forms.PictureBox loadingIconPic;
         internal FontAwesome.Sharp.IconButton btnCreateReport;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelSlider;
+        private System.Windows.Forms.Timer timer1;
     }
 }

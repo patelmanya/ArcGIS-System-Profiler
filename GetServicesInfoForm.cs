@@ -21,24 +21,29 @@ namespace ArcGIS_System_Profiler
     {
         public GetServicesInfoForm()
         {
-            InitializeComponent();
-            if (globalVariables.global_serverHostname != "")
+            try
             {
-                String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services?f=json";
-                txtBx_ServicesURL.Text = agsServerURL;
-
-                //remove the existing rows in the datagridview
-                do
+                InitializeComponent();
+                if (globalVariables.global_serverHostname != "")
                 {
-                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                    String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services?f=json";
+                    txtBx_ServicesURL.Text = agsServerURL;
+
+                    //remove the existing rows in the datagridview
+                    do
                     {
-                        try
+                        foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                         {
                             AGS_dataGridView.Rows.Remove(row);
+
                         }
-                        catch (Exception) { }
-                    }
-                } while (AGS_dataGridView.Rows.Count > 1);
+                    } while (AGS_dataGridView.Rows.Count > 1);
+                }
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -56,11 +61,8 @@ namespace ArcGIS_System_Profiler
                 {
                     foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                     {
-                        try
-                        {
-                            AGS_dataGridView.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
+                        AGS_dataGridView.Rows.Remove(row);
+
                     }
                 } while (AGS_dataGridView.Rows.Count > 1);
 
@@ -156,24 +158,40 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private void btn_SelectAll_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            try
             {
-                row.Cells["checkBoxCol_Service"].Value = true;
+                foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                {
+                    row.Cells["checkBoxCol_Service"].Value = true;
+                }
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private void btn_ClearAll_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+            try
             {
-                row.Cells["checkBoxCol_Service"].Value = false;
+                foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                {
+                    row.Cells["checkBoxCol_Service"].Value = false;
+                }
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -294,14 +312,22 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btnCreateReport.PerformClick();
+            try
+            {
+                globalVariables.globalForm.btnCreateReport.PerformClick();
+            }
+            catch (Exception)
+            {
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
         }
 
         private void btnGenerateServicesExcelReport_Click(object sender, EventArgs e)
@@ -457,7 +483,7 @@ namespace ArcGIS_System_Profiler
 
                                                 String maximumRecordsStr = dictFolderService["maximumRecords"].ToString();
                                                 serviceDictionary["maximumRecordsStr"] = maximumRecordsStr;
-                                                
+
                                                 //JArray servicesdictFolderService = (JArray)dictFolderService["tasks"];
 
                                                 // foreach (var itemFolderGPServerTaskServLayer in (IDictionary<string, object>)dictFolderService["tasks"])
@@ -780,8 +806,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception ex)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
     }

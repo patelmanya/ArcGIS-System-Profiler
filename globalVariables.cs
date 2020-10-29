@@ -105,9 +105,66 @@ namespace ArcGIS_System_Profiler
             }
             return tokenStr;
         }
+
+        public void onErrorClearGeneratedFiles()
+        {
+            try
+            {
+                for (int i = 0; i < globalVariables.ImageList.Count; i++)
+                {
+                    if (File.Exists(globalVariables.ImageList[i]))
+                    {
+                        File.Delete(globalVariables.ImageList[i]);
+                    }
+                }
+
+                //delete the file if it exists
+                if (globalVariables.generateReportListDoc.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportListDoc)
+                    {
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+
+                }
+
+                if (globalVariables.generateReportList.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportList)
+                    {
+
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+                }
+
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.agsServerServicesReportName))
+                {
+                    File.Delete(globalVariables.agsServerServicesReportName);
+                }
+
+                string foldername = "tables";
+                if (Directory.Exists(@"C:\\temp\\" + foldername))
+                {
+                    Directory.Delete(@"C:\\temp\\" + foldername);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
-
-
 
     public class MakeMovable
     {
