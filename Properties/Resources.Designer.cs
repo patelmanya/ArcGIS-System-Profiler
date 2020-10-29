@@ -81,41 +81,20 @@ namespace ArcGIS_System_Profiler.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to resources\help.png.
+        /// </summary>
+        internal static string helpIcon {
+            get {
+                return ResourceManager.GetString("helpIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icon {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon report {
-            get {
-                object obj = ResourceManager.GetObject("report", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Report_Template {
-            get {
-                object obj = ResourceManager.GetObject("Report_Template", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WordIcon {
-            get {
-                object obj = ResourceManager.GetObject("WordIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

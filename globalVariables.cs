@@ -29,7 +29,6 @@ namespace ArcGIS_System_Profiler
         public static string global_datastoreHostname = "";
 
         public static string reportTemplateFileName = @"C:\temp\Report Template.dotx";
-        //public static string reportTemplateFileName = ArcGIS_System_Profiler.Properties.Resources.Report_Template.ToString();
 
         public static string portalCheckURL = "";
         public static string ArcGISServerCheckURL = "";

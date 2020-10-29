@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
@@ -22,72 +21,46 @@ namespace ArcGIS_System_Profiler
         private Form currentChildForm;
         public LaunchForm()
         {
-            try
-            {
-                InitializeComponent();
-                timer1.Start();
-                WindowState = FormWindowState.Maximized;
-                leftBorderBtn = new Panel();
-                leftBorderBtn.Size = new Size(7, 60);
-                panelMenu.Controls.Add(leftBorderBtn);
-                //Form
-                this.Text = string.Empty;
-                this.ControlBox = false;
-                this.DoubleBuffered = true;
-                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-                //btn_Home.PerformClick();
-                //OpenChildForm(new InitialForm());
-                Load += Form1_Shown;
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
-
+            InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            leftBorderBtn = new Panel();
+            leftBorderBtn.Size = new Size(7, 60);
+            panelMenu.Controls.Add(leftBorderBtn);
+            //Form
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            //btn_Home.PerformClick();
+            //OpenChildForm(new InitialForm());
+            Load += Form1_Shown;
         }
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
-            try
-            {
-                btn_Home.PerformClick();
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            btn_Home.PerformClick();
         }
 
         public void OpenChildForm(Form chidlForm)
         {
-            try
+            if (currentChildForm != null)
             {
-                if (currentChildForm != null)
-                {
-                    currentChildForm.Close();
-                }
-                currentChildForm = chidlForm;
-                chidlForm.TopLevel = false;
-                chidlForm.FormBorderStyle = FormBorderStyle.None;
-                chidlForm.Dock = DockStyle.Fill;
-                panelDesktop.Controls.Add(chidlForm);
-                panelDesktop.Tag = chidlForm;
-                chidlForm.BringToFront();
-                chidlForm.Show();
-                currentStepLabel.Text = chidlForm.Text;
-                lbl_loggedInUser.Text = globalVariables.agsEntUserName;
-                if (globalVariables.agsEntUserName != "")
-                {
-                    lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
-                    lbl_LoginUser.Visible = true;
-                }
+                currentChildForm.Close();
             }
-            catch (Exception)
+            currentChildForm = chidlForm;
+            chidlForm.TopLevel = false;
+            chidlForm.FormBorderStyle = FormBorderStyle.None;
+            chidlForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(chidlForm);
+            panelDesktop.Tag = chidlForm;
+            chidlForm.BringToFront();
+            chidlForm.Show();
+            currentStepLabel.Text = chidlForm.Text;
+            lbl_loggedInUser.Text = globalVariables.agsEntUserName;
+            if (globalVariables.agsEntUserName != "")
             {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
+                lbl_LoginUser.Visible = true; 
             }
 
         }
@@ -106,55 +79,39 @@ namespace ArcGIS_System_Profiler
         //Methods
         private void ActivateButton(object sender, Color color)
         {
-            try
+            if (sender != null)
             {
-                if (sender != null)
-                {
-                    DisableButton();
-                    currentBtn = (IconButton)sender;
-                    currentBtn.BackColor = Color.FromArgb(37, 36, 31);
-                    currentBtn.ForeColor = color;
-                    currentBtn.TextAlign = ContentAlignment.MiddleCenter;
-                    currentBtn.IconColor = color;
-                    currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
-                    currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                    //Left Border button
-                    leftBorderBtn.BackColor = color;
-                    leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
-                    leftBorderBtn.Visible = true;
-                    leftBorderBtn.BringToFront();
+                DisableButton();
+                currentBtn = (IconButton)sender;
+                currentBtn.BackColor = Color.FromArgb(37, 36, 31);
+                currentBtn.ForeColor = color;
+                currentBtn.TextAlign = ContentAlignment.MiddleCenter;
+                currentBtn.IconColor = color;
+                currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
+                currentBtn.ImageAlign = ContentAlignment.MiddleRight;
+                //Left Border button
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
 
-                    //add to the title bar the current step title
-                    iconCurrentChildForm.IconChar = currentBtn.IconChar;
-                    iconCurrentChildForm.IconColor = currentBtn.IconColor;
-                }
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                //add to the title bar the current step title
+                iconCurrentChildForm.IconChar = currentBtn.IconChar;
+                iconCurrentChildForm.IconColor = currentBtn.IconColor;
             }
         }
 
         //disable the button
         private void DisableButton()
         {
-            try
+            if (currentBtn != null)
             {
-                if (currentBtn != null)
-                {
-                    currentBtn.BackColor = Color.FromArgb(31, 30, 68);
-                    currentBtn.ForeColor = Color.White;
-                    currentBtn.TextAlign = ContentAlignment.MiddleLeft;
-                    currentBtn.IconColor = Color.White;
-                    currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-                    currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                }
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                currentBtn.BackColor = Color.FromArgb(31, 30, 68);
+                currentBtn.ForeColor = Color.White;
+                currentBtn.TextAlign = ContentAlignment.MiddleLeft;
+                currentBtn.IconColor = Color.White;
+                currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
 
         }
@@ -162,145 +119,65 @@ namespace ArcGIS_System_Profiler
         public void updateLoggedInUser()
         {
 
-            try
-            {
-                lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
-                //lbl_LoginUser.Visible = true;
-                btn_Tasks.PerformClick();
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
+            //lbl_LoginUser.Visible = true;
+            btn_Tasks.PerformClick();
         }
 
         public void btn_Home_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color1);
-                OpenChildForm(new InitialForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color1);
+            OpenChildForm(new InitialForm());
         }
 
         public void btn_Tasks_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color2);
-                OpenChildForm(new StepsConfirmationForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color2);
+            OpenChildForm(new StepsConfirmationForm());
         }
 
         public void btn_Services_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color3);
-                OpenChildForm(new GetServicesInfoForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color3);
+            OpenChildForm(new GetServicesInfoForm());
         }
 
         public void btn_HealthChecks_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color4);
-                OpenChildForm(new HealthChecksForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color4);
+            OpenChildForm(new HealthChecksForm());
         }
 
         public void btn_PortChecks_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color5);
-                OpenChildForm(new PortCheckForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new PortCheckForm());
         }
 
         public void btn_Publish_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color6);
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color6);
         }
 
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivateButton(sender, RGBCOlors.color5);
-                OpenChildForm(new GenerateReport());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new GenerateReport());
         }
 
         public void iconButton1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Reset();
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            Reset();
         }
 
         private void Reset()
         {
-            try
-            {
-                DisableButton();
-                leftBorderBtn.Visible = false;
-                //add to the title bar the current step title
-                iconCurrentChildForm.IconChar = IconChar.Home;
-                iconCurrentChildForm.IconColor = Color.White;
-                OpenChildForm(new InitialForm());
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            DisableButton();
+            leftBorderBtn.Visible = false;
+            //add to the title bar the current step title
+            iconCurrentChildForm.IconChar = IconChar.Home;
+            iconCurrentChildForm.IconColor = Color.White;
+            OpenChildForm(new InitialForm());
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -313,107 +190,42 @@ namespace ArcGIS_System_Profiler
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
-            try
-            {
-                ReleaseCapture();
-                SendMessage(this.Handle, 0x112, 0xf012, 0);
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void globalTimer1_Tick(object sender, EventArgs e)
         {
-            try
+            globalProgressBar1.Value = globalProgressBar1.Value + 10;
+            if (globalProgressBar1.Value > 99)
             {
-                globalProgressBar1.Value = globalProgressBar1.Value + 10;
-                if (globalProgressBar1.Value > 99)
-                {
-                    this.Hide();
-                    globalVariables.globalForm.globalTimer1.Enabled = false;
-                    globalVariables.globalForm.btn_Tasks.PerformClick();
-                }
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                this.Hide();
+                globalVariables.globalForm.globalTimer1.Enabled = false;
+                globalVariables.globalForm.btn_Tasks.PerformClick();
             }
         }
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
-            try
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-
-                Application.Exit();
-            }
-            catch (Exception)
-            {
-
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            Application.Exit();
         }
 
         private void btn_Maximize_Click(object sender, EventArgs e)
         {
-            try
+            if (WindowState == FormWindowState.Normal)
             {
-                if (WindowState == FormWindowState.Normal)
-                {
-                    WindowState = FormWindowState.Maximized;
-                }
-                else
-                {
-                    WindowState = FormWindowState.Normal;
-                }
+                WindowState = FormWindowState.Maximized;
             }
-            catch (Exception)
+            else
             {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                WindowState = FormWindowState.Normal;
             }
         }
 
         private void btn_Minimize_Click(object sender, EventArgs e)
         {
-            try
-            {
-                WindowState = FormWindowState.Minimized;
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
+            WindowState = FormWindowState.Minimized;
         }
-        int move = 2;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                panelSlider.Left += 2;
-                if (panelSlider.Left > 200)
-                {
-                    panelSlider.Left = 0;
-                }
-                if (panelSlider.Left < 0)
-                {
-                    //panelSlider.Left += 2;
-                    move = 2;
-                }
-            }
-            catch (Exception)
-            {
-                globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
-            }
-        }
+
     }
 }
