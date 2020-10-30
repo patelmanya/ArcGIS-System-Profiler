@@ -728,7 +728,7 @@ namespace ArcGIS_System_Profiler
                     globalVariables.globalForm.loadingIconPic.Visible = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 globalVariables gv = new globalVariables();

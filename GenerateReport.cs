@@ -123,6 +123,7 @@ namespace ArcGIS_System_Profiler
                     {
                         //1 Column
                         tbl.Columns.Add();
+                        tbl.Columns.Add();
 
                         //pretty basic logic...what happens if the table template had 2 columns?
                         //with my code...nothing...which would be a problem.
@@ -131,9 +132,12 @@ namespace ArcGIS_System_Profiler
 
                     int i = 1;
                     //And a table header
-                    tbl.Cell(i, 1).Range.Text = "Report";
-                    tbl.Cell(i, 2).Range.Text = "Service Name";
+                    
+                    tbl.Cell(i, 1).Range.Text = "Report File";
+                    tbl.Cell(i, 2).Range.Text = "Sr No.";
+                    tbl.Cell(i, 3).Range.Text = "Service Name";
 
+                    var fileSrNoCounter = 1;
                     if (globalVariables.generateReportListDoc.Count > 0)
                     {
                         var loopcounter = 2;
@@ -149,7 +153,9 @@ namespace ArcGIS_System_Profiler
                                 continue;
                             }
                             tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
-                            tbl.Cell(loopcounter, 2).Range.Text = "Service Name";
+                            tbl.Cell(loopcounter, 2).Range.Text = fileSrNoCounter.ToString();
+                            fileSrNoCounter += 1;
+                            tbl.Cell(loopcounter, 3).Range.Text = "Service Name";
                             Clipboard.Clear();
                             loopcounter += 1;
                         }
@@ -233,7 +239,7 @@ namespace ArcGIS_System_Profiler
 
                 // MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 globalVariables gv = new globalVariables();
@@ -284,7 +290,7 @@ namespace ArcGIS_System_Profiler
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 globalVariables gv = new globalVariables();

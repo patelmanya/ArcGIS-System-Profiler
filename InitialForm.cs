@@ -217,7 +217,7 @@ namespace ArcGIS_System_Profiler
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 //MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
