@@ -25,6 +25,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                 
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation started.\r\n";
                 servicesReportFilesGenerator();
@@ -294,5 +295,6 @@ namespace ArcGIS_System_Profiler
 
             return builder.ToString();
         }
+         
     }
 }
