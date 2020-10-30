@@ -144,7 +144,18 @@ namespace ArcGIS_System_Profiler
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
                             tbl.Rows.Add();
-                            txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending Service report file as object: " + objArr + "\r\n";
+
+                            string processingServiceName = "";
+                            foreach (Dictionary<string, object> obj in globalVariables.generateReportListServiceName)
+                            {
+                                if (obj["reportFileName"].ToString() == objArr)
+                                {
+                                    processingServiceName = obj["serviceName"].ToString();
+                                    break;
+                                }
+                            }
+
+                            txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending Service report file as object: " + processingServiceName + "\r\n";
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
@@ -155,7 +166,7 @@ namespace ArcGIS_System_Profiler
                             tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
                             tbl.Cell(loopcounter, 2).Range.Text = fileSrNoCounter.ToString();
                             fileSrNoCounter += 1;
-                            tbl.Cell(loopcounter, 3).Range.Text = "Service Name";
+                            tbl.Cell(loopcounter, 3).Range.Text = processingServiceName;
                             Clipboard.Clear();
                             loopcounter += 1;
                         }
@@ -178,7 +189,7 @@ namespace ArcGIS_System_Profiler
                     int i = 1;
                     //And a table header
                     tbl.Cell(i, 1).Range.Text = "Report";
-                    tbl.Cell(i, 2).Range.Text = "Service Name";
+                    tbl.Cell(i, 2).Range.Text = "Name";
 
 
                     tbl.Rows.Add();
@@ -274,7 +285,17 @@ namespace ArcGIS_System_Profiler
                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                         doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
                         globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
-                        txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending Service report file as object: "  + objArr + "\r\n";
+                        string processingServiceName = "";
+                        foreach (Dictionary<string, object> obj in globalVariables.generateReportListServiceName)
+                        {
+                            if (obj["reportFileName"].ToString() == objArr)
+                            {
+                                processingServiceName = obj["serviceName"].ToString();
+                                obj["reportFileName"] = "C:\\temp\\GeneratedServicesReport_" + fileName + ".docx";
+                                break;
+                            }
+                        }
+                        txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Converting to Service report file for ArcGIS Server service: "  + processingServiceName + "\r\n";
                         object saveChanges = WdSaveOptions.wdSaveChanges;
                         doc.Close(saveChanges, missing, missing);
                         appobj.Quit();

@@ -275,6 +275,10 @@ namespace ArcGIS_System_Profiler
                                     }
                                     TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
                                     globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                    var dictionary = new Dictionary<string, object>(); 
+                                    dictionary["serviceName"] = obj["name"].ToString();
+                                    dictionary["reportFileName"] = "C:\\temp\\tables\\demo_" + fileName + ".html";
+                                    globalVariables.generateReportListServiceName.Add(dictionary);
                                     txt.Write(item);
                                     txt.Close();
                                     fileCounterLoop = fileCounterLoop + 1;
@@ -291,6 +295,10 @@ namespace ArcGIS_System_Profiler
                                         }
                                         TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
                                         globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                        var dictionary = new Dictionary<string, object>();
+                                        dictionary["serviceName"] = obj["name"].ToString();
+                                        dictionary["reportFileName"] = "C:\\temp\\tables\\demo_" + fileName + ".html";
+                                        globalVariables.generateReportListServiceName.Add(dictionary);
                                         txt.Write(item);
                                         txt.Close();
                                         fileCounterLoop = fileCounterLoop + 1;

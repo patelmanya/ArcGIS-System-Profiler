@@ -47,6 +47,7 @@ namespace ArcGIS_System_Profiler
         public static List<Object> servicesFieldsReportArray = new List<Object>();
         public static List<string> generateReportList = new List<string>();
         public static List<string> generateReportListDoc = new List<string>();
+        public static List<Object> generateReportListServiceName = new List<Object>();
         public static string agsServerServicesReportName = "";
         public static string generatedFinalReportName = "";
 
