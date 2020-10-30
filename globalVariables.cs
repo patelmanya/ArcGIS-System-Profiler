@@ -28,7 +28,7 @@ namespace ArcGIS_System_Profiler
         public static string global_serverHostname = "";
         public static string global_datastoreHostname = "";
 
-        public static string reportTemplateFileName = @"C:\temp\Report Template.dotx";
+        public static string reportTemplateFileName = @"C:\temp\Report Template EA2.dotx";
 
         public static string portalCheckURL = "";
         public static string ArcGISServerCheckURL = "";
@@ -48,6 +48,7 @@ namespace ArcGIS_System_Profiler
         public static List<string> generateReportList = new List<string>();
         public static List<string> generateReportListDoc = new List<string>();
         public static string agsServerServicesReportName = "";
+
 
         public static MakeMovable _move;
         public static String globalTokenStr = "";

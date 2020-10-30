@@ -67,29 +67,42 @@ namespace ArcGIS_System_Profiler
 
                 //add the file object for the selected services and generate report
                 //ArcGIS Server Health Check
-                if (globalVariables.generateReportListDoc.Count>0)
+                if (globalVariables.generateReportListDoc.Count > 0)
                 {
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Reports & status\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Report");
-                    docRange = tbl.Cell(1, 1).Range;
+
+
+
+                    if (tbl.Columns.Count == 1)
+                    {
+                        //1 Column
+                        tbl.Columns.Add();
+
+                        //pretty basic logic...what happens if the table template had 2 columns?
+                        //with my code...nothing...which would be a problem.
+                        //it's a sample, so make of it what you wish.
+                    }
+
+                    int i = 1;
+                    //And a table header
+                    tbl.Cell(i, 1).Range.Text = "Report";
+                    tbl.Cell(i, 2).Range.Text = "Service Name";
 
                     if (globalVariables.generateReportListDoc.Count > 0)
                     {
-                        var loopcounter = 0;
+                        var loopcounter = 2;
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
+                            tbl.Rows.Add();
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
-                            docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                            tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
+                            tbl.Cell(loopcounter, 2).Range.Text = "Service Name";
                             Clipboard.Clear();
-
-                            //docRange.InsertFile(objArr);
-                            loopcounter = loopcounter + 1;
-                            docRange = tbl.Cell(loopcounter, 1).Range;
-
+                            loopcounter += 1;
                         }
-
                     }
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
@@ -100,11 +113,25 @@ namespace ArcGIS_System_Profiler
                 {
                     txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Services Detailed Report\r\n";
                     tbl = findTable(wordApp.ActiveDocument, "ArcGIS Services Detailed Report");
-                    docRange = tbl.Cell(1, 1).Range;
+                    if (tbl.Columns.Count == 1)
+                    {
+                        //1 Column
+                        tbl.Columns.Add();
+                    }
+
+                    int i = 1;
+                    //And a table header
+                    tbl.Cell(i, 1).Range.Text = "Report";
+                    tbl.Cell(i, 2).Range.Text = "Service Name";
+
+
+                    tbl.Rows.Add();
                     StringCollection paths = new StringCollection();
                     paths.Add(globalVariables.agsServerServicesReportName);
                     Clipboard.SetFileDropList(paths);
-                    docRange.PasteSpecial(Link: false, DisplayAsIcon: true);
+                    tbl.Cell(2, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
+                    tbl.Cell(2, 2).Range.Text = "ArcGIS Server Services Report";
+                    //tbl.Cell(1, 2).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico");
                     Clipboard.Clear();
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
@@ -146,7 +173,7 @@ namespace ArcGIS_System_Profiler
                         //delete the file if it exists
                         if (File.Exists(objArr))
                         {
-                            File.Delete(objArr);
+                            //File.Delete(objArr);
                         }
                     }
 
@@ -200,7 +227,7 @@ namespace ArcGIS_System_Profiler
                         //delete the file if it exists
                         if (File.Exists(objArr))
                         {
-                            File.Delete(objArr);
+                            //File.Delete(objArr);
                         }
                     }
                 }
