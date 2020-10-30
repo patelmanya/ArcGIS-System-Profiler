@@ -360,7 +360,114 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                textFilterFlag = "agsonly";
+                //textFilterFlag = "";
+
+                //remove the existing rows in the datagridview
+                do
+                {
+                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    {
+                        try
+                        {
+                            dataGridViewPorts.Rows.Remove(row);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+                    }
+                } while (dataGridViewPorts.Rows.Count > 1);
+
+                //add only the closed one from the globalVariables.portsList
+                foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
+                    if (textFilterFlag == "portNo")
+                    {
+                        if (obj["portNo"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = obj["description"].ToString();
+                            row.Cells[2].Value = obj["status"].ToString();
+                            row.Cells[3].Value = "TCP";
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                            if (obj["description"].ToString().Contains("ArcGIS"))
+                            {
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                                
+                        }
+                        else if (txtBx_Filter.Text == "")
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = obj["description"].ToString();
+                            row.Cells[2].Value = obj["status"].ToString();
+                            row.Cells[3].Value = "TCP";
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                            if (obj["description"].ToString().Contains("ArcGIS"))
+                            {
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
+                    }
+                    if (textFilterFlag == "description")
+                    {
+                        if (obj["description"].ToString().ToUpper().Contains(txtBx_Filter.Text.ToUpper()))
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = obj["description"].ToString();
+                            row.Cells[2].Value = obj["status"].ToString();
+                            row.Cells[3].Value = "TCP";
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                            if (obj["description"].ToString().Contains("ArcGIS"))
+                            {
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
+                        else if (txtBx_Filter.Text == "")
+                        {
+                            row.Cells[0].Value = obj["portNo"].ToString();
+                            row.Cells[1].Value = obj["description"].ToString();
+                            row.Cells[2].Value = obj["status"].ToString();
+                            row.Cells[3].Value = "TCP";
+                            if (obj["status"].ToString() == "Closed")
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                            if (obj["description"].ToString().Contains("ArcGIS"))
+                            {
+                                dataGridViewPorts.Rows.Add(row);
+                            }
+                        }
+                    }
+
+                }
             }
             catch (Exception)
             {
