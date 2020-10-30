@@ -48,6 +48,7 @@ namespace ArcGIS_System_Profiler
         public static List<string> generateReportList = new List<string>();
         public static List<string> generateReportListDoc = new List<string>();
         public static string agsServerServicesReportName = "";
+        public static string generatedFinalReportName = "";
 
 
         public static MakeMovable _move;
@@ -161,7 +162,7 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                 
             }
         }
     }

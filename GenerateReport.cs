@@ -25,7 +25,13 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                 
+                if (File.Exists(globalVariables.generatedFinalReportName))
+                {
+                    File.Delete(globalVariables.generatedFinalReportName);
+                    globalVariables.generatedFinalReportName = "";
+                    txtBx_GenRepStatus.Text = "";
+                }
+                
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation started.\r\n";
                 servicesReportFilesGenerator();
@@ -66,6 +72,44 @@ namespace ArcGIS_System_Profiler
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
 
+
+                //ports checks
+
+                //add only the closed one from the globalVariables.portsList
+                if (globalVariables.portsList.Count > 0)
+                {
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Port status\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Port Status List");
+                    if (tbl.Columns.Count == 1)
+                    {
+                        tbl.Columns.Add();
+                        tbl.Columns.Add();
+                        tbl.Columns.Add();
+                    }
+                    int i = 1;
+                    //And a table header
+                    tbl.Cell(i, 1).Range.Text = "Port Number";
+                    tbl.Cell(i, 2).Range.Text = "Port Type";
+                    tbl.Cell(i, 3).Range.Text = "Port Description";
+                    tbl.Cell(i, 4).Range.Text = "Port Status";
+                    var loopcounter = 2;
+                    foreach (Dictionary<string, object> obj in globalVariables.portsList)
+                    {
+
+                        if (obj["description"].ToString().Contains("ArcGIS"))
+                        {
+                            tbl.Rows.Add();
+                            tbl.Cell(loopcounter, 1).Range.Text = obj["portNo"].ToString();
+                            tbl.Cell(loopcounter, 2).Range.Text = obj["protocol"].ToString();
+                            tbl.Cell(loopcounter, 3).Range.Text = obj["description"].ToString();
+                            tbl.Cell(loopcounter, 4).Range.Text = obj["status"].ToString();
+                            loopcounter += 1;
+                        }
+
+                    }
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                }
+
                 //add the file object for the selected services and generate report
                 //ArcGIS Server Health Check
                 if (globalVariables.generateReportListDoc.Count > 0)
@@ -96,9 +140,14 @@ namespace ArcGIS_System_Profiler
                         foreach (string objArr in globalVariables.generateReportListDoc)
                         {
                             tbl.Rows.Add();
+                            txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending Service report file as object: " + objArr + "\r\n";
                             StringCollection pathsService = new StringCollection();
                             pathsService.Add(objArr);
                             Clipboard.SetFileDropList(pathsService);
+                            if (Clipboard.GetDataObject() == null)
+                            {
+                                continue;
+                            }
                             tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
                             tbl.Cell(loopcounter, 2).Range.Text = "Service Name";
                             Clipboard.Clear();
@@ -142,9 +191,9 @@ namespace ArcGIS_System_Profiler
                 string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                 wordDoc.SaveAs2(@"C:\temp\GeneratedReport_" + fileName + ".docx");
 
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation completed.\r\n";
-                txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report located at: C:\\temp\\GeneratedReport_" + fileName + ".docx\r\n";
-
+                txtBx_GenRepStatus.Text += "Report generation completed.\r\n";
+                txtBx_GenRepStatus.Text += "Report located at: C:\\temp\\GeneratedReport_" + fileName + ".docx\r\n";
+                globalVariables.generatedFinalReportName = @"C:\temp\GeneratedReport_" + fileName + ".docx";
                 object missing = Type.Missing;
                 object saveChanges = WdSaveOptions.wdSaveChanges;
                 wordDoc.Close(saveChanges, missing, missing);
@@ -158,27 +207,27 @@ namespace ArcGIS_System_Profiler
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordDoc);
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(wordApp);
 
-                for (int i = 0; i < globalVariables.ImageList.Count; i++)
-                {
-                    if (File.Exists(globalVariables.ImageList[i]))
-                    {
-                        File.Delete(globalVariables.ImageList[i]);
-                    }
-                }
+                //for (int i = 0; i < globalVariables.ImageList.Count; i++)
+                //{
+                //    if (File.Exists(globalVariables.ImageList[i]))
+                //    {
+                //        File.Delete(globalVariables.ImageList[i]);
+                //    }
+                //}
 
                 //delete the file if it exists
-                if (globalVariables.generateReportListDoc.Count > 0)
-                {
-                    foreach (string objArr in globalVariables.generateReportListDoc)
-                    {
-                        //delete the file if it exists
-                        if (File.Exists(objArr))
-                        {
-                            //File.Delete(objArr);
-                        }
-                    }
+                //if (globalVariables.generateReportListDoc.Count > 0)
+                //{
+                //    foreach (string objArr in globalVariables.generateReportListDoc)
+                //    {
+                //        //delete the file if it exists
+                //        if (File.Exists(objArr))
+                //        {
+                //            //File.Delete(objArr);
+                //        }
+                //    }
 
-                }
+                //}
 
                 globalVariables.globalForm.loadingIconPic.Visible = false;
 
@@ -187,7 +236,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception ex)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -218,36 +268,27 @@ namespace ArcGIS_System_Profiler
                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                         doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
                         globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
-
+                        txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending Service report file as object: "  + objArr + "\r\n";
                         object saveChanges = WdSaveOptions.wdSaveChanges;
                         doc.Close(saveChanges, missing, missing);
                         appobj.Quit();
                         System.Runtime.InteropServices.Marshal.FinalReleaseComObject(doc);
                         System.Runtime.InteropServices.Marshal.FinalReleaseComObject(appobj);
 
-                        //delete the file if it exists
-                        if (File.Exists(objArr))
-                        {
-                            //File.Delete(objArr);
-                        }
+                        ////delete the file if it exists
+                        //if (File.Exists(objArr))
+                        //{
+                        //    //File.Delete(objArr);
+                        //}
                     }
-                }
-                if (globalVariables.generateReportListDoc.Count > 0)
-                {
-                    //foreach (string objArr in globalVariables.generateReportListDoc)
-                    //{
-                    //    object missing = Type.Missing;
-
-                    //    docRangeLoc.InsertFile(objArr, ref missing, ref missing, ref missing, ref missing);
-                    //}
-
                 }
 
             }
             catch (Exception ex)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -295,6 +336,6 @@ namespace ArcGIS_System_Profiler
 
             return builder.ToString();
         }
-         
+
     }
 }

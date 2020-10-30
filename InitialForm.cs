@@ -100,7 +100,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
 
         }
@@ -121,7 +122,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -141,8 +143,8 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception)
             {
-
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -169,7 +171,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -242,7 +245,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -266,7 +270,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -290,7 +295,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -314,7 +320,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -339,7 +346,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -364,7 +372,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
     }

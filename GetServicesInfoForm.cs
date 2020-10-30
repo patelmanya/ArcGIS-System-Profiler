@@ -157,7 +157,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -181,6 +182,20 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                if (globalVariables.generateReportList.Count > 0)
+                {
+                    foreach (string objArr in globalVariables.generateReportList)
+                    {
+
+                        //delete the file if it exists
+                        if (File.Exists(objArr))
+                        {
+                            File.Delete(objArr);
+                        }
+                    }
+                    globalVariables.generateReportList.Clear();
+                }
+
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 //get selected services - globalVariables.checkedAGSServicesArray
                 foreach (DataGridViewRow row in AGS_dataGridView.Rows)
@@ -295,7 +310,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
 
@@ -715,7 +731,8 @@ namespace ArcGIS_System_Profiler
             catch (Exception ex)
             {
 
-                throw;
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
             }
         }
     }

@@ -102,17 +102,19 @@ namespace ArcGIS_System_Profiler
                                 var dictionary = new Dictionary<string, object>();
                                 dictionary["portNo"] = endPoint.Port;
                                 string descriptionText = "";
+                                string protocoltxt = "";
                                 foreach (Dictionary<string, object> obj in globalVariables.wkidPortList)
                                 {
                                     if (obj["portNumber"].ToString() == endPoint.Port.ToString())
                                     {
                                         descriptionText = obj["description"].ToString();
+                                        protocoltxt = obj["protocol"].ToString();
                                         break;
                                     }
                                 }
                                 dictionary["description"] = descriptionText;
                                 dictionary["status"] = "Open";
-                                dictionary["porttype"] = "TCP";
+                                dictionary["protocol"] = protocoltxt;
                                 bool portExists = false;
                                 foreach (Dictionary<string, object> obj in globalVariables.portsList)
                                 {
@@ -126,7 +128,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = endPoint.Port;
                                 row.Cells[1].Value = descriptionText;
                                 row.Cells[2].Value = "Open";
-                                row.Cells[3].Value = "TCP";
+                                row.Cells[3].Value = protocoltxt;
 
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
 
@@ -144,23 +146,25 @@ namespace ArcGIS_System_Profiler
                             var dictionary = new Dictionary<string, object>();
                             dictionary["portNo"] = endPoint.Port;
                             string descriptionText = "";
+                            string protocoltxt = "";
                             foreach (Dictionary<string, object> obj in globalVariables.wkidPortList)
                             {
                                 if (obj["portNumber"].ToString() == endPoint.Port.ToString())
                                 {
                                     descriptionText = obj["description"].ToString();
+                                    protocoltxt = obj["protocol"].ToString();
                                     break;
                                 }
                             }
                             dictionary["description"] = descriptionText;
                             dictionary["status"] = "Closed";
-                            dictionary["porttype"] = "TCP";
+                            dictionary["protocol"] = protocoltxt;
                             bool portExists = false;
                             DataGridViewRow row = (DataGridViewRow)dataGridViewPorts.Rows[0].Clone();
                             row.Cells[0].Value = endPoint.Port;
                             row.Cells[1].Value = descriptionText;
                             row.Cells[2].Value = "Closed";
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = protocoltxt;
                             row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
 
                             foreach (Dictionary<string, object> obj in globalVariables.portsList)
@@ -256,7 +260,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -276,7 +280,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -296,7 +300,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -390,7 +394,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -410,7 +414,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -432,7 +436,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -451,7 +455,7 @@ namespace ArcGIS_System_Profiler
                             row.Cells[0].Value = obj["portNo"].ToString();
                             row.Cells[1].Value = obj["description"].ToString();
                             row.Cells[2].Value = obj["status"].ToString();
-                            row.Cells[3].Value = "TCP";
+                            row.Cells[3].Value = obj["protocol"].ToString();
                             if (obj["status"].ToString() == "Closed")
                             {
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -510,7 +514,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = obj["description"].ToString();
                                 row.Cells[2].Value = obj["status"].ToString();
-                                row.Cells[3].Value = "TCP";
+                                row.Cells[3].Value = obj["protocol"].ToString();
                                 if (obj["status"].ToString() == "Closed")
                                 {
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -526,7 +530,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = obj["description"].ToString();
                                 row.Cells[2].Value = obj["status"].ToString();
-                                row.Cells[3].Value = "TCP";
+                                row.Cells[3].Value = obj["protocol"].ToString();
                                 if (obj["status"].ToString() == "Closed")
                                 {
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -545,7 +549,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = obj["description"].ToString();
                                 row.Cells[2].Value = obj["status"].ToString();
-                                row.Cells[3].Value = "TCP";
+                                row.Cells[3].Value = obj["protocol"].ToString();
                                 if (obj["status"].ToString() == "Closed")
                                 {
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -561,7 +565,7 @@ namespace ArcGIS_System_Profiler
                                 row.Cells[0].Value = obj["portNo"].ToString();
                                 row.Cells[1].Value = obj["description"].ToString();
                                 row.Cells[2].Value = obj["status"].ToString();
-                                row.Cells[3].Value = "TCP";
+                                row.Cells[3].Value = obj["protocol"].ToString();
                                 if (obj["status"].ToString() == "Closed")
                                 {
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
@@ -591,7 +595,7 @@ namespace ArcGIS_System_Profiler
                                     row.Cells[0].Value = obj["portNo"].ToString();
                                     row.Cells[1].Value = obj["description"].ToString();
                                     row.Cells[2].Value = obj["status"].ToString();
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     dataGridViewPorts.Rows.Add(row);
                                 }
@@ -600,7 +604,7 @@ namespace ArcGIS_System_Profiler
                                     row.Cells[0].Value = obj["portNo"].ToString();
                                     row.Cells[1].Value = obj["description"].ToString();
                                     row.Cells[2].Value = obj["status"].ToString();
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     dataGridViewPorts.Rows.Add(row);
                                 }
@@ -612,7 +616,7 @@ namespace ArcGIS_System_Profiler
                                     row.Cells[0].Value = obj["portNo"].ToString();
                                     row.Cells[1].Value = obj["description"].ToString();
                                     row.Cells[2].Value = obj["status"].ToString();
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     dataGridViewPorts.Rows.Add(row);
                                 }
@@ -621,7 +625,7 @@ namespace ArcGIS_System_Profiler
                                     row.Cells[0].Value = obj["portNo"].ToString();
                                     row.Cells[1].Value = obj["description"].ToString();
                                     row.Cells[2].Value = obj["status"].ToString();
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     dataGridViewPorts.Rows.Add(row);
                                 }
@@ -644,7 +648,7 @@ namespace ArcGIS_System_Profiler
                                     row.Cells[0].Value = obj["portNo"].ToString();
                                     row.Cells[1].Value = obj["description"].ToString();
                                     row.Cells[2].Value = obj["status"].ToString();
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     // row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
                                     if (obj["status"].ToString() == "Closed")
                                     {
@@ -670,7 +674,7 @@ namespace ArcGIS_System_Profiler
                                     {
                                         row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     }
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     dataGridViewPorts.Rows.Add(row);
                                 }
                             }
@@ -690,7 +694,7 @@ namespace ArcGIS_System_Profiler
                                     {
                                         row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     }
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     dataGridViewPorts.Rows.Add(row);
                                 }
                                 else if (txtBx_Filter.Text == "")
@@ -707,7 +711,7 @@ namespace ArcGIS_System_Profiler
                                     {
                                         row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
                                     }
-                                    row.Cells[3].Value = "TCP";
+                                    row.Cells[3].Value = obj["protocol"].ToString();
                                     dataGridViewPorts.Rows.Add(row);
                                 }
                             }
