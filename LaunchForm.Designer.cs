@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaunchForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnDataStoreValidate = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSlider = new System.Windows.Forms.Panel();
             this.btnCreateReport = new FontAwesome.Sharp.IconButton();
@@ -56,6 +57,7 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnSystemValidation = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -69,6 +71,8 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.btnSystemValidation);
+            this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btn_Publish);
@@ -83,6 +87,31 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 821);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnDataStoreValidate
+            // 
+            this.btnDataStoreValidate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDataStoreValidate.FlatAppearance.BorderSize = 0;
+            this.btnDataStoreValidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataStoreValidate.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDataStoreValidate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDataStoreValidate.ForeColor = System.Drawing.Color.White;
+            this.btnDataStoreValidate.IconChar = FontAwesome.Sharp.IconChar.Sitemap;
+            this.btnDataStoreValidate.IconColor = System.Drawing.Color.White;
+            this.btnDataStoreValidate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDataStoreValidate.IconSize = 36;
+            this.btnDataStoreValidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDataStoreValidate.Location = new System.Drawing.Point(0, 560);
+            this.btnDataStoreValidate.Name = "btnDataStoreValidate";
+            this.btnDataStoreValidate.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDataStoreValidate.Rotation = 0D;
+            this.btnDataStoreValidate.Size = new System.Drawing.Size(220, 60);
+            this.btnDataStoreValidate.TabIndex = 11;
+            this.btnDataStoreValidate.Text = "DataStore Validations";
+            this.btnDataStoreValidate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDataStoreValidate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDataStoreValidate.UseVisualStyleBackColor = true;
+            this.btnDataStoreValidate.Click += new System.EventHandler(this.btnDataStoreValidate_Click);
             // 
             // panel2
             // 
@@ -292,7 +321,7 @@
             // loadingIconPic
             // 
             this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
-            this.loadingIconPic.Location = new System.Drawing.Point(41, 10);
+            this.loadingIconPic.Location = new System.Drawing.Point(41, 9);
             this.loadingIconPic.Name = "loadingIconPic";
             this.loadingIconPic.Size = new System.Drawing.Size(120, 107);
             this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -500,6 +529,31 @@
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
             // 
+            // btnSystemValidation
+            // 
+            this.btnSystemValidation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSystemValidation.FlatAppearance.BorderSize = 0;
+            this.btnSystemValidation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSystemValidation.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSystemValidation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSystemValidation.ForeColor = System.Drawing.Color.White;
+            this.btnSystemValidation.IconChar = FontAwesome.Sharp.IconChar.Whmcs;
+            this.btnSystemValidation.IconColor = System.Drawing.Color.White;
+            this.btnSystemValidation.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSystemValidation.IconSize = 36;
+            this.btnSystemValidation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSystemValidation.Location = new System.Drawing.Point(0, 620);
+            this.btnSystemValidation.Name = "btnSystemValidation";
+            this.btnSystemValidation.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnSystemValidation.Rotation = 0D;
+            this.btnSystemValidation.Size = new System.Drawing.Size(220, 60);
+            this.btnSystemValidation.TabIndex = 12;
+            this.btnSystemValidation.Text = "System Verification";
+            this.btnSystemValidation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSystemValidation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSystemValidation.UseVisualStyleBackColor = true;
+            this.btnSystemValidation.Click += new System.EventHandler(this.btnSystemValidation_Click);
+            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,5 +607,7 @@
         internal FontAwesome.Sharp.IconButton btnCreateReport;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelSlider;
+        internal FontAwesome.Sharp.IconButton btnDataStoreValidate;
+        internal FontAwesome.Sharp.IconButton btnSystemValidation;
     }
 }

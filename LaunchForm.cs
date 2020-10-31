@@ -165,6 +165,19 @@ namespace ArcGIS_System_Profiler
             OpenChildForm(new GenerateReport());
         }
 
+
+        private void btnDataStoreValidate_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new AGSDatastoreValidations());
+        }
+
+        private void btnSystemValidation_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new SystemVerification());
+        }
+
         public void iconButton1_Click(object sender, EventArgs e)
         {
             Reset();
@@ -229,5 +242,6 @@ namespace ArcGIS_System_Profiler
             WindowState = FormWindowState.Minimized;
         }
 
+        
     }
 }

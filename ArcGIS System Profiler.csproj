@@ -104,6 +104,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AGSDatastoreValidations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGSDatastoreValidations.Designer.cs">
+      <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerateReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,8 +164,17 @@
     <Compile Include="StepsConfirmationForm.Designer.cs">
       <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemVerification.Designer.cs">
+      <DependentUpon>SystemVerification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="WkidPortList.cs" />
+    <EmbeddedResource Include="AGSDatastoreValidations.resx">
+      <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GenerateReport.resx">
       <DependentUpon>GenerateReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,9 @@
     </Compile>
     <EmbeddedResource Include="StepsConfirmationForm.resx">
       <DependentUpon>StepsConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemVerification.resx">
+      <DependentUpon>SystemVerification.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ArcGIS System Profiler_TemporaryKey.pfx" />
     <None Include="packages.config" />
