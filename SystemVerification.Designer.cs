@@ -29,39 +29,59 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxVersion = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.btn_PerformSysValidations = new System.Windows.Forms.Button();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelBody = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblDiskSpace1 = new System.Windows.Forms.Label();
+            this.lblDiskSpaceTitle = new System.Windows.Forms.Label();
+            this.lblMemory = new System.Windows.Forms.Label();
+            this.lblProcessorType = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxVersion = new System.Windows.Forms.ComboBox();
             this.lblOperatingSystem = new System.Windows.Forms.Label();
-            this.passOS = new FontAwesome.Sharp.IconPictureBox();
+            this.statusOS = new FontAwesome.Sharp.IconPictureBox();
+            this.statusProcessor = new FontAwesome.Sharp.IconPictureBox();
+            this.statusMemory = new FontAwesome.Sharp.IconPictureBox();
+            this.statusDiskSpace = new FontAwesome.Sharp.IconPictureBox();
+            this.lblDiskSpace2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.statusDiskSpace1 = new FontAwesome.Sharp.IconPictureBox();
+            this.statusDiskSpace2 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.failOS = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox7 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox8 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1.SuspendLayout();
             this.panelBody.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.passOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusProcessor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusMemory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.failOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox8)).BeginInit();
@@ -81,6 +101,52 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1122, 102);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(443, 42);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
+            this.label5.Size = new System.Drawing.Size(163, 42);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Select Product:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBoxVersion
+            // 
+            this.comboBoxVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxVersion.Font = new System.Drawing.Font("Arial", 12F);
+            this.comboBoxVersion.FormattingEnabled = true;
+            this.comboBoxVersion.Location = new System.Drawing.Point(612, 54);
+            this.comboBoxVersion.Name = "comboBoxVersion";
+            this.comboBoxVersion.Size = new System.Drawing.Size(84, 26);
+            this.comboBoxVersion.TabIndex = 37;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 42);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
+            this.label4.Size = new System.Drawing.Size(163, 42);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Select Product:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBoxProduct
+            // 
+            this.comboBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxProduct.Font = new System.Drawing.Font("Arial", 12F);
+            this.comboBoxProduct.FormattingEnabled = true;
+            this.comboBoxProduct.Location = new System.Drawing.Point(169, 54);
+            this.comboBoxProduct.Name = "comboBoxProduct";
+            this.comboBoxProduct.Size = new System.Drawing.Size(268, 26);
+            this.comboBoxProduct.TabIndex = 35;
             // 
             // btn_PerformSysValidations
             // 
@@ -137,26 +203,39 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.failOS, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox6, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox7, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox8, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label19, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.lblDiskSpace1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblDiskSpaceTitle, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblMemory, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblProcessorType, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblOperatingSystem, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.passOS, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox3, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox4, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.statusOS, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.statusProcessor, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.statusMemory, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblDiskSpace2, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label17, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.label18, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace1, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace2, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox2, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox3, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox4, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox5, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox6, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox7, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox8, 1, 14);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -179,6 +258,70 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1122, 535);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Arial", 12F);
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(4, 491);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(1001, 43);
+            this.label19.TabIndex = 55;
+            this.label19.Text = "Firewall settings";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDiskSpace1
+            // 
+            this.lblDiskSpace1.AutoSize = true;
+            this.lblDiskSpace1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDiskSpace1.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblDiskSpace1.ForeColor = System.Drawing.Color.White;
+            this.lblDiskSpace1.Location = new System.Drawing.Point(4, 176);
+            this.lblDiskSpace1.Name = "lblDiskSpace1";
+            this.lblDiskSpace1.Size = new System.Drawing.Size(1001, 34);
+            this.lblDiskSpace1.TabIndex = 41;
+            this.lblDiskSpace1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDiskSpaceTitle
+            // 
+            this.lblDiskSpaceTitle.AutoSize = true;
+            this.lblDiskSpaceTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDiskSpaceTitle.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblDiskSpaceTitle.ForeColor = System.Drawing.Color.White;
+            this.lblDiskSpaceTitle.Location = new System.Drawing.Point(4, 141);
+            this.lblDiskSpaceTitle.Name = "lblDiskSpaceTitle";
+            this.lblDiskSpaceTitle.Size = new System.Drawing.Size(1001, 34);
+            this.lblDiskSpaceTitle.TabIndex = 40;
+            this.lblDiskSpaceTitle.Text = "Disk space: ";
+            this.lblDiskSpaceTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMemory
+            // 
+            this.lblMemory.AutoSize = true;
+            this.lblMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMemory.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblMemory.ForeColor = System.Drawing.Color.White;
+            this.lblMemory.Location = new System.Drawing.Point(4, 106);
+            this.lblMemory.Name = "lblMemory";
+            this.lblMemory.Size = new System.Drawing.Size(1001, 34);
+            this.lblMemory.TabIndex = 39;
+            this.lblMemory.Text = "RAM:";
+            this.lblMemory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblProcessorType
+            // 
+            this.lblProcessorType.AutoSize = true;
+            this.lblProcessorType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProcessorType.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblProcessorType.ForeColor = System.Drawing.Color.White;
+            this.lblProcessorType.Location = new System.Drawing.Point(4, 71);
+            this.lblProcessorType.Name = "lblProcessorType";
+            this.lblProcessorType.Size = new System.Drawing.Size(1001, 34);
+            this.lblProcessorType.TabIndex = 38;
+            this.lblProcessorType.Text = "Processer type (Only 64-bit is supported): ";
+            this.lblProcessorType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -187,7 +330,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(4, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(888, 34);
+            this.label2.Size = new System.Drawing.Size(1001, 34);
             this.label2.TabIndex = 31;
             this.label2.Text = "Descriptions";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -198,58 +341,12 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(899, 1);
+            this.label3.Location = new System.Drawing.Point(1012, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 34);
+            this.label3.Size = new System.Drawing.Size(106, 34);
             this.label3.TabIndex = 32;
-            this.label3.Text = "Pass";
+            this.label3.Text = "Status";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBoxProduct
-            // 
-            this.comboBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBoxProduct.Font = new System.Drawing.Font("Arial", 12F);
-            this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(169, 54);
-            this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(268, 26);
-            this.comboBoxProduct.TabIndex = 35;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 42);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.label4.Size = new System.Drawing.Size(163, 42);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Select Product:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(443, 42);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.label5.Size = new System.Drawing.Size(163, 42);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "Select Product:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBoxVersion
-            // 
-            this.comboBoxVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBoxVersion.Font = new System.Drawing.Font("Arial", 12F);
-            this.comboBoxVersion.FormattingEnabled = true;
-            this.comboBoxVersion.Location = new System.Drawing.Point(612, 54);
-            this.comboBoxVersion.Name = "comboBoxVersion";
-            this.comboBoxVersion.Size = new System.Drawing.Size(84, 26);
-            this.comboBoxVersion.TabIndex = 37;
             // 
             // lblOperatingSystem
             // 
@@ -259,26 +356,231 @@
             this.lblOperatingSystem.ForeColor = System.Drawing.Color.White;
             this.lblOperatingSystem.Location = new System.Drawing.Point(4, 36);
             this.lblOperatingSystem.Name = "lblOperatingSystem";
-            this.lblOperatingSystem.Size = new System.Drawing.Size(888, 34);
+            this.lblOperatingSystem.Size = new System.Drawing.Size(1001, 34);
             this.lblOperatingSystem.TabIndex = 33;
             this.lblOperatingSystem.Text = "Operating System";
             this.lblOperatingSystem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // passOS
+            // statusOS
             // 
-            this.passOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.passOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passOS.ForeColor = System.Drawing.Color.LawnGreen;
-            this.passOS.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            this.passOS.IconColor = System.Drawing.Color.LawnGreen;
-            this.passOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.passOS.IconSize = 28;
-            this.passOS.Location = new System.Drawing.Point(946, 39);
-            this.passOS.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.passOS.Name = "passOS";
-            this.passOS.Size = new System.Drawing.Size(58, 28);
-            this.passOS.TabIndex = 34;
-            this.passOS.TabStop = false;
+            this.statusOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusOS.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusOS.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusOS.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusOS.IconSize = 28;
+            this.statusOS.Location = new System.Drawing.Point(1059, 39);
+            this.statusOS.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusOS.Name = "statusOS";
+            this.statusOS.Size = new System.Drawing.Size(59, 28);
+            this.statusOS.TabIndex = 34;
+            this.statusOS.TabStop = false;
+            this.statusOS.Visible = false;
+            // 
+            // statusProcessor
+            // 
+            this.statusProcessor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusProcessor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusProcessor.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusProcessor.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusProcessor.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusProcessor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusProcessor.IconSize = 28;
+            this.statusProcessor.Location = new System.Drawing.Point(1059, 74);
+            this.statusProcessor.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusProcessor.Name = "statusProcessor";
+            this.statusProcessor.Size = new System.Drawing.Size(59, 28);
+            this.statusProcessor.TabIndex = 35;
+            this.statusProcessor.TabStop = false;
+            this.statusProcessor.Visible = false;
+            // 
+            // statusMemory
+            // 
+            this.statusMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusMemory.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusMemory.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusMemory.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusMemory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusMemory.IconSize = 28;
+            this.statusMemory.Location = new System.Drawing.Point(1059, 109);
+            this.statusMemory.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusMemory.Name = "statusMemory";
+            this.statusMemory.Size = new System.Drawing.Size(59, 28);
+            this.statusMemory.TabIndex = 36;
+            this.statusMemory.TabStop = false;
+            this.statusMemory.Visible = false;
+            // 
+            // statusDiskSpace
+            // 
+            this.statusDiskSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusDiskSpace.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusDiskSpace.IconSize = 28;
+            this.statusDiskSpace.Location = new System.Drawing.Point(1059, 144);
+            this.statusDiskSpace.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusDiskSpace.Name = "statusDiskSpace";
+            this.statusDiskSpace.Size = new System.Drawing.Size(58, 28);
+            this.statusDiskSpace.TabIndex = 37;
+            this.statusDiskSpace.TabStop = false;
+            this.statusDiskSpace.Visible = false;
+            // 
+            // lblDiskSpace2
+            // 
+            this.lblDiskSpace2.AutoSize = true;
+            this.lblDiskSpace2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDiskSpace2.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblDiskSpace2.ForeColor = System.Drawing.Color.White;
+            this.lblDiskSpace2.Location = new System.Drawing.Point(4, 211);
+            this.lblDiskSpace2.Name = "lblDiskSpace2";
+            this.lblDiskSpace2.Size = new System.Drawing.Size(1001, 34);
+            this.lblDiskSpace2.TabIndex = 47;
+            this.lblDiskSpace2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Arial", 12F);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(4, 246);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(1001, 34);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "Firewall settings";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Arial", 12F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(4, 281);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(1001, 34);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Firewall settings";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Arial", 12F);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(4, 316);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(1001, 34);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Firewall settings";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(4, 351);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(1001, 34);
+            this.label15.TabIndex = 51;
+            this.label15.Text = "Firewall settings";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Arial", 12F);
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(4, 386);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(1001, 34);
+            this.label16.TabIndex = 52;
+            this.label16.Text = "Firewall settings";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Font = new System.Drawing.Font("Arial", 12F);
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 421);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(1001, 34);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "Firewall settings";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Font = new System.Drawing.Font("Arial", 12F);
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(4, 456);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(1001, 34);
+            this.label18.TabIndex = 54;
+            this.label18.Text = "Firewall settings";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statusDiskSpace1
+            // 
+            this.statusDiskSpace1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusDiskSpace1.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace1.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusDiskSpace1.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusDiskSpace1.IconSize = 28;
+            this.statusDiskSpace1.Location = new System.Drawing.Point(1059, 179);
+            this.statusDiskSpace1.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusDiskSpace1.Name = "statusDiskSpace1";
+            this.statusDiskSpace1.Size = new System.Drawing.Size(59, 28);
+            this.statusDiskSpace1.TabIndex = 56;
+            this.statusDiskSpace1.TabStop = false;
+            this.statusDiskSpace1.Visible = false;
+            // 
+            // statusDiskSpace2
+            // 
+            this.statusDiskSpace2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusDiskSpace2.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace2.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusDiskSpace2.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusDiskSpace2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusDiskSpace2.IconSize = 28;
+            this.statusDiskSpace2.Location = new System.Drawing.Point(1059, 214);
+            this.statusDiskSpace2.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusDiskSpace2.Name = "statusDiskSpace2";
+            this.statusDiskSpace2.Size = new System.Drawing.Size(59, 28);
+            this.statusDiskSpace2.TabIndex = 58;
+            this.statusDiskSpace2.TabStop = false;
+            this.statusDiskSpace2.Visible = false;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.Location = new System.Drawing.Point(1059, 249);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox1.TabIndex = 59;
+            this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.Visible = false;
             // 
             // iconPictureBox2
             // 
@@ -289,12 +591,13 @@
             this.iconPictureBox2.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 28;
-            this.iconPictureBox2.Location = new System.Drawing.Point(946, 74);
+            this.iconPictureBox2.Location = new System.Drawing.Point(1059, 284);
             this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(58, 28);
-            this.iconPictureBox2.TabIndex = 35;
+            this.iconPictureBox2.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox2.TabIndex = 60;
             this.iconPictureBox2.TabStop = false;
+            this.iconPictureBox2.Visible = false;
             // 
             // iconPictureBox3
             // 
@@ -305,12 +608,13 @@
             this.iconPictureBox3.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 28;
-            this.iconPictureBox3.Location = new System.Drawing.Point(946, 109);
+            this.iconPictureBox3.Location = new System.Drawing.Point(1059, 319);
             this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox3.Name = "iconPictureBox3";
-            this.iconPictureBox3.Size = new System.Drawing.Size(58, 28);
-            this.iconPictureBox3.TabIndex = 36;
+            this.iconPictureBox3.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox3.TabIndex = 61;
             this.iconPictureBox3.TabStop = false;
+            this.iconPictureBox3.Visible = false;
             // 
             // iconPictureBox4
             // 
@@ -321,141 +625,81 @@
             this.iconPictureBox4.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox4.IconSize = 28;
-            this.iconPictureBox4.Location = new System.Drawing.Point(946, 144);
+            this.iconPictureBox4.Location = new System.Drawing.Point(1059, 354);
             this.iconPictureBox4.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox4.Name = "iconPictureBox4";
-            this.iconPictureBox4.Size = new System.Drawing.Size(58, 28);
-            this.iconPictureBox4.TabIndex = 37;
+            this.iconPictureBox4.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox4.TabIndex = 62;
             this.iconPictureBox4.TabStop = false;
+            this.iconPictureBox4.Visible = false;
             // 
-            // label7
+            // iconPictureBox5
             // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(4, 71);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(888, 34);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "RAM requirements";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(4, 106);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(888, 34);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "Memory/RAM";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F);
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(4, 141);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(888, 34);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Disk space";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Arial", 12F);
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(4, 176);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(888, 34);
-            this.label10.TabIndex = 41;
-            this.label10.Text = "Firewall settings";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(1011, 1);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 34);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Fail";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // failOS
-            // 
-            this.failOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.failOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.failOS.ForeColor = System.Drawing.Color.Red;
-            this.failOS.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.failOS.IconColor = System.Drawing.Color.Red;
-            this.failOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.failOS.IconSize = 28;
-            this.failOS.Location = new System.Drawing.Point(1058, 39);
-            this.failOS.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.failOS.Name = "failOS";
-            this.failOS.Size = new System.Drawing.Size(60, 28);
-            this.failOS.TabIndex = 43;
-            this.failOS.TabStop = false;
+            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconPictureBox5.ForeColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.iconPictureBox5.IconColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 28;
+            this.iconPictureBox5.Location = new System.Drawing.Point(1059, 389);
+            this.iconPictureBox5.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox5.TabIndex = 63;
+            this.iconPictureBox5.TabStop = false;
+            this.iconPictureBox5.Visible = false;
             // 
             // iconPictureBox6
             // 
             this.iconPictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.iconPictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox6.ForeColor = System.Drawing.Color.Red;
-            this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.iconPictureBox6.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox6.ForeColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.iconPictureBox6.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox6.IconSize = 28;
-            this.iconPictureBox6.Location = new System.Drawing.Point(1058, 74);
+            this.iconPictureBox6.Location = new System.Drawing.Point(1059, 424);
             this.iconPictureBox6.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox6.Name = "iconPictureBox6";
-            this.iconPictureBox6.Size = new System.Drawing.Size(60, 28);
-            this.iconPictureBox6.TabIndex = 44;
+            this.iconPictureBox6.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox6.TabIndex = 64;
             this.iconPictureBox6.TabStop = false;
+            this.iconPictureBox6.Visible = false;
             // 
             // iconPictureBox7
             // 
             this.iconPictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.iconPictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox7.ForeColor = System.Drawing.Color.Red;
-            this.iconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.iconPictureBox7.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox7.ForeColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.iconPictureBox7.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox7.IconSize = 28;
-            this.iconPictureBox7.Location = new System.Drawing.Point(1058, 109);
+            this.iconPictureBox7.Location = new System.Drawing.Point(1059, 459);
             this.iconPictureBox7.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox7.Name = "iconPictureBox7";
-            this.iconPictureBox7.Size = new System.Drawing.Size(60, 28);
-            this.iconPictureBox7.TabIndex = 45;
+            this.iconPictureBox7.Size = new System.Drawing.Size(59, 28);
+            this.iconPictureBox7.TabIndex = 65;
             this.iconPictureBox7.TabStop = false;
+            this.iconPictureBox7.Visible = false;
             // 
             // iconPictureBox8
             // 
             this.iconPictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.iconPictureBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox8.ForeColor = System.Drawing.Color.Red;
-            this.iconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.iconPictureBox8.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox8.ForeColor = System.Drawing.Color.LawnGreen;
+            this.iconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.iconPictureBox8.IconColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox8.IconSize = 28;
-            this.iconPictureBox8.Location = new System.Drawing.Point(1058, 144);
+            this.iconPictureBox8.IconSize = 37;
+            this.iconPictureBox8.Location = new System.Drawing.Point(1059, 494);
             this.iconPictureBox8.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.iconPictureBox8.Name = "iconPictureBox8";
-            this.iconPictureBox8.Size = new System.Drawing.Size(60, 28);
-            this.iconPictureBox8.TabIndex = 46;
+            this.iconPictureBox8.Size = new System.Drawing.Size(59, 37);
+            this.iconPictureBox8.TabIndex = 66;
             this.iconPictureBox8.TabStop = false;
+            this.iconPictureBox8.Visible = false;
             // 
             // SystemVerification
             // 
@@ -473,11 +717,17 @@
             this.panelBody.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.passOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusProcessor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusMemory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.failOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox8)).EndInit();
@@ -498,20 +748,34 @@
         private System.Windows.Forms.ComboBox comboBoxProduct;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblOperatingSystem;
-        private FontAwesome.Sharp.IconPictureBox passOS;
+        private System.Windows.Forms.Label lblDiskSpace1;
+        private System.Windows.Forms.Label lblDiskSpaceTitle;
+        private System.Windows.Forms.Label lblMemory;
+        private System.Windows.Forms.Label lblProcessorType;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblDiskSpace2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconPictureBox statusOS;
+        private FontAwesome.Sharp.IconPictureBox statusProcessor;
+        private FontAwesome.Sharp.IconPictureBox statusMemory;
+        private FontAwesome.Sharp.IconPictureBox statusDiskSpace;
+        private FontAwesome.Sharp.IconPictureBox statusDiskSpace1;
+        private FontAwesome.Sharp.IconPictureBox statusDiskSpace2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private FontAwesome.Sharp.IconPictureBox failOS;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox7;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox8;
-        private System.Windows.Forms.Label label6;
     }
 }

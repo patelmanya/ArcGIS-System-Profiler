@@ -51,14 +51,153 @@ namespace ArcGIS_System_Profiler
 
         private void btn_PerformSysValidations_Click(object sender, EventArgs e)
         {
+            if(comboBoxProduct.SelectedItem.ToString() == "Select Product" && comboBoxVersion.SelectedItem.ToString() == "Select Version")
+            {
+                MessageBox.Show("Please select Product and Version!");
+            }
+            else if (comboBoxProduct.SelectedItem.ToString() != "Select Product" && comboBoxVersion.SelectedItem.ToString() == "Select Version")
+            {
+                MessageBox.Show("Please select Version!");
+            }
+            else if (comboBoxProduct.SelectedItem.ToString() == "Select Product" && comboBoxVersion.SelectedItem.ToString() != "Select Version")
+            {
+                MessageBox.Show("Please select Product!");
+            }
+            else if (comboBoxProduct.SelectedItem.ToString() == "Portal for ArcGIS" && comboBoxVersion.SelectedItem.ToString() == "10.8")
+            {
 
-            var name = (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
-                        select x.GetPropertyValue("Caption")).FirstOrDefault();
-            label7.Text += name;
-            lblOperatingSystem.Text += Environment.OSVersion.ToString();
+                //OPERATING SYSTEM
+                lblOperatingSystem.Text = "Operating System: ";
+                var name = (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
+                            select x.GetPropertyValue("Caption")).FirstOrDefault();
+                lblOperatingSystem.Text += name;
+                statusOS.Visible = true;
 
 
-            //Environment.Is64BitOperatingSystem
+                //PROCESSOR TYPE
+                if (Environment.Is64BitOperatingSystem)
+                {
+                    lblProcessorType.Text = "Processer type (Only 64-bit is supported): 64 bit Processor,";
+                    statusProcessor.Visible = true;
+                    // failProcessor.Visible = false;
+                    //get the number of cores for processor
+                    if (Environment.ProcessorCount < 2)
+                    {
+                        lblProcessorType.Text += " NOT SUITABLE, 2 cores development and testing, 4 cores minimum for production systems.";
+                    }
+                    else if (Environment.ProcessorCount == 2)
+                    {
+                        lblProcessorType.Text += " SUITABLE, 2 cores development and testing, 4 cores minimum for production systems.";
+                    }
+                    else if (Environment.ProcessorCount > 2)
+                    {
+                        lblProcessorType.Text += Environment.ProcessorCount.ToString() + " Processors. \r\n 2 cores development and testing, 4 cores minimum for production systems.";
+                    }
+
+                }
+                else
+                {
+                    lblProcessorType.Text = "Processer type (Only 64-bit is supported): 32 bit Processor";
+                    statusProcessor.Visible = false;
+                    // failProcessor.Visible = true;
+                }
+
+
+                //TotalVisibleMemorySize: 
+                //This value specifies the total amount, in kilobytes, of physical memory available to the operating system. This value does not necessarily indicate the true amount of physical memory, but what is reported to the operating system as available to it.
+                //FreePhysicalMemory: 
+                //Number, in kilobytes, of physical memory currently unused and available.
+                //TotalVirtualMemorySize: 
+                //Number, in kilobytes, of virtual memory.For example, this may be calculated by adding the amount of total RAM to the amount of paging space, that is, adding the amount of memory in or aggregated by the computer system to the property, SizeStoredInPagingFiles.
+                //FreeVirtualMemory: 
+                //Specifies the number, in kilobytes, of virtual memory currently unused and available.
+
+                //MEMORY
+                ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(wql);
+                ManagementObjectCollection results = searcher.Get();
+
+                double res;
+
+                foreach (ManagementObject result in results)
+                {
+                    res = Convert.ToDouble(result["TotalVisibleMemorySize"]);
+                    double fres = Math.Round((res / (1024 * 1024)), 2);
+                    lblMemory.Text = "RAM: ";
+                    lblMemory.Text += Math.Ceiling(fres).ToString() + " GB";
+                    if (Math.Ceiling(fres) > 8)
+                    {
+                        statusMemory.Visible = true;
+                        // failMemory.Visible = false;
+                    }
+                    else
+                    {
+                        // failMemory.Visible = true;
+                        statusMemory.Visible = false;
+                    }
+
+                    res = Convert.ToDouble(result["FreePhysicalMemory"]);
+
+                    res = Convert.ToDouble(result["TotalVirtualMemorySize"]);
+
+                    res = Convert.ToDouble(result["FreeVirtualMemory"]);
+                }
+
+
+                //DISK SPACE
+                lblDiskSpaceTitle.Text = "Disk space: ";
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    double freeSpace = drive.TotalFreeSpace;
+                    double totalSpace = drive.TotalSize;
+                    double percentFree = (freeSpace / totalSpace) * 100;
+                    float num = (float)percentFree;
+
+                    if ((drive.Name.Substring(0, 1)).ToUpper() == "C")
+                    {
+                        lblDiskSpace1.Text = drive.Name.Substring(0, 1) + " drive " + (Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)).ToString() + " GB free of " + (Math.Round((totalSpace / (1024 * 1024 * 1024)), 0)).ToString() + " GB ";
+
+                        if ((Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)) > 10)
+                        {
+                            statusDiskSpace1.Visible = true;
+                            //failDiskSpace1.Visible = false;
+                        }
+                        else
+                        {
+                            //failDiskSpace1.Visible = true;
+                            statusDiskSpace1.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        lblDiskSpace2.Text = drive.Name.Substring(0, 1) + " drive " + (Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)).ToString() + " GB free of " + (Math.Round((totalSpace / (1024 * 1024 * 1024)), 0)).ToString() + " GB ";
+
+                        //if ((Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)) > 10)
+                        //{
+                        //    passDiskSpace2.Visible = true;
+                        //    failDiskSpace2.Visible = false;
+                        //}
+                        //else
+                        //{
+                        //    failDiskSpace2.Visible = true;
+                        //    passDiskSpace2.Visible = false;
+                        //}
+
+                        if ((Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)) > 10)
+                        {
+                            statusDiskSpace2.Visible = true;
+                        }
+                        else
+                        {
+                            statusDiskSpace2.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+                            statusDiskSpace2.ForeColor = Color.Red;
+                            statusDiskSpace2.Visible = true;
+                        }
+                    }
+                }
+
+            }
+
 
             // string driveLetter = Path.GetPathRoot(Environment.CurrentDirectory);
 
