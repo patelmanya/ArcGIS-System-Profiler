@@ -75,8 +75,9 @@ namespace ArcGIS_System_Profiler
                     if (token != "")
                     {
                         lbl_LoginStatus.Text = "Login successful";
-                        lbl_LoginStatus.Visible = true;  
-                        globalVariables.globalForm.btn_Tasks.PerformClick(); 
+                        lbl_LoginStatus.Visible = true;
+                        //globalVariables.globalForm.btn_Tasks.PerformClick(); 
+                        globalVariables.globalForm.btnSystemValidation.PerformClick();
                     }
                     else
                     {

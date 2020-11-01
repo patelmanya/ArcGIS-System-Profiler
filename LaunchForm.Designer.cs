@@ -71,15 +71,17 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.panelMenu.Controls.Add(this.btnSystemValidation);
-            this.panelMenu.Controls.Add(this.btnDataStoreValidate);
+            
+            
             this.panelMenu.Controls.Add(this.panel2);
+            this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btn_Services);
             this.panelMenu.Controls.Add(this.btn_PortChecks);
             this.panelMenu.Controls.Add(this.btn_HealthChecks);
             this.panelMenu.Controls.Add(this.btn_Tasks);
+            this.panelMenu.Controls.Add(this.btnSystemValidation);
             this.panelMenu.Controls.Add(this.btn_Home);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -258,31 +260,6 @@
             this.btn_HealthChecks.UseVisualStyleBackColor = true;
             this.btn_HealthChecks.Click += new System.EventHandler(this.btn_HealthChecks_Click);
             // 
-            // btn_Tasks
-            // 
-            this.btn_Tasks.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Tasks.FlatAppearance.BorderSize = 0;
-            this.btn_Tasks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Tasks.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Tasks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Tasks.ForeColor = System.Drawing.Color.White;
-            this.btn_Tasks.IconChar = FontAwesome.Sharp.IconChar.Tasks;
-            this.btn_Tasks.IconColor = System.Drawing.Color.White;
-            this.btn_Tasks.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Tasks.IconSize = 36;
-            this.btn_Tasks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Tasks.Location = new System.Drawing.Point(0, 200);
-            this.btn_Tasks.Name = "btn_Tasks";
-            this.btn_Tasks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btn_Tasks.Rotation = 0D;
-            this.btn_Tasks.Size = new System.Drawing.Size(220, 60);
-            this.btn_Tasks.TabIndex = 2;
-            this.btn_Tasks.Text = "Tasks";
-            this.btn_Tasks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Tasks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Tasks.UseVisualStyleBackColor = true;
-            this.btn_Tasks.Click += new System.EventHandler(this.btn_Tasks_Click);
-            // 
             // btn_Home
             // 
             this.btn_Home.Dock = System.Windows.Forms.DockStyle.Top;
@@ -307,6 +284,32 @@
             this.btn_Home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Home.UseVisualStyleBackColor = true;
             this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
+            // 
+            // btn_Tasks
+            // 
+            this.btn_Tasks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Tasks.FlatAppearance.BorderSize = 0;
+            this.btn_Tasks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Tasks.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Tasks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Tasks.ForeColor = System.Drawing.Color.White;
+            this.btn_Tasks.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.btn_Tasks.IconColor = System.Drawing.Color.White;
+            this.btn_Tasks.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Tasks.IconSize = 36;
+            this.btn_Tasks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Tasks.Location = new System.Drawing.Point(0, 200);
+            this.btn_Tasks.Name = "btn_Tasks";
+            this.btn_Tasks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btn_Tasks.Rotation = 0D;
+            this.btn_Tasks.Size = new System.Drawing.Size(220, 60);
+            this.btn_Tasks.TabIndex = 2;
+            this.btn_Tasks.Text = "Tasks";
+            this.btn_Tasks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Tasks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Tasks.UseVisualStyleBackColor = true;
+            this.btn_Tasks.Click += new System.EventHandler(this.btn_Tasks_Click);
+            
             // 
             // panelLogo
             // 

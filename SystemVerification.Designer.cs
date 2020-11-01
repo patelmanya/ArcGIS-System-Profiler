@@ -270,6 +270,7 @@
             this.label19.TabIndex = 55;
             this.label19.Text = "Firewall settings";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label19.Visible = false;
             // 
             // lblDiskSpace1
             // 
@@ -478,6 +479,7 @@
             this.label14.TabIndex = 50;
             this.label14.Text = "Firewall settings";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.Visible = false;
             // 
             // label15
             // 
@@ -491,6 +493,7 @@
             this.label15.TabIndex = 51;
             this.label15.Text = "Firewall settings";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Visible = false;
             // 
             // label16
             // 
@@ -504,6 +507,7 @@
             this.label16.TabIndex = 52;
             this.label16.Text = "Firewall settings";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.Visible = false;
             // 
             // label17
             // 
@@ -517,6 +521,7 @@
             this.label17.TabIndex = 53;
             this.label17.Text = "Firewall settings";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.Visible = false;
             // 
             // label18
             // 
@@ -530,6 +535,7 @@
             this.label18.TabIndex = 54;
             this.label18.Text = "Firewall settings";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.Visible = false;
             // 
             // statusDiskSpace1
             // 

@@ -208,6 +208,17 @@ namespace ArcGIS_System_Profiler
                 if (!hostName.EndsWith(domainName))  // if hostname does not already include domain name
                 {
                     hostName += domainName;   // add the domain name part
+                    if (hostName.Contains("_"))
+                    {
+                        statusMachineName.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+                        statusMachineName.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        statusMachineName.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+                        statusMachineName.ForeColor = Color.LawnGreen;
+                    }
+                    
                     statusMachineName.Visible = true;
                 }
                 else
@@ -298,7 +309,7 @@ namespace ArcGIS_System_Profiler
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-
+            globalVariables.globalForm.btn_Tasks.PerformClick(); 
         }
 
         public static bool CheckForInternetConnection()
