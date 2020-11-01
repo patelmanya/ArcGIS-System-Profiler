@@ -6,7 +6,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Net.Http.Headers;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,7 +53,7 @@ namespace ArcGIS_System_Profiler
 
         private void btn_PerformSysValidations_Click(object sender, EventArgs e)
         {
-            if(comboBoxProduct.SelectedItem.ToString() == "Select Product" && comboBoxVersion.SelectedItem.ToString() == "Select Version")
+            if (comboBoxProduct.SelectedItem.ToString() == "Select Product" && comboBoxVersion.SelectedItem.ToString() == "Select Version")
             {
                 MessageBox.Show("Please select Product and Version!");
             }
@@ -196,9 +198,47 @@ namespace ArcGIS_System_Profiler
                     }
                 }
 
+
+
+                //MACHINE NAME
+                string domainName = IPGlobalProperties.GetIPGlobalProperties().DomainName;
+                string hostName = Dns.GetHostName();
+
+                domainName = "." + domainName;
+                if (!hostName.EndsWith(domainName))  // if hostname does not already include domain name
+                {
+                    hostName += domainName;   // add the domain name part
+                    statusMachineName.Visible = true;
+                }
+                else
+                {
+                    //hostName = hostName;
+                    statusMachineName.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+                    statusMachineName.ForeColor = Color.Red;
+                    statusMachineName.Visible = true;
+                }
+
+                lblMachineName.Text = "Machine name: " + hostName.ToString();
+
+                //INTERNET ACCESS
+                bool interAccess = CheckForInternetConnection();
+                if (interAccess)
+                {
+                    lblInternetAccess.Text = "Internet access: Available";
+                    statusInternetAccess.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+                    statusInternetAccess.ForeColor = Color.LawnGreen;
+                    statusInternetAccess.Visible = true;
+                }
+                else
+                {
+                    lblInternetAccess.Text = "Internet access: Unavailable";
+                    statusInternetAccess.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+                    statusInternetAccess.ForeColor = Color.Red;
+                    statusInternetAccess.Visible = true;
+                }
+
+
             }
-
-
             // string driveLetter = Path.GetPathRoot(Environment.CurrentDirectory);
 
             // DriveInfo drive1 = new DriveInfo(driveLetter);
@@ -259,6 +299,20 @@ namespace ArcGIS_System_Profiler
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public static bool CheckForInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

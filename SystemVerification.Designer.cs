@@ -51,8 +51,8 @@
             this.statusMemory = new FontAwesome.Sharp.IconPictureBox();
             this.statusDiskSpace = new FontAwesome.Sharp.IconPictureBox();
             this.lblDiskSpace2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblMachineName = new System.Windows.Forms.Label();
+            this.lblInternetAccess = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -60,8 +60,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.statusDiskSpace1 = new FontAwesome.Sharp.IconPictureBox();
             this.statusDiskSpace2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.statusMachineName = new FontAwesome.Sharp.IconPictureBox();
+            this.statusInternetAccess = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
@@ -77,8 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusMachineName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusInternetAccess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
@@ -187,9 +187,9 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.label1.Size = new System.Drawing.Size(195, 42);
+            this.label1.Size = new System.Drawing.Size(218, 42);
             this.label1.TabIndex = 30;
-            this.label1.Text = "System validations";
+            this.label1.Text = "System requirements";
             // 
             // panelBody
             // 
@@ -219,8 +219,8 @@
             this.tableLayoutPanel1.Controls.Add(this.statusMemory, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblDiskSpace2, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lblMachineName, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblInternetAccess, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 11);
@@ -228,8 +228,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label18, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace1, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.statusDiskSpace2, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox1, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.iconPictureBox2, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.statusMachineName, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.statusInternetAccess, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.iconPictureBox3, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.iconPictureBox4, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.iconPictureBox5, 1, 11);
@@ -440,31 +440,31 @@
             this.lblDiskSpace2.TabIndex = 47;
             this.lblDiskSpace2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label12
+            // lblMachineName
             // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F);
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(4, 246);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(1001, 34);
-            this.label12.TabIndex = 48;
-            this.label12.Text = "Firewall settings";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblMachineName.AutoSize = true;
+            this.lblMachineName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMachineName.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblMachineName.ForeColor = System.Drawing.Color.White;
+            this.lblMachineName.Location = new System.Drawing.Point(4, 246);
+            this.lblMachineName.Name = "lblMachineName";
+            this.lblMachineName.Size = new System.Drawing.Size(1001, 34);
+            this.lblMachineName.TabIndex = 48;
+            this.lblMachineName.Text = "Machine name:";
+            this.lblMachineName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label13
+            // lblInternetAccess
             // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Arial", 12F);
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(4, 281);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1001, 34);
-            this.label13.TabIndex = 49;
-            this.label13.Text = "Firewall settings";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblInternetAccess.AutoSize = true;
+            this.lblInternetAccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInternetAccess.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblInternetAccess.ForeColor = System.Drawing.Color.White;
+            this.lblInternetAccess.Location = new System.Drawing.Point(4, 281);
+            this.lblInternetAccess.Name = "lblInternetAccess";
+            this.lblInternetAccess.Size = new System.Drawing.Size(1001, 34);
+            this.lblInternetAccess.TabIndex = 49;
+            this.lblInternetAccess.Text = "Internet access:";
+            this.lblInternetAccess.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
             // 
@@ -565,39 +565,39 @@
             this.statusDiskSpace2.TabStop = false;
             this.statusDiskSpace2.Visible = false;
             // 
-            // iconPictureBox1
+            // statusMachineName
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.iconPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.LawnGreen;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.LawnGreen;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 28;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1059, 249);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(59, 28);
-            this.iconPictureBox1.TabIndex = 59;
-            this.iconPictureBox1.TabStop = false;
-            this.iconPictureBox1.Visible = false;
+            this.statusMachineName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusMachineName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusMachineName.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusMachineName.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusMachineName.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusMachineName.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusMachineName.IconSize = 28;
+            this.statusMachineName.Location = new System.Drawing.Point(1059, 249);
+            this.statusMachineName.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusMachineName.Name = "statusMachineName";
+            this.statusMachineName.Size = new System.Drawing.Size(59, 28);
+            this.statusMachineName.TabIndex = 59;
+            this.statusMachineName.TabStop = false;
+            this.statusMachineName.Visible = false;
             // 
-            // iconPictureBox2
+            // statusInternetAccess
             // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.iconPictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox2.ForeColor = System.Drawing.Color.LawnGreen;
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            this.iconPictureBox2.IconColor = System.Drawing.Color.LawnGreen;
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 28;
-            this.iconPictureBox2.Location = new System.Drawing.Point(1059, 284);
-            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(59, 28);
-            this.iconPictureBox2.TabIndex = 60;
-            this.iconPictureBox2.TabStop = false;
-            this.iconPictureBox2.Visible = false;
+            this.statusInternetAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusInternetAccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusInternetAccess.ForeColor = System.Drawing.Color.LawnGreen;
+            this.statusInternetAccess.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.statusInternetAccess.IconColor = System.Drawing.Color.LawnGreen;
+            this.statusInternetAccess.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.statusInternetAccess.IconSize = 28;
+            this.statusInternetAccess.Location = new System.Drawing.Point(1059, 284);
+            this.statusInternetAccess.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.statusInternetAccess.Name = "statusInternetAccess";
+            this.statusInternetAccess.Size = new System.Drawing.Size(59, 28);
+            this.statusInternetAccess.TabIndex = 60;
+            this.statusInternetAccess.TabStop = false;
+            this.statusInternetAccess.Visible = false;
             // 
             // iconPictureBox3
             // 
@@ -723,8 +723,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusDiskSpace2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusMachineName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusInternetAccess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
@@ -755,8 +755,8 @@
         private System.Windows.Forms.Label lblProcessorType;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblDiskSpace2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMachineName;
+        private System.Windows.Forms.Label lblInternetAccess;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -769,8 +769,8 @@
         private FontAwesome.Sharp.IconPictureBox statusDiskSpace;
         private FontAwesome.Sharp.IconPictureBox statusDiskSpace1;
         private FontAwesome.Sharp.IconPictureBox statusDiskSpace2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox statusMachineName;
+        private FontAwesome.Sharp.IconPictureBox statusInternetAccess;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
