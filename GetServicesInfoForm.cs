@@ -274,15 +274,15 @@ namespace ArcGIS_System_Profiler
                                 {
                                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                                     string foldername = "tables";
-                                    if (!Directory.Exists(@"C:\\temp\\" + foldername))
+                                    if (!Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                                     {
-                                        Directory.CreateDirectory(@"C:\\temp\\" + foldername);
+                                        Directory.CreateDirectory(globalVariables.globalFilePath + "\\" + foldername);
                                     }
-                                    TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
-                                    globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                    TextWriter txt = new StreamWriter(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
+                                    globalVariables.generateReportList.Add(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
                                     var dictionary = new Dictionary<string, object>(); 
                                     dictionary["serviceName"] = obj["name"].ToString();
-                                    dictionary["reportFileName"] = "C:\\temp\\tables\\demo_" + fileName + ".html";
+                                    dictionary["reportFileName"] = globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html";
                                     globalVariables.generateReportListServiceName.Add(dictionary);
                                     txt.Write(item);
                                     txt.Close();
@@ -294,15 +294,15 @@ namespace ArcGIS_System_Profiler
                                     {
                                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                                         string foldername = "tables";
-                                        if (!Directory.Exists(@"C:/temp/" + foldername))
+                                        if (!Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                                         {
-                                            Directory.CreateDirectory(@"C:/temp/" + foldername);
+                                            Directory.CreateDirectory(globalVariables.globalFilePath + "\\" + foldername);
                                         }
-                                        TextWriter txt = new StreamWriter("C:\\temp\\tables\\demo_" + fileName + ".html");
-                                        globalVariables.generateReportList.Add("C:\\temp\\tables\\demo_" + fileName + ".html");
+                                        TextWriter txt = new StreamWriter(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
+                                        globalVariables.generateReportList.Add(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
                                         var dictionary = new Dictionary<string, object>();
                                         dictionary["serviceName"] = obj["name"].ToString();
-                                        dictionary["reportFileName"] = "C:\\temp\\tables\\demo_" + fileName + ".html";
+                                        dictionary["reportFileName"] = globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html";
                                         globalVariables.generateReportListServiceName.Add(dictionary);
                                         txt.Write(item);
                                         txt.Close();
@@ -727,8 +727,8 @@ namespace ArcGIS_System_Profiler
                     }
 
                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                    excelApp.ActiveWorkbook.SaveAs(@"C:\temp\abc_" + fileName + " .xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-                    globalVariables.agsServerServicesReportName = @"C:\temp\abc_" + fileName + " .xls";
+                    excelApp.ActiveWorkbook.SaveAs(globalVariables.globalFilePath + "\\abc_" + fileName + " .xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                    globalVariables.agsServerServicesReportName = globalVariables.globalFilePath + "\\abc_" + fileName + " .xls";
                     excelWorkbook.Close();
                     excelApp.Quit();
 

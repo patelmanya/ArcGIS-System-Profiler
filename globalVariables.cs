@@ -18,6 +18,10 @@ namespace ArcGIS_System_Profiler
     public class globalVariables
     {
 
+        public static string globalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SystemProfilerReport");
+
+        public static string globalReportIcon = "";
+
         public static Color themeColor = Color.FromArgb(51, 44, 53);
         public static string iconFlag = "";
         public static string agsEntUserName = "";
@@ -63,6 +67,46 @@ namespace ArcGIS_System_Profiler
 
         public string GetToken()
         {
+            if (!Directory.Exists(globalVariables.globalFilePath))
+            {
+                Directory.CreateDirectory(globalVariables.globalFilePath);
+               // globalFilePath = globalFilePath + "\\SystemProfilerReport";
+            }
+
+            //System.Drawing.Icon icnTask;
+            //System.IO.Stream st;
+            //System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+            //st = a.GetManifestResourceStream("{{NameSpace}}.Resources.report.ico");
+            //icnTask = new System.Drawing.Icon(st);
+
+            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+           
+            
+            string[] names = a.GetManifestResourceNames();
+            foreach (string name in names)
+                if (name.Contains("report.ico"))
+                {
+                    globalVariables.globalReportIcon = name;
+                }
+            //System.Console.WriteLine(name);
+            
+            //var MyShortcut = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(globalVariables.globalReportIcon);
+
+            //Gets the image from Images Folder.
+            System.IO.Stream streama = a.GetManifestResourceStream(globalVariables.globalReportIcon);
+
+            if (null != streama)
+            {
+                //Fetch icon from stream.
+                //globalVariables.globalFilePath
+                Icon ico = new Icon(streama);
+                string s = globalVariables.globalFilePath +  "\\IconData.ico";
+                using (FileStream fs = new FileStream(s, FileMode.Create))
+                    ico.Save(fs);
+
+                globalVariables.globalReportIcon = s;
+            }
+
             String tokenStr = "";
             try
             {
@@ -157,9 +201,9 @@ namespace ArcGIS_System_Profiler
                 }
 
                 string foldername = "tables";
-                if (Directory.Exists(@"C:\\temp\\" + foldername))
+                if (Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                 {
-                    Directory.Delete(@"C:\\temp\\" + foldername);
+                    Directory.Delete(globalVariables.globalFilePath + "\\" +  foldername);
                 }
             }
             catch (Exception)
@@ -167,6 +211,7 @@ namespace ArcGIS_System_Profiler
 
                  
             }
+            Application.Exit();
         }
     }
 

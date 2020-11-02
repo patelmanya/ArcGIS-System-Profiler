@@ -51,8 +51,9 @@ namespace ArcGIS_System_Profiler
                 {
                     portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                    globalVariables.ImageList.Add("C:/temp/myPortalCheck_" + fileName + ".jpg");
-                    portalBMP.Save("C:/temp/myPortalCheck_" + fileName + ".jpg");
+                    
+                    globalVariables.ImageList.Add(globalVariables.globalFilePath + "\\myPortalCheck_" + fileName + ".jpg");
+                    portalBMP.Save(globalVariables.globalFilePath + "\\myPortalCheck_" + fileName + ".jpg");
 
                 //https://lea-305263.services.esriaustralia.com.au/server/rest/info/healthCheck?f=pjson
                 //https://lea-305263.services.esriaustralia.com.au/portal/portaladmin/healthCheck
@@ -90,8 +91,8 @@ namespace ArcGIS_System_Profiler
                 {
                     portalBMP = new Bitmap(Utilities.CaptureWindow(webBrowser1.Handle));
                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                    globalVariables.ImageList.Add("C:/temp/myServerCheck_" + fileName + ".jpg");
-                    portalBMP.Save("C:/temp/myServerCheck_" + fileName + ".jpg");
+                    globalVariables.ImageList.Add(globalVariables.globalFilePath + "\\myServerCheck_" + fileName + ".jpg");
+                    portalBMP.Save(globalVariables.globalFilePath + "\\myServerCheck_" + fileName + ".jpg");
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(globalVariables.ArcGISServerCheckURL + "?f=json");
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     var encoding = ASCIIEncoding.ASCII;

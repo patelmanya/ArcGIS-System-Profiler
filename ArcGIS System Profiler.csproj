@@ -249,6 +249,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="resources\report.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="resources\closebutton.png" />
     <Content Include="resources\help.png" />
     <None Include="resources\icon.png" />

@@ -36,7 +36,7 @@ namespace ArcGIS_System_Profiler
                     globalVariables.generatedFinalReportName = "";
                     txtBx_GenRepStatus.Text = "";
                 }
-                
+
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Report generation started.\r\n";
                 servicesReportFilesGenerator();
@@ -137,7 +137,7 @@ namespace ArcGIS_System_Profiler
 
                     int i = 1;
                     //And a table header
-                    
+
                     tbl.Cell(i, 1).Range.Text = "Report File";
                     tbl.Cell(i, 2).Range.Text = "Sr No.";
                     tbl.Cell(i, 3).Range.Text = "Service Name";
@@ -168,7 +168,10 @@ namespace ArcGIS_System_Profiler
                             {
                                 continue;
                             }
-                            tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
+                            Icon ic = ArcGIS_System_Profiler.Properties.Resources.report;
+
+                            tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: globalVariables.globalReportIcon, IconLabel: "Service Report");
+                            //tbl.Cell(loopcounter, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\IconData.ico", IconLabel: "Service Report");
                             tbl.Cell(loopcounter, 2).Range.Text = fileSrNoCounter.ToString();
                             fileSrNoCounter += 1;
                             tbl.Cell(loopcounter, 3).Range.Text = processingServiceName;
@@ -211,11 +214,11 @@ namespace ArcGIS_System_Profiler
                 txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Writing to report complete\r\n";
 
                 string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                wordDoc.SaveAs2(@"C:\temp\GeneratedReport_" + fileName + ".docx");
+                wordDoc.SaveAs2(globalVariables.globalFilePath + "\\GeneratedReport_" + fileName + ".docx");
 
                 txtBx_GenRepStatus.Text += "Report generation completed.\r\n";
-                txtBx_GenRepStatus.Text += "Report located at: C:\\temp\\GeneratedReport_" + fileName + ".docx\r\n";
-                globalVariables.generatedFinalReportName = @"C:\temp\GeneratedReport_" + fileName + ".docx";
+                txtBx_GenRepStatus.Text += "Report located at: " + globalVariables.globalFilePath + "\\GeneratedReport_" + fileName + ".docx\r\n";
+                globalVariables.generatedFinalReportName = globalVariables.globalFilePath + "\\GeneratedReport_" + fileName + ".docx";
                 object missing = Type.Missing;
                 object saveChanges = WdSaveOptions.wdSaveChanges;
                 wordDoc.Close(saveChanges, missing, missing);
@@ -288,19 +291,19 @@ namespace ArcGIS_System_Profiler
                         contentControl.Title = "";
                         contentControl.Range.InsertFile(objArr, ref missing, ref missing, ref missing, ref missing);
                         string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                        doc.SaveAs2(@"C:\temp\GeneratedServicesReport_" + fileName + ".docx");
-                        globalVariables.generateReportListDoc.Add("C:\\temp\\GeneratedServicesReport_" + fileName + ".docx");
+                        doc.SaveAs2(globalVariables.globalFilePath + "\\GeneratedServicesReport_" + fileName + ".docx");
+                        globalVariables.generateReportListDoc.Add(globalVariables.globalFilePath + "\\GeneratedServicesReport_" + fileName + ".docx");
                         string processingServiceName = "";
                         foreach (Dictionary<string, object> obj in globalVariables.generateReportListServiceName)
                         {
                             if (obj["reportFileName"].ToString() == objArr)
                             {
                                 processingServiceName = obj["serviceName"].ToString();
-                                obj["reportFileName"] = "C:\\temp\\GeneratedServicesReport_" + fileName + ".docx";
+                                obj["reportFileName"] = globalVariables.globalFilePath + "\\GeneratedServicesReport_" + fileName + ".docx";
                                 break;
                             }
                         }
-                        txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Converting to Service report file for ArcGIS Server service: "  + processingServiceName + "\r\n";
+                        txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Converting to Service report file for ArcGIS Server service: " + processingServiceName + "\r\n";
                         object saveChanges = WdSaveOptions.wdSaveChanges;
                         doc.Close(saveChanges, missing, missing);
                         appobj.Quit();
