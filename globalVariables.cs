@@ -70,7 +70,7 @@ namespace ArcGIS_System_Profiler
             if (!Directory.Exists(globalVariables.globalFilePath))
             {
                 Directory.CreateDirectory(globalVariables.globalFilePath);
-               // globalFilePath = globalFilePath + "\\SystemProfilerReport";
+                // globalFilePath = globalFilePath + "\\SystemProfilerReport";
             }
 
             //System.Drawing.Icon icnTask;
@@ -80,8 +80,8 @@ namespace ArcGIS_System_Profiler
             //icnTask = new System.Drawing.Icon(st);
 
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-           
-            
+
+
             string[] names = a.GetManifestResourceNames();
             foreach (string name in names)
                 if (name.Contains("report.ico"))
@@ -89,7 +89,7 @@ namespace ArcGIS_System_Profiler
                     globalVariables.globalReportIcon = name;
                 }
             //System.Console.WriteLine(name);
-            
+
             //var MyShortcut = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(globalVariables.globalReportIcon);
 
             //Gets the image from Images Folder.
@@ -100,7 +100,7 @@ namespace ArcGIS_System_Profiler
                 //Fetch icon from stream.
                 //globalVariables.globalFilePath
                 Icon ico = new Icon(streama);
-                string s = globalVariables.globalFilePath +  "\\IconData.ico";
+                string s = globalVariables.globalFilePath + "\\IconData.ico";
                 using (FileStream fs = new FileStream(s, FileMode.Create))
                     ico.Save(fs);
 
@@ -149,7 +149,7 @@ namespace ArcGIS_System_Profiler
             catch (Exception ex)
             {
 
-               // MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
+                // MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
             }
             return tokenStr;
         }
@@ -200,16 +200,22 @@ namespace ArcGIS_System_Profiler
                     File.Delete(globalVariables.agsServerServicesReportName);
                 }
 
+                //delete the file if it exists
+                if (File.Exists(globalVariables.globalReportIcon))
+                {
+                    File.Delete(globalVariables.globalReportIcon);
+                }
+
                 string foldername = "tables";
                 if (Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                 {
-                    Directory.Delete(globalVariables.globalFilePath + "\\" +  foldername);
+                    Directory.Delete(globalVariables.globalFilePath + "\\" + foldername);
                 }
             }
             catch (Exception)
             {
 
-                 
+
             }
             Application.Exit();
         }

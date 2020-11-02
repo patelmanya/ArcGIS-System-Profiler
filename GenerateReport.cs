@@ -19,7 +19,7 @@ namespace ArcGIS_System_Profiler
         public GenerateReport()
         {
             InitializeComponent();
-
+            btnOpenReport.Visible = false;
             panel1.BackColor = globalVariables.themeColor;
             panel2.BackColor = globalVariables.themeColor;
             txtBx_GenRepStatus.BackColor = globalVariables.themeColor;
@@ -30,6 +30,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                btnOpenReport.Visible = false;
                 if (File.Exists(globalVariables.generatedFinalReportName))
                 {
                     File.Delete(globalVariables.generatedFinalReportName);
@@ -204,7 +205,8 @@ namespace ArcGIS_System_Profiler
                     StringCollection paths = new StringCollection();
                     paths.Add(globalVariables.agsServerServicesReportName);
                     Clipboard.SetFileDropList(paths);
-                    tbl.Cell(2, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
+                    tbl.Cell(2, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: globalVariables.globalReportIcon, IconLabel: "Service Report");
+                    //tbl.Cell(2, 1).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico", IconLabel: "Service Report");
                     tbl.Cell(2, 2).Range.Text = "ArcGIS Server Services Report";
                     //tbl.Cell(1, 2).Range.PasteSpecial(Link: false, DisplayAsIcon: true, IconFileName: @"C:\temp\images\report.ico");
                     Clipboard.Clear();
@@ -219,6 +221,7 @@ namespace ArcGIS_System_Profiler
                 txtBx_GenRepStatus.Text += "Report generation completed.\r\n";
                 txtBx_GenRepStatus.Text += "Report located at: " + globalVariables.globalFilePath + "\\GeneratedReport_" + fileName + ".docx\r\n";
                 globalVariables.generatedFinalReportName = globalVariables.globalFilePath + "\\GeneratedReport_" + fileName + ".docx";
+                btnOpenReport.Visible = true;
                 object missing = Type.Missing;
                 object saveChanges = WdSaveOptions.wdSaveChanges;
                 wordDoc.Close(saveChanges, missing, missing);
@@ -357,20 +360,14 @@ namespace ArcGIS_System_Profiler
             else
                 return null;
         }
+ 
 
-        private static Random random = new Random((int)DateTime.Now.Ticks);//thanks to McAden
-        private string RandomString(int size)
+        private void btnOpenReport_Click(object sender, EventArgs e)
         {
-            StringBuilder builder = new StringBuilder();
-            char ch;
-            for (int i = 0; i < size; i++)
-            {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-
-            return builder.ToString();
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            wordApp.Visible = true;
+            Document wordDoc = wordApp.Documents.Add(globalVariables.generatedFinalReportName);
+            
         }
-
     }
 }

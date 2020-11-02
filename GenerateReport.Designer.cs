@@ -33,12 +33,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtBx_GenRepStatus = new System.Windows.Forms.RichTextBox();
+            this.btnOpenReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnOpenReport);
             this.panel1.Controls.Add(this.btn_GenerateReport);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -97,6 +99,20 @@
             this.txtBx_GenRepStatus.TabIndex = 0;
             this.txtBx_GenRepStatus.Text = "";
             // 
+            // btnOpenReport
+            // 
+            this.btnOpenReport.BackColor = System.Drawing.Color.LightGray;
+            this.btnOpenReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenReport.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenReport.Location = new System.Drawing.Point(474, 14);
+            this.btnOpenReport.Name = "btnOpenReport";
+            this.btnOpenReport.Size = new System.Drawing.Size(178, 28);
+            this.btnOpenReport.TabIndex = 11;
+            this.btnOpenReport.Text = "Open Report";
+            this.btnOpenReport.UseVisualStyleBackColor = false;
+            this.btnOpenReport.Visible = false;
+            this.btnOpenReport.Click += new System.EventHandler(this.btnOpenReport_Click);
+            // 
             // GenerateReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,5 +138,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_GenerateReport;
         private System.Windows.Forms.RichTextBox txtBx_GenRepStatus;
+        private System.Windows.Forms.Button btnOpenReport;
     }
 }
