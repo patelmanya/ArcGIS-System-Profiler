@@ -107,6 +107,22 @@ namespace ArcGIS_System_Profiler
                 globalVariables.globalReportIcon = s;
             }
 
+            string[] repnames = a.GetManifestResourceNames();
+            foreach (string name in repnames)
+                if (name.Contains("Report Template EA2.dotx"))
+                {
+                    globalVariables.reportTemplateFileName = name;
+                }
+
+            File.WriteAllBytes((globalVariables.globalFilePath + "\\RpoertTemplate.dotx"), Properties.Resources.Report_Template_EA2);
+            //reportTemplateFileName
+            //Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            //wordApp.Visible = false;
+            //Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Add(globalVariables.reportTemplateFileName);
+            //wordDoc.SaveAs((globalVariables.globalFilePath + "\\RpoertTemplate"));
+            globalVariables.reportTemplateFileName = (globalVariables.globalFilePath + "\\RpoertTemplate.dotx");
+
+
             String tokenStr = "";
             try
             {
@@ -204,6 +220,12 @@ namespace ArcGIS_System_Profiler
                 if (File.Exists(globalVariables.globalReportIcon))
                 {
                     File.Delete(globalVariables.globalReportIcon);
+                }
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.reportTemplateFileName))
+                {
+                    File.Delete(globalVariables.reportTemplateFileName);
                 }
 
                 string foldername = "tables";
