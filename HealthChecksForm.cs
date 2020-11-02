@@ -24,6 +24,10 @@ namespace ArcGIS_System_Profiler
             try
             {
                 InitializeComponent();
+                panel1.BackColor = globalVariables.themeColor;
+                panel2.BackColor = globalVariables.themeColor;
+                webBrowser1.BackColor = globalVariables.themeColor;
+
                 globalVariables.portalCheckURL = "https://" + globalVariables.global_portalHostname + "/" + globalVariables.portalInstanceName + "/portaladmin/healthCheck";
                 txtBox_WebUrl.Text = globalVariables.portalCheckURL;
             }

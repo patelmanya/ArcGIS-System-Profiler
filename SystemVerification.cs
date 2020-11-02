@@ -20,6 +20,10 @@ namespace ArcGIS_System_Profiler
         public SystemVerification()
         {
             InitializeComponent();
+
+            panel1.BackColor = globalVariables.themeColor;
+            panelBody.BackColor = globalVariables.themeColor;
+            tableLayoutPanel1.BackColor = globalVariables.themeColor;
             //System.Object[] ItemObject = new System.Object[10];
             //for (int i = 0; i <= 9; i++)
             //{

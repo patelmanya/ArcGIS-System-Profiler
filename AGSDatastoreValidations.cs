@@ -20,6 +20,10 @@ namespace ArcGIS_System_Profiler
         public AGSDatastoreValidations()
         {
             InitializeComponent();
+            panel1.BackColor = globalVariables.themeColor;
+            panel2.BackColor = globalVariables.themeColor;
+            panel3.BackColor = globalVariables.themeColor;
+            AGSDS_dataGridView.BackgroundColor = globalVariables.themeColor;
         }
 
         private void btn_GetDataStores_Click(object sender, EventArgs e)

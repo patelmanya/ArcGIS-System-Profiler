@@ -22,6 +22,11 @@ namespace ArcGIS_System_Profiler
         public GetServicesInfoForm()
         {
             InitializeComponent();
+
+            panel1.BackColor = globalVariables.themeColor;
+            panel2.BackColor = globalVariables.themeColor;
+            AGS_dataGridView.BackgroundColor = globalVariables.themeColor;
+
             if (globalVariables.global_serverHostname != "")
             {
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services?f=json";

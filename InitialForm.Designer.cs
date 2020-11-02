@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtBx_DataStoreHostName = new System.Windows.Forms.TextBox();
             this.txtBx_ServerHostName = new System.Windows.Forms.TextBox();
             this.txtBx_ServerInstance = new System.Windows.Forms.TextBox();
@@ -75,7 +73,6 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Enterprise.SuspendLayout();
             this.panel_Server.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -84,7 +81,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.txtBx_DataStoreHostName);
             this.panel1.Controls.Add(this.txtBx_ServerHostName);
             this.panel1.Controls.Add(this.txtBx_ServerInstance);
@@ -115,17 +111,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 676);
             this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(827, 62);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(221, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
             // 
             // txtBx_DataStoreHostName
             // 
@@ -637,7 +622,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1138, 676);
             this.Controls.Add(this.panel1);
@@ -648,7 +633,6 @@
             this.Text = "Home";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_Enterprise.ResumeLayout(false);
             this.panel_Enterprise.PerformLayout();
             this.panel_Server.ResumeLayout(false);
@@ -704,6 +688,5 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

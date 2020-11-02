@@ -85,7 +85,7 @@
             // 
             // txtBx_GenRepStatus
             // 
-            this.txtBx_GenRepStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.txtBx_GenRepStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.txtBx_GenRepStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBx_GenRepStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBx_GenRepStatus.Font = new System.Drawing.Font("Arial", 14F);
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.ClientSize = new System.Drawing.Size(1138, 676);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

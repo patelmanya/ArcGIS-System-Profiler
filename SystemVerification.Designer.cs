@@ -364,7 +364,7 @@
             // 
             // statusOS
             // 
-            this.statusOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusOS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusOS.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusOS.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -381,7 +381,7 @@
             // 
             // statusProcessor
             // 
-            this.statusProcessor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusProcessor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusProcessor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusProcessor.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusProcessor.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -398,7 +398,7 @@
             // 
             // statusMemory
             // 
-            this.statusMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusMemory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusMemory.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusMemory.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -415,7 +415,7 @@
             // 
             // statusDiskSpace
             // 
-            this.statusDiskSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusDiskSpace.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusDiskSpace.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.statusDiskSpace.IconColor = System.Drawing.Color.LawnGreen;
@@ -539,7 +539,7 @@
             // 
             // statusDiskSpace1
             // 
-            this.statusDiskSpace1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusDiskSpace1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusDiskSpace1.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusDiskSpace1.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -556,7 +556,7 @@
             // 
             // statusDiskSpace2
             // 
-            this.statusDiskSpace2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusDiskSpace2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusDiskSpace2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusDiskSpace2.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusDiskSpace2.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -573,7 +573,7 @@
             // 
             // statusMachineName
             // 
-            this.statusMachineName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusMachineName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusMachineName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusMachineName.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusMachineName.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -590,7 +590,7 @@
             // 
             // statusInternetAccess
             // 
-            this.statusInternetAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.statusInternetAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.statusInternetAccess.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusInternetAccess.ForeColor = System.Drawing.Color.LawnGreen;
             this.statusInternetAccess.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -607,7 +607,7 @@
             // 
             // iconPictureBox3
             // 
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox3.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -624,7 +624,7 @@
             // 
             // iconPictureBox4
             // 
-            this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox4.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -641,7 +641,7 @@
             // 
             // iconPictureBox5
             // 
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox5.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -658,7 +658,7 @@
             // 
             // iconPictureBox6
             // 
-            this.iconPictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox6.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -675,7 +675,7 @@
             // 
             // iconPictureBox7
             // 
-            this.iconPictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox7.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -692,7 +692,7 @@
             // 
             // iconPictureBox8
             // 
-            this.iconPictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.iconPictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.iconPictureBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconPictureBox8.ForeColor = System.Drawing.Color.LawnGreen;
             this.iconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -711,7 +711,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.ClientSize = new System.Drawing.Size(1122, 637);
             this.Controls.Add(this.panelBody);
             this.Controls.Add(this.panel1);

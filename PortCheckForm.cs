@@ -21,6 +21,14 @@ namespace ArcGIS_System_Profiler
         public PortCheckForm()
         {
             InitializeComponent();
+
+            panel1.BackColor = globalVariables.themeColor;
+            panel2.BackColor = globalVariables.themeColor;
+            panel3.BackColor = globalVariables.themeColor;
+            panel4.BackColor = globalVariables.themeColor;
+            panel5.BackColor = globalVariables.themeColor;
+            dataGridViewPorts.BackgroundColor = globalVariables.themeColor;
+
             try
             {
                 //initialize the port list from the wkid listed in portsInfo.cs

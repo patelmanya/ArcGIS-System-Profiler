@@ -19,6 +19,11 @@ namespace ArcGIS_System_Profiler
             try
             {
                 InitializeComponent();
+                panel1.BackColor = globalVariables.themeColor;
+                panel2.BackColor = globalVariables.themeColor;
+                panel3.BackColor = globalVariables.themeColor;
+                checkedListBox1.BackColor = globalVariables.themeColor;
+
                 int checkedItems = checkedListBox1.CheckedItems.Count;
                 checkedListBox1.Items.Add("Portal System Health Check", CheckState.Checked);
                 checkedListBox1.Items.Add("ArcGIS Server Health Check", CheckState.Checked);

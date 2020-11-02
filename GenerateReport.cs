@@ -19,6 +19,11 @@ namespace ArcGIS_System_Profiler
         public GenerateReport()
         {
             InitializeComponent();
+
+            panel1.BackColor = globalVariables.themeColor;
+            panel2.BackColor = globalVariables.themeColor;
+            txtBx_GenRepStatus.BackColor = globalVariables.themeColor;
+
         }
 
         private void btn_GenerateReport_Click(object sender, EventArgs e)

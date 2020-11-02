@@ -24,6 +24,7 @@ namespace ArcGIS_System_Profiler
         {
             //this.CenterToParent();
             InitializeComponent();
+            panel1.BackColor = globalVariables.themeColor;
             txtAGSServerPassword.Text = "";
             txtAGSServerPassword.PasswordChar = '*';
             //textBox4.Text = "";
@@ -76,8 +77,18 @@ namespace ArcGIS_System_Profiler
                     {
                         lbl_LoginStatus.Text = "Login successful";
                         lbl_LoginStatus.Visible = true;
-                        //globalVariables.globalForm.btn_Tasks.PerformClick(); 
-                        globalVariables.globalForm.btnSystemValidation.PerformClick();
+
+                        if (Form.ModifierKeys == Keys.Control)
+                        {
+                            globalVariables.globalForm.btnSystemValidation.Visible = true;
+                            globalVariables.globalForm.btnSystemValidation.PerformClick();
+                        }
+                        else
+                        {
+                            globalVariables.globalForm.btn_Tasks.PerformClick();
+                        }
+                       
+                       
                     }
                     else
                     {

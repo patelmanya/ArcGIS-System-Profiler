@@ -61,7 +61,7 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.ClientSize = new System.Drawing.Size(1138, 676);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

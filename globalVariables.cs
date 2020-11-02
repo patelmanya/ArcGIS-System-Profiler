@@ -17,6 +17,8 @@ namespace ArcGIS_System_Profiler
 
     public class globalVariables
     {
+
+        public static Color themeColor = Color.FromArgb(51, 44, 53);
         public static string iconFlag = "";
         public static string agsEntUserName = "";
         public static string agsEntUserPassword = "";
