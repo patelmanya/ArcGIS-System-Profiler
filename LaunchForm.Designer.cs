@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaunchForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnCreateReport = new FontAwesome.Sharp.IconButton();
             this.btnSetTheme = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSlider = new System.Windows.Forms.Panel();
             this.btnDataStoreValidate = new FontAwesome.Sharp.IconButton();
-            this.btnCreateReport = new FontAwesome.Sharp.IconButton();
             this.btn_Publish = new FontAwesome.Sharp.IconButton();
             this.btn_Services = new FontAwesome.Sharp.IconButton();
             this.btn_PortChecks = new FontAwesome.Sharp.IconButton();
@@ -44,8 +44,8 @@
             this.btnSystemValidation = new FontAwesome.Sharp.IconButton();
             this.btn_Home = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.loadingIconPic = new System.Windows.Forms.PictureBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.loadingIconPic = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_LoginUser = new System.Windows.Forms.Label();
@@ -91,6 +91,31 @@
             this.panelMenu.Size = new System.Drawing.Size(220, 821);
             this.panelMenu.TabIndex = 0;
             // 
+            // btnCreateReport
+            // 
+            this.btnCreateReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCreateReport.FlatAppearance.BorderSize = 0;
+            this.btnCreateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateReport.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnCreateReport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateReport.ForeColor = System.Drawing.Color.White;
+            this.btnCreateReport.IconChar = FontAwesome.Sharp.IconChar.Reacteurope;
+            this.btnCreateReport.IconColor = System.Drawing.Color.White;
+            this.btnCreateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCreateReport.IconSize = 36;
+            this.btnCreateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateReport.Location = new System.Drawing.Point(0, 680);
+            this.btnCreateReport.Name = "btnCreateReport";
+            this.btnCreateReport.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnCreateReport.Rotation = 0D;
+            this.btnCreateReport.Size = new System.Drawing.Size(220, 60);
+            this.btnCreateReport.TabIndex = 9;
+            this.btnCreateReport.Text = "Generate Report";
+            this.btnCreateReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCreateReport.UseVisualStyleBackColor = true;
+            this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
+            // 
             // btnSetTheme
             // 
             this.btnSetTheme.Dock = System.Windows.Forms.DockStyle.Top;
@@ -104,7 +129,7 @@
             this.btnSetTheme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSetTheme.IconSize = 36;
             this.btnSetTheme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetTheme.Location = new System.Drawing.Point(0, 680);
+            this.btnSetTheme.Location = new System.Drawing.Point(0, 620);
             this.btnSetTheme.Name = "btnSetTheme";
             this.btnSetTheme.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnSetTheme.Rotation = 0D;
@@ -148,7 +173,7 @@
             this.btnDataStoreValidate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDataStoreValidate.IconSize = 36;
             this.btnDataStoreValidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDataStoreValidate.Location = new System.Drawing.Point(0, 620);
+            this.btnDataStoreValidate.Location = new System.Drawing.Point(0, 560);
             this.btnDataStoreValidate.Name = "btnDataStoreValidate";
             this.btnDataStoreValidate.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnDataStoreValidate.Rotation = 0D;
@@ -159,31 +184,6 @@
             this.btnDataStoreValidate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDataStoreValidate.UseVisualStyleBackColor = true;
             this.btnDataStoreValidate.Click += new System.EventHandler(this.btnDataStoreValidate_Click);
-            // 
-            // btnCreateReport
-            // 
-            this.btnCreateReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreateReport.FlatAppearance.BorderSize = 0;
-            this.btnCreateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateReport.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCreateReport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateReport.ForeColor = System.Drawing.Color.White;
-            this.btnCreateReport.IconChar = FontAwesome.Sharp.IconChar.Reacteurope;
-            this.btnCreateReport.IconColor = System.Drawing.Color.White;
-            this.btnCreateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCreateReport.IconSize = 36;
-            this.btnCreateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateReport.Location = new System.Drawing.Point(0, 560);
-            this.btnCreateReport.Name = "btnCreateReport";
-            this.btnCreateReport.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnCreateReport.Rotation = 0D;
-            this.btnCreateReport.Size = new System.Drawing.Size(220, 60);
-            this.btnCreateReport.TabIndex = 9;
-            this.btnCreateReport.Text = "Generate Report";
-            this.btnCreateReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCreateReport.UseVisualStyleBackColor = true;
-            this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
             // 
             // btn_Publish
             // 
@@ -364,24 +364,13 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.Controls.Add(this.loadingIconPic);
             this.panelLogo.Controls.Add(this.iconButton1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(220, 140);
             this.panelLogo.TabIndex = 0;
-            // 
-            // loadingIconPic
-            // 
-            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
-            this.loadingIconPic.Location = new System.Drawing.Point(384, 7);
-            this.loadingIconPic.Name = "loadingIconPic";
-            this.loadingIconPic.Size = new System.Drawing.Size(35, 37);
-            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.loadingIconPic.TabIndex = 9;
-            this.loadingIconPic.TabStop = false;
-            this.loadingIconPic.Visible = false;
-            this.loadingIconPic.WaitOnLoad = true;
             // 
             // iconButton1
             // 
@@ -406,10 +395,22 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // loadingIconPic
+            // 
+            this.loadingIconPic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
+            this.loadingIconPic.Location = new System.Drawing.Point(0, 0);
+            this.loadingIconPic.Name = "loadingIconPic";
+            this.loadingIconPic.Size = new System.Drawing.Size(220, 140);
+            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingIconPic.TabIndex = 9;
+            this.loadingIconPic.TabStop = false;
+            this.loadingIconPic.Visible = false;
+            this.loadingIconPic.WaitOnLoad = true;
+            // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
-            this.panelTitleBar.Controls.Add(this.loadingIconPic);
             this.panelTitleBar.Controls.Add(this.panel1);
             this.panelTitleBar.Controls.Add(this.lbl_loggedInUser);
             this.panelTitleBar.Controls.Add(this.currentStepLabel);

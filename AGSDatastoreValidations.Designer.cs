@@ -73,6 +73,7 @@
             // 
             this.AGSDS_dataGridView.AllowUserToResizeColumns = false;
             this.AGSDS_dataGridView.AllowUserToResizeRows = false;
+            this.AGSDS_dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AGSDS_dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.AGSDS_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -95,6 +96,8 @@
             this.AGSDS_dataGridView.Name = "AGSDS_dataGridView";
             this.AGSDS_dataGridView.RowHeadersVisible = false;
             this.AGSDS_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.AGSDS_dataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
+            this.AGSDS_dataGridView.RowTemplate.DividerHeight = 1;
             this.AGSDS_dataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.AGSDS_dataGridView.Size = new System.Drawing.Size(1138, 620);
             this.AGSDS_dataGridView.TabIndex = 33;

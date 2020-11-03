@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOpenReport = new System.Windows.Forms.Button();
             this.btn_GenerateReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtBx_GenRepStatus = new System.Windows.Forms.RichTextBox();
-            this.btnOpenReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +48,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 64);
             this.panel1.TabIndex = 0;
+            // 
+            // btnOpenReport
+            // 
+            this.btnOpenReport.BackColor = System.Drawing.Color.LightGray;
+            this.btnOpenReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenReport.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenReport.Location = new System.Drawing.Point(474, 14);
+            this.btnOpenReport.Name = "btnOpenReport";
+            this.btnOpenReport.Size = new System.Drawing.Size(178, 28);
+            this.btnOpenReport.TabIndex = 11;
+            this.btnOpenReport.Text = "Open Report";
+            this.btnOpenReport.UseVisualStyleBackColor = false;
+            this.btnOpenReport.Visible = false;
+            this.btnOpenReport.Click += new System.EventHandler(this.btnOpenReport_Click);
             // 
             // btn_GenerateReport
             // 
@@ -98,20 +112,6 @@
             this.txtBx_GenRepStatus.Size = new System.Drawing.Size(1098, 612);
             this.txtBx_GenRepStatus.TabIndex = 0;
             this.txtBx_GenRepStatus.Text = "";
-            // 
-            // btnOpenReport
-            // 
-            this.btnOpenReport.BackColor = System.Drawing.Color.LightGray;
-            this.btnOpenReport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenReport.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenReport.Location = new System.Drawing.Point(474, 14);
-            this.btnOpenReport.Name = "btnOpenReport";
-            this.btnOpenReport.Size = new System.Drawing.Size(178, 28);
-            this.btnOpenReport.TabIndex = 11;
-            this.btnOpenReport.Text = "Open Report";
-            this.btnOpenReport.UseVisualStyleBackColor = false;
-            this.btnOpenReport.Visible = false;
-            this.btnOpenReport.Click += new System.EventHandler(this.btnOpenReport_Click);
             // 
             // GenerateReport
             // 
