@@ -31,18 +31,19 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                do
-                {
-                    foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
-                    {
-                        try
-                        {
-                            AGSDS_dataGridView.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
-                    }
-                } while (AGSDS_dataGridView.Rows.Count > 1);
-
+                //do
+                //{
+                //    foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+                //    {
+                //        try
+                //        {
+                //            AGSDS_dataGridView.Rows.Remove(row);
+                //        }
+                //        catch (Exception) { }
+                //    }
+                //} while (AGSDS_dataGridView.Rows.Count > 1);
+                AGSDS_dataGridView.Rows.Clear();
+                AGSDS_dataGridView.Rows.Add();
                 AGSDS_dataGridView.AllowUserToAddRows = true;
                 string token = "";
                 globalVariables gV = new globalVariables();
@@ -127,7 +128,7 @@ namespace ArcGIS_System_Profiler
 
                 var enterpriseDatabasesresponse = (HttpWebResponse)request.GetResponse();
                 var enterpriseDatabasesresponseString = new StreamReader(enterpriseDatabasesresponse.GetResponseStream()).ReadToEnd();
-
+                
                 JObject enterpriseDatabasesrss = JObject.Parse(enterpriseDatabasesresponseString);
 
                 enterpriseDatabaseitems = (JArray)enterpriseDatabasesrss["items"];
@@ -265,7 +266,7 @@ namespace ArcGIS_System_Profiler
                         DSManaged = true;
                     }
                     var dsFeatureDS = nosqlDatabasesitemsitem["info"]["dsFeature"].ToString();
-                    
+
                     var machines = nosqlDatabasesrss["items"].SelectMany(j => j["info"]["machines"]);
                     var machineName = "";
                     foreach (var mnItem in machines)
@@ -303,7 +304,7 @@ namespace ArcGIS_System_Profiler
 
 
 
-
+                AGSDS_dataGridView.Rows.RemoveAt(0);
                 AGSDS_dataGridView.AllowUserToAddRows = false;
                 AGSDS_dataGridView.Visible = true;
 
