@@ -33,17 +33,20 @@ namespace ArcGIS_System_Profiler
                 txtBx_ServicesURL.Text = agsServerURL;
 
                 //remove the existing rows in the datagridview
-                do
-                {
-                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
-                    {
-                        try
-                        {
-                            AGS_dataGridView.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
-                    }
-                } while (AGS_dataGridView.Rows.Count > 1);
+                //do
+                //{
+                //    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                //    {
+                //        try
+                //        {
+                //            AGS_dataGridView.Rows.Remove(row);
+                //        }
+                //        catch (Exception) { }
+                //    }
+                //} while (AGS_dataGridView.Rows.Count > 1);
+                AGS_dataGridView.Rows.Clear();
+                //AGS_dataGridView.AllowUserToAddRows = false;
+                //AGS_dataGridView.Rows.RemoveAt(0);
             }
         }
 
@@ -57,17 +60,19 @@ namespace ArcGIS_System_Profiler
                 btn_SelectAll.Visible = true;
                 btn_NextStep.Visible = true;
                 //remove the existing rows in the datagridview
-                do
-                {
-                    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
-                    {
-                        try
-                        {
-                            AGS_dataGridView.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
-                    }
-                } while (AGS_dataGridView.Rows.Count > 1);
+                //do
+                //{
+                //    foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                //    {
+                //        try
+                //        {
+                //            AGS_dataGridView.Rows.Remove(row);
+                //        }
+                //        catch (Exception) { }
+                //    }
+                //} while (AGS_dataGridView.Rows.Count > 1);
+                AGS_dataGridView.Rows.Clear();
+                AGS_dataGridView.Rows.Add();
 
                 globalVariables.checkedAGSServicesArray.Clear();
 
@@ -157,7 +162,8 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
-                AGS_dataGridView.AllowUserToAddRows = false;
+                AGS_dataGridView.AllowUserToAddRows = false; 
+                AGS_dataGridView.Rows.RemoveAt(0);
             }
             catch (Exception)
             {

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AGSDatastoreValidations));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.AGSDS_dataGridView = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,7 @@
             this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_GetDataStores = new System.Windows.Forms.Button();
+            this.btn_ValidateDataStores = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -76,14 +77,14 @@
             this.AGSDS_dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AGSDS_dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.AGSDS_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AGSDS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AGSDS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.AGSDS_dataGridView.ColumnHeadersHeight = 33;
             this.AGSDS_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.AGSDS_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -104,10 +105,10 @@
             // 
             // checkBoxCol_Service
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.NullValue = false;
-            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.NullValue = false;
+            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle6;
             this.checkBoxCol_Service.HeaderText = "";
             this.checkBoxCol_Service.Name = "checkBoxCol_Service";
             this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -123,8 +124,8 @@
             // Service_Name
             // 
             this.Service_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle7;
             this.Service_Name.HeaderText = "Name";
             this.Service_Name.Name = "Service_Name";
             this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -132,8 +133,8 @@
             // 
             // Service_Type
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle8;
             this.Service_Type.HeaderText = "Type";
             this.Service_Type.Name = "Service_Type";
             this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -143,6 +144,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btn_GetDataStores);
+            this.panel2.Controls.Add(this.btn_ValidateDataStores);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btn_NextStep);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -157,14 +159,30 @@
             this.btn_GetDataStores.BackColor = System.Drawing.Color.LightGray;
             this.btn_GetDataStores.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_GetDataStores.ForeColor = System.Drawing.Color.Black;
-            this.btn_GetDataStores.Location = new System.Drawing.Point(765, 14);
+            this.btn_GetDataStores.Location = new System.Drawing.Point(580, 14);
             this.btn_GetDataStores.Margin = new System.Windows.Forms.Padding(6);
             this.btn_GetDataStores.Name = "btn_GetDataStores";
             this.btn_GetDataStores.Size = new System.Drawing.Size(173, 33);
-            this.btn_GetDataStores.TabIndex = 32;
+            this.btn_GetDataStores.TabIndex = 33;
             this.btn_GetDataStores.Text = "Get Datastores Info";
             this.btn_GetDataStores.UseVisualStyleBackColor = false;
             this.btn_GetDataStores.Click += new System.EventHandler(this.btn_GetDataStores_Click);
+            // 
+            // btn_ValidateDataStores
+            // 
+            this.btn_ValidateDataStores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ValidateDataStores.BackColor = System.Drawing.Color.LightGray;
+            this.btn_ValidateDataStores.Enabled = false;
+            this.btn_ValidateDataStores.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ValidateDataStores.ForeColor = System.Drawing.Color.Black;
+            this.btn_ValidateDataStores.Location = new System.Drawing.Point(765, 14);
+            this.btn_ValidateDataStores.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_ValidateDataStores.Name = "btn_ValidateDataStores";
+            this.btn_ValidateDataStores.Size = new System.Drawing.Size(173, 33);
+            this.btn_ValidateDataStores.TabIndex = 32;
+            this.btn_ValidateDataStores.Text = "Validate Datastores";
+            this.btn_ValidateDataStores.UseVisualStyleBackColor = false;
+            this.btn_ValidateDataStores.Click += new System.EventHandler(this.btn_ValidateDataStores_Click);
             // 
             // label1
             // 
@@ -220,11 +238,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_NextStep;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_GetDataStores;
+        private System.Windows.Forms.Button btn_ValidateDataStores;
         private System.Windows.Forms.DataGridView AGSDS_dataGridView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxCol_Service;
         private System.Windows.Forms.DataGridViewImageColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service_Type;
+        private System.Windows.Forms.Button btn_GetDataStores;
     }
 }

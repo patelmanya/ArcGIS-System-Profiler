@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Office.Interop.Outlook;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,23 +26,14 @@ namespace ArcGIS_System_Profiler
             panel3.BackColor = globalVariables.themeColor;
             AGSDS_dataGridView.BackgroundColor = globalVariables.themeColor;
             //AGSDS_dataGridView.Visible = false;
+            btn_ValidateDataStores.Enabled = false;
         }
 
         private void btn_GetDataStores_Click(object sender, EventArgs e)
         {
             try
             {
-                //do
-                //{
-                //    foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
-                //    {
-                //        try
-                //        {
-                //            AGSDS_dataGridView.Rows.Remove(row);
-                //        }
-                //        catch (Exception) { }
-                //    }
-                //} while (AGSDS_dataGridView.Rows.Count > 1);
+                btn_ValidateDataStores.Enabled = false;
                 AGSDS_dataGridView.Rows.Clear();
                 AGSDS_dataGridView.Rows.Add();
                 AGSDS_dataGridView.AllowUserToAddRows = true;
@@ -128,15 +120,15 @@ namespace ArcGIS_System_Profiler
 
                 var enterpriseDatabasesresponse = (HttpWebResponse)request.GetResponse();
                 var enterpriseDatabasesresponseString = new StreamReader(enterpriseDatabasesresponse.GetResponseStream()).ReadToEnd();
-                
+
                 JObject enterpriseDatabasesrss = JObject.Parse(enterpriseDatabasesresponseString);
 
                 enterpriseDatabaseitems = (JArray)enterpriseDatabasesrss["items"];
-                foreach (var item in enterpriseDatabaseitems)
-                    //============/enterpriseDatabases
 
-                    ///==========/fileShares
-                    request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+                //============/enterpriseDatabases
+
+                ///==========/fileShares
+                request = (HttpWebRequest)WebRequest.Create(agsServerURL);
                 var fileSharespostData = "parentPath=/fileShares"; //required
                 fileSharespostData += "&token=" + token; //optional, default
                 fileSharespostData += "&f=json"; //optional, default
@@ -215,9 +207,18 @@ namespace ArcGIS_System_Profiler
                     //var dsName = item["path"].ToString();
                 }
 
-                foreach (var item in cloudStoresitems)
+                foreach (var cloudStoresitemsitem in cloudStoresitems)
                 {
-                    //var dsName = item["path"].ToString();
+                    var dsName = cloudStoresitemsitem["path"].ToString();
+                    var providerStr = cloudStoresitemsitem["provider"].ToString();
+                     
+                    DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                    DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
+                    if (providerStr == "amazon")
+                    {
+                        DSrow.Cells[3].Value = "Amazon Cloud Store"; 
+                    }
+                    AGSDS_dataGridView.Rows.Add(DSrow);
                 }
 
                 foreach (var enterpriseDatabaseitemsitem in enterpriseDatabaseitems)
@@ -239,7 +240,14 @@ namespace ArcGIS_System_Profiler
 
                     DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
                     DSrow.Cells[2].Value = "ArcGIS_Data_Store";
-                    DSrow.Cells[3].Value = "Managed Database";
+                    if (DSManaged)
+                    {
+                        DSrow.Cells[3].Value = "Managed Database"; 
+                    }
+                    else
+                    {
+                        DSrow.Cells[3].Value = "Database";
+                    }
                     AGSDS_dataGridView.Rows.Add(DSrow);
 
                 }
@@ -307,9 +315,9 @@ namespace ArcGIS_System_Profiler
                 AGSDS_dataGridView.Rows.RemoveAt(0);
                 AGSDS_dataGridView.AllowUserToAddRows = false;
                 AGSDS_dataGridView.Visible = true;
-
+                btn_ValidateDataStores.Enabled = true;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 globalVariables gv = new globalVariables();
                 gv.onErrorClearGeneratedFiles();
@@ -319,6 +327,20 @@ namespace ArcGIS_System_Profiler
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_ValidateDataStores_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

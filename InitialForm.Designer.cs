@@ -160,6 +160,7 @@
             this.txtBx_PortalHostName.Size = new System.Drawing.Size(356, 26);
             this.txtBx_PortalHostName.TabIndex = 20;
             this.txtBx_PortalHostName.Text = "lea-305263.services.esriaustralia.com.au";
+            this.txtBx_PortalHostName.TextChanged += new System.EventHandler(this.txtBx_PortalHostName_TextChanged);
             this.txtBx_PortalHostName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBx_PortalHostName_Validating);
             // 
             // btn_EditInstanceName

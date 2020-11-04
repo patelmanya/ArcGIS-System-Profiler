@@ -36,18 +36,18 @@ namespace ArcGIS_System_Profiler
                 pInfo.loadPortList();
                 btnShowAGSOnly.Visible = false;
                 //remove the existing rows in the datagridview
-                //dataGridViewPorts.Rows.Clear();
-                do
-                {
-                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                    {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception) { }
-                    }
-                } while (dataGridViewPorts.Rows.Count > 1);
+                dataGridViewPorts.Rows.Clear();
+                //do
+                //{
+                //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                //    {
+                //        try
+                //        {
+                //            dataGridViewPorts.Rows.Remove(row);
+                //        }
+                //        catch (Exception) { }
+                //    }
+                //} while (dataGridViewPorts.Rows.Count > 1);
             }
             catch (Exception)
             {
@@ -72,22 +72,24 @@ namespace ArcGIS_System_Profiler
                 if (progressBar1.Value > 99)
                 {
 
-                    do
-                    {
-                        foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                        {
-                            try
-                            {
-                                dataGridViewPorts.Rows.Remove(row);
-                            }
-                            catch (Exception)
-                            {
+                    //do
+                    //{
+                    //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                    //    {
+                    //        try
+                    //        {
+                    //            dataGridViewPorts.Rows.Remove(row);
+                    //        }
+                    //        catch (Exception)
+                    //        {
 
 
-                            }
+                    //        }
 
-                        }
-                    } while (dataGridViewPorts.Rows.Count > 1);
+                    //    }
+                    //} while (dataGridViewPorts.Rows.Count > 1);
+                    dataGridViewPorts.Rows.Clear();
+                    dataGridViewPorts.Rows.Add();
                     globalVariables.portsList.Clear();
 
 
@@ -192,6 +194,8 @@ namespace ArcGIS_System_Profiler
                     }
                     timer1.Enabled = false;
                     dataGridViewPorts.AllowUserToAddRows = false;
+                    dataGridViewPorts.Rows.RemoveAt(0);
+                    
                 }
 
 
@@ -241,21 +245,23 @@ namespace ArcGIS_System_Profiler
             try
             {
                 //remove the existing rows in the datagridview
-                do
-                {
-                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                    {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception)
-                        {
+                //do
+                //{
+                //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                //    {
+                //        try
+                //        {
+                //            dataGridViewPorts.Rows.Remove(row);
+                //        }
+                //        catch (Exception)
+                //        {
 
-                        }
+                //        }
 
-                    }
-                } while (dataGridViewPorts.Rows.Count > 1);
+                //    }
+                //} while (dataGridViewPorts.Rows.Count > 1);
+                dataGridViewPorts.Rows.Clear();
+                dataGridViewPorts.Rows.Add();
 
                 //add only the closed one from the globalVariables.portsList
                 foreach (Dictionary<string, object> obj in globalVariables.portsList)
@@ -321,6 +327,9 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
+
+                dataGridViewPorts.AllowUserToAddRows = false;
+                dataGridViewPorts.Rows.RemoveAt(0);
             }
             catch (Exception)
             {
@@ -375,21 +384,23 @@ namespace ArcGIS_System_Profiler
                 //textFilterFlag = "";
 
                 //remove the existing rows in the datagridview
-                do
-                {
-                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                    {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception)
-                        {
+                //do
+                //{
+                //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                //    {
+                //        try
+                //        {
+                //            dataGridViewPorts.Rows.Remove(row);
+                //        }
+                //        catch (Exception)
+                //        {
 
-                        }
+                //        }
 
-                    }
-                } while (dataGridViewPorts.Rows.Count > 1);
+                //    }
+                //} while (dataGridViewPorts.Rows.Count > 1);
+                dataGridViewPorts.Rows.Clear();
+                dataGridViewPorts.Rows.Add();
 
                 //add only the closed one from the globalVariables.portsList
                 foreach (Dictionary<string, object> obj in globalVariables.portsList)
@@ -480,6 +491,8 @@ namespace ArcGIS_System_Profiler
                     }
 
                 }
+                dataGridViewPorts.AllowUserToAddRows = false;
+                dataGridViewPorts.Rows.RemoveAt(0);
             }
             catch (Exception)
             {
@@ -493,21 +506,23 @@ namespace ArcGIS_System_Profiler
             try
             {
                 //remove the existing rows in the datagridview
-                do
-                {
-                    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                    {
-                        try
-                        {
-                            dataGridViewPorts.Rows.Remove(row);
-                        }
-                        catch (Exception)
-                        {
+                //do
+                //{
+                //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
+                //    {
+                //        try
+                //        {
+                //            dataGridViewPorts.Rows.Remove(row);
+                //        }
+                //        catch (Exception)
+                //        {
 
-                        }
+                //        }
 
-                    }
-                } while (dataGridViewPorts.Rows.Count > 1);
+                //    }
+                //} while (dataGridViewPorts.Rows.Count > 1);
+                dataGridViewPorts.Rows.Clear();
+                dataGridViewPorts.Rows.Add();
 
                 if (radioButtonAll.Checked == true)
                 {
@@ -726,6 +741,8 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
+                dataGridViewPorts.AllowUserToAddRows = false;
+                dataGridViewPorts.Rows.RemoveAt(0);
             }
             catch (Exception)
             {

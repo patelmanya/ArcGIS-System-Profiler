@@ -388,5 +388,26 @@ namespace ArcGIS_System_Profiler
                 gv.onErrorClearGeneratedFiles();
             }
         }
+
+        private void txtBx_PortalHostName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtBx_PortalHostName.Text != "" && chkBx_Server.Checked)
+                {
+                    txtBx_ServerHostName.Text = txtBx_PortalHostName.Text;
+                }
+                else
+                {
+                    txtBx_ServerHostName.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+
+                globalVariables gv = new globalVariables();
+                gv.onErrorClearGeneratedFiles();
+            }
+        }
     }
 }
