@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPublishService = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_NextStep = new System.Windows.Forms.Button();
-            this.btnPublishService = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtBx_GenServStatus = new System.Windows.Forms.RichTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -47,13 +51,20 @@
             this.panel1.Size = new System.Drawing.Size(1122, 120);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // btnPublishService
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 120);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1122, 517);
-            this.panel2.TabIndex = 1;
+            this.btnPublishService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPublishService.BackColor = System.Drawing.Color.LightGray;
+            this.btnPublishService.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPublishService.ForeColor = System.Drawing.Color.Black;
+            this.btnPublishService.Location = new System.Drawing.Point(749, 78);
+            this.btnPublishService.Margin = new System.Windows.Forms.Padding(6);
+            this.btnPublishService.Name = "btnPublishService";
+            this.btnPublishService.Size = new System.Drawing.Size(173, 33);
+            this.btnPublishService.TabIndex = 32;
+            this.btnPublishService.Text = "Publish Service";
+            this.btnPublishService.UseVisualStyleBackColor = false;
+            this.btnPublishService.Click += new System.EventHandler(this.btnPublishService_Click);
             // 
             // label1
             // 
@@ -82,20 +93,38 @@
             this.btn_NextStep.Text = "Next Step";
             this.btn_NextStep.UseVisualStyleBackColor = false;
             // 
-            // btnPublishService
+            // panel2
             // 
-            this.btnPublishService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPublishService.BackColor = System.Drawing.Color.LightGray;
-            this.btnPublishService.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPublishService.ForeColor = System.Drawing.Color.Black;
-            this.btnPublishService.Location = new System.Drawing.Point(749, 78);
-            this.btnPublishService.Margin = new System.Windows.Forms.Padding(6);
-            this.btnPublishService.Name = "btnPublishService";
-            this.btnPublishService.Size = new System.Drawing.Size(173, 33);
-            this.btnPublishService.TabIndex = 32;
-            this.btnPublishService.Text = "Publish Service";
-            this.btnPublishService.UseVisualStyleBackColor = false;
-            this.btnPublishService.Click += new System.EventHandler(this.btnPublishService_Click);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1122, 517);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtBx_GenServStatus
+            // 
+            this.txtBx_GenServStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.txtBx_GenServStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBx_GenServStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBx_GenServStatus.Font = new System.Drawing.Font("Arial", 14F);
+            this.txtBx_GenServStatus.ForeColor = System.Drawing.Color.White;
+            this.txtBx_GenServStatus.Location = new System.Drawing.Point(20, 0);
+            this.txtBx_GenServStatus.Name = "txtBx_GenServStatus";
+            this.txtBx_GenServStatus.ReadOnly = true;
+            this.txtBx_GenServStatus.Size = new System.Drawing.Size(1082, 517);
+            this.txtBx_GenServStatus.TabIndex = 0;
+            this.txtBx_GenServStatus.Text = "";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtBx_GenServStatus);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.panel3.Size = new System.Drawing.Size(1122, 517);
+            this.panel3.TabIndex = 2;
             // 
             // PublishServicesForm
             // 
@@ -110,6 +139,8 @@
             this.Text = "PublishServicesForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -121,5 +152,7 @@
         private System.Windows.Forms.Button btnPublishService;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_NextStep;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RichTextBox txtBx_GenServStatus;
     }
 }
