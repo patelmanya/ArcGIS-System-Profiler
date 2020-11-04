@@ -30,7 +30,7 @@
     "textAntialiasingMode": "Force",
     "minScale": "2311162.2171550002",
     "maxScale": "36111.909642999999",
-    "portalURL": "https://lea-305263.services.esriaustralia.com.au/portal/",
+    "portalURL": "https://lea-304877.services.esriaustralia.com.au/portal/",
     "userName": "portaladmin",
     "virtualCacheDir": "/rest/directories/arcgiscache",
     "hasStaticData": "true"
@@ -65,7 +65,7 @@
         "linkName": "",
         "message": "",
         "useDefaultSnippets": "false",
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/KmlServer"
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/KmlServer"
       }
     },
     {
@@ -73,7 +73,7 @@
       "typeName": "WMSServer",
       "capabilities": "GetCapabilities,GetMap,GetFeatureInfo,GetStyles,GetLegendGraphic,GetSchemaExtension",
       "properties": {
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WMSServer",
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WMSServer",
         "customGetCapabilities": "false",
         "pathToCustomGetCapabilitiesFiles": "",
         "pathToCustomSLDFile": "",
@@ -192,7 +192,7 @@
         "locationAllocation_MaxFacilities": "",
         "locationAllocation_ForceHierarchyBeyondDistance": "",
         "locationAllocation_ForceHierarchyBeyondDistanceUnits": "",
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/NAServer"
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/NAServer"
       }
     },
     {
@@ -200,7 +200,7 @@
       "typeName": "WCSServer",
       "capabilities": "",
       "properties": {
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WCSServer",
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WCSServer",
         "customGetCapabilities": "",
         "pathToCustomGetCapabilitiesFiles": "",
         "name": "",
@@ -250,7 +250,7 @@
         "syncBranchVersionCreationRule": "versionPerDownloadedMap",
         "xssPreventionEnabled": "true",
         "onlyAllowTrueCurveUpdatesByTrueCurveClients": "true",
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/FeatureServer",
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/FeatureServer",
         "syncEnabled": "false"
       }
     },
@@ -261,7 +261,7 @@
       "properties": {
         "maxUploadFileSize": "0",
         "allowedUploadFileTypes": "",
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/VersionManagementServer"
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/VersionManagementServer"
       }
     },
     {
@@ -269,8 +269,8 @@
       "typeName": "WFSServer",
       "capabilities": "",
       "properties": {
-        "onlineResource": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WFSServer",
-        "appSchemaURI": "https://lea-305263.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WFSServer",
+        "onlineResource": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WFSServer",
+        "appSchemaURI": "https://lea-304877.services.esriaustralia.com.au/server/services/VIC_Open_data_MIL2/MapServer/WFSServer",
         "appSchemaPrefix": "",
         "customGetCapabilities": "false",
         "pathToCustomGetCapabilitiesFiles": "",

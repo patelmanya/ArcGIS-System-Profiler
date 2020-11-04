@@ -179,7 +179,7 @@ namespace ArcGIS_System_Profiler
             globalVariables.mapServiceConfig = Path.Combine(Environment.CurrentDirectory, "mapServiceConfig.json");
             globalVariables.mapServiceConfigcontent = File.ReadAllText(globalVariables.mapServiceConfig);
             JObject rss = JObject.Parse(globalVariables.mapServiceConfigcontent);
-            
+
             //change the filepath
             foreach (var item in rss)
             {
@@ -252,7 +252,142 @@ namespace ArcGIS_System_Profiler
                 }
             }
 
+
+            //change the extensions - properties - onlineResource
+            //change the portalURL
+            bool typeNameKmlServer = false;
+            bool typeNameWMSServer = false;
+            bool typeNameNAServer = false;
+            bool typeNameWCSServer = false;
+            bool typeNameFeatureServer = false;
+            bool typeNameVersionManagementServer = false;
+            bool typeNameWFSServer = false;
+
+            foreach (var item in rss)
+            {
+                if (item.Key == "extensions")
+                {
+                    foreach (var extPropitem in item.Value)
+                    {
+                        JObject propertiesObj = (JObject)extPropitem;
+                        foreach (var propertiesObjitem in propertiesObj)
+                        {
+                            if (propertiesObjitem.Key == "typeName")
+                            {
+                                if (propertiesObjitem.Value.ToString() == "KmlServer")
+                                {
+                                    typeNameKmlServer = true;
+                                }
+
+                                if (propertiesObjitem.Value.ToString() == "WMSServer")
+                                {
+                                    typeNameWMSServer = true;
+                                }
+
+                                if (propertiesObjitem.Value.ToString() == "NAServer")
+                                {
+                                    typeNameNAServer = true;
+                                }
+
+                                if (propertiesObjitem.Value.ToString() == "WCSServer")
+                                {
+                                    typeNameWCSServer = true;
+                                }
+
+                                if (propertiesObjitem.Value.ToString() == "FeatureServer")
+                                {
+                                    typeNameFeatureServer = true;
+                                }
+
+                                if (propertiesObjitem.Value.ToString() == "VersionManagementServer")
+                                {
+                                    typeNameVersionManagementServer = true;
+                                }
+                                
+                                if (propertiesObjitem.Value.ToString() == "WFSServer")
+                                {
+                                    typeNameWFSServer = true;
+                                }
+
+                            }
+                            if (propertiesObjitem.Key == "properties")
+                            {
+                                JObject propertiesItemValObj = (JObject)propertiesObjitem.Value;
+                                foreach (var propertiesItemValObjitem in propertiesItemValObj)
+                                {
+                                    if (propertiesItemValObjitem.Key == "onlineResource")
+                                    {
+                                        if (typeNameKmlServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("useDefaultSnippets").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/KmlServer"));
+                                            typeNameKmlServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameWMSServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("customGetCapabilities").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/WMSServer"));
+                                            typeNameWMSServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameNAServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("locationAllocation_ForceHierarchyBeyondDistanceUnits").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/NAServer"));
+                                            typeNameNAServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameWCSServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("customGetCapabilities").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/WCSServer"));
+                                            typeNameWCSServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameFeatureServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("syncEnabled").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/FeatureServer"));
+                                            typeNameFeatureServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameVersionManagementServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("allowedUploadFileTypes").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/VersionManagementServer"));
+                                            typeNameVersionManagementServer = false;
+                                            break;
+                                        }
+
+                                        if (typeNameWFSServer)
+                                        {
+                                            propertiesItemValObj.Property("onlineResource").Remove();
+                                            propertiesItemValObj.Property("appSchemaPrefix").AddBeforeSelf(new JProperty("onlineResource", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/WFSServer"));
+
+                                            propertiesItemValObj.Property("appSchemaURI").Remove();
+                                            propertiesItemValObj.Property("appSchemaPrefix").AddBeforeSelf(new JProperty("appSchemaURI", "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/services/VIC_Open_data_MIL2/MapServer/WFSServer"));
+                                            typeNameWFSServer = false;
+                                            break;
+                                        }
+
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            //Update the global map service JSON
             globalVariables.mapServiceConfigcontent = rss.ToString();
+
         }
 
         private void btnPublishService_Click(object sender, EventArgs e)
