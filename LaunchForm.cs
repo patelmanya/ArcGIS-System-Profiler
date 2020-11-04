@@ -280,7 +280,7 @@ namespace ArcGIS_System_Profiler
             btnSetTheme.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSetTheme.ImageAlign = ContentAlignment.MiddleLeft;
 
-
+            btnSystemValidation.Visible = false;
             OpenChildForm(new InitialForm());
         }
 

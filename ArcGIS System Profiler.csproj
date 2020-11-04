@@ -136,6 +136,12 @@
     <Compile Include="InitialForm.Designer.cs">
       <DependentUpon>InitialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InitPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitPage.Designer.cs">
+      <DependentUpon>InitPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interop\Enums.cs" />
     <Compile Include="Interop\Gdi32.cs" />
     <Compile Include="Interop\InteropConstants.cs" />
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InitialForm.resx">
       <DependentUpon>InitialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InitPage.resx">
+      <DependentUpon>InitPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LaunchForm.resx">
       <DependentUpon>LaunchForm.cs</DependentUpon>

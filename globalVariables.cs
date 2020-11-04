@@ -57,6 +57,13 @@ namespace ArcGIS_System_Profiler
         public static string agsServerServicesReportName = "";
         public static string generatedFinalReportName = "";
 
+        public static JArray globalbigDataFileSharesitems;
+        public static JArray globalcloudStoresitems;
+        public static JArray globalenterpriseDatabaseitems;
+        public static JArray globalfileSharesitems;
+        public static JArray globalnosqlDatabasesitems;
+        public static JArray globalrasterStoresitems;
+
 
         public static MakeMovable _move;
         public static String globalTokenStr = "";
@@ -114,13 +121,8 @@ namespace ArcGIS_System_Profiler
                     globalVariables.reportTemplateFileName = name;
                 }
 
-            File.WriteAllBytes((globalVariables.globalFilePath + "\\RpoertTemplate.dotx"), Properties.Resources.Report_Template_EA2);
-            //reportTemplateFileName
-            //Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-            //wordApp.Visible = false;
-            //Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Add(globalVariables.reportTemplateFileName);
-            //wordDoc.SaveAs((globalVariables.globalFilePath + "\\RpoertTemplate"));
-            globalVariables.reportTemplateFileName = (globalVariables.globalFilePath + "\\RpoertTemplate.dotx");
+            File.WriteAllBytes((globalVariables.globalFilePath + "\\ReportTemplate.dotx"), Properties.Resources.Report_Template_EA2);
+            globalVariables.reportTemplateFileName = (globalVariables.globalFilePath + "\\ReportTemplate.dotx");
 
 
             String tokenStr = "";
@@ -239,7 +241,7 @@ namespace ArcGIS_System_Profiler
 
 
             }
-            Application.Exit();
+            //Application.Exit();
         }
     }
 

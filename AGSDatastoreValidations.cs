@@ -195,10 +195,18 @@ namespace ArcGIS_System_Profiler
                 var rasterStoresresponse = (HttpWebResponse)request.GetResponse();
                 var rasterStoresresponseString = new StreamReader(rasterStoresresponse.GetResponseStream()).ReadToEnd();
 
-                JObject rasterStoresrss = JObject.Parse(bigDataFileSharesresponseString);
+                JObject rasterStoresrss = JObject.Parse(rasterStoresresponseString);
 
                 rasterStoresitems = (JArray)rasterStoresrss["items"];
                 ///==========/rasterStores
+
+                //set to the global variables.
+                globalVariables.globalbigDataFileSharesitems = bigDataFileSharesitems;
+                globalVariables.globalcloudStoresitems = cloudStoresitems;
+                globalVariables.globalenterpriseDatabaseitems = enterpriseDatabaseitems;
+                globalVariables.globalfileSharesitems = fileSharesitems;
+                globalVariables.globalnosqlDatabasesitems = nosqlDatabasesitems;
+                globalVariables.globalrasterStoresitems = rasterStoresitems;
 
                 //loop through each finditems array result and create items for datagrid
 
@@ -211,12 +219,16 @@ namespace ArcGIS_System_Profiler
                 {
                     var dsName = cloudStoresitemsitem["path"].ToString();
                     var providerStr = cloudStoresitemsitem["provider"].ToString();
-                     
+
                     DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
                     DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
                     if (providerStr == "amazon")
                     {
-                        DSrow.Cells[3].Value = "Amazon Cloud Store"; 
+                        DSrow.Cells[3].Value = "Amazon Cloud Store";
+                    }
+                    else
+                    {
+                        DSrow.Cells[3].Value = "Cloud Store";
                     }
                     AGSDS_dataGridView.Rows.Add(DSrow);
                 }
@@ -242,7 +254,7 @@ namespace ArcGIS_System_Profiler
                     DSrow.Cells[2].Value = "ArcGIS_Data_Store";
                     if (DSManaged)
                     {
-                        DSrow.Cells[3].Value = "Managed Database"; 
+                        DSrow.Cells[3].Value = "Managed Database";
                     }
                     else
                     {
@@ -296,21 +308,24 @@ namespace ArcGIS_System_Profiler
                     AGSDS_dataGridView.Rows.Add(DSrow);
                 }
 
-                foreach (var item in rasterStoresitems)
+                foreach (var rasterStoresitemsitem in rasterStoresitems)
                 {
-                    //var dsName = item["path"].ToString();
+                    var dsName = rasterStoresitemsitem["path"].ToString();
+                    var dsType = rasterStoresitemsitem["type"].ToString();
+
+
+                    DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                    DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
+                    if (dsType == "rasterStore")
+                    {
+                        DSrow.Cells[3].Value = "Raster Store";
+                    }
+                    else
+                    {
+                        DSrow.Cells[3].Value = "";
+                    }
+                    AGSDS_dataGridView.Rows.Add(DSrow);
                 }
-
-
-                //DataGridViewRow row = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                //row.Cells[2].Value = "My Datastore name";
-                //row.Cells[3].Value = "Folder";
-                //AGSDS_dataGridView.Rows.Add(row);
-
-
-
-
-
 
                 AGSDS_dataGridView.Rows.RemoveAt(0);
                 AGSDS_dataGridView.AllowUserToAddRows = false;
@@ -333,13 +348,163 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                //get selected datastores 
+                foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+                {
+                    bool isSelected = Convert.ToBoolean(row.Cells["checkBoxCol_Service"].Value);
+                    if (isSelected)
+                    {
 
+                        //if (obj["id"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
+                        //{
+                        //    obj["checked"] = "true";
+                        //}
+
+                        foreach (var item in globalVariables.globalbigDataFileSharesitems)
+                        {
+                            //var dsName = item["path"].ToString();
+                        }
+
+                        foreach (var cloudStoresitemsitem in globalVariables.globalcloudStoresitems)
+                        {
+                            var dsName = cloudStoresitemsitem["path"].ToString();
+                            var providerStr = cloudStoresitemsitem["provider"].ToString();
+                            var typeStr = "";
+                            if (providerStr == "amazon")
+                            {
+                                typeStr = "Amazon Cloud Store";
+                            }
+                            else
+                            {
+                                typeStr = "Cloud Store";
+                            }
+                            //Service_Type
+                            if (row.Cells["Service_Name"].Value.ToString() == dsName.Split('/')[dsName.Split('/').Length - 1])
+                            {
+
+                            }
+
+                        }
+
+                        foreach (var enterpriseDatabaseitemsitem in globalVariables.globalenterpriseDatabaseitems)
+                        {
+                            var dsName = enterpriseDatabaseitemsitem["path"].ToString();
+                            var isManagedDS = enterpriseDatabaseitemsitem["info"]["isManaged"].ToString();
+                            bool DSManaged = false;
+                            if (isManagedDS.ToUpper() == "TRUE")
+                            {
+                                DSManaged = true;
+                            }
+                            var machines = enterpriseDatabaseitemsitem["items"].SelectMany(j => j["info"]["machines"]);
+                            var machineName = "";
+                            foreach (var mnItem in machines)
+                            {
+                                machineName = mnItem["name"].ToString();
+                                break;
+                            }
+
+                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                            DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+                            if (DSManaged)
+                            {
+                                DSrow.Cells[3].Value = "Managed Database";
+                            }
+                            else
+                            {
+                                DSrow.Cells[3].Value = "Database";
+                            }
+                            AGSDS_dataGridView.Rows.Add(DSrow);
+
+                        }
+
+                        foreach (var fileSharesitemsitem in globalVariables.globalfileSharesitems)
+                        {
+                            var dsName = fileSharesitemsitem["path"].ToString();
+                            var dsType = fileSharesitemsitem["type"].ToString();
+
+
+                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                            DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
+                            DSrow.Cells[3].Value = "Folder";
+                            AGSDS_dataGridView.Rows.Add(DSrow);
+                        }
+
+                        foreach (var nosqlDatabasesitemsitem in globalVariables.globalnosqlDatabasesitems)
+                        {
+                            var dsName = nosqlDatabasesitemsitem["path"].ToString();
+                            var isManagedDS = nosqlDatabasesitemsitem["info"]["isManaged"].ToString();
+                            bool DSManaged = false;
+                            if (isManagedDS.ToUpper() == "TRUE")
+                            {
+                                DSManaged = true;
+                            }
+                            var dsFeatureDS = nosqlDatabasesitemsitem["info"]["dsFeature"].ToString();
+
+                            var machines = nosqlDatabasesitemsitem["items"].SelectMany(j => j["info"]["machines"]);
+                            var machineName = "";
+                            foreach (var mnItem in machines)
+                            {
+                                machineName = mnItem["name"].ToString();
+                                break;
+                            }
+
+                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                            DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+                            if (dsFeatureDS == "tileCache")
+                            {
+                                DSrow.Cells[3].Value = "Tile Cache";
+                            }
+                            else
+                            {
+                                DSrow.Cells[3].Value = dsFeatureDS;
+                            }
+                            AGSDS_dataGridView.Rows.Add(DSrow);
+                        }
+
+                        foreach (var rasterStoresitemsitem in globalVariables.globalrasterStoresitems)
+                        {
+                            var dsName = rasterStoresitemsitem["path"].ToString();
+                            var dsType = rasterStoresitemsitem["type"].ToString();
+
+
+                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
+                            DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
+                            if (dsType == "rasterStore")
+                            {
+                                DSrow.Cells[3].Value = "Raster Store";
+                            }
+                            else
+                            {
+                                DSrow.Cells[3].Value = "";
+                            }
+                            AGSDS_dataGridView.Rows.Add(DSrow);
+                        }
+
+                    }
+
+                }
 
             }
             catch (System.Exception)
             {
 
                 throw;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+            {
+                row.Cells["checkBoxCol_Service"].Value = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+            {
+                row.Cells["checkBoxCol_Service"].Value = false;
             }
         }
     }
