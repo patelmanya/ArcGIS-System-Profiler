@@ -17,7 +17,10 @@ namespace ArcGIS_System_Profiler
 
     public class globalVariables
     {
+        //https://lea-305263.services.esriaustralia.com.au/server/admin/system/directories?f=pjson
 
+        public static string mapServiceConfig = Path.Combine(Environment.CurrentDirectory, "mapServiceConfig.json");
+        public static string mapServiceConfigcontent = File.ReadAllText(mapServiceConfig);
         public static string globalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SystemProfilerReport");
 
         public static string globalReportIcon = "";
