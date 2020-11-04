@@ -21,6 +21,17 @@ namespace ArcGIS_System_Profiler
         private Form currentChildForm;
         public LaunchForm()
         {
+            //InitPage iPage = new InitPage();
+            //iPage.initpageTimer.Enabled = true;
+            //iPage.initPageprogressBar.Value = 0;
+            //iPage.initPageprogressBar.Value = iPage.initPageprogressBar.Value + 5;
+            //if (iPage.initPageprogressBar.Value > 99)
+            //{
+            //    iPage.initpageTimer.Enabled = false;
+            //    iPage.Close();
+            //}
+
+
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             leftBorderBtn = new Panel();

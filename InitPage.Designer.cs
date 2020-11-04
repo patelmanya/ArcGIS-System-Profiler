@@ -80,7 +80,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer initpageTimer;
-        private System.Windows.Forms.ProgressBar initPageprogressBar;
+        internal System.Windows.Forms.Timer initpageTimer;
+        internal System.Windows.Forms.ProgressBar initPageprogressBar;
     }
 }

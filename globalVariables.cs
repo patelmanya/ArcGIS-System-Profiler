@@ -19,7 +19,10 @@ namespace ArcGIS_System_Profiler
     {
         //https://lea-305263.services.esriaustralia.com.au/server/admin/system/directories?f=pjson
 
+        public static string mapServiceMSDFile = "";
         public static string mapServiceConfig = "";
+        public static string outputDirStr = "";
+        public static string cacheDirStr = "";
         public static string mapServiceConfigcontent = "";
         public static string globalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SystemProfilerReport");
 
@@ -232,7 +235,13 @@ namespace ArcGIS_System_Profiler
                 {
                     File.Delete(globalVariables.reportTemplateFileName);
                 }
-
+                
+                //delete the file if it exists
+                if (File.Exists(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip"))
+                {
+                    File.Delete(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip");
+                }
+                
                 string foldername = "tables";
                 if (Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                 {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-AU'>
+<name>SystemProfilerTestMapService</name>
+<guid>BCF7E0A3-CF5C-4199-BD03-9169BA905E92</guid>
+<catalogpath></catalogpath>
+<snippet>Test Map Service for System Profiler app</snippet>
+<description>Test Map Service for System Profiler app</description>
+<summary>Test Map Service for System Profiler app</summary>
+<title>SystemProfilerTestMapService</title>
+<tags>mapserviceTest</tags>
+<type>Service Definition</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>ArcGIS</typekeyword>
+<typekeyword>Service Definition</typekeyword>
+<typekeyword>.sd</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>144.389583168679</xmin>
+<ymin>-38.5083908862856</ymin>
+<xmax>146.421246009945</xmax>
+<ymax>-37.1463012388448</ymax>
+</extent>
+<spatialreference>GDA_1994_MGA_Zone_55</spatialreference>
+<accessinformation></accessinformation>
+<licenseinfo></licenseinfo>
+</ESRI_ItemInformation>

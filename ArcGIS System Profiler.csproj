@@ -85,6 +85,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
     </Reference>
@@ -246,6 +251,23 @@
     <EmbeddedResource Include="resources\Report Template EA2.dotx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="resources\initialcachesettings.json" />
+    <None Include="resources\serviceconfiguration.json" />
+    <None Include="resources\ServiceMSD\initialcachesettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\ServiceMSD\serviceconfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\ServiceMSD\v101\SystemProfilerTestMapService.msd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\ServiceMSD\v101\SystemProfilerTestMapService.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\SystemProfilerTestMapService.msd" />
+    <None Include="resources\SystemProfilerTestMapService.mxd" />
+    <None Include="resources\SystemProfilerTestMapService.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -274,6 +296,26 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\ServiceMSD\esriinfo\item.pkinfo" />
+    <Content Include="resources\ServiceMSD\esriinfo\iteminfo.xml" />
+    <Content Include="resources\ServiceMSD\esriinfo\metadata\metadata.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\ServiceMSD\esriinfo\thumbnail\thumbnail.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\ServiceMSD\manifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\ServiceMSD\tilingservice.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="resources\thumbnail.png" />
+    <None Include="resources\metadata.xml" />
+    <None Include="resources\iteminfo.xml" />
+    <None Include="resources\item.pkinfo" />
+    <None Include="resources\tilingservice.xml" />
+    <None Include="resources\manifest.xml" />
     <EmbeddedResource Include="resources\report.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -282,5 +324,6 @@
     <None Include="resources\icon.png" />
     <None Include="resources\help1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
