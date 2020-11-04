@@ -72,7 +72,7 @@ namespace ArcGIS_System_Profiler
             public static Color color3 = Color.FromArgb(253, 138, 114);
             public static Color color4 = Color.FromArgb(95, 77, 221);
             public static Color color5 = Color.FromArgb(249, 88, 155);
-            public static Color color6 = Color.FromArgb(24, 16, 51);
+            public static Color color6 = Color.FromArgb(249, 118, 176);
 
         }
 
@@ -160,6 +160,7 @@ namespace ArcGIS_System_Profiler
         public void btn_Publish_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color6);
+            OpenChildForm(new PublishServicesForm());
         }
 
         private void btnCreateReport_Click(object sender, EventArgs e)

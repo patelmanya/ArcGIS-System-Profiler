@@ -4,7 +4,7 @@
   "description": "",
   "capabilities": "Query,Map,Data",
   "properties": {
-    "filePath": "C:\\Users\\manishpatel\\OneDrive\\Repo\\System Profiler\\TestData\\New folder\\SystemProfilerTestMapService\\v101\\SystemProfilerTestMapService.msd",
+    "filePath": "C:\\v101\\SystemProfilerTestMapService.msd",
     "outputDir": "C:\\arcgis\\arcgisserver\\directories\\arcgisoutput",
     "virtualOutputDir": "/rest/directories/arcgisoutput",
     "supportedImageReturnTypes": "URL",

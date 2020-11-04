@@ -44,8 +44,8 @@
             this.btnSystemValidation = new FontAwesome.Sharp.IconButton();
             this.btn_Home = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.loadingIconPic = new System.Windows.Forms.PictureBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_LoginUser = new System.Windows.Forms.Label();
@@ -208,7 +208,6 @@
             this.btn_Publish.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Publish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Publish.UseVisualStyleBackColor = true;
-            this.btn_Publish.Visible = false;
             this.btn_Publish.Click += new System.EventHandler(this.btn_Publish_Click);
             // 
             // btn_Services
@@ -372,6 +371,19 @@
             this.panelLogo.Size = new System.Drawing.Size(220, 140);
             this.panelLogo.TabIndex = 0;
             // 
+            // loadingIconPic
+            // 
+            this.loadingIconPic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
+            this.loadingIconPic.Location = new System.Drawing.Point(0, 0);
+            this.loadingIconPic.Name = "loadingIconPic";
+            this.loadingIconPic.Size = new System.Drawing.Size(220, 140);
+            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadingIconPic.TabIndex = 9;
+            this.loadingIconPic.TabStop = false;
+            this.loadingIconPic.Visible = false;
+            this.loadingIconPic.WaitOnLoad = true;
+            // 
             // iconButton1
             // 
             this.iconButton1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -394,19 +406,6 @@
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
-            // loadingIconPic
-            // 
-            this.loadingIconPic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadingIconPic.Image = ((System.Drawing.Image)(resources.GetObject("loadingIconPic.Image")));
-            this.loadingIconPic.Location = new System.Drawing.Point(0, 0);
-            this.loadingIconPic.Name = "loadingIconPic";
-            this.loadingIconPic.Size = new System.Drawing.Size(220, 140);
-            this.loadingIconPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.loadingIconPic.TabIndex = 9;
-            this.loadingIconPic.TabStop = false;
-            this.loadingIconPic.Visible = false;
-            this.loadingIconPic.WaitOnLoad = true;
             // 
             // panelTitleBar
             // 

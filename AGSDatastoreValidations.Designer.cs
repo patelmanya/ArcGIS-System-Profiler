@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AGSDatastoreValidations));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.AGSDS_dataGridView = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_GetDataStores = new System.Windows.Forms.Button();
-            this.btn_ValidateDataStores = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_NextStep = new System.Windows.Forms.Button();
             this.checkBoxCol_Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewImageColumn();
             this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Service_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_GetDataStores = new System.Windows.Forms.Button();
+            this.btn_ValidateDataStores = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGSDS_dataGridView)).BeginInit();
@@ -79,14 +79,14 @@
             this.AGSDS_dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AGSDS_dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.AGSDS_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AGSDS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AGSDS_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.AGSDS_dataGridView.ColumnHeadersHeight = 33;
             this.AGSDS_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.AGSDS_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -105,6 +105,47 @@
             this.AGSDS_dataGridView.Size = new System.Drawing.Size(1138, 568);
             this.AGSDS_dataGridView.TabIndex = 33;
             // 
+            // checkBoxCol_Service
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.NullValue = false;
+            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle2;
+            this.checkBoxCol_Service.HeaderText = "";
+            this.checkBoxCol_Service.Name = "checkBoxCol_Service";
+            this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.checkBoxCol_Service.Width = 150;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Image = ((System.Drawing.Image)(resources.GetObject("Status.Image")));
+            this.Status.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Service_Name
+            // 
+            this.Service_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Service_Name.HeaderText = "Name";
+            this.Service_Name.Name = "Service_Name";
+            this.Service_Name.ReadOnly = true;
+            this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Service_Name.ToolTipText = "Name";
+            // 
+            // Service_Type
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Service_Type.HeaderText = "Type";
+            this.Service_Type.Name = "Service_Type";
+            this.Service_Type.ReadOnly = true;
+            this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Service_Type.ToolTipText = "Service Type";
+            this.Service_Type.Width = 200;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.button2);
@@ -118,6 +159,36 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1138, 108);
             this.panel2.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.LightGray;
+            this.button2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(121, 66);
+            this.button2.Margin = new System.Windows.Forms.Padding(6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 33);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Clear All";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(15, 66);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 33);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Select All";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_GetDataStores
             // 
@@ -177,77 +248,6 @@
             this.btn_NextStep.Text = "Next Step";
             this.btn_NextStep.UseVisualStyleBackColor = false;
             this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
-            // 
-            // checkBoxCol_Service
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.NullValue = false;
-            this.checkBoxCol_Service.DefaultCellStyle = dataGridViewCellStyle6;
-            this.checkBoxCol_Service.HeaderText = "";
-            this.checkBoxCol_Service.Name = "checkBoxCol_Service";
-            this.checkBoxCol_Service.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.checkBoxCol_Service.Width = 150;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Image = ((System.Drawing.Image)(resources.GetObject("Status.Image")));
-            this.Status.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Service_Name
-            // 
-            this.Service_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Name.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Service_Name.HeaderText = "Name";
-            this.Service_Name.Name = "Service_Name";
-            this.Service_Name.ReadOnly = true;
-            this.Service_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Service_Name.ToolTipText = "Name";
-            // 
-            // Service_Type
-            // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Service_Type.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Service_Type.HeaderText = "Type";
-            this.Service_Type.Name = "Service_Type";
-            this.Service_Type.ReadOnly = true;
-            this.Service_Type.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Service_Type.ToolTipText = "Service Type";
-            this.Service_Type.Width = 200;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(15, 66);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 33);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Select All";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.LightGray;
-            this.button2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(121, 66);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 33);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Clear All";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AGSDatastoreValidations
             // 
