@@ -406,11 +406,12 @@ namespace ArcGIS_System_Profiler
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
-
+                txtBx_GenServStatus.Text += "Token generation successful. \r\n";
                 //check if the service exists
                 //https://lea-305263.services.esriaustralia.com.au/server/admin/services/exists
                 bool serviceExists = false;
                 bool serviceExistsDeleted = false;
+                txtBx_GenServStatus.Text += "Checking if the service exists. \r\n";
                 String agsCheckServServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/exists";
                 var request = (HttpWebRequest)WebRequest.Create(agsCheckServServerURL);
                 var checkServpostData = "serviceName=VIC_Open_data_MIL2"; //required
@@ -447,6 +448,7 @@ namespace ArcGIS_System_Profiler
                         else
                         {
                             serviceExists = false;
+                            txtBx_GenServStatus.Text += "Service does not exists..... \r\n";
                         }
                     }
                 }
@@ -496,7 +498,7 @@ namespace ArcGIS_System_Profiler
                     serviceExists = false;
                 }
 
-
+                txtBx_GenServStatus.Text += "Creating the test service now...\r\n";
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/createService";
                 request = (HttpWebRequest)WebRequest.Create(agsServerURL);
                 
@@ -522,8 +524,22 @@ namespace ArcGIS_System_Profiler
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 txtBx_GenServStatus.Text += "Status received. \r\n";
                 JObject rss = JObject.Parse(responseString);
-                txtBx_GenServStatus.Text += "Status:" + responseString.ToString();
+                //txtBx_GenServStatus.Text += "Status:" + responseString.ToString();
                 //JArray items = (JArray)rss["items"];
+                foreach (var Servitem in rss)
+                {
+                    if (Servitem.Key == "status")
+                    {
+                        if (Servitem.Value.ToString().ToUpper() == "SUCCESS")
+                        {
+                            txtBx_GenServStatus.Text += "Status: Success \r\n";
+                        }
+                        else
+                        {
+                            txtBx_GenServStatus.Text += "Status: Error \r\n";
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
