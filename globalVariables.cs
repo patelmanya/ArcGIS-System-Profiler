@@ -73,6 +73,13 @@ namespace ArcGIS_System_Profiler
         public static JArray globalnosqlDatabasesitems;
         public static JArray globalrasterStoresitems;
 
+        public static JObject globalbigDataFileSharesrss;
+        public static JObject globalcloudStoresrss;
+        public static JObject globalenterpriseDatabaserss;
+        public static JObject globalfileSharesrss;
+        public static JObject globalnosqlDatabasesrss;
+        public static JObject globalrasterStoresrss;
+
 
         public static MakeMovable _move;
         public static String globalTokenStr = "";

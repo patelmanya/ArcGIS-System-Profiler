@@ -208,6 +208,13 @@ namespace ArcGIS_System_Profiler
                 globalVariables.globalnosqlDatabasesitems = nosqlDatabasesitems;
                 globalVariables.globalrasterStoresitems = rasterStoresitems;
 
+                globalVariables.globalbigDataFileSharesrss = bigDataFileSharesrss;
+                globalVariables.globalcloudStoresrss = cloudStoressrss;
+                globalVariables.globalenterpriseDatabaserss = enterpriseDatabasesrss;
+                globalVariables.globalfileSharesrss = fileSharesrss;
+                globalVariables.globalnosqlDatabasesrss = nosqlDatabasesrss;
+                globalVariables.globalrasterStoresrss = rasterStoresrss;
+
                 //loop through each finditems array result and create items for datagrid
 
                 foreach (var item in bigDataFileSharesitems)
@@ -251,13 +258,15 @@ namespace ArcGIS_System_Profiler
                     }
 
                     DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                    DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+
                     if (DSManaged)
                     {
+                        DSrow.Cells[2].Value = "ArcGIS_Data_Store";
                         DSrow.Cells[3].Value = "Managed Database";
                     }
                     else
                     {
+                        DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
                         DSrow.Cells[3].Value = "Database";
                     }
                     AGSDS_dataGridView.Rows.Add(DSrow);
@@ -296,13 +305,15 @@ namespace ArcGIS_System_Profiler
                     }
 
                     DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                    DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+
                     if (dsFeatureDS == "tileCache")
                     {
+                        DSrow.Cells[2].Value = "ArcGIS_Data_Store";
                         DSrow.Cells[3].Value = "Tile Cache";
                     }
                     else
                     {
+                        DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
                         DSrow.Cells[3].Value = dsFeatureDS;
                     }
                     AGSDS_dataGridView.Rows.Add(DSrow);
@@ -403,7 +414,7 @@ namespace ArcGIS_System_Profiler
                             {
                                 DSManaged = true;
                             }
-                            var machines = enterpriseDatabaseitemsitem["items"].SelectMany(j => j["info"]["machines"]);
+                            var machines = globalVariables.globalenterpriseDatabaserss["items"].SelectMany(j => j["info"]["machines"]);
                             var machineName = "";
                             foreach (var mnItem in machines)
                             {
@@ -413,17 +424,65 @@ namespace ArcGIS_System_Profiler
                             var typeStr = "";
                             if (DSManaged)
                             {
+                                dsName = "ArcGIS_Data_Store";
                                 typeStr = "Managed Database";
                             }
                             else
                             {
+                                dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
                                 typeStr = "Database";
                             }
 
                             //Service_Type
-                            if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
+                            if (selectedDataStore == dsName.ToString() + "_" + typeStr.ToString())
                             {
+                                string token = "";
+                                globalVariables gV = new globalVariables();
+                                token = gV.GetToken();
                                 //validate
+                                dsName = enterpriseDatabaseitemsitem["path"].ToString();
+                                dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
+                                //https://lea-305263.services.esriaustralia.com.au/server/admin/data/items/enterpriseDatabases/AGSDataStore_ds_rr73ihp0/machines/LEA-305263.SERVICES.ESRIAUSTRALIA.COM.AU/validate
+                                //string agsDSValidateURL = "https://lea-305263.services.esriaustralia.com.au/server/admin/data/items/enterpriseDatabases/AGSDataStore_ds_rr73ihp0/machines/LEA-305263.SERVICES.ESRIAUSTRALIA.COM.AU/validate";
+                                String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/items/enterpriseDatabases/" + dsName + "/machines/" + machineName + "/validate";
+                                var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
+                                
+                                var postData = "token=" + token; //optional, default
+                                postData += "&f=json"; //optional, default
+                                var data = Encoding.ASCII.GetBytes(postData);
+                                request.Method = "POST";
+                                request.ContentType = "application/x-www-form-urlencoded";
+                                request.ContentLength = data.Length;
+                                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                                using (var stream = request.GetRequestStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+
+                                var response = (HttpWebResponse)request.GetResponse();
+                                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                                JObject rss = JObject.Parse(responseString);
+
+                                foreach (var item in rss)
+                                {
+                                    if (item.Key == "status")
+                                    {
+                                        var statusStr = item.Value.ToString();
+                                        if (statusStr.ToString() == "success")
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.successIcon;
+                                        }
+                                        else
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.errorIcon;
+                                        }
+                                    }
+                                }
+
+                                //JArray bigDataFileSharesitems = (JArray)rss["status"];
+
                             }
                         }
 
@@ -448,7 +507,8 @@ namespace ArcGIS_System_Profiler
                             }
                             var dsFeatureDS = nosqlDatabasesitemsitem["info"]["dsFeature"].ToString();
 
-                            var machines = globalVariables.globalnosqlDatabasesitems.SelectMany(j => j["info"]["machines"]);
+                            var machines = globalVariables.globalnosqlDatabasesrss["items"].SelectMany(j => j["info"]["machines"]);
+                            //var machines = globalVariables.globalnosqlDatabasesitems.SelectMany(j => j["info"]["machines"]);
                             var machineName = "";
                             foreach (var mnItem in machines)
                             {
@@ -460,13 +520,15 @@ namespace ArcGIS_System_Profiler
                             var typeStr = "";
                             if (dsFeatureDS == "tileCache")
                             {
+                                dsName = "ArcGIS_Data_Store";
                                 typeStr = "Tile Cache";
                             }
                             else
                             {
+                                dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
                                 typeStr = dsFeatureDS;
                             }
-                            if (selectedDataStore == ("ArcGIS_Data_Store" + "_" + typeStr.ToString()))
+                            if (selectedDataStore == (dsName + "_" + typeStr.ToString()))
                             {
                                 //validate
                             }

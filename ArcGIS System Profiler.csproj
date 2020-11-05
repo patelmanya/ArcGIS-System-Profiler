@@ -296,6 +296,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\successIcon.png" />
+    <None Include="resources\errorIcon.png" />
+    <None Include="resources\initIcon.png" />
     <Content Include="resources\ServiceMSD\esriinfo\item.pkinfo" />
     <Content Include="resources\ServiceMSD\esriinfo\iteminfo.xml" />
     <Content Include="resources\ServiceMSD\esriinfo\metadata\metadata.xml">

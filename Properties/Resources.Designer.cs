@@ -73,6 +73,16 @@ namespace ArcGIS_System_Profiler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap errorIcon {
+            get {
+                object obj = ResourceManager.GetObject("errorIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
@@ -106,6 +116,16 @@ namespace ArcGIS_System_Profiler.Properties {
             get {
                 object obj = ResourceManager.GetObject("initialcachesettings", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap initIcon {
+            get {
+                object obj = ResourceManager.GetObject("initIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -206,6 +226,16 @@ namespace ArcGIS_System_Profiler.Properties {
             get {
                 object obj = ResourceManager.GetObject("serviceconfiguration", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap successIcon {
+            get {
+                object obj = ResourceManager.GetObject("successIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
