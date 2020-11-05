@@ -26,6 +26,9 @@ namespace ArcGIS_System_Profiler
         public static string mapServiceConfigcontent = "";
         public static string globalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SystemProfilerReport");
 
+        public static bool loggingEnabled = false;
+        public static string strFileName = globalVariables.globalFilePath + "\\SystemProfilerLog_" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".log";
+
         public static string globalReportIcon = "";
 
         public static Color themeColor = Color.FromArgb(51, 44, 53);
@@ -182,6 +185,16 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                //logg to file
+                if (loggingEnabled)
+                {
+                    FileStream objFilestream = new FileStream(globalVariables.strFileName, FileMode.Append, FileAccess.Write);
+                    StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+                    objStreamWriter.WriteLine("This is test message");
+                    objStreamWriter.Close();
+                    objFilestream.Close();
+                }
+
                 for (int i = 0; i < globalVariables.ImageList.Count; i++)
                 {
                     if (File.Exists(globalVariables.ImageList[i]))
