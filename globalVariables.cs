@@ -80,6 +80,13 @@ namespace ArcGIS_System_Profiler
         public static JObject globalnosqlDatabasesrss;
         public static JObject globalrasterStoresrss;
 
+        public static string globalbigDataFileSharesValidation;
+        public static string globalcloudStoresValidation;
+        public static string globalenterpriseDatabaseValidation;
+        public static string globalfileSharesValidation;
+        public static string globalnosqlDatabasesValidation;
+        public static string globalrasterStoresValidation;
+
 
         public static MakeMovable _move;
         public static String globalTokenStr = "";

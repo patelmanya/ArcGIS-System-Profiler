@@ -460,7 +460,7 @@ namespace ArcGIS_System_Profiler
 
                                 var response = (HttpWebResponse)request.GetResponse();
                                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
+                                globalVariables.globalenterpriseDatabaseValidation = responseString.ToString();
                                 JObject rss = JObject.Parse(responseString);
 
                                 foreach (var item in rss)
@@ -509,7 +509,7 @@ namespace ArcGIS_System_Profiler
 
                                 var response = (HttpWebResponse)request.GetResponse();
                                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
+                                globalVariables.globalfileSharesValidation = responseString.ToString();
                                 JObject rss = JObject.Parse(responseString);
 
                                 foreach (var item in rss)
@@ -589,7 +589,7 @@ namespace ArcGIS_System_Profiler
 
                                 var response = (HttpWebResponse)request.GetResponse();
                                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
+                                globalVariables.globalnosqlDatabasesValidation = responseString.ToString();
                                 JObject rss = JObject.Parse(responseString);
 
                                 foreach (var item in rss)
