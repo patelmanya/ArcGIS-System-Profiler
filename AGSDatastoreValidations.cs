@@ -345,7 +345,7 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.globalForm.btn_Services.PerformClick();
-                
+
             }
             catch (System.Exception ex)
             {
@@ -456,17 +456,20 @@ namespace ArcGIS_System_Profiler
                                 break;
                             }
 
-                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                            DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+
+                            var typeStr = "";
                             if (dsFeatureDS == "tileCache")
                             {
-                                DSrow.Cells[3].Value = "Tile Cache";
+                                typeStr = "Tile Cache";
                             }
                             else
                             {
-                                DSrow.Cells[3].Value = dsFeatureDS;
+                                typeStr = dsFeatureDS;
                             }
-                            AGSDS_dataGridView.Rows.Add(DSrow);
+                            if (selectedDataStore == ("ArcGIS_Data_Store" + "_" + typeStr.ToString()))
+                            {
+                                //validate
+                            }
 
                         }
 
@@ -475,6 +478,20 @@ namespace ArcGIS_System_Profiler
                             var dsName = rasterStoresitemsitem["path"].ToString();
                             var dsType = rasterStoresitemsitem["type"].ToString();
 
+                            var typeStr = "";
+                            if (dsType == "rasterStore")
+                            {
+                                typeStr = "Raster Store";
+                            }
+                            else
+                            {
+                                typeStr = "";
+                            }
+
+                            if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
+                            {
+                                //validate
+                            }
                         }
 
                     }
