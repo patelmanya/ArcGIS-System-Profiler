@@ -43,10 +43,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_GetDataStores = new System.Windows.Forms.Button();
+            this.btn_ValidateALLDataStores = new System.Windows.Forms.Button();
             this.btn_ValidateDataStores = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_NextStep = new System.Windows.Forms.Button();
-            this.btn_ValidateALLDataStores = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGSDS_dataGridView)).BeginInit();
@@ -206,6 +206,22 @@
             this.btn_GetDataStores.UseVisualStyleBackColor = false;
             this.btn_GetDataStores.Click += new System.EventHandler(this.btn_GetDataStores_Click);
             // 
+            // btn_ValidateALLDataStores
+            // 
+            this.btn_ValidateALLDataStores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ValidateALLDataStores.BackColor = System.Drawing.Color.LightGray;
+            this.btn_ValidateALLDataStores.Enabled = false;
+            this.btn_ValidateALLDataStores.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ValidateALLDataStores.ForeColor = System.Drawing.Color.Black;
+            this.btn_ValidateALLDataStores.Location = new System.Drawing.Point(742, 66);
+            this.btn_ValidateALLDataStores.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_ValidateALLDataStores.Name = "btn_ValidateALLDataStores";
+            this.btn_ValidateALLDataStores.Size = new System.Drawing.Size(202, 33);
+            this.btn_ValidateALLDataStores.TabIndex = 32;
+            this.btn_ValidateALLDataStores.Text = "Validate All Datastores";
+            this.btn_ValidateALLDataStores.UseVisualStyleBackColor = false;
+            this.btn_ValidateALLDataStores.Click += new System.EventHandler(this.btn_ValidateALLDataStores_Click);
+            // 
             // btn_ValidateDataStores
             // 
             this.btn_ValidateDataStores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -249,22 +265,6 @@
             this.btn_NextStep.Text = "Next Step";
             this.btn_NextStep.UseVisualStyleBackColor = false;
             this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
-            // 
-            // btn_ValidateALLDataStores
-            // 
-            this.btn_ValidateALLDataStores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ValidateALLDataStores.BackColor = System.Drawing.Color.LightGray;
-            this.btn_ValidateALLDataStores.Enabled = false;
-            this.btn_ValidateALLDataStores.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ValidateALLDataStores.ForeColor = System.Drawing.Color.Black;
-            this.btn_ValidateALLDataStores.Location = new System.Drawing.Point(742, 66);
-            this.btn_ValidateALLDataStores.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_ValidateALLDataStores.Name = "btn_ValidateALLDataStores";
-            this.btn_ValidateALLDataStores.Size = new System.Drawing.Size(202, 33);
-            this.btn_ValidateALLDataStores.TabIndex = 32;
-            this.btn_ValidateALLDataStores.Text = "Validate All Datastores";
-            this.btn_ValidateALLDataStores.UseVisualStyleBackColor = false;
-            this.btn_ValidateALLDataStores.Click += new System.EventHandler(this.btn_ValidateALLDataStores_Click);
             // 
             // AGSDatastoreValidations
             // 

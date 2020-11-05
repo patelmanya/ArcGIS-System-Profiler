@@ -407,6 +407,46 @@ namespace ArcGIS_System_Profiler
                             if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
                             {
                                 //validate
+                                string token = "";
+                                globalVariables gV = new globalVariables();
+                                token = gV.GetToken();
+                                String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/validateDataItem";
+                                var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
+
+                                var postData = "token=" + token; //optional, default
+                                postData += "&f=json"; //optional, default
+                                postData += "&item=" + cloudStoresitemsitem.ToString();
+                                var data = Encoding.ASCII.GetBytes(postData);
+                                request.Method = "POST";
+                                request.ContentType = "application/x-www-form-urlencoded";
+                                request.ContentLength = data.Length;
+                                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                                using (var stream = request.GetRequestStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+
+                                var response = (HttpWebResponse)request.GetResponse();
+                                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                                globalVariables.globalfileSharesValidation = responseString.ToString();
+                                JObject rss = JObject.Parse(responseString);
+
+                                foreach (var item in rss)
+                                {
+                                    if (item.Key == "status")
+                                    {
+                                        var statusStr = item.Value.ToString();
+                                        if (statusStr.ToString() == "success")
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.successIcon;
+                                        }
+                                        else
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.errorIcon;
+                                        }
+                                    }
+                                }
                             }
 
                         }
