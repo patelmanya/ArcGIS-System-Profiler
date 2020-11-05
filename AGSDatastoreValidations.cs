@@ -34,6 +34,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
                 btn_ValidateDataStores.Enabled = false;
                 btn_ValidateALLDataStores.Enabled = false;
                 AGSDS_dataGridView.Rows.Clear();
@@ -345,6 +346,7 @@ namespace ArcGIS_System_Profiler
                 AGSDS_dataGridView.Visible = true;
                 btn_ValidateDataStores.Enabled = true;
                 btn_ValidateALLDataStores.Enabled = true;
+                globalVariables.globalForm.loadingIconPic.Visible = false;
             }
             catch (System.Exception ex)
             {
@@ -373,6 +375,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
                 //get selected datastores 
                 foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
                 {
@@ -679,7 +682,7 @@ namespace ArcGIS_System_Profiler
                     }
 
                 }
-
+                globalVariables.globalForm.loadingIconPic.Visible = false;
             }
             catch (System.Exception ex)
             {
@@ -727,6 +730,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
                 foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
                 {
                     row.Cells["checkBoxCol_Service"].Value = true;
