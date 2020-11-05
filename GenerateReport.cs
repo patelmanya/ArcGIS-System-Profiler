@@ -78,6 +78,16 @@ namespace ArcGIS_System_Profiler
                     tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
                 }
 
+                //ArcGIS Datastore Status
+                if (globalVariables.DataStoreImageList.Count > 0)
+                {
+                    txtBx_GenRepStatus.Text = txtBx_GenRepStatus.Text + "Appending ArcGIS Datastore screens & status\r\n";
+                    tbl = findTable(wordApp.ActiveDocument, "ArcGIS Datastore Status");
+                    docRange = tbl.Cell(1, 1).Range;
+                    autoScaledInlineShape = docRange.InlineShapes.AddPicture(globalVariables.DataStoreImageList[0]);
+                    tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                }
+
 
                 //ports checks
 

@@ -252,6 +252,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="resources\initialcachesettings.json" />
+    <None Include="resources\Report Template.dotx" />
     <None Include="resources\serviceconfiguration.json" />
     <None Include="resources\ServiceMSD\initialcachesettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

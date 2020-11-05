@@ -53,6 +53,7 @@ namespace ArcGIS_System_Profiler
         public static string portalInstanceName = "";
         public static string agsServerInstanceName = "";
         public static List<string> ImageList = new List<string>();
+        public static List<string> DataStoreImageList = new List<string>();
         public static string agsPortalHealthCheckStatus = "";
         public static string agsServerHealthCheckStatus = "";
         public static List<string> checkedAGSServices = new List<string>();
@@ -144,7 +145,7 @@ namespace ArcGIS_System_Profiler
                     globalVariables.reportTemplateFileName = name;
                 }
 
-            File.WriteAllBytes((globalVariables.globalFilePath + "\\ReportTemplate.dotx"), Properties.Resources.Report_Template_EA2);
+            File.WriteAllBytes((globalVariables.globalFilePath + "\\ReportTemplate.dotx"), Properties.Resources.Report_Template);
             globalVariables.reportTemplateFileName = (globalVariables.globalFilePath + "\\ReportTemplate.dotx");
 
 
@@ -214,6 +215,14 @@ namespace ArcGIS_System_Profiler
                     if (File.Exists(globalVariables.ImageList[i]))
                     {
                         File.Delete(globalVariables.ImageList[i]);
+                    }
+                }
+
+                for (int i = 0; i < globalVariables.DataStoreImageList.Count; i++)
+                {
+                    if (File.Exists(globalVariables.DataStoreImageList[i]))
+                    {
+                        File.Delete(globalVariables.DataStoreImageList[i]);
                     }
                 }
 

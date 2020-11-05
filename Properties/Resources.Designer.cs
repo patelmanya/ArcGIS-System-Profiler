@@ -212,9 +212,9 @@ namespace ArcGIS_System_Profiler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Report_Template_EA2 {
+        internal static byte[] Report_Template {
             get {
-                object obj = ResourceManager.GetObject("Report_Template_EA2", resourceCulture);
+                object obj = ResourceManager.GetObject("Report_Template", resourceCulture);
                 return ((byte[])(obj));
             }
         }

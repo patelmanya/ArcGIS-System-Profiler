@@ -134,9 +134,6 @@
   <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\report.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Report_Template_EA2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Report Template EA2.dotx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="SystemProfilerTestMapService" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\SystemProfilerTestMapService.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -178,5 +175,8 @@
   </data>
   <data name="successIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\successIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Report_Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Report Template.dotx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

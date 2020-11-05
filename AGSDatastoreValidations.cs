@@ -18,6 +18,8 @@ namespace ArcGIS_System_Profiler
 {
     public partial class AGSDatastoreValidations : Form
     {
+        Bitmap datastoreBMP;
+
         public AGSDatastoreValidations()
         {
             InitializeComponent();
@@ -490,7 +492,7 @@ namespace ArcGIS_System_Profiler
                                 dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
                                 String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/items/enterpriseDatabases/" + dsName + "/machines/" + machineName + "/validate";
                                 var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
-                                
+
                                 var postData = "token=" + token; //optional, default
                                 postData += "&f=json"; //optional, default
                                 var data = Encoding.ASCII.GetBytes(postData);
@@ -529,19 +531,19 @@ namespace ArcGIS_System_Profiler
 
                         foreach (var fileSharesitemsitem in globalVariables.globalfileSharesitems)
                         {
-                            var dsName = fileSharesitemsitem["path"].ToString(); 
+                            var dsName = fileSharesitemsitem["path"].ToString();
                             if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_Folder")
-                            { 
+                            {
                                 //validate
                                 string token = "";
                                 globalVariables gV = new globalVariables();
-                                token = gV.GetToken(); 
+                                token = gV.GetToken();
                                 String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/validateDataItem";
                                 var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
 
                                 var postData = "token=" + token; //optional, default
                                 postData += "&f=json"; //optional, default
-                                postData += "&item=" + fileSharesitemsitem.ToString() ;
+                                postData += "&item=" + fileSharesitemsitem.ToString();
                                 var data = Encoding.ASCII.GetBytes(postData);
                                 request.Method = "POST";
                                 request.ContentType = "application/x-www-form-urlencoded";
@@ -723,6 +725,15 @@ namespace ArcGIS_System_Profiler
 
                 }
                 globalVariables.globalForm.loadingIconPic.Visible = false;
+                //capture the screen for report later
+                //int imgHeight = (AGSDS_dataGridView.Rows.GetRowsHeight)
+                //AGSDS_dataGridView.Rows.GetRowsHeight
+                //double htRow = (double)AGSDS_dataGridView.Rows.Count;
+                datastoreBMP = new Bitmap(1024, 500);
+                datastoreBMP = new Bitmap(Utilities.CaptureWindow(AGSDS_dataGridView.Handle));
+                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                globalVariables.DataStoreImageList.Add(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
+                datastoreBMP.Save(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
             }
             catch (System.Exception ex)
             {
