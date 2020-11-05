@@ -35,11 +35,11 @@
             this.btnSetTheme = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSlider = new System.Windows.Forms.Panel();
-            this.btnDataStoreValidate = new FontAwesome.Sharp.IconButton();
             this.btn_Publish = new FontAwesome.Sharp.IconButton();
             this.btn_Services = new FontAwesome.Sharp.IconButton();
-            this.btn_PortChecks = new FontAwesome.Sharp.IconButton();
+            this.btnDataStoreValidate = new FontAwesome.Sharp.IconButton();
             this.btn_HealthChecks = new FontAwesome.Sharp.IconButton();
+            this.btn_PortChecks = new FontAwesome.Sharp.IconButton();
             this.btn_Tasks = new FontAwesome.Sharp.IconButton();
             this.btnSystemValidation = new FontAwesome.Sharp.IconButton();
             this.btn_Home = new FontAwesome.Sharp.IconButton();
@@ -60,6 +60,8 @@
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.panelLoadingIconBar = new System.Windows.Forms.Panel();
+            this.panelLoadingIconBartimer = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -67,6 +69,7 @@
             this.panelTitleBar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
+            this.panelShadow.SuspendLayout();
             this.panelDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,11 +79,11 @@
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btnSetTheme);
             this.panelMenu.Controls.Add(this.panel2);
-            this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btn_Services);
-            this.panelMenu.Controls.Add(this.btn_PortChecks);
+            this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.btn_HealthChecks);
+            this.panelMenu.Controls.Add(this.btn_PortChecks);
             this.panelMenu.Controls.Add(this.btn_Tasks);
             this.panelMenu.Controls.Add(this.btnSystemValidation);
             this.panelMenu.Controls.Add(this.btn_Home);
@@ -155,35 +158,10 @@
             // panelSlider
             // 
             this.panelSlider.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panelSlider.Location = new System.Drawing.Point(0, 0);
+            this.panelSlider.Location = new System.Drawing.Point(-2, 0);
             this.panelSlider.Name = "panelSlider";
             this.panelSlider.Size = new System.Drawing.Size(55, 30);
             this.panelSlider.TabIndex = 11;
-            // 
-            // btnDataStoreValidate
-            // 
-            this.btnDataStoreValidate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDataStoreValidate.FlatAppearance.BorderSize = 0;
-            this.btnDataStoreValidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDataStoreValidate.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnDataStoreValidate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDataStoreValidate.ForeColor = System.Drawing.Color.White;
-            this.btnDataStoreValidate.IconChar = FontAwesome.Sharp.IconChar.Sitemap;
-            this.btnDataStoreValidate.IconColor = System.Drawing.Color.White;
-            this.btnDataStoreValidate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDataStoreValidate.IconSize = 36;
-            this.btnDataStoreValidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDataStoreValidate.Location = new System.Drawing.Point(0, 560);
-            this.btnDataStoreValidate.Name = "btnDataStoreValidate";
-            this.btnDataStoreValidate.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnDataStoreValidate.Rotation = 0D;
-            this.btnDataStoreValidate.Size = new System.Drawing.Size(220, 60);
-            this.btnDataStoreValidate.TabIndex = 11;
-            this.btnDataStoreValidate.Text = "DataStore Validations";
-            this.btnDataStoreValidate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDataStoreValidate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDataStoreValidate.UseVisualStyleBackColor = true;
-            this.btnDataStoreValidate.Click += new System.EventHandler(this.btnDataStoreValidate_Click);
             // 
             // btn_Publish
             // 
@@ -198,7 +176,7 @@
             this.btn_Publish.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Publish.IconSize = 36;
             this.btn_Publish.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Publish.Location = new System.Drawing.Point(0, 500);
+            this.btn_Publish.Location = new System.Drawing.Point(0, 560);
             this.btn_Publish.Name = "btn_Publish";
             this.btn_Publish.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btn_Publish.Rotation = 0D;
@@ -223,7 +201,7 @@
             this.btn_Services.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Services.IconSize = 36;
             this.btn_Services.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Services.Location = new System.Drawing.Point(0, 440);
+            this.btn_Services.Location = new System.Drawing.Point(0, 500);
             this.btn_Services.Name = "btn_Services";
             this.btn_Services.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btn_Services.Rotation = 0D;
@@ -235,30 +213,30 @@
             this.btn_Services.UseVisualStyleBackColor = true;
             this.btn_Services.Click += new System.EventHandler(this.btn_Services_Click);
             // 
-            // btn_PortChecks
+            // btnDataStoreValidate
             // 
-            this.btn_PortChecks.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_PortChecks.FlatAppearance.BorderSize = 0;
-            this.btn_PortChecks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PortChecks.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_PortChecks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PortChecks.ForeColor = System.Drawing.Color.White;
-            this.btn_PortChecks.IconChar = FontAwesome.Sharp.IconChar.Megaport;
-            this.btn_PortChecks.IconColor = System.Drawing.Color.White;
-            this.btn_PortChecks.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_PortChecks.IconSize = 36;
-            this.btn_PortChecks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_PortChecks.Location = new System.Drawing.Point(0, 380);
-            this.btn_PortChecks.Name = "btn_PortChecks";
-            this.btn_PortChecks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btn_PortChecks.Rotation = 0D;
-            this.btn_PortChecks.Size = new System.Drawing.Size(220, 60);
-            this.btn_PortChecks.TabIndex = 5;
-            this.btn_PortChecks.Text = "Port Checks";
-            this.btn_PortChecks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_PortChecks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_PortChecks.UseVisualStyleBackColor = true;
-            this.btn_PortChecks.Click += new System.EventHandler(this.btn_PortChecks_Click);
+            this.btnDataStoreValidate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDataStoreValidate.FlatAppearance.BorderSize = 0;
+            this.btnDataStoreValidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataStoreValidate.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDataStoreValidate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDataStoreValidate.ForeColor = System.Drawing.Color.White;
+            this.btnDataStoreValidate.IconChar = FontAwesome.Sharp.IconChar.Sitemap;
+            this.btnDataStoreValidate.IconColor = System.Drawing.Color.White;
+            this.btnDataStoreValidate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDataStoreValidate.IconSize = 36;
+            this.btnDataStoreValidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDataStoreValidate.Location = new System.Drawing.Point(0, 440);
+            this.btnDataStoreValidate.Name = "btnDataStoreValidate";
+            this.btnDataStoreValidate.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDataStoreValidate.Rotation = 0D;
+            this.btnDataStoreValidate.Size = new System.Drawing.Size(220, 60);
+            this.btnDataStoreValidate.TabIndex = 11;
+            this.btnDataStoreValidate.Text = "DataStore Validations";
+            this.btnDataStoreValidate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDataStoreValidate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDataStoreValidate.UseVisualStyleBackColor = true;
+            this.btnDataStoreValidate.Click += new System.EventHandler(this.btnDataStoreValidate_Click);
             // 
             // btn_HealthChecks
             // 
@@ -273,7 +251,7 @@
             this.btn_HealthChecks.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_HealthChecks.IconSize = 36;
             this.btn_HealthChecks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_HealthChecks.Location = new System.Drawing.Point(0, 320);
+            this.btn_HealthChecks.Location = new System.Drawing.Point(0, 380);
             this.btn_HealthChecks.Name = "btn_HealthChecks";
             this.btn_HealthChecks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btn_HealthChecks.Rotation = 0D;
@@ -284,6 +262,31 @@
             this.btn_HealthChecks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_HealthChecks.UseVisualStyleBackColor = true;
             this.btn_HealthChecks.Click += new System.EventHandler(this.btn_HealthChecks_Click);
+            // 
+            // btn_PortChecks
+            // 
+            this.btn_PortChecks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_PortChecks.FlatAppearance.BorderSize = 0;
+            this.btn_PortChecks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PortChecks.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_PortChecks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PortChecks.ForeColor = System.Drawing.Color.White;
+            this.btn_PortChecks.IconChar = FontAwesome.Sharp.IconChar.Megaport;
+            this.btn_PortChecks.IconColor = System.Drawing.Color.White;
+            this.btn_PortChecks.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_PortChecks.IconSize = 36;
+            this.btn_PortChecks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_PortChecks.Location = new System.Drawing.Point(0, 320);
+            this.btn_PortChecks.Name = "btn_PortChecks";
+            this.btn_PortChecks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btn_PortChecks.Rotation = 0D;
+            this.btn_PortChecks.Size = new System.Drawing.Size(220, 60);
+            this.btn_PortChecks.TabIndex = 5;
+            this.btn_PortChecks.Text = "Port Checks";
+            this.btn_PortChecks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_PortChecks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_PortChecks.UseVisualStyleBackColor = true;
+            this.btn_PortChecks.Click += new System.EventHandler(this.btn_PortChecks_Click);
             // 
             // btn_Tasks
             // 
@@ -553,10 +556,11 @@
             // panelShadow
             // 
             this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.panelShadow.Controls.Add(this.panelLoadingIconBar);
             this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelShadow.Location = new System.Drawing.Point(220, 50);
             this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(1083, 5);
+            this.panelShadow.Size = new System.Drawing.Size(1083, 8);
             this.panelShadow.TabIndex = 2;
             // 
             // panelDesktop
@@ -564,15 +568,15 @@
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.panelDesktop.Controls.Add(this.globalProgressBar1);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(220, 55);
+            this.panelDesktop.Location = new System.Drawing.Point(220, 58);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1083, 766);
+            this.panelDesktop.Size = new System.Drawing.Size(1083, 763);
             this.panelDesktop.TabIndex = 3;
             // 
             // globalProgressBar1
             // 
             this.globalProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.globalProgressBar1.Location = new System.Drawing.Point(0, 736);
+            this.globalProgressBar1.Location = new System.Drawing.Point(0, 733);
             this.globalProgressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.globalProgressBar1.Name = "globalProgressBar1";
             this.globalProgressBar1.Size = new System.Drawing.Size(1083, 30);
@@ -582,6 +586,20 @@
             // globalTimer1
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
+            // 
+            // panelLoadingIconBar
+            // 
+            this.panelLoadingIconBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelLoadingIconBar.BackColor = System.Drawing.Color.Red;
+            this.panelLoadingIconBar.Location = new System.Drawing.Point(0, 1);
+            this.panelLoadingIconBar.Name = "panelLoadingIconBar";
+            this.panelLoadingIconBar.Size = new System.Drawing.Size(100, 10);
+            this.panelLoadingIconBar.TabIndex = 12;
+            this.panelLoadingIconBar.Visible = false;
+            // 
+            // panelLoadingIconBartimer
+            // 
+            this.panelLoadingIconBartimer.Tick += new System.EventHandler(this.panelLoadingIconBartimer_Tick);
             // 
             // LaunchForm
             // 
@@ -603,6 +621,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
+            this.panelShadow.ResumeLayout(false);
             this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -640,5 +659,7 @@
         internal FontAwesome.Sharp.IconButton btnSystemValidation;
         internal FontAwesome.Sharp.IconButton btnSetTheme;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Timer panelLoadingIconBartimer;
+        internal System.Windows.Forms.Panel panelLoadingIconBar;
     }
 }

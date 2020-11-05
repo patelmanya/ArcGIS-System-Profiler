@@ -35,7 +35,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "HealthChecksForm.cs - HealthChecksForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -75,7 +75,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "HealthChecksForm.cs - btn_PerformPortHealthCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -113,7 +113,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "HealthChecksForm.cs - btn_PerformSrvrHealthCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -162,7 +162,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "HealthChecksForm.cs - DoNavigationAsync: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -185,7 +185,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "HealthChecksForm.cs - btnUpdateURL_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -193,13 +193,15 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_PortChecks.PerformClick();
+                //globalVariables.globalForm.btn_Services.PerformClick();
+                globalVariables.globalForm.btnDataStoreValidate.PerformClick();
+
             }
             catch (Exception ex)
             {
                 string errMsg = "HealthChecksForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

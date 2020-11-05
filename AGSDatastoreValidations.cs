@@ -336,13 +336,23 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "AGSDataStoreValidations.cs - btn_GetDataStores_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                globalVariables.globalForm.btn_Services.PerformClick();
+                
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "AGSDataStoreValidations.cs - btn_NextStep_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
         }
 
         private void btn_ValidateDataStores_Click(object sender, EventArgs e)
@@ -355,12 +365,9 @@ namespace ArcGIS_System_Profiler
                     bool isSelected = Convert.ToBoolean(row.Cells["checkBoxCol_Service"].Value);
                     if (isSelected)
                     {
-
-                        //if (obj["id"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
-                        //{
-                        //    obj["checked"] = "true";
-                        //}
-
+                        string dataStoreName = row.Cells["Service_Name"].Value.ToString();
+                        string dataStoreType = row.Cells["Service_Type"].Value.ToString();
+                        string selectedDataStore = dataStoreName + "_" + dataStoreType;
                         foreach (var item in globalVariables.globalbigDataFileSharesitems)
                         {
                             //var dsName = item["path"].ToString();
@@ -380,9 +387,9 @@ namespace ArcGIS_System_Profiler
                                 typeStr = "Cloud Store";
                             }
                             //Service_Type
-                            if (row.Cells["Service_Name"].Value.ToString() == dsName.Split('/')[dsName.Split('/').Length - 1])
+                            if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
                             {
-
+                                //validate
                             }
 
                         }
@@ -403,31 +410,31 @@ namespace ArcGIS_System_Profiler
                                 machineName = mnItem["name"].ToString();
                                 break;
                             }
-
-                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                            DSrow.Cells[2].Value = "ArcGIS_Data_Store";
+                            var typeStr = "";
                             if (DSManaged)
                             {
-                                DSrow.Cells[3].Value = "Managed Database";
+                                typeStr = "Managed Database";
                             }
                             else
                             {
-                                DSrow.Cells[3].Value = "Database";
+                                typeStr = "Database";
                             }
-                            AGSDS_dataGridView.Rows.Add(DSrow);
 
+                            //Service_Type
+                            if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
+                            {
+                                //validate
+                            }
                         }
 
                         foreach (var fileSharesitemsitem in globalVariables.globalfileSharesitems)
                         {
                             var dsName = fileSharesitemsitem["path"].ToString();
-                            var dsType = fileSharesitemsitem["type"].ToString();
-
-
-                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                            DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
-                            DSrow.Cells[3].Value = "Folder";
-                            AGSDS_dataGridView.Rows.Add(DSrow);
+                            //var dsType = fileSharesitemsitem["type"].ToString();
+                            if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_Folder")
+                            {
+                                //validate
+                            }
                         }
 
                         foreach (var nosqlDatabasesitemsitem in globalVariables.globalnosqlDatabasesitems)
@@ -441,7 +448,7 @@ namespace ArcGIS_System_Profiler
                             }
                             var dsFeatureDS = nosqlDatabasesitemsitem["info"]["dsFeature"].ToString();
 
-                            var machines = nosqlDatabasesitemsitem["items"].SelectMany(j => j["info"]["machines"]);
+                            var machines = globalVariables.globalnosqlDatabasesitems.SelectMany(j => j["info"]["machines"]);
                             var machineName = "";
                             foreach (var mnItem in machines)
                             {
@@ -460,6 +467,7 @@ namespace ArcGIS_System_Profiler
                                 DSrow.Cells[3].Value = dsFeatureDS;
                             }
                             AGSDS_dataGridView.Rows.Add(DSrow);
+
                         }
 
                         foreach (var rasterStoresitemsitem in globalVariables.globalrasterStoresitems)
@@ -467,18 +475,6 @@ namespace ArcGIS_System_Profiler
                             var dsName = rasterStoresitemsitem["path"].ToString();
                             var dsType = rasterStoresitemsitem["type"].ToString();
 
-
-                            DataGridViewRow DSrow = (DataGridViewRow)AGSDS_dataGridView.Rows[0].Clone();
-                            DSrow.Cells[2].Value = dsName.Split('/')[dsName.Split('/').Length - 1];
-                            if (dsType == "rasterStore")
-                            {
-                                DSrow.Cells[3].Value = "Raster Store";
-                            }
-                            else
-                            {
-                                DSrow.Cells[3].Value = "";
-                            }
-                            AGSDS_dataGridView.Rows.Add(DSrow);
                         }
 
                     }
@@ -486,26 +482,45 @@ namespace ArcGIS_System_Profiler
                 }
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                string errMsg = "AGSDataStoreValidations.cs - btn_ValidateDataStores_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+            try
             {
-                row.Cells["checkBoxCol_Service"].Value = true;
+                foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+                {
+                    row.Cells["checkBoxCol_Service"].Value = true;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "AGSDataStoreValidations.cs - button1_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+            try
             {
-                row.Cells["checkBoxCol_Service"].Value = false;
+                foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+                {
+                    row.Cells["checkBoxCol_Service"].Value = false;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "AGSDataStoreValidations.cs - button2_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

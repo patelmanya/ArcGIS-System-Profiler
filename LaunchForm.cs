@@ -21,7 +21,9 @@ namespace ArcGIS_System_Profiler
         private Form currentChildForm;
         public LaunchForm()
         {
-            //InitPage iPage = new InitPage();
+            
+            InitPage iPage = new InitPage();
+            iPage.ShowDialog();
             //iPage.initpageTimer.Enabled = true;
             //iPage.initPageprogressBar.Value = 0;
             //iPage.initPageprogressBar.Value = iPage.initPageprogressBar.Value + 5;
@@ -45,6 +47,7 @@ namespace ArcGIS_System_Profiler
             //btn_Home.PerformClick();
             //OpenChildForm(new InitialForm());
             Load += Form1_Shown;
+            //panelLoadingIconBartimer.Enabled = true;
         }
 
         private void Form1_Shown(Object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace ArcGIS_System_Profiler
             if (globalVariables.agsEntUserName != "")
             {
                 lbl_LoginUser.Text = "Logged in as: " + globalVariables.agsEntUserName;
-                lbl_LoginUser.Visible = true; 
+                lbl_LoginUser.Visible = true;
             }
 
         }
@@ -242,7 +245,7 @@ namespace ArcGIS_System_Profiler
             btnSystemValidation.IconColor = Color.White;
             btnSystemValidation.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSystemValidation.ImageAlign = ContentAlignment.MiddleLeft;
-             
+
             btn_HealthChecks.BackColor = globalVariables.themeColor;
             btn_HealthChecks.ForeColor = Color.White;
             btn_HealthChecks.TextAlign = ContentAlignment.MiddleLeft;
@@ -363,7 +366,7 @@ namespace ArcGIS_System_Profiler
                 panelDesktop.BackColor = globalVariables.themeColor;
                 panelLogo.BackColor = globalVariables.themeColor;
                 panelSlider.BackColor = globalVariables.themeColor;
-                
+
                 btn_Home.BackColor = globalVariables.themeColor;
                 btnSystemValidation.BackColor = globalVariables.themeColor;
                 btn_Tasks.BackColor = globalVariables.themeColor;
@@ -382,6 +385,14 @@ namespace ArcGIS_System_Profiler
             }
         }
 
-         
+        private void panelLoadingIconBartimer_Tick(object sender, EventArgs e)
+        {
+            //panelLoadingIconBar.Location = new Point(panelLoadingIconBar.Location.X  + 100, panelLoadingIconBar.Location.Y);
+
+            //if (panelLoadingIconBar.Location.X > 1500)
+            //{
+            //    panelLoadingIconBar.Location = new Point(0, 0);
+            //}
+        }
     }
 }

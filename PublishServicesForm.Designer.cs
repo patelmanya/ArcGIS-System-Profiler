@@ -30,10 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPublishService = new System.Windows.Forms.Button();
+            this.btnPreviewService = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.txtBx_GenServStatus = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -43,6 +45,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnPublishService);
+            this.panel1.Controls.Add(this.btnPreviewService);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_NextStep);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,6 +68,23 @@
             this.btnPublishService.Text = "Publish Service";
             this.btnPublishService.UseVisualStyleBackColor = false;
             this.btnPublishService.Click += new System.EventHandler(this.btnPublishService_Click);
+            // 
+            // btnPreviewService
+            // 
+            this.btnPreviewService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreviewService.BackColor = System.Drawing.Color.LightGray;
+            this.btnPreviewService.Enabled = false;
+            this.btnPreviewService.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreviewService.ForeColor = System.Drawing.Color.Black;
+            this.btnPreviewService.Location = new System.Drawing.Point(564, 78);
+            this.btnPreviewService.Margin = new System.Windows.Forms.Padding(6);
+            this.btnPreviewService.Name = "btnPreviewService";
+            this.btnPreviewService.Size = new System.Drawing.Size(173, 33);
+            this.btnPreviewService.TabIndex = 32;
+            this.btnPreviewService.Text = "Preview Service";
+            this.btnPreviewService.UseVisualStyleBackColor = false;
+            this.btnPreviewService.Visible = false;
+            this.btnPreviewService.Click += new System.EventHandler(this.btnPreviewService_Click);
             // 
             // label1
             // 
@@ -92,6 +112,7 @@
             this.btn_NextStep.TabIndex = 30;
             this.btn_NextStep.Text = "Next Step";
             this.btn_NextStep.UseVisualStyleBackColor = false;
+            this.btn_NextStep.Click += new System.EventHandler(this.btn_NextStep_Click);
             // 
             // panel2
             // 
@@ -104,6 +125,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.webBrowser1);
             this.panel3.Controls.Add(this.txtBx_GenServStatus);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -111,6 +133,16 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.panel3.Size = new System.Drawing.Size(1122, 517);
             this.panel3.TabIndex = 2;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(20, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1082, 517);
+            this.webBrowser1.TabIndex = 1;
+            this.webBrowser1.Visible = false;
             // 
             // txtBx_GenServStatus
             // 
@@ -149,10 +181,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnPublishService;
+        private System.Windows.Forms.Button btnPreviewService;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_NextStep;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.RichTextBox txtBx_GenServStatus;
+        private System.Windows.Forms.Button btnPublishService;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }

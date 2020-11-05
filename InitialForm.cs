@@ -116,7 +116,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - btn_agsEnt_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
 
         }
@@ -138,7 +138,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - chkBx_Server_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -160,7 +160,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - chkBx_DataStore_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -188,7 +188,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - btn_EditInstanceName_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -262,7 +262,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtBx_PortalHostName_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -287,7 +287,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtBx_ServerHostName_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -312,7 +312,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtPortalUserName_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -337,7 +337,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtPortalPassword_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -363,7 +363,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtBx_PortalInstance_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -389,7 +389,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtBx_ServerInstance_Validating: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -410,7 +410,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "InitialForm.cs - txtBx_PortalHostName_TextChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

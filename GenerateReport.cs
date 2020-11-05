@@ -265,7 +265,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "GenerateReport.cs - btn_GenerateReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -326,7 +326,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "GenerateReport.cs - servicesReportFilesGenerator: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 

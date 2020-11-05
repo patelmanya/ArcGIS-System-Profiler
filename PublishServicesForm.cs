@@ -22,6 +22,7 @@ namespace ArcGIS_System_Profiler
             try
             {
                 InitializeComponent();
+                webBrowser1.Visible = false;
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
@@ -395,7 +396,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PublishServicesForm.cs - PublishServicesForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -403,7 +404,11 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                txtBx_GenServStatus.Text += "Generating token for publishing the service to ArcGIS Server. \r\n";
+                globalVariables.globalForm.loadingIconPic.Visible = true;
+                webBrowser1.Visible = false;
+                btnPreviewService.Visible = false;
+                btnPreviewService.Enabled = false;
+                txtBx_GenServStatus.Text = "Generating token for publishing the service to ArcGIS Server. \r\n";
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
@@ -430,18 +435,18 @@ namespace ArcGIS_System_Profiler
                 {
                     stream.Write(checkServdata, 0, checkServdata.Length);
                 }
-                
+
                 var checkServresponse = (HttpWebResponse)request.GetResponse();
-                
+
                 var checkServresponseString = new StreamReader(checkServresponse.GetResponseStream()).ReadToEnd();
-                
+
                 JObject checkServrss = JObject.Parse(checkServresponseString);
 
                 foreach (var checkServitem in checkServrss)
                 {
                     if (checkServitem.Key == "exists")
                     {
-                        if(checkServitem.Value.ToString().ToUpper() == "TRUE")
+                        if (checkServitem.Value.ToString().ToUpper() == "TRUE")
                         {
                             serviceExists = true;
                             txtBx_GenServStatus.Text += "Service exists..... \r\n";
@@ -502,7 +507,7 @@ namespace ArcGIS_System_Profiler
                 txtBx_GenServStatus.Text += "Creating the test service now...\r\n";
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/createService";
                 request = (HttpWebRequest)WebRequest.Create(agsServerURL);
-                
+
                 ///==========/bigDataFileShares
                 txtBx_GenServStatus.Text += "Passing the Service parameters to create service. \r\n";
                 var postData = "service=" + globalVariables.mapServiceConfigcontent; //required
@@ -541,12 +546,54 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
+
+                btnPreviewService.Visible = true;
+                btnPreviewService.Enabled = true;
+                globalVariables.globalForm.loadingIconPic.Visible = false;
             }
             catch (Exception ex)
             {
                 string errMsg = "PublishServicesForm.cs - btnPublishService_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
+        }
+
+        private void btnPreviewService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                globalVariables.globalForm.loadingIconPic.Visible = true;
+                string token = "";
+                globalVariables gV = new globalVariables();
+                token = gV.GetToken();
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+                String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/VIC_Open_data_MIL2/MapServer?f=jsapi&token=" + token;
+               // textBox1.Text = agsServerURL;
+                webBrowser1.Visible = true;
+                webBrowser1.Navigate(agsServerURL);
+                globalVariables.globalForm.loadingIconPic.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                string errMsg = "PublishServicesForm.cs - btnPreviewService_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
+        }
+
+        private void btn_NextStep_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                globalVariables.globalForm.btnCreateReport.PerformClick();
+
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "PublishServicesForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

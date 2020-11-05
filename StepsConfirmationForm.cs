@@ -51,7 +51,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "StepsConfirmationForm.cs - StepsConfirmationForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -61,13 +61,14 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
-                globalVariables.globalForm.btn_HealthChecks.PerformClick();
+                //globalVariables.globalForm.btn_HealthChecks.PerformClick();
+                globalVariables.globalForm.btn_PortChecks.PerformClick();
             }
             catch (Exception ex)
             {
                 string errMsg = "StepsConfirmationForm.cs - btn_agsServer_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

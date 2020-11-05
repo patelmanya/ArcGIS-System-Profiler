@@ -53,7 +53,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - PortCheckForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -65,6 +65,8 @@ namespace ArcGIS_System_Profiler
                 if (!globalVariables.globalForm.loadingIconPic.Visible)
                 {
                     globalVariables.globalForm.loadingIconPic.Visible = true;
+                   // globalVariables.globalForm.panelLoadingIconBar.Visible = true;
+                    
                     //progressBar1.Visible = true;
                     progressBar1.Value = 0;
                 }
@@ -202,6 +204,7 @@ namespace ArcGIS_System_Profiler
 
                 if (progressBar1.Value == 100)
                 {
+                    //globalVariables.globalForm.panelLoadingIconBar.Visible = false;
                     globalVariables.globalForm.loadingIconPic.Hide();
                     progressBar1.Hide();
                     btnShowAGSOnly.Visible = true;
@@ -211,7 +214,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - timer1_Tick: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -225,7 +228,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - btn_PerformPortCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
 
         }
@@ -338,7 +341,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - button1_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -352,7 +355,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - radioButton1_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -366,7 +369,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - radioButtonPortNoFilter_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -374,13 +377,14 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_Services.PerformClick();
+                //globalVariables.globalForm.btn_Services.PerformClick();
+                globalVariables.globalForm.btn_HealthChecks.PerformClick();
             }
             catch (Exception ex)
             {
                 string errMsg = "PortCheckForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -505,7 +509,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - btnShowAGSOnly_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -756,7 +760,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "PortCheckForm.cs - radioButton_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

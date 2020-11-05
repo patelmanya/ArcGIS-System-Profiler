@@ -162,14 +162,14 @@ namespace ArcGIS_System_Profiler
                         }
                     }
                 }
-                AGS_dataGridView.AllowUserToAddRows = false; 
+                AGS_dataGridView.AllowUserToAddRows = false;
                 AGS_dataGridView.Rows.RemoveAt(0);
             }
             catch (Exception ex)
             {
                 string errMsg = "GetServicesInfoForm.cs - btn_GetServices_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -286,7 +286,7 @@ namespace ArcGIS_System_Profiler
                                     }
                                     TextWriter txt = new StreamWriter(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
                                     globalVariables.generateReportList.Add(globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html");
-                                    var dictionary = new Dictionary<string, object>(); 
+                                    var dictionary = new Dictionary<string, object>();
                                     dictionary["serviceName"] = obj["name"].ToString();
                                     dictionary["reportFileName"] = globalVariables.globalFilePath + "\\tables\\demo_" + fileName + ".html";
                                     globalVariables.generateReportListServiceName.Add(dictionary);
@@ -330,13 +330,23 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "GetServicesInfoForm.cs - btnGenerateServicesReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btnCreateReport.PerformClick();
+            try
+            {
+                globalVariables.globalForm.btn_Publish.PerformClick();
+
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "GetServicesInfoForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
         }
 
         private void btnGenerateServicesExcelReport_Click(object sender, EventArgs e)
@@ -727,7 +737,7 @@ namespace ArcGIS_System_Profiler
                         if (columnCounter == 15)
                         {
                             columnCounter = 0;
-                            
+
                         }
                         rowIndex = rowIndex + 1;
                     }
@@ -751,7 +761,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "GetServicesInfoForm.cs - btnGenerateServicesExcelReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }
