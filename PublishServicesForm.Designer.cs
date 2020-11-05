@@ -33,8 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_NextStep = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtBx_GenServStatus = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtBx_GenServStatus = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -102,6 +102,16 @@
             this.panel2.Size = new System.Drawing.Size(1122, 517);
             this.panel2.TabIndex = 1;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtBx_GenServStatus);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.panel3.Size = new System.Drawing.Size(1122, 517);
+            this.panel3.TabIndex = 2;
+            // 
             // txtBx_GenServStatus
             // 
             this.txtBx_GenServStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
@@ -115,16 +125,6 @@
             this.txtBx_GenServStatus.Size = new System.Drawing.Size(1082, 517);
             this.txtBx_GenServStatus.TabIndex = 0;
             this.txtBx_GenServStatus.Text = "";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtBx_GenServStatus);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.panel3.Size = new System.Drawing.Size(1122, 517);
-            this.panel3.TabIndex = 2;
             // 
             // PublishServicesForm
             // 

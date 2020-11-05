@@ -402,13 +402,103 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                txtBx_GenServStatus.Text += "Generating token for publishing the service to ArcGIS Server. \r\n";
                 string token = "";
                 globalVariables gV = new globalVariables();
                 token = gV.GetToken();
-                txtBx_GenServStatus.Text += "Generating token for publishing the service to ArcGIS Server. \r\n";
-                //;
+
+                //check if the service exists
+                //https://lea-305263.services.esriaustralia.com.au/server/admin/services/exists
+                bool serviceExists = false;
+                bool serviceExistsDeleted = false;
+                String agsCheckServServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/exists";
+                var request = (HttpWebRequest)WebRequest.Create(agsCheckServServerURL);
+                var checkServpostData = "serviceName=VIC_Open_data_MIL2"; //required
+                checkServpostData += "&type=MapServer";
+                checkServpostData += "&f=json";
+                checkServpostData += "&token=" + token; //optional, default
+
+                var checkServdata = Encoding.ASCII.GetBytes(checkServpostData);
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = checkServdata.Length;
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                using (var stream = request.GetRequestStream())
+                {
+                    stream.Write(checkServdata, 0, checkServdata.Length);
+                }
+                
+                var checkServresponse = (HttpWebResponse)request.GetResponse();
+                
+                var checkServresponseString = new StreamReader(checkServresponse.GetResponseStream()).ReadToEnd();
+                
+                JObject checkServrss = JObject.Parse(checkServresponseString);
+
+                foreach (var checkServitem in checkServrss)
+                {
+                    if (checkServitem.Key == "exists")
+                    {
+                        if(checkServitem.Value.ToString().ToUpper() == "TRUE")
+                        {
+                            serviceExists = true;
+                            txtBx_GenServStatus.Text += "Service exists..... \r\n";
+                        }
+                        else
+                        {
+                            serviceExists = false;
+                        }
+                    }
+                }
+
+                if (serviceExists)
+                {
+                    txtBx_GenServStatus.Text += "Deleting existing test service..... \r\n";
+                    //https://lea-305263.services.esriaustralia.com.au/server/admin/services/VIC_Open_data_MIL2.MapServer/delete
+                    String agsdeletServiceServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/VIC_Open_data_MIL2.MapServer/delete";
+                    request = (HttpWebRequest)WebRequest.Create(agsdeletServiceServerURL);
+
+                    var deleteServpostData = "f=json";
+                    deleteServpostData += "&token=" + token; //optional, default
+
+                    var deleteServdata = Encoding.ASCII.GetBytes(deleteServpostData);
+                    request.Method = "POST";
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentLength = deleteServdata.Length;
+                    ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                    using (var stream = request.GetRequestStream())
+                    {
+                        stream.Write(deleteServdata, 0, deleteServdata.Length);
+                    }
+
+                    var deleteServresponse = (HttpWebResponse)request.GetResponse();
+                    var deleteServresponseString = new StreamReader(deleteServresponse.GetResponseStream()).ReadToEnd();
+                    JObject deleteServrss = JObject.Parse(deleteServresponseString);
+
+                    foreach (var deleteServitem in deleteServrss)
+                    {
+                        if (deleteServitem.Key == "status")
+                        {
+                            if (deleteServitem.Value.ToString().ToUpper() == "SUCCESS")
+                            {
+                                serviceExistsDeleted = true;
+                                txtBx_GenServStatus.Text += "Existing test service deleted..... \r\n";
+                            }
+                            else
+                            {
+                                serviceExistsDeleted = false;
+                                txtBx_GenServStatus.Text += "Error in deleting existing test service..... \r\n";
+                            }
+                        }
+                    }
+
+                    serviceExists = false;
+                }
+
+
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/services/createService";
-                var request = (HttpWebRequest)WebRequest.Create(agsServerURL);
+                request = (HttpWebRequest)WebRequest.Create(agsServerURL);
                 
                 ///==========/bigDataFileShares
                 txtBx_GenServStatus.Text += "Passing the Service parameters to create service. \r\n";
@@ -435,7 +525,7 @@ namespace ArcGIS_System_Profiler
                 txtBx_GenServStatus.Text += "Status:" + responseString.ToString();
                 //JArray items = (JArray)rss["items"];
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 globalVariables gv = new globalVariables();
