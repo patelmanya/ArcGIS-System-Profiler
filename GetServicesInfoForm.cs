@@ -165,11 +165,11 @@ namespace ArcGIS_System_Profiler
                 AGS_dataGridView.AllowUserToAddRows = false; 
                 AGS_dataGridView.Rows.RemoveAt(0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                string errMsg = "GetServicesInfoForm.cs - btn_GetServices_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -326,11 +326,11 @@ namespace ArcGIS_System_Profiler
                 globalVariables.globalForm.loadingIconPic.Visible = false;
                 //MessageBox.Show("Services Report generation completed. Please proceed to Next Step!");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                string errMsg = "GetServicesInfoForm.cs - btnGenerateServicesReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -749,8 +749,9 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception ex)
             {
+                string errMsg = "GetServicesInfoForm.cs - btnGenerateServicesExcelReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

@@ -181,7 +181,7 @@ namespace ArcGIS_System_Profiler
             return tokenStr;
         }
 
-        public void onErrorClearGeneratedFiles()
+        public void onErrorClearGeneratedFiles(string errorMessageStr)
         {
             try
             {
@@ -190,7 +190,7 @@ namespace ArcGIS_System_Profiler
                 {
                     FileStream objFilestream = new FileStream(globalVariables.strFileName, FileMode.Append, FileAccess.Write);
                     StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
-                    objStreamWriter.WriteLine("This is test message");
+                    objStreamWriter.WriteLine(errorMessageStr);
                     objStreamWriter.Close();
                     objFilestream.Close();
                 }
@@ -266,7 +266,7 @@ namespace ArcGIS_System_Profiler
 
 
             }
-            //Application.Exit();
+            Application.Exit();
         }
     }
 

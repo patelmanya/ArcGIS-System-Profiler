@@ -332,10 +332,11 @@ namespace ArcGIS_System_Profiler
                 AGSDS_dataGridView.Visible = true;
                 btn_ValidateDataStores.Enabled = true;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
+                string errMsg = "AGSDataStoreValidations.cs - btn_GetDataStores_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 

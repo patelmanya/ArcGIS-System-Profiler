@@ -391,10 +391,11 @@ namespace ArcGIS_System_Profiler
                 globalVariables.mapServiceConfigcontent = rss.ToString();
                 txtBx_GenServStatus.Text = "";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PublishServicesForm.cs - PublishServicesForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -543,9 +544,9 @@ namespace ArcGIS_System_Profiler
             }
             catch (Exception ex)
             {
-
+                string errMsg = "PublishServicesForm.cs - btnPublishService_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

@@ -49,10 +49,11 @@ namespace ArcGIS_System_Profiler
                 //    }
                 //} while (dataGridViewPorts.Rows.Count > 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - PortCheckForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -206,10 +207,11 @@ namespace ArcGIS_System_Profiler
                     btnShowAGSOnly.Visible = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - timer1_Tick: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -219,10 +221,11 @@ namespace ArcGIS_System_Profiler
             {
                 timer1.Enabled = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - btn_PerformPortCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
 
         }
@@ -331,10 +334,11 @@ namespace ArcGIS_System_Profiler
                 dataGridViewPorts.AllowUserToAddRows = false;
                 dataGridViewPorts.Rows.RemoveAt(0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - button1_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -344,10 +348,11 @@ namespace ArcGIS_System_Profiler
             {
                 textFilterFlag = "description";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - radioButton1_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -357,10 +362,11 @@ namespace ArcGIS_System_Profiler
             {
                 textFilterFlag = "portNo";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - radioButtonPortNoFilter_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -370,10 +376,11 @@ namespace ArcGIS_System_Profiler
             {
                 globalVariables.globalForm.btn_Services.PerformClick();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -494,10 +501,11 @@ namespace ArcGIS_System_Profiler
                 dataGridViewPorts.AllowUserToAddRows = false;
                 dataGridViewPorts.Rows.RemoveAt(0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "PortCheckForm.cs - btnShowAGSOnly_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -744,11 +752,11 @@ namespace ArcGIS_System_Profiler
                 dataGridViewPorts.AllowUserToAddRows = false;
                 dataGridViewPorts.Rows.RemoveAt(0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                string errMsg = "PortCheckForm.cs - radioButton_CheckedChanged: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

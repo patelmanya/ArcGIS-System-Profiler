@@ -31,10 +31,11 @@ namespace ArcGIS_System_Profiler
                 globalVariables.portalCheckURL = "https://" + globalVariables.global_portalHostname + "/" + globalVariables.portalInstanceName + "/portaladmin/healthCheck";
                 txtBox_WebUrl.Text = globalVariables.portalCheckURL;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - HealthChecksForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -70,10 +71,11 @@ namespace ArcGIS_System_Profiler
                     btn_PerformSrvrHealthCheck.Visible = true;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - btn_PerformPortHealthCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -107,10 +109,11 @@ namespace ArcGIS_System_Profiler
                     btn_NextStep.Visible = true;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - btn_PerformSrvrHealthCheck_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -155,10 +158,11 @@ namespace ArcGIS_System_Profiler
                     // the document has been fully loaded, you can access DOM here
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - DoNavigationAsync: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -177,10 +181,11 @@ namespace ArcGIS_System_Profiler
                     btnUpdateURL.Text = "Edit";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - btnUpdateURL_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -190,10 +195,11 @@ namespace ArcGIS_System_Profiler
             {
                 globalVariables.globalForm.btn_PortChecks.PerformClick();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "HealthChecksForm.cs - btn_NextStep_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }

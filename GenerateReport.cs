@@ -261,11 +261,11 @@ namespace ArcGIS_System_Profiler
 
                 // MessageBox.Show("Report generation completed. Thank you for using the application!");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                string errMsg = "GenerateReport.cs - btn_GenerateReport_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -322,11 +322,11 @@ namespace ArcGIS_System_Profiler
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                string errMsg = "GenerateReport.cs - servicesReportFilesGenerator: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 

@@ -324,7 +324,7 @@ namespace ArcGIS_System_Profiler
         private void btn_Close_Click(object sender, EventArgs e)
         {
             globalVariables gv = new globalVariables();
-            gv.onErrorClearGeneratedFiles();
+            gv.onErrorClearGeneratedFiles("Application Closed by user.");
             Application.Exit();
         }
 

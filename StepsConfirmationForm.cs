@@ -47,10 +47,11 @@ namespace ArcGIS_System_Profiler
                 checkedListBox1.Items.Add("License Management (Manual step) - ArcGIS Pro", CheckState.Checked);
                 checkedListBox1.Items.Add("License Management (Manual step) - ArcGIS Desktop (Borrow/Return license)", CheckState.Checked);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "StepsConfirmationForm.cs - StepsConfirmationForm InitializeComponent: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
@@ -62,10 +63,11 @@ namespace ArcGIS_System_Profiler
                 globalVariables.stepsCounter = checkedListBox1.CheckedIndices.Count.ToString();
                 globalVariables.globalForm.btn_HealthChecks.PerformClick();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string errMsg = "StepsConfirmationForm.cs - btn_agsServer_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                gv.onErrorClearGeneratedFiles();
+                gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
     }
