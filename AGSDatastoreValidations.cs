@@ -27,6 +27,7 @@ namespace ArcGIS_System_Profiler
             AGSDS_dataGridView.BackgroundColor = globalVariables.themeColor;
             //AGSDS_dataGridView.Visible = false;
             btn_ValidateDataStores.Enabled = false;
+            btn_ValidateALLDataStores.Enabled = false;
         }
 
         private void btn_GetDataStores_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace ArcGIS_System_Profiler
             try
             {
                 btn_ValidateDataStores.Enabled = false;
+                btn_ValidateALLDataStores.Enabled = false;
                 AGSDS_dataGridView.Rows.Clear();
                 AGSDS_dataGridView.Rows.Add();
                 AGSDS_dataGridView.AllowUserToAddRows = true;
@@ -342,6 +344,7 @@ namespace ArcGIS_System_Profiler
                 AGSDS_dataGridView.AllowUserToAddRows = false;
                 AGSDS_dataGridView.Visible = true;
                 btn_ValidateDataStores.Enabled = true;
+                btn_ValidateALLDataStores.Enabled = true;
             }
             catch (System.Exception ex)
             {
@@ -715,6 +718,25 @@ namespace ArcGIS_System_Profiler
             catch (System.Exception ex)
             {
                 string errMsg = "AGSDataStoreValidations.cs - button2_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
+        }
+
+        private void btn_ValidateALLDataStores_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
+                {
+                    row.Cells["checkBoxCol_Service"].Value = true;
+                }
+
+                btn_ValidateDataStores.PerformClick();
+            }
+            catch (System.Exception ex)
+            {
+                string errMsg = "AGSDataStoreValidations.cs - btn_ValidateALLDataStores_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
                 globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
             }
