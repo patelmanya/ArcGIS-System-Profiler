@@ -442,8 +442,6 @@ namespace ArcGIS_System_Profiler
                                 //validate
                                 dsName = enterpriseDatabaseitemsitem["path"].ToString();
                                 dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
-                                //https://lea-305263.services.esriaustralia.com.au/server/admin/data/items/enterpriseDatabases/AGSDataStore_ds_rr73ihp0/machines/LEA-305263.SERVICES.ESRIAUSTRALIA.COM.AU/validate
-                                //string agsDSValidateURL = "https://lea-305263.services.esriaustralia.com.au/server/admin/data/items/enterpriseDatabases/AGSDataStore_ds_rr73ihp0/machines/LEA-305263.SERVICES.ESRIAUSTRALIA.COM.AU/validate";
                                 String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/items/enterpriseDatabases/" + dsName + "/machines/" + machineName + "/validate";
                                 var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
                                 
@@ -480,19 +478,55 @@ namespace ArcGIS_System_Profiler
                                         }
                                     }
                                 }
-
-                                //JArray bigDataFileSharesitems = (JArray)rss["status"];
-
                             }
                         }
 
                         foreach (var fileSharesitemsitem in globalVariables.globalfileSharesitems)
                         {
-                            var dsName = fileSharesitemsitem["path"].ToString();
-                            //var dsType = fileSharesitemsitem["type"].ToString();
+                            var dsName = fileSharesitemsitem["path"].ToString(); 
                             if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_Folder")
-                            {
+                            { 
                                 //validate
+                                string token = "";
+                                globalVariables gV = new globalVariables();
+                                token = gV.GetToken(); 
+                                String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/validateDataItem";
+                                var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
+
+                                var postData = "token=" + token; //optional, default
+                                postData += "&f=json"; //optional, default
+                                postData += "&item=" + fileSharesitemsitem.ToString() ;
+                                var data = Encoding.ASCII.GetBytes(postData);
+                                request.Method = "POST";
+                                request.ContentType = "application/x-www-form-urlencoded";
+                                request.ContentLength = data.Length;
+                                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                                using (var stream = request.GetRequestStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+
+                                var response = (HttpWebResponse)request.GetResponse();
+                                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                                JObject rss = JObject.Parse(responseString);
+
+                                foreach (var item in rss)
+                                {
+                                    if (item.Key == "status")
+                                    {
+                                        var statusStr = item.Value.ToString();
+                                        if (statusStr.ToString() == "success")
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.successIcon;
+                                        }
+                                        else
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.errorIcon;
+                                        }
+                                    }
+                                }
                             }
                         }
 
@@ -531,6 +565,48 @@ namespace ArcGIS_System_Profiler
                             if (selectedDataStore == (dsName + "_" + typeStr.ToString()))
                             {
                                 //validate
+                                string token = "";
+                                globalVariables gV = new globalVariables();
+                                token = gV.GetToken();
+                                //validate
+                                dsName = nosqlDatabasesitemsitem["path"].ToString();
+                                dsName = dsName.Split('/')[dsName.Split('/').Length - 1];
+                                String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/items/nosqlDatabases/" + dsName + "/machines/" + machineName + "/validate";
+                                var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
+
+                                var postData = "token=" + token; //optional, default
+                                postData += "&f=json"; //optional, default
+                                var data = Encoding.ASCII.GetBytes(postData);
+                                request.Method = "POST";
+                                request.ContentType = "application/x-www-form-urlencoded";
+                                request.ContentLength = data.Length;
+                                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                                using (var stream = request.GetRequestStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+
+                                var response = (HttpWebResponse)request.GetResponse();
+                                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                                JObject rss = JObject.Parse(responseString);
+
+                                foreach (var item in rss)
+                                {
+                                    if (item.Key == "status")
+                                    {
+                                        var statusStr = item.Value.ToString();
+                                        if (statusStr.ToString() == "success")
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.successIcon;
+                                        }
+                                        else
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.errorIcon;
+                                        }
+                                    }
+                                }
                             }
 
                         }
@@ -553,6 +629,47 @@ namespace ArcGIS_System_Profiler
                             if (selectedDataStore == (dsName.Split('/')[dsName.Split('/').Length - 1]).ToString() + "_" + typeStr.ToString())
                             {
                                 //validate
+                                //validate
+                                string token = "";
+                                globalVariables gV = new globalVariables();
+                                token = gV.GetToken();
+                                String agsDSValidateURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/admin/data/validateDataItem";
+                                var request = (HttpWebRequest)WebRequest.Create(agsDSValidateURL);
+
+                                var postData = "token=" + token; //optional, default
+                                postData += "&f=json"; //optional, default
+                                postData += "&item=" + rasterStoresitemsitem.ToString();
+                                var data = Encoding.ASCII.GetBytes(postData);
+                                request.Method = "POST";
+                                request.ContentType = "application/x-www-form-urlencoded";
+                                request.ContentLength = data.Length;
+                                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                                using (var stream = request.GetRequestStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+
+                                var response = (HttpWebResponse)request.GetResponse();
+                                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                                JObject rss = JObject.Parse(responseString);
+
+                                foreach (var item in rss)
+                                {
+                                    if (item.Key == "status")
+                                    {
+                                        var statusStr = item.Value.ToString();
+                                        if (statusStr.ToString() == "success")
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.successIcon;
+                                        }
+                                        else
+                                        {
+                                            row.Cells["Status"].Value = Properties.Resources.initIcon;
+                                        }
+                                    }
+                                }
                             }
                         }
 
