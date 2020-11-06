@@ -116,6 +116,12 @@
     <Compile Include="AGSDatastoreValidations.Designer.cs">
       <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="formWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formWaiting.Designer.cs">
+      <DependentUpon>formWaiting.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerateReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     <Compile Include="WkidPortList.cs" />
     <EmbeddedResource Include="AGSDatastoreValidations.resx">
       <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formWaiting.resx">
+      <DependentUpon>formWaiting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateReport.resx">
       <DependentUpon>GenerateReport.cs</DependentUpon>

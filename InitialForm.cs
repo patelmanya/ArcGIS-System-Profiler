@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -56,9 +57,15 @@ namespace ArcGIS_System_Profiler
             sCnFm.Show();
         }
 
+       
+
         private void btn_agsEnt_Click(object sender, EventArgs e)
         {
-
+            //globalVariables gvLoading = new globalVariables();
+            //using (formWaiting frm = new formWaiting(gvLoading.SaveData))
+            //{
+            //    frm.ShowDialog(this);
+            //}
             try
             {
                 if (txtBx_PortalHostName.Text != "" && txtBx_ServerHostName.Text != "")

@@ -21,7 +21,7 @@ namespace ArcGIS_System_Profiler
         private Form currentChildForm;
         public LaunchForm()
         {
-            
+            //WinAPI.AnimateWindow(this.Handle, 2000, WinAPI.HOR_NEGATIVE);
             InitPage iPage = new InitPage();
             iPage.ShowDialog();
             //iPage.initpageTimer.Enabled = true;

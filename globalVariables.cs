@@ -7,7 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Security;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -95,6 +97,14 @@ namespace ArcGIS_System_Profiler
         public static LaunchForm globalForm = (LaunchForm)Application.OpenForms["LaunchForm"];
         public static List<Object> portsList = new List<Object>();
         public static List<Object> wkidPortList = new List<Object>();
+
+        public void SaveData()
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                Thread.Sleep(10);
+            }
+        }
 
         public string GetToken()
         {
@@ -291,6 +301,18 @@ namespace ArcGIS_System_Profiler
             }
             Application.Exit();
         }
+    }
+
+    public class WinAPI {
+        public const int HOR_Positive = 0X1;
+        public const int HOR_NEGATIVE = 0X2;
+        public const int VER_POSITIVE = 0X4;
+        public const int VER_NEGATIVE = 0X8;
+        public const int CENTER = 0X10;
+        public const int BLEND = 0X80000;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int AnimateWindow(IntPtr hWand, int dwTime, int dwFlag);
     }
 
     public class MakeMovable

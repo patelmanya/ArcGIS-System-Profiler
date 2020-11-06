@@ -223,6 +223,11 @@ namespace ArcGIS_System_Profiler
             try
             {
                 timer1.Enabled = true;
+                //globalVariables gvLoading = new globalVariables();
+                //using (formWaiting frm = new formWaiting(gvLoading.SaveData))
+                //{
+                //    frm.ShowDialog(this);
+                //}
             }
             catch (Exception ex)
             {
