@@ -7,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -393,10 +395,68 @@ namespace ArcGIS_System_Profiler
 
         private void btnOpenReport_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-            wordApp.Visible = true;
-            Document wordDoc = wordApp.Documents.Add(globalVariables.generatedFinalReportName);
+            try
+            {
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                wordApp.Visible = true;
+                Document wordDoc = wordApp.Documents.Add(globalVariables.generatedFinalReportName);
+            }
+            catch (Exception ex)
+            {
+                string errMsg = "GenerateReport.cs - btnOpenReport_Click: " + ex.Message.ToString();
+                globalVariables gv = new globalVariables();
+                globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+            }
 
         }
+
+        private void btnSendEmail_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                MailAddress from = new MailAddress("manishpatel@esriaustralia.com.au", "Manish Patel");
+                MailAddress to = new MailAddress("manishpatel@esriaustralia.com.au", "Manish Patel");
+                List<MailAddress> cc = new List<MailAddress>();
+                cc.Add(new MailAddress("manishpatel@esriaustralia.com.au", "Manish Patel"));
+                SendEmail("Want to test this damn thing", from, to, cc);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void SendEmail(string _subject, MailAddress _from, MailAddress _to, List<MailAddress> _cc, List<MailAddress> _bcc = null)
+        {
+            string Text = "";
+            SmtpClient mailClient = new SmtpClient("smtp.gmail.com", 587);
+            NetworkCredential nc = new NetworkCredential("dnrtte@gmail.com", "1234qwerASDF$");
+            mailClient.Credentials = nc;
+            mailClient.EnableSsl = true;
+              
+            System.Net.Mail.MailMessage msgMail;
+            Text = "Stuff";
+            msgMail = new System.Net.Mail.MailMessage();
+            msgMail.From = _from;
+            msgMail.To.Add(_to);
+            foreach (MailAddress addr in _cc)
+            {
+                msgMail.CC.Add(addr);
+            }
+            if (_bcc != null)
+            {
+                foreach (MailAddress addr in _bcc)
+                {
+                    msgMail.Bcc.Add(addr);
+                }
+            }
+            msgMail.Subject = _subject;
+            msgMail.Body = Text;
+            msgMail.IsBodyHtml = true;
+            mailClient.Send(msgMail);
+            msgMail.Dispose();
+        }
+
     }
 }
