@@ -79,8 +79,8 @@
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btnSetTheme);
             this.panelMenu.Controls.Add(this.panel2);
-            this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btn_Services);
+            this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.btn_HealthChecks);
             this.panelMenu.Controls.Add(this.btn_PortChecks);

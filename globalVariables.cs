@@ -299,7 +299,7 @@ namespace ArcGIS_System_Profiler
 
 
             }
-            Application.Exit();
+           // Application.Exit();
         }
     }
 

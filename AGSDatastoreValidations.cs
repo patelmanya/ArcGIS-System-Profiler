@@ -362,7 +362,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_Services.PerformClick();
+                globalVariables.globalForm.btn_Publish.PerformClick();
 
             }
             catch (System.Exception ex)

@@ -1,8 +1,9 @@
 {
   "serviceName": "VIC_Open_data_MIL2",
   "type": "MapServer",
-  "description": "",
+  "description": "This is a test map service created by the System Profiler application.",
   "capabilities": "Query,Map,Data",
+  "name": "VIC_Open_data_MIL2",
   "properties": {
     "filePath": "D:\\Users\\manishpatel\\System Profiler\\TestData\\New folder\\SystemProfilerTestMapService\\v101\\SystemProfilerTestMapService.msd",
     "outputDir": "D:\\arcgis\\arcgisserver\\directories\\arcgisoutput",

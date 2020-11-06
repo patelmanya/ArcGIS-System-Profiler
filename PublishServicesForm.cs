@@ -586,7 +586,8 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btnCreateReport.PerformClick();
+                globalVariables.globalForm.btn_Services.PerformClick();
+                
 
             }
             catch (System.Exception ex)

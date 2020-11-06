@@ -223,6 +223,16 @@ namespace ArcGIS_System_Profiler
                         }
 
                     }
+                    else
+                    {
+                        foreach (Dictionary<string, object> obj in globalVariables.checkedAGSServicesArray)
+                        {
+                            if (obj["id"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
+                            {
+                                obj["checked"] = "false";
+                            }
+                        }
+                    }
 
                 }
 
@@ -293,6 +303,7 @@ namespace ArcGIS_System_Profiler
                                     txt.Write(item);
                                     txt.Close();
                                     fileCounterLoop = fileCounterLoop + 1;
+                                    break;
                                 }
                                 else if ((obj["name"].ToString()).Contains("/"))
                                 {
@@ -313,6 +324,7 @@ namespace ArcGIS_System_Profiler
                                         txt.Write(item);
                                         txt.Close();
                                         fileCounterLoop = fileCounterLoop + 1;
+                                        break;
                                     }
                                 }
 
@@ -338,7 +350,8 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_Publish.PerformClick();
+                globalVariables.globalForm.btnCreateReport.PerformClick();
+                
 
             }
             catch (System.Exception ex)

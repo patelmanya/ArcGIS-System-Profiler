@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -152,6 +153,27 @@ namespace ArcGIS_System_Profiler
 
                 //DISK SPACE
                 lblDiskSpaceTitle.Text = "Disk space: ";
+                var count = tableLayoutPanel1.RowCount;
+                var totalDrives = DriveInfo.GetDrives().Length;
+                if (totalDrives == 2)
+                {
+                    tableLayoutPanel1.RowCount += 1;
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+                    Label lblDyn = new Label();
+                    lblDyn.Text = "This is Dynamic Text";
+                    lblDyn.Font = new Font("Arial", 12);
+                    lblDyn.ForeColor = Color.White;
+                    lblDyn.Dock = DockStyle.Fill;
+                    tableLayoutPanel1.Controls.Add(lblDyn, 0, tableLayoutPanel1.RowCount);
+
+                    IconPictureBox iCPicBx = new IconPictureBox();
+                    iCPicBx.Dock = DockStyle.Fill;
+                    iCPicBx.ForeColor = Color.LawnGreen;
+                    iCPicBx.IconChar = IconChar.CheckCircle;
+                    iCPicBx.Margin = new Padding(50, 3, 3, 3); ;
+                    tableLayoutPanel1.Controls.Add(iCPicBx, 1, tableLayoutPanel1.RowCount);
+
+                }
                 foreach (var drive in DriveInfo.GetDrives())
                 {
                     double freeSpace = drive.TotalFreeSpace;
@@ -222,7 +244,7 @@ namespace ArcGIS_System_Profiler
                         statusMachineName.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
                         statusMachineName.ForeColor = Color.LawnGreen;
                     }
-                    
+
                     statusMachineName.Visible = true;
                 }
                 else
@@ -313,7 +335,7 @@ namespace ArcGIS_System_Profiler
 
         private void btn_NextStep_Click(object sender, EventArgs e)
         {
-            globalVariables.globalForm.btn_Tasks.PerformClick(); 
+            globalVariables.globalForm.btn_Tasks.PerformClick();
         }
 
         public static bool CheckForInternetConnection()
