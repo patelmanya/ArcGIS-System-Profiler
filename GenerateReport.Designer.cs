@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSendEmail = new System.Windows.Forms.Button();
             this.btnOpenReport = new System.Windows.Forms.Button();
             this.btn_GenerateReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtBx_GenRepStatus = new System.Windows.Forms.RichTextBox();
-            this.btnSendEmail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 64);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.BackColor = System.Drawing.Color.LightGray;
+            this.btnSendEmail.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendEmail.ForeColor = System.Drawing.Color.Black;
+            this.btnSendEmail.Location = new System.Drawing.Point(658, 14);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(178, 28);
+            this.btnSendEmail.TabIndex = 11;
+            this.btnSendEmail.Text = "Send Report to Email";
+            this.btnSendEmail.UseVisualStyleBackColor = false;
+            this.btnSendEmail.Visible = false;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // btnOpenReport
             // 
@@ -114,20 +128,6 @@
             this.txtBx_GenRepStatus.Size = new System.Drawing.Size(1098, 612);
             this.txtBx_GenRepStatus.TabIndex = 0;
             this.txtBx_GenRepStatus.Text = "";
-            // 
-            // btnSendEmail
-            // 
-            this.btnSendEmail.BackColor = System.Drawing.Color.LightGray;
-            this.btnSendEmail.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendEmail.ForeColor = System.Drawing.Color.Black;
-            this.btnSendEmail.Location = new System.Drawing.Point(658, 14);
-            this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(178, 28);
-            this.btnSendEmail.TabIndex = 11;
-            this.btnSendEmail.Text = "Send Report to Email";
-            this.btnSendEmail.UseVisualStyleBackColor = false;
-            this.btnSendEmail.Visible = false;
-            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // GenerateReport
             // 
