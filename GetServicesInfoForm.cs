@@ -421,6 +421,19 @@ namespace ArcGIS_System_Profiler
                                             String currentServiceNameStr = "";
                                             String currentServiceTypeStr = "";
 
+                                            foreach (DataGridViewRow row in AGS_dataGridView.Rows)
+                                            {
+                                                if ((itemFolder["name"].ToString()) + "_" + itemFolder["type"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
+                                                {
+                                                    row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                                                }
+                                                else
+                                                {
+                                                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                                                }
+
+                                            }
+
                                             currentFolderNameStr = (itemFolder["name"].ToString()).Split('/')[0];
                                             currentServiceNameStr = (itemFolder["name"].ToString()).Split('/')[1];
                                             currentServiceTypeStr = itemFolder["type"].ToString();
@@ -809,13 +822,28 @@ namespace ArcGIS_System_Profiler
                               
                             foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                             {
-                                if (obj["currentServiceNameStr"].ToString() + "_" + obj["currentServiceTypeStr"].ToString() == row.Cells["Service_Name"].Value.ToString() + "_" + row.Cells["Service_Type"].Value.ToString())
+
+                                if ((row.Cells["Service_Name"].Value.ToString()).Contains('/'))
                                 {
-                                    row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                                    if (obj["currentServiceNameStr"].ToString() + "_" + obj["currentServiceTypeStr"].ToString() == (row.Cells["Service_Name"].Value.ToString()).Split('/')[1] + "_" + row.Cells["Service_Type"].Value.ToString())
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                                    }
+                                    else
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                                    }
                                 }
                                 else
                                 {
-                                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                                    if (obj["currentServiceNameStr"].ToString() + "_" + obj["currentServiceTypeStr"].ToString() == (row.Cells["Service_Name"].Value.ToString()) + "_" + row.Cells["Service_Type"].Value.ToString())
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.FromArgb(203, 145, 105);
+                                    }
+                                    else
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
+                                    }
                                 }
 
                             }
