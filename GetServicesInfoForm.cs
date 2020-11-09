@@ -351,7 +351,7 @@ namespace ArcGIS_System_Profiler
             try
             {
                 globalVariables.globalForm.btnCreateReport.PerformClick();
-                
+
 
             }
             catch (System.Exception ex)
@@ -640,6 +640,32 @@ namespace ArcGIS_System_Profiler
                     var columnCounter = 1;
                     foreach (Dictionary<string, object> obj in globalVariables.servicesMainReportArray)
                     {
+                        string currentFolderNameStrinLoop = "";
+                        string currentServiceNameStrinLoop = "";
+                        string currentServiceTypeStrinLoop = "";
+
+                        string currentmaxRecordCountStrStrinLoop = "";
+                        string currentlayerIdStrStrinLoop = "";
+                        string currentlayerNameStrStrinLoop = "";
+                        string currentlayerGeomtryTypeStrStrinLoop = "";
+                        string currentlayerMinScaleStrStrinLoop = "";
+                        string currentlayerMaxScaleStrStrinLoop = "";
+                        string currentlayerDisplayFieldStrStrinLoop = "";
+
+                        currentFolderNameStrinLoop = "";
+                        currentServiceNameStrinLoop = "";
+                        currentServiceTypeStrinLoop = "";
+                        currentmaxRecordCountStrStrinLoop = "";
+                        currentlayerIdStrStrinLoop = "";
+                        currentlayerNameStrStrinLoop = "";
+                        currentlayerGeomtryTypeStrStrinLoop = "";
+                        currentlayerMinScaleStrStrinLoop = "";
+                        currentlayerMaxScaleStrStrinLoop = "";
+                        currentlayerDisplayFieldStrStrinLoop = "";
+
+                        currentFolderNameStrinLoop = obj["currentFolderNameStr"].ToString();
+                        currentServiceNameStrinLoop = obj["currentServiceNameStr"].ToString();
+                        currentServiceTypeStrinLoop = obj["currentServiceTypeStr"].ToString();
 
                         excelWorksheet.Cells[rowIndex, 1] = obj["currentFolderNameStr"].ToString();
                         columnCounter += 1;
@@ -661,42 +687,49 @@ namespace ArcGIS_System_Profiler
                                 {
                                     excelWorksheet.Cells[rowIndex, 4] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentmaxRecordCountStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerIdStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 5] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerIdStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerNameStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 6] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerNameStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerGeomtryTypeStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 7] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerGeomtryTypeStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerMinScaleStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 8] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerMinScaleStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerMaxScaleStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 9] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerMaxScaleStrStrinLoop = item.Value.ToString();
                                 }
 
                                 else if (item.Key.ToString() == "layerDisplayFieldStr")
                                 {
                                     excelWorksheet.Cells[rowIndex, 10] = item.Value.ToString();
                                     columnCounter += 1;
+                                    currentlayerDisplayFieldStrStrinLoop = item.Value.ToString();
                                 }
 
                                 //else if (item.Key.ToString() == "fieldCountStr")
@@ -713,6 +746,18 @@ namespace ArcGIS_System_Profiler
                                     {
                                         foreach (var itemField in (IDictionary<string, object>)fieldItem.Value)
                                         {
+
+                                            excelWorksheet.Cells[rowIndex, 1] = currentFolderNameStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 2] = currentServiceNameStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 3] = currentServiceTypeStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 4] = currentmaxRecordCountStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 5] = currentlayerIdStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 6] = currentlayerNameStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 7] = currentlayerGeomtryTypeStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 8] = currentlayerMinScaleStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 9] = currentlayerMaxScaleStrStrinLoop;
+                                            excelWorksheet.Cells[rowIndex, 10] = currentlayerDisplayFieldStrStrinLoop;
+
                                             if (itemField.Key.ToString() == "name")
                                             {
                                                 excelWorksheet.Cells[rowIndex, 11] = itemField.Value.ToString();
@@ -752,9 +797,11 @@ namespace ArcGIS_System_Profiler
                             columnCounter = 0;
 
                         }
-                        rowIndex = rowIndex + 1;
+                       // rowIndex = rowIndex + 1;
                     }
 
+                    //tbl.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+                    excelWorksheet.Columns.AutoFit();
                     string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
                     excelApp.ActiveWorkbook.SaveAs(globalVariables.globalFilePath + "\\abc_" + fileName + " .xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                     globalVariables.agsServerServicesReportName = globalVariables.globalFilePath + "\\abc_" + fileName + " .xls";
