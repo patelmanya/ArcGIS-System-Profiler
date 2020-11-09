@@ -100,9 +100,9 @@ namespace ArcGIS_System_Profiler
 
         public void SaveData()
         {
-            for (int i = 0; i < 300; i++)
+            for (int i = 0; i < 500; i++)
             {
-                Thread.Sleep(10);
+               // Thread.Sleep(10);
             }
         }
 
@@ -299,7 +299,7 @@ namespace ArcGIS_System_Profiler
 
 
             }
-           // Application.Exit();
+           Application.Exit();
         }
     }
 
