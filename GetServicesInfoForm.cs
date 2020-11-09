@@ -701,7 +701,8 @@ namespace ArcGIS_System_Profiler
 
                                             //String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
                                             //serviceDictionary["layerCountStr"] = layerCountStr;
-
+                                            var tasksNameDictionary = new Dictionary<string, object>();
+                                            var taskNameLoopCounter = 1;
                                             foreach (var itemFolderServTask in servicesTasksCollectionFolder)
                                             {
                                                 String taskNameStr = itemFolderServTask.ToString();
@@ -722,8 +723,9 @@ namespace ArcGIS_System_Profiler
 
                                                     //String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
                                                     //serviceDictionary["layerCountStr"] = layerCountStr;
-                                                    var taskNameLoopCounter = 0;
+                                                    var taskParamNameLoopCounter = 1;
                                                     var tasksParamsDictionary = new Dictionary<string, object>();
+
                                                     foreach (JObject itemFolderServTaskParams in servicesTasksCollectionTasksFolder)
                                                     {
                                                         var taskParamDictionary = new Dictionary<string, object>();
@@ -742,7 +744,7 @@ namespace ArcGIS_System_Profiler
                                                         {
                                                             TaskParameterchoiceListStr = itemFolderServTaskParams["choiceList"].ToString();
                                                         }
-
+                                                        taskParamDictionary["taskNameStr"] = taskNameStr;
                                                         taskParamDictionary["TaskParameterNameStr"] = TaskParameterNameStr;
                                                         taskParamDictionary["TaskParameterdataTypeStr"] = TaskParameterdataTypeStr;
                                                         taskParamDictionary["TaskParameterdisplayNameStr"] = TaskParameterdisplayNameStr;
@@ -752,17 +754,21 @@ namespace ArcGIS_System_Profiler
                                                         taskParamDictionary["TaskParameterparameterTypeStr"] = TaskParameterparameterTypeStr;
                                                         taskParamDictionary["TaskParametercategoryStr"] = TaskParametercategoryStr;
                                                         taskParamDictionary["TaskParameterchoiceListStr"] = TaskParameterchoiceListStr;
-
-
-                                                        taskNameLoopCounter += 1;
-                                                        tasksParamsDictionary[taskNameLoopCounter.ToString()] = taskParamDictionary;
+                                                        tasksParamsDictionary[taskParamNameLoopCounter.ToString()] = taskParamDictionary;
+                                                        taskParamNameLoopCounter += 1;
                                                     }
                                                     serviceDictionary["taskNameStr"] = taskNameStr;
                                                     serviceDictionary["ServiceExecutionTypeStr"] = ServiceExecutionTypeStr;
-                                                    serviceDictionary["taskParamDictionary"] = tasksParamsDictionary;
-                                                    globalVariables.servicesMainReportArray.Add(serviceDictionary);
+                                                    tasksNameDictionary[taskNameLoopCounter.ToString()] = tasksParamsDictionary;
+                                                    taskNameLoopCounter += 1;
                                                 }
+
                                             }
+
+                                            serviceDictionary["NoOfTasks"] = taskNameLoopCounter.ToString();
+                                            serviceDictionary["taskParamDictionary"] = tasksNameDictionary;
+                                            globalVariables.servicesMainReportArray.Add(serviceDictionary);
+
                                         }
                                     }
                                 }
