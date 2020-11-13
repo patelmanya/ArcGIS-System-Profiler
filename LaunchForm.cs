@@ -159,6 +159,13 @@ namespace ArcGIS_System_Profiler
             OpenChildForm(new GetServicesInfoForm());
         }
 
+
+        private void btn_AGOLServices_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBCOlors.color3);
+            OpenChildForm(new AGOLReport());
+        }
+
         public void btn_HealthChecks_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color4);
@@ -394,5 +401,6 @@ namespace ArcGIS_System_Profiler
             //    panelLoadingIconBar.Location = new Point(0, 0);
             //}
         }
+
     }
 }

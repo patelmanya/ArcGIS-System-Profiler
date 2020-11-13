@@ -35,8 +35,9 @@
             this.btnSetTheme = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSlider = new System.Windows.Forms.Panel();
-            this.btn_Publish = new FontAwesome.Sharp.IconButton();
             this.btn_Services = new FontAwesome.Sharp.IconButton();
+            this.btn_AGOLServices = new FontAwesome.Sharp.IconButton();
+            this.btn_Publish = new FontAwesome.Sharp.IconButton();
             this.btnDataStoreValidate = new FontAwesome.Sharp.IconButton();
             this.btn_HealthChecks = new FontAwesome.Sharp.IconButton();
             this.btn_PortChecks = new FontAwesome.Sharp.IconButton();
@@ -56,11 +57,11 @@
             this.currentStepLabel = new System.Windows.Forms.Label();
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.panelShadow = new System.Windows.Forms.Panel();
+            this.panelLoadingIconBar = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.globalProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.panelLoadingIconBar = new System.Windows.Forms.Panel();
             this.panelLoadingIconBartimer = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -80,6 +81,7 @@
             this.panelMenu.Controls.Add(this.btnSetTheme);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.btn_Services);
+            this.panelMenu.Controls.Add(this.btn_AGOLServices);
             this.panelMenu.Controls.Add(this.btn_Publish);
             this.panelMenu.Controls.Add(this.btnDataStoreValidate);
             this.panelMenu.Controls.Add(this.btn_HealthChecks);
@@ -107,7 +109,7 @@
             this.btnCreateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCreateReport.IconSize = 36;
             this.btnCreateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateReport.Location = new System.Drawing.Point(0, 680);
+            this.btnCreateReport.Location = new System.Drawing.Point(0, 740);
             this.btnCreateReport.Name = "btnCreateReport";
             this.btnCreateReport.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnCreateReport.Rotation = 0D;
@@ -132,7 +134,7 @@
             this.btnSetTheme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSetTheme.IconSize = 36;
             this.btnSetTheme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetTheme.Location = new System.Drawing.Point(0, 620);
+            this.btnSetTheme.Location = new System.Drawing.Point(0, 680);
             this.btnSetTheme.Name = "btnSetTheme";
             this.btnSetTheme.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnSetTheme.Rotation = 0D;
@@ -163,31 +165,6 @@
             this.panelSlider.Size = new System.Drawing.Size(55, 30);
             this.panelSlider.TabIndex = 11;
             // 
-            // btn_Publish
-            // 
-            this.btn_Publish.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Publish.FlatAppearance.BorderSize = 0;
-            this.btn_Publish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Publish.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Publish.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Publish.ForeColor = System.Drawing.Color.White;
-            this.btn_Publish.IconChar = FontAwesome.Sharp.IconChar.Upload;
-            this.btn_Publish.IconColor = System.Drawing.Color.White;
-            this.btn_Publish.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Publish.IconSize = 36;
-            this.btn_Publish.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Publish.Location = new System.Drawing.Point(0, 560);
-            this.btn_Publish.Name = "btn_Publish";
-            this.btn_Publish.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btn_Publish.Rotation = 0D;
-            this.btn_Publish.Size = new System.Drawing.Size(220, 60);
-            this.btn_Publish.TabIndex = 8;
-            this.btn_Publish.Text = "Publish Services";
-            this.btn_Publish.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Publish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Publish.UseVisualStyleBackColor = true;
-            this.btn_Publish.Click += new System.EventHandler(this.btn_Publish_Click);
-            // 
             // btn_Services
             // 
             this.btn_Services.Dock = System.Windows.Forms.DockStyle.Top;
@@ -201,7 +178,7 @@
             this.btn_Services.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Services.IconSize = 36;
             this.btn_Services.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Services.Location = new System.Drawing.Point(0, 500);
+            this.btn_Services.Location = new System.Drawing.Point(0, 620);
             this.btn_Services.Name = "btn_Services";
             this.btn_Services.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btn_Services.Rotation = 0D;
@@ -212,6 +189,56 @@
             this.btn_Services.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Services.UseVisualStyleBackColor = true;
             this.btn_Services.Click += new System.EventHandler(this.btn_Services_Click);
+            // 
+            // btn_AGOLServices
+            // 
+            this.btn_AGOLServices.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_AGOLServices.FlatAppearance.BorderSize = 0;
+            this.btn_AGOLServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AGOLServices.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_AGOLServices.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AGOLServices.ForeColor = System.Drawing.Color.White;
+            this.btn_AGOLServices.IconChar = FontAwesome.Sharp.IconChar.Cloud;
+            this.btn_AGOLServices.IconColor = System.Drawing.Color.White;
+            this.btn_AGOLServices.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_AGOLServices.IconSize = 36;
+            this.btn_AGOLServices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_AGOLServices.Location = new System.Drawing.Point(0, 560);
+            this.btn_AGOLServices.Name = "btn_AGOLServices";
+            this.btn_AGOLServices.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btn_AGOLServices.Rotation = 0D;
+            this.btn_AGOLServices.Size = new System.Drawing.Size(220, 60);
+            this.btn_AGOLServices.TabIndex = 14;
+            this.btn_AGOLServices.Text = "Get AGOL Info";
+            this.btn_AGOLServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_AGOLServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_AGOLServices.UseVisualStyleBackColor = true;
+            this.btn_AGOLServices.Click += new System.EventHandler(this.btn_AGOLServices_Click);
+            // 
+            // btn_Publish
+            // 
+            this.btn_Publish.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Publish.FlatAppearance.BorderSize = 0;
+            this.btn_Publish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Publish.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Publish.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Publish.ForeColor = System.Drawing.Color.White;
+            this.btn_Publish.IconChar = FontAwesome.Sharp.IconChar.Upload;
+            this.btn_Publish.IconColor = System.Drawing.Color.White;
+            this.btn_Publish.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Publish.IconSize = 36;
+            this.btn_Publish.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Publish.Location = new System.Drawing.Point(0, 500);
+            this.btn_Publish.Name = "btn_Publish";
+            this.btn_Publish.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btn_Publish.Rotation = 0D;
+            this.btn_Publish.Size = new System.Drawing.Size(220, 60);
+            this.btn_Publish.TabIndex = 8;
+            this.btn_Publish.Text = "Publish Services";
+            this.btn_Publish.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Publish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Publish.UseVisualStyleBackColor = true;
+            this.btn_Publish.Click += new System.EventHandler(this.btn_Publish_Click);
             // 
             // btnDataStoreValidate
             // 
@@ -563,6 +590,16 @@
             this.panelShadow.Size = new System.Drawing.Size(1083, 8);
             this.panelShadow.TabIndex = 2;
             // 
+            // panelLoadingIconBar
+            // 
+            this.panelLoadingIconBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelLoadingIconBar.BackColor = System.Drawing.Color.Red;
+            this.panelLoadingIconBar.Location = new System.Drawing.Point(0, 1);
+            this.panelLoadingIconBar.Name = "panelLoadingIconBar";
+            this.panelLoadingIconBar.Size = new System.Drawing.Size(100, 10);
+            this.panelLoadingIconBar.TabIndex = 12;
+            this.panelLoadingIconBar.Visible = false;
+            // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
@@ -586,16 +623,6 @@
             // globalTimer1
             // 
             this.globalTimer1.Tick += new System.EventHandler(this.globalTimer1_Tick);
-            // 
-            // panelLoadingIconBar
-            // 
-            this.panelLoadingIconBar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelLoadingIconBar.BackColor = System.Drawing.Color.Red;
-            this.panelLoadingIconBar.Location = new System.Drawing.Point(0, 1);
-            this.panelLoadingIconBar.Name = "panelLoadingIconBar";
-            this.panelLoadingIconBar.Size = new System.Drawing.Size(100, 10);
-            this.panelLoadingIconBar.TabIndex = 12;
-            this.panelLoadingIconBar.Visible = false;
             // 
             // panelLoadingIconBartimer
             // 
@@ -661,5 +688,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Timer panelLoadingIconBartimer;
         internal System.Windows.Forms.Panel panelLoadingIconBar;
+        internal FontAwesome.Sharp.IconButton btn_AGOLServices;
     }
 }

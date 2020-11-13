@@ -110,6 +110,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AGOLReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGOLReport.Designer.cs">
+      <DependentUpon>AGOLReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="AGSDatastoreValidations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="WkidPortList.cs" />
+    <EmbeddedResource Include="AGOLReport.resx">
+      <DependentUpon>AGOLReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AGSDatastoreValidations.resx">
       <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
     </EmbeddedResource>

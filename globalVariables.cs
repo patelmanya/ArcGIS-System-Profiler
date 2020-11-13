@@ -67,6 +67,7 @@ namespace ArcGIS_System_Profiler
         public static List<string> generateReportListDoc = new List<string>();
         public static List<Object> generateReportListServiceName = new List<Object>();
         public static string agsServerServicesReportName = "";
+        public static string agsAGOLServicesReportName = "";
         public static string generatedFinalReportName = "";
 
         public static JArray globalbigDataFileSharesitems;
