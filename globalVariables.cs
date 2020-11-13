@@ -272,6 +272,12 @@ namespace ArcGIS_System_Profiler
                 }
 
                 //delete the file if it exists
+                if (File.Exists(globalVariables.agsAGOLServicesReportName))
+                {
+                    File.Delete(globalVariables.agsAGOLServicesReportName);
+                }
+
+                //delete the file if it exists
                 if (File.Exists(globalVariables.globalReportIcon))
                 {
                     File.Delete(globalVariables.globalReportIcon);
