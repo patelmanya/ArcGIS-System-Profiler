@@ -122,6 +122,12 @@
     <Compile Include="AGSDatastoreValidations.Designer.cs">
       <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppTasks.Designer.cs">
+      <DependentUpon>AppTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="formWaiting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AGSDatastoreValidations.resx">
       <DependentUpon>AGSDatastoreValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppTasks.resx">
+      <DependentUpon>AppTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formWaiting.resx">
       <DependentUpon>formWaiting.cs</DependentUpon>

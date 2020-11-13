@@ -150,7 +150,8 @@ namespace ArcGIS_System_Profiler
         {
             btnSetTheme.Visible = false;
             ActivateButton(sender, RGBCOlors.color2);
-            OpenChildForm(new StepsConfirmationForm());
+            //OpenChildForm(new StepsConfirmationForm());
+            OpenChildForm(new AppTasks());
         }
 
         public void btn_Services_Click(object sender, EventArgs e)

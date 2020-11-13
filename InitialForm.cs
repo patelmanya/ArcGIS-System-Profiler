@@ -30,6 +30,14 @@ namespace ArcGIS_System_Profiler
             txtAGSServerPassword.PasswordChar = '*';
             //textBox4.Text = "";
             txtPortalPassword.PasswordChar = '*';
+            //toolTip1.SetToolTip(txtPortalUserName, "Please enter username");
+            //toolTip1.Show("Please enter username", txtPortalUserName);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            //toolTip1.Show("Please enter username", txtPortalUserName);
         }
 
 
