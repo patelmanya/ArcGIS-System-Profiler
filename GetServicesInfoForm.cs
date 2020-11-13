@@ -461,6 +461,8 @@ namespace ArcGIS_System_Profiler
 
                                                     String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
                                                     serviceDictionary["layerCountStr"] = layerCountStr;
+                                                    int layerCounter = 0;
+                                                    var layerCountDictionary = new Dictionary<string, object>();
 
                                                     foreach (var itemFolderServLayer in servicesLayersCollectionFolder)
                                                     {
@@ -499,9 +501,10 @@ namespace ArcGIS_System_Profiler
                                                         layerDictionary["fieldDictionary"] = servicesFieldsReportArray;
                                                         String fieldCountStr = fieldsLoopCounter.ToString();
                                                         layerDictionary["fieldCountStr"] = fieldCountStr;
-                                                        serviceDictionary["layerDictionary"] = layerDictionary;
+                                                        layerCountDictionary[layerCounter.ToString()] = layerDictionary;
+                                                        layerCounter = layerCounter + 1;
                                                     }
-
+                                                    serviceDictionary["layerDictionary"] = layerCountDictionary;
                                                     globalVariables.servicesMainReportArray.Add(serviceDictionary);
 
                                                 }
@@ -638,7 +641,8 @@ namespace ArcGIS_System_Profiler
 
                                             String layerCountStr = servicesLayersCollectionFolder.Count.ToString();
                                             serviceDictionary["layerCountStr"] = layerCountStr;
-
+                                            int layerCounter = 0;
+                                            var layerCountDictionary = new Dictionary<string, object>();
                                             foreach (var itemFolderServLayer in servicesLayersCollectionFolder)
                                             {
                                                 var layerDictionary = new Dictionary<string, object>();
@@ -676,9 +680,10 @@ namespace ArcGIS_System_Profiler
                                                 layerDictionary["fieldDictionary"] = servicesFieldsReportArray;
                                                 String fieldCountStr = fieldsLoopCounter.ToString();
                                                 layerDictionary["fieldCountStr"] = fieldCountStr;
-                                                serviceDictionary["layerDictionary"] = layerDictionary;
+                                                layerCountDictionary[layerCounter.ToString()] = layerDictionary;
+                                                layerCounter = layerCounter + 1;
                                             }
-
+                                            serviceDictionary["layerDictionary"] = layerCountDictionary;
                                             globalVariables.servicesMainReportArray.Add(serviceDictionary);
 
                                         }
@@ -825,7 +830,7 @@ namespace ArcGIS_System_Profiler
                         var columnGPCounter = 1;
                         foreach (Dictionary<string, object> obj in globalVariables.servicesMainReportArray)
                         {
-                              
+
                             foreach (DataGridViewRow row in AGS_dataGridView.Rows)
                             {
 
@@ -1041,123 +1046,127 @@ namespace ArcGIS_System_Profiler
                                 excelWorksheet.Cells[rowIndex, 2] = obj["currentServiceNameStr"].ToString();
                                 columnCounter += 1;
                                 excelWorksheet.Cells[rowIndex, 3] = obj["currentServiceTypeStr"].ToString();
-                                columnCounter += 1;
+                                columnCounter += 1; 
 
-                                foreach (var item in (IDictionary<string, object>)obj["layerDictionary"])
+                                foreach (var layeritem in (IDictionary<string, object>)obj["layerDictionary"])
                                 {
-                                    if (item.Key.ToString() == "maxRecordCountStr")
+                                    foreach (var item in (IDictionary<string, object>)layeritem.Value)
                                     {
-                                        excelWorksheet.Cells[rowIndex, 4] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentmaxRecordCountStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerIdStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 5] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerIdStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerNameStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 6] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerNameStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerGeomtryTypeStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 7] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerGeomtryTypeStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerMinScaleStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 8] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerMinScaleStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerMaxScaleStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 9] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerMaxScaleStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    else if (item.Key.ToString() == "layerDisplayFieldStr")
-                                    {
-                                        excelWorksheet.Cells[rowIndex, 10] = item.Value.ToString();
-                                        columnCounter += 1;
-                                        currentlayerDisplayFieldStrStrinLoop = item.Value.ToString();
-                                    }
-
-                                    //else if (item.Key.ToString() == "fieldCountStr")
-                                    //{
-                                    //    excelWorksheet.Cells[rowIndex, 12] = item.Value.ToString();
-                                    //    columnCounter += 1;
-                                    //}
-                                    else if (item.Key.ToString() == "fieldDictionary")
-                                    {
-                                        var fieldFilledinCounter = 0;
-                                        //foreach (Dictionary<string, object> fieldItem in (IDictionary<string, object>)item.Value)
-                                        foreach (var fieldItem in (IDictionary<string, object>)item.Value)
-                                        //foreach (Dictionary<string, object>  fieldItem in item.Value)
+                                        if (item.Key.ToString() == "maxRecordCountStr")
                                         {
-                                            foreach (var itemField in (IDictionary<string, object>)fieldItem.Value)
-                                            {
-
-                                                excelWorksheet.Cells[rowIndex, 1] = currentFolderNameStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 2] = currentServiceNameStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 3] = currentServiceTypeStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 4] = currentmaxRecordCountStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 5] = currentlayerIdStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 6] = currentlayerNameStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 7] = currentlayerGeomtryTypeStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 8] = currentlayerMinScaleStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 9] = currentlayerMaxScaleStrStrinLoop;
-                                                excelWorksheet.Cells[rowIndex, 10] = currentlayerDisplayFieldStrStrinLoop;
-
-                                                if (itemField.Key.ToString() == "name")
-                                                {
-                                                    excelWorksheet.Cells[rowIndex, 11] = itemField.Value.ToString();
-                                                    fieldFilledinCounter = fieldFilledinCounter + 1;
-                                                }
-                                                else if (itemField.Key.ToString() == "type")
-                                                {
-                                                    excelWorksheet.Cells[rowIndex, 12] = itemField.Value.ToString();
-                                                    fieldFilledinCounter = fieldFilledinCounter + 1;
-                                                }
-                                                else if (itemField.Key.ToString() == "alias")
-                                                {
-                                                    excelWorksheet.Cells[rowIndex, 13] = itemField.Value.ToString();
-                                                    fieldFilledinCounter = fieldFilledinCounter + 1;
-                                                }
-                                                else if (itemField.Key.ToString() == "domain")
-                                                {
-                                                    excelWorksheet.Cells[rowIndex, 14] = itemField.Value.ToString();
-                                                    fieldFilledinCounter = fieldFilledinCounter + 1;
-                                                }
-
-                                                if (fieldFilledinCounter == 4)
-                                                {
-                                                    rowIndex = rowIndex + 1;
-                                                    fieldFilledinCounter = 0;
-                                                }
-                                            }
+                                            excelWorksheet.Cells[rowIndex, 4] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentmaxRecordCountStrStrinLoop = item.Value.ToString();
                                         }
 
-                                        columnCounter += 4;
+                                        else if (item.Key.ToString() == "layerIdStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 5] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerIdStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        else if (item.Key.ToString() == "layerNameStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 6] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerNameStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        else if (item.Key.ToString() == "layerGeomtryTypeStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 7] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerGeomtryTypeStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        else if (item.Key.ToString() == "layerMinScaleStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 8] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerMinScaleStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        else if (item.Key.ToString() == "layerMaxScaleStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 9] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerMaxScaleStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        else if (item.Key.ToString() == "layerDisplayFieldStr")
+                                        {
+                                            excelWorksheet.Cells[rowIndex, 10] = item.Value.ToString();
+                                            columnCounter += 1;
+                                            currentlayerDisplayFieldStrStrinLoop = item.Value.ToString();
+                                        }
+
+                                        //else if (item.Key.ToString() == "fieldCountStr")
+                                        //{
+                                        //    excelWorksheet.Cells[rowIndex, 12] = item.Value.ToString();
+                                        //    columnCounter += 1;
+                                        //}
+                                        else if (item.Key.ToString() == "fieldDictionary")
+                                        {
+                                            var fieldFilledinCounter = 0;
+                                            //foreach (Dictionary<string, object> fieldItem in (IDictionary<string, object>)item.Value)
+                                            foreach (var fieldItem in (IDictionary<string, object>)item.Value)
+                                            //foreach (Dictionary<string, object>  fieldItem in item.Value)
+                                            {
+                                                foreach (var itemField in (IDictionary<string, object>)fieldItem.Value)
+                                                {
+
+                                                    excelWorksheet.Cells[rowIndex, 1] = currentFolderNameStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 2] = currentServiceNameStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 3] = currentServiceTypeStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 4] = currentmaxRecordCountStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 5] = currentlayerIdStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 6] = currentlayerNameStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 7] = currentlayerGeomtryTypeStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 8] = currentlayerMinScaleStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 9] = currentlayerMaxScaleStrStrinLoop;
+                                                    excelWorksheet.Cells[rowIndex, 10] = currentlayerDisplayFieldStrStrinLoop;
+
+                                                    if (itemField.Key.ToString() == "name")
+                                                    {
+                                                        excelWorksheet.Cells[rowIndex, 11] = itemField.Value.ToString();
+                                                        fieldFilledinCounter = fieldFilledinCounter + 1;
+                                                    }
+                                                    else if (itemField.Key.ToString() == "type")
+                                                    {
+                                                        excelWorksheet.Cells[rowIndex, 12] = itemField.Value.ToString();
+                                                        fieldFilledinCounter = fieldFilledinCounter + 1;
+                                                    }
+                                                    else if (itemField.Key.ToString() == "alias")
+                                                    {
+                                                        excelWorksheet.Cells[rowIndex, 13] = itemField.Value.ToString();
+                                                        fieldFilledinCounter = fieldFilledinCounter + 1;
+                                                    }
+                                                    else if (itemField.Key.ToString() == "domain")
+                                                    {
+                                                        excelWorksheet.Cells[rowIndex, 14] = itemField.Value.ToString();
+                                                        fieldFilledinCounter = fieldFilledinCounter + 1;
+                                                    }
+
+                                                    if (fieldFilledinCounter == 4)
+                                                    {
+                                                        rowIndex = rowIndex + 1;
+                                                        fieldFilledinCounter = 0;
+                                                    }
+                                                }
+                                            }
+
+                                            columnCounter += 4;
+
+                                        }
+                                    }
+                                    if (columnCounter == 15)
+                                    {
+                                        columnCounter = 0;
 
                                     }
                                 }
-                                if (columnCounter == 15)
-                                {
-                                    columnCounter = 0;
 
-                                }
                             }
                         }
 
