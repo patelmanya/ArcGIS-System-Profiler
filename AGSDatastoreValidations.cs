@@ -752,7 +752,7 @@ namespace ArcGIS_System_Profiler
             {
                 string errMsg = "AGSDataStoreValidations.cs - btn_ValidateDataStores_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                globalVariables.loggingEnabled = true; globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true;gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
