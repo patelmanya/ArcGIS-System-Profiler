@@ -20,7 +20,7 @@ namespace ArcGIS_System_Profiler
     public class globalVariables
     {
         //https://lea-305263.services.esriaustralia.com.au/server/admin/system/directories?f=pjson
-
+        public static bool debugFlag = false;
         public static string mapServiceMSDFile = "";
         public static string mapServiceConfig = "";
         public static string outputDirStr = "";
@@ -31,6 +31,8 @@ namespace ArcGIS_System_Profiler
         public static bool loggingEnabled = false;
         public static string strFileName = globalVariables.globalFilePath + "\\SystemProfilerLog_" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".log";
 
+        public static string strDebugFileName = globalVariables.globalFilePath + "\\SystemProfilerDebugLog_" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".txt";
+        public static globalVariables Debuggv = new globalVariables();
         public static string globalReportIcon = "";
 
         public static Color themeColor = Color.FromArgb(51, 44, 53);
@@ -116,6 +118,13 @@ namespace ArcGIS_System_Profiler
             }
         }
 
+        public void writeToDebug(string MessageStr) {
+            FileStream objFilestream = new FileStream(globalVariables.strDebugFileName, FileMode.Append, FileAccess.Write);
+            StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+            objStreamWriter.WriteLine(MessageStr);
+            objStreamWriter.Close();
+            objFilestream.Close();
+        }
         public string GetToken()
         {
             if (!Directory.Exists(globalVariables.globalFilePath))
