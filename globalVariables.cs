@@ -99,11 +99,20 @@ namespace ArcGIS_System_Profiler
         public static List<Object> portsList = new List<Object>();
         public static List<Object> wkidPortList = new List<Object>();
 
+        //tasks confirmation - step 2 flags
+
+        public static bool portsTaskIncluded = false;
+        public static bool HealthChecksTaskIncluded = false;
+        public static bool DataStoreValidateTaskIncluded = false;
+        public static bool PublishTaskIncluded = false;
+        public static bool ServicesTaskIncluded = false;
+
+
         public void SaveData()
         {
             for (int i = 0; i < 500; i++)
             {
-               // Thread.Sleep(10);
+                // Thread.Sleep(10);
             }
         }
 
@@ -288,13 +297,13 @@ namespace ArcGIS_System_Profiler
                 {
                     File.Delete(globalVariables.reportTemplateFileName);
                 }
-                
+
                 //delete the file if it exists
                 if (File.Exists(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip"))
                 {
                     File.Delete(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip");
                 }
-                
+
                 string foldername = "tables";
                 if (Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                 {
@@ -306,11 +315,12 @@ namespace ArcGIS_System_Profiler
 
 
             }
-           Application.Exit();
+            Application.Exit();
         }
     }
 
-    public class WinAPI {
+    public class WinAPI
+    {
         public const int HOR_Positive = 0X1;
         public const int HOR_NEGATIVE = 0X2;
         public const int VER_POSITIVE = 0X4;
@@ -368,6 +378,5 @@ namespace ArcGIS_System_Profiler
         }
     }
 
-
-
 }
+

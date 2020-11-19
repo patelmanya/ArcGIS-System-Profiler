@@ -30,19 +30,19 @@ namespace ArcGIS_System_Profiler
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_agsServer = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Home = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btn_Home = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -57,15 +57,6 @@ namespace ArcGIS_System_Profiler
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1122, 66);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.tableLayoutPanel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 66);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1122, 571);
-            this.panel2.TabIndex = 1;
             // 
             // label1
             // 
@@ -95,6 +86,15 @@ namespace ArcGIS_System_Profiler
             this.btn_agsServer.UseVisualStyleBackColor = false;
             this.btn_agsServer.Click += new System.EventHandler(this.btn_agsServer_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tableLayoutPanel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 66);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1122, 571);
+            this.panel2.TabIndex = 1;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -121,49 +121,27 @@ namespace ArcGIS_System_Profiler
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1122, 571);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btn_Home
+            // iconButton3
             // 
-            this.btn_Home.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Home.FlatAppearance.BorderSize = 0;
-            this.btn_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Home.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btn_Home.Font = new System.Drawing.Font("Arial", 25F);
-            this.btn_Home.ForeColor = System.Drawing.Color.Chartreuse;
-            this.btn_Home.IconChar = FontAwesome.Sharp.IconChar.LaptopMedical;
-            this.btn_Home.IconColor = System.Drawing.Color.Chartreuse;
-            this.btn_Home.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Home.IconSize = 120;
-            this.btn_Home.Location = new System.Drawing.Point(378, 5);
-            this.btn_Home.Name = "btn_Home";
-            this.btn_Home.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btn_Home.Rotation = 0D;
-            this.btn_Home.Size = new System.Drawing.Size(365, 181);
-            this.btn_Home.TabIndex = 2;
-            this.btn_Home.Text = "Health Checks";
-            this.btn_Home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_Home.UseVisualStyleBackColor = true;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Arial", 25F);
-            this.iconButton1.ForeColor = System.Drawing.Color.Chartreuse;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Megaport;
-            this.iconButton1.IconColor = System.Drawing.Color.Chartreuse;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 120;
-            this.iconButton1.Location = new System.Drawing.Point(5, 5);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(365, 181);
-            this.iconButton1.TabIndex = 2;
-            this.iconButton1.Text = "Port Checks";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton3.Font = new System.Drawing.Font("Arial", 25F);
+            this.iconButton3.ForeColor = System.Drawing.Color.Chartreuse;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.SimCard;
+            this.iconButton3.IconColor = System.Drawing.Color.Chartreuse;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 120;
+            this.iconButton3.Location = new System.Drawing.Point(751, 194);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton3.Rotation = 0D;
+            this.iconButton3.Size = new System.Drawing.Size(366, 181);
+            this.iconButton3.TabIndex = 2;
+            this.iconButton3.Text = "GIS Services Report";
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton3.UseVisualStyleBackColor = true;
             // 
             // iconButton2
             // 
@@ -186,28 +164,6 @@ namespace ArcGIS_System_Profiler
             this.iconButton2.Text = "Datastore Validations";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton2.UseVisualStyleBackColor = true;
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton3.Font = new System.Drawing.Font("Arial", 25F);
-            this.iconButton3.ForeColor = System.Drawing.Color.Chartreuse;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.SimCard;
-            this.iconButton3.IconColor = System.Drawing.Color.Chartreuse;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 120;
-            this.iconButton3.Location = new System.Drawing.Point(751, 194);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(366, 181);
-            this.iconButton3.TabIndex = 2;
-            this.iconButton3.Text = "GIS Services Report";
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton3.UseVisualStyleBackColor = true;
             // 
             // iconButton4
             // 
@@ -321,6 +277,50 @@ namespace ArcGIS_System_Profiler
             this.iconButton8.Text = "Publish Service";
             this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton8.UseVisualStyleBackColor = true;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Arial", 25F);
+            this.iconButton1.ForeColor = System.Drawing.Color.Chartreuse;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Megaport;
+            this.iconButton1.IconColor = System.Drawing.Color.Chartreuse;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 120;
+            this.iconButton1.Location = new System.Drawing.Point(5, 5);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(365, 181);
+            this.iconButton1.TabIndex = 2;
+            this.iconButton1.Text = "Port Checks";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // btn_Home
+            // 
+            this.btn_Home.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Home.FlatAppearance.BorderSize = 0;
+            this.btn_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Home.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btn_Home.Font = new System.Drawing.Font("Arial", 25F);
+            this.btn_Home.ForeColor = System.Drawing.Color.Chartreuse;
+            this.btn_Home.IconChar = FontAwesome.Sharp.IconChar.LaptopMedical;
+            this.btn_Home.IconColor = System.Drawing.Color.Chartreuse;
+            this.btn_Home.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Home.IconSize = 120;
+            this.btn_Home.Location = new System.Drawing.Point(378, 5);
+            this.btn_Home.Name = "btn_Home";
+            this.btn_Home.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btn_Home.Rotation = 0D;
+            this.btn_Home.Size = new System.Drawing.Size(365, 181);
+            this.btn_Home.TabIndex = 2;
+            this.btn_Home.Text = "Health Checks";
+            this.btn_Home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_Home.UseVisualStyleBackColor = true;
             // 
             // AppTasks
             // 

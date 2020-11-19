@@ -188,6 +188,8 @@
             this.btn_Services.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Services.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Services.UseVisualStyleBackColor = true;
+            this.btn_Services.Visible = false;
+            this.btn_Services.VisibleChanged += new System.EventHandler(this.btn_Services_VisibleChanged);
             this.btn_Services.Click += new System.EventHandler(this.btn_Services_Click);
             // 
             // btn_AGOLServices
@@ -213,6 +215,7 @@
             this.btn_AGOLServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_AGOLServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_AGOLServices.UseVisualStyleBackColor = true;
+            this.btn_AGOLServices.Visible = false;
             this.btn_AGOLServices.Click += new System.EventHandler(this.btn_AGOLServices_Click);
             // 
             // btn_Publish
@@ -238,6 +241,8 @@
             this.btn_Publish.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Publish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Publish.UseVisualStyleBackColor = true;
+            this.btn_Publish.Visible = false;
+            this.btn_Publish.VisibleChanged += new System.EventHandler(this.btn_Publish_VisibleChanged);
             this.btn_Publish.Click += new System.EventHandler(this.btn_Publish_Click);
             // 
             // btnDataStoreValidate
@@ -263,6 +268,8 @@
             this.btnDataStoreValidate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDataStoreValidate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDataStoreValidate.UseVisualStyleBackColor = true;
+            this.btnDataStoreValidate.Visible = false;
+            this.btnDataStoreValidate.VisibleChanged += new System.EventHandler(this.btnDataStoreValidate_VisibleChanged);
             this.btnDataStoreValidate.Click += new System.EventHandler(this.btnDataStoreValidate_Click);
             // 
             // btn_HealthChecks
@@ -288,6 +295,8 @@
             this.btn_HealthChecks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_HealthChecks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_HealthChecks.UseVisualStyleBackColor = true;
+            this.btn_HealthChecks.Visible = false;
+            this.btn_HealthChecks.VisibleChanged += new System.EventHandler(this.btn_HealthChecks_VisibleChanged);
             this.btn_HealthChecks.Click += new System.EventHandler(this.btn_HealthChecks_Click);
             // 
             // btn_PortChecks
@@ -313,6 +322,8 @@
             this.btn_PortChecks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_PortChecks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_PortChecks.UseVisualStyleBackColor = true;
+            this.btn_PortChecks.Visible = false;
+            this.btn_PortChecks.VisibleChanged += new System.EventHandler(this.btn_PortChecks_VisibleChanged);
             this.btn_PortChecks.Click += new System.EventHandler(this.btn_PortChecks_Click);
             // 
             // btn_Tasks

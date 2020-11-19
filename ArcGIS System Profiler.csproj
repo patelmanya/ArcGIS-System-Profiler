@@ -207,6 +207,15 @@
     <Compile Include="SystemVerification.Designer.cs">
       <DependentUpon>SystemVerification.cs</DependentUpon>
     </Compile>
+    <Compile Include="TasksInclude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TasksInclude.Designer.cs">
+      <DependentUpon>TasksInclude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="WkidPortList.cs" />
     <EmbeddedResource Include="AGOLReport.resx">
@@ -260,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SystemVerification.resx">
       <DependentUpon>SystemVerification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TasksInclude.resx">
+      <DependentUpon>TasksInclude.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ArcGIS System Profiler_TemporaryKey.pfx" />
     <None Include="mapServiceConfig.json">

@@ -151,7 +151,8 @@ namespace ArcGIS_System_Profiler
             btnSetTheme.Visible = false;
             ActivateButton(sender, RGBCOlors.color2);
             //OpenChildForm(new StepsConfirmationForm());
-            OpenChildForm(new AppTasks());
+            //OpenChildForm(new AppTasks());
+            OpenChildForm(new TasksInclude());
         }
 
         public void btn_Services_Click(object sender, EventArgs e)
@@ -403,5 +404,69 @@ namespace ArcGIS_System_Profiler
             //}
         }
 
+        private void btn_PortChecks_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btn_PortChecks.Visible == true)
+            {
+                if (btn_PortChecks.Parent == null)
+                    return;
+
+                var index = btn_PortChecks.Parent.Controls.GetChildIndex(btn_Tasks);
+                if (index <= btn_PortChecks.Parent.Controls.Count)
+                    btn_PortChecks.Parent.Controls.SetChildIndex(btn_PortChecks, index - 1);
+            }
+        }
+
+        private void btn_HealthChecks_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btn_HealthChecks.Visible == true)
+            {
+                if (btn_HealthChecks.Parent == null)
+                    return;
+
+                var index = btn_HealthChecks.Parent.Controls.GetChildIndex(btn_Tasks);
+                if (index <= btn_HealthChecks.Parent.Controls.Count)
+                    btn_HealthChecks.Parent.Controls.SetChildIndex(btn_HealthChecks, index - 2);
+            }
+        }
+
+        private void btnDataStoreValidate_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btnDataStoreValidate.Visible == true)
+            {
+                if (btnDataStoreValidate.Parent == null)
+                    return;
+
+                var index = btnDataStoreValidate.Parent.Controls.GetChildIndex(btn_Tasks);
+                if (index <= btnDataStoreValidate.Parent.Controls.Count)
+                    btnDataStoreValidate.Parent.Controls.SetChildIndex(btnDataStoreValidate, index - 3);
+            }
+        }
+
+        private void btn_Publish_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btn_Publish.Visible == true)
+            {
+                if (btn_Publish.Parent == null)
+                    return;
+
+                var index = btn_Publish.Parent.Controls.GetChildIndex(btn_Tasks);
+                if (index <= btn_Publish.Parent.Controls.Count)
+                    btn_Publish.Parent.Controls.SetChildIndex(btn_Publish, index - 3);
+            }
+        }
+
+        private void btn_Services_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btn_Services.Visible == true)
+            {
+                if (btn_Services.Parent == null)
+                    return;
+
+                var index = btn_Services.Parent.Controls.GetChildIndex(btn_Tasks);
+                if (index <= btn_Services.Parent.Controls.Count)
+                    btn_Services.Parent.Controls.SetChildIndex(btn_Services, index - 3);
+            }
+        }
     }
 }
