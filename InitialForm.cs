@@ -97,12 +97,13 @@ namespace ArcGIS_System_Profiler
                         {
                             //this is the flag for debugging and is only activated when Ctrl + Click is used for the login screen.
                             globalVariables.loggingEnabled = true;
-
+                            globalVariables.globalForm.btn_Tasks.Visible = true;
                             globalVariables.globalForm.btnSystemValidation.Visible = true;
                             globalVariables.globalForm.btnSystemValidation.PerformClick();
                         }
                         else
                         {
+                            globalVariables.globalForm.btn_Tasks.Visible = true;
                             globalVariables.globalForm.btn_Tasks.PerformClick();
                         }
                        

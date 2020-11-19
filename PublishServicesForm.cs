@@ -569,7 +569,7 @@ namespace ArcGIS_System_Profiler
                 token = gV.GetToken();
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
                 String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/VIC_Open_data_MIL2/MapServer?f=jsapi&token=" + token;
-               // textBox1.Text = agsServerURL;
+                // textBox1.Text = agsServerURL;
                 webBrowser1.Visible = true;
                 webBrowser1.Navigate(agsServerURL);
                 globalVariables.globalForm.loadingIconPic.Visible = false;
@@ -586,8 +586,16 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_Services.PerformClick();
-                
+                //globalVariables.globalForm.btn_Services.PerformClick();
+                if (globalVariables.ServicesTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_Services.PerformClick();
+                }
+                else
+                {
+                    globalVariables.globalForm.btnCreateReport.Visible = true;
+                    globalVariables.globalForm.btnCreateReport.PerformClick();
+                }
 
             }
             catch (System.Exception ex)

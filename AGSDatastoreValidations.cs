@@ -362,8 +362,21 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.btn_Publish.PerformClick();
+                // globalVariables.globalForm.btn_Publish.PerformClick();
 
+                if (globalVariables.PublishTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_Publish.PerformClick();
+                }
+                else if (globalVariables.ServicesTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_Services.PerformClick();
+                }
+                else
+                {
+                    globalVariables.globalForm.btnCreateReport.Visible = true;
+                    globalVariables.globalForm.btnCreateReport.PerformClick();
+                }
             }
             catch (System.Exception ex)
             {

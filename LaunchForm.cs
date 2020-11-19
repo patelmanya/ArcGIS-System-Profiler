@@ -186,7 +186,7 @@ namespace ArcGIS_System_Profiler
             OpenChildForm(new PublishServicesForm());
         }
 
-        private void btnCreateReport_Click(object sender, EventArgs e)
+        public void btnCreateReport_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBCOlors.color5);
             OpenChildForm(new GenerateReport());
@@ -305,8 +305,24 @@ namespace ArcGIS_System_Profiler
             btnSetTheme.ImageAlign = ContentAlignment.MiddleLeft;
 
             btnSystemValidation.Visible = false;
-            OpenChildForm(new InitialForm());
+            //OpenChildForm(new InitialForm());
+            globalVariables.globalForm.btn_Tasks.Visible = false;
+            globalVariables.globalForm.btn_PortChecks.Visible = false;
+            globalVariables.globalForm.btn_HealthChecks.Visible = false;
+            globalVariables.globalForm.btnDataStoreValidate.Visible = false;
+            globalVariables.globalForm.btn_Publish.Visible = false;
+            globalVariables.globalForm.btn_AGOLServices.Visible = false;
+            globalVariables.globalForm.btn_Services.Visible = false;
+            globalVariables.globalForm.btnCreateReport.Visible = false;
+            globalVariables.globalForm.btnSystemValidation.Visible = false;
+            globalVariables.portsTaskIncluded = false;
+            globalVariables.HealthChecksTaskIncluded = false;
+            globalVariables.DataStoreValidateTaskIncluded = false;
+            globalVariables.PublishTaskIncluded = false;
+            globalVariables.ServicesTaskIncluded = false;
+            btn_Home.PerformClick();
         }
+
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -452,7 +468,7 @@ namespace ArcGIS_System_Profiler
 
                 var index = btn_Publish.Parent.Controls.GetChildIndex(btn_Tasks);
                 if (index <= btn_Publish.Parent.Controls.Count)
-                    btn_Publish.Parent.Controls.SetChildIndex(btn_Publish, index - 3);
+                    btn_Publish.Parent.Controls.SetChildIndex(btn_Publish, index - 4);
             }
         }
 
@@ -464,8 +480,49 @@ namespace ArcGIS_System_Profiler
                     return;
 
                 var index = btn_Services.Parent.Controls.GetChildIndex(btn_Tasks);
+                int visibleElementsCounter = 0;
+                List<string> elementsVisibleArr = new List<string>();
+                foreach (Control item in btnCreateReport.Parent.Controls)
+                {
+                    if (item.Visible)
+                    {
+                        if ((item.Name == "btn_Home") || (item.Name == "btnSystemValidation") || (item.Name == "btn_Tasks") || (item.Name == "btn_PortChecks") || (item.Name == "btn_HealthChecks") || (item.Name == "btnDataStoreValidate") || (item.Name == "btn_Publish") || (item.Name == "btn_AGOLServices") || (item.Name == "btn_Services") || (item.Name == "btnCreateReport"))
+                        {
+                            visibleElementsCounter += 1;
+                            elementsVisibleArr.Add(item.Name);
+                        }
+
+                        
+                    }
+                }
                 if (index <= btn_Services.Parent.Controls.Count)
-                    btn_Services.Parent.Controls.SetChildIndex(btn_Services, index - 3);
+                    btn_Services.Parent.Controls.SetChildIndex(btn_Services, index - visibleElementsCounter);
+            }
+        }
+
+        private void btnCreateReport_VisibleChanged(object sender, EventArgs e)
+        {
+            if (btnCreateReport.Visible == true)
+            {
+                if (btnCreateReport.Parent == null)
+                    return;
+
+                var index = btnCreateReport.Parent.Controls.GetChildIndex(btn_Tasks);
+                int visibleElementsCounter = 0; 
+                List<string> elementsVisibleArr = new List<string>();
+                foreach (Control item in btnCreateReport.Parent.Controls)
+                {
+                    if (item.Visible)
+                    {
+                        if ((item.Name == "btn_Home") || (item.Name == "btnSystemValidation") || (item.Name == "btn_Tasks") || (item.Name == "btn_PortChecks") || (item.Name == "btn_HealthChecks") || (item.Name == "btnDataStoreValidate") || (item.Name == "btn_Publish") || (item.Name == "btn_AGOLServices") || (item.Name == "btn_Services") || (item.Name == "btnCreateReport"))
+                        {
+                            visibleElementsCounter += 1;
+                            elementsVisibleArr.Add(item.Name);
+                        }
+                    }
+                }
+                if (index <= btnCreateReport.Parent.Controls.Count)
+                    btnCreateReport.Parent.Controls.SetChildIndex(btn_Services, index +1);
             }
         }
     }

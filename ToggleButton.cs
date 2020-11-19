@@ -540,7 +540,8 @@ namespace ArcGIS_System_Profiler
             }
             else if (this.ToggleStyle == ToggleButtonStyle.Android)
             {
-                if (downpos.X <= contentRectangle.Width / 4)
+                //if (downpos.X <= contentRectangle.Width / 4)
+                if(this.ToggleState == ToggleButtonState.ON)
                 {
                     padx = contentRectangle.Left;
                     this.ToggleState = ToggleButtonState.OFF;

@@ -37,17 +37,8 @@ namespace ArcGIS_System_Profiler
                 btnShowAGSOnly.Visible = false;
                 //remove the existing rows in the datagridview
                 dataGridViewPorts.Rows.Clear();
-                //do
-                //{
-                //    foreach (DataGridViewRow row in dataGridViewPorts.Rows)
-                //    {
-                //        try
-                //        {
-                //            dataGridViewPorts.Rows.Remove(row);
-                //        }
-                //        catch (Exception) { }
-                //    }
-                //} while (dataGridViewPorts.Rows.Count > 1);
+
+                ///btn_NextStep.Text = "";
             }
             catch (Exception ex)
             {
@@ -65,8 +56,8 @@ namespace ArcGIS_System_Profiler
                 if (!globalVariables.globalForm.loadingIconPic.Visible)
                 {
                     globalVariables.globalForm.loadingIconPic.Visible = true;
-                   // globalVariables.globalForm.panelLoadingIconBar.Visible = true;
-                    
+                    // globalVariables.globalForm.panelLoadingIconBar.Visible = true;
+
                     //progressBar1.Visible = true;
                     progressBar1.Value = 0;
                 }
@@ -198,7 +189,7 @@ namespace ArcGIS_System_Profiler
                     timer1.Enabled = false;
                     dataGridViewPorts.AllowUserToAddRows = false;
                     dataGridViewPorts.Rows.RemoveAt(0);
-                    
+
                 }
 
 
@@ -383,7 +374,30 @@ namespace ArcGIS_System_Profiler
             try
             {
                 //globalVariables.globalForm.btn_Services.PerformClick();
-                globalVariables.globalForm.btn_HealthChecks.PerformClick();
+                //globalVariables.globalForm.btn_HealthChecks.PerformClick();
+
+                if (globalVariables.HealthChecksTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_HealthChecks.PerformClick();
+                }
+                else if (globalVariables.DataStoreValidateTaskIncluded)
+                {
+                    globalVariables.globalForm.btnDataStoreValidate.PerformClick();
+                }
+                else if (globalVariables.PublishTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_Publish.PerformClick();
+                }
+                else if (globalVariables.ServicesTaskIncluded)
+                {
+                    globalVariables.globalForm.btn_Services.PerformClick();
+                }
+                else
+                {
+                    globalVariables.globalForm.btnCreateReport.Visible = true;
+                    globalVariables.globalForm.btnCreateReport.PerformClick();
+                }
+
             }
             catch (Exception ex)
             {
@@ -442,7 +456,7 @@ namespace ArcGIS_System_Profiler
                             {
                                 dataGridViewPorts.Rows.Add(row);
                             }
-                                
+
                         }
                         else if (txtBx_Filter.Text == "")
                         {

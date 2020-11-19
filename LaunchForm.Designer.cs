@@ -119,6 +119,8 @@
             this.btnCreateReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCreateReport.UseVisualStyleBackColor = true;
+            this.btnCreateReport.Visible = false;
+            this.btnCreateReport.VisibleChanged += new System.EventHandler(this.btnCreateReport_VisibleChanged);
             this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
             // 
             // btnSetTheme
@@ -349,6 +351,7 @@
             this.btn_Tasks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Tasks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Tasks.UseVisualStyleBackColor = true;
+            this.btn_Tasks.Visible = false;
             this.btn_Tasks.Click += new System.EventHandler(this.btn_Tasks_Click);
             // 
             // btnSystemValidation

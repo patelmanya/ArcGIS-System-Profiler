@@ -350,6 +350,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables.globalForm.btnCreateReport.Visible = true;
                 globalVariables.globalForm.btnCreateReport.PerformClick();
 
 
