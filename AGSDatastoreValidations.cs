@@ -362,6 +362,12 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                datastoreBMP = new Bitmap(1024, 500);
+                datastoreBMP = new Bitmap(Utilities.CaptureWindow(AGSDS_dataGridView.Handle));
+                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
+                globalVariables.DataStoreImageList.Add(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
+                datastoreBMP.Save(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
+
                 // globalVariables.globalForm.btn_Publish.PerformClick();
 
                 if (globalVariables.PublishTaskIncluded)
@@ -742,17 +748,13 @@ namespace ArcGIS_System_Profiler
                 //int imgHeight = (AGSDS_dataGridView.Rows.GetRowsHeight)
                 //AGSDS_dataGridView.Rows.GetRowsHeight
                 //double htRow = (double)AGSDS_dataGridView.Rows.Count;
-                datastoreBMP = new Bitmap(1024, 500);
-                datastoreBMP = new Bitmap(Utilities.CaptureWindow(AGSDS_dataGridView.Handle));
-                string fileName = string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now);
-                globalVariables.DataStoreImageList.Add(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
-                datastoreBMP.Save(globalVariables.globalFilePath + "\\myDataStoreCheck_" + fileName + ".jpg");
+                
             }
             catch (System.Exception ex)
             {
                 string errMsg = "AGSDataStoreValidations.cs - btn_ValidateDataStores_Click: " + ex.Message.ToString();
                 globalVariables gv = new globalVariables();
-                globalVariables.loggingEnabled = true; globalVariables.loggingEnabled = true; gv.onErrorClearGeneratedFiles(errMsg);
+                globalVariables.loggingEnabled = true;gv.onErrorClearGeneratedFiles(errMsg);
             }
         }
 
