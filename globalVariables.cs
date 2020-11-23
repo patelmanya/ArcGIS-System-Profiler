@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
+using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -13,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ArcGIS_System_Profiler
 {
@@ -118,7 +123,8 @@ namespace ArcGIS_System_Profiler
             }
         }
 
-        public void writeToDebug(string MessageStr) {
+        public void writeToDebug(string MessageStr)
+        {
             FileStream objFilestream = new FileStream(globalVariables.strDebugFileName, FileMode.Append, FileAccess.Write);
             StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
             objStreamWriter.WriteLine(MessageStr);
@@ -127,6 +133,7 @@ namespace ArcGIS_System_Profiler
         }
         public string GetToken()
         {
+
             if (!Directory.Exists(globalVariables.globalFilePath))
             {
                 Directory.CreateDirectory(globalVariables.globalFilePath);
@@ -176,6 +183,150 @@ namespace ArcGIS_System_Profiler
 
             File.WriteAllBytes((globalVariables.globalFilePath + "\\ReportTemplate.dotx"), Properties.Resources.Report_Template);
             globalVariables.reportTemplateFileName = (globalVariables.globalFilePath + "\\ReportTemplate.dotx");
+
+            //create the JSON for publishing
+            string[] JSONnames = a.GetManifestResourceNames();
+            string mapServiceJSONFilename = "";
+            foreach (string name in JSONnames)
+                if (name.Contains("mapServiceConfig.json"))
+                {
+                    mapServiceJSONFilename = name;
+                }
+            File.WriteAllBytes((globalVariables.globalFilePath + "\\mapServiceConfig.json"), Properties.Resources.mapServiceConfig);
+            globalVariables.mapServiceConfig = globalVariables.globalFilePath + "\\mapServiceConfig.json";
+
+            Stream _zipFileStream;
+            _zipFileStream = a.GetManifestResourceStream("ArcGIS_System_Profiler.resources.ServiceMSD.rar");
+            using (BinaryReader r = new BinaryReader(_zipFileStream))
+            {
+                using (FileStream fs = new FileStream(globalVariables.globalFilePath + "\\ServiceMSD.rar", FileMode.OpenOrCreate))
+                using (BinaryWriter w = new BinaryWriter(fs))
+                    w.Write(r.ReadBytes((int)_zipFileStream.Length));
+            }
+
+            //create the files for the service publishing
+            if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD"))
+            {
+                Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD");
+            }
+
+            using (var archive = RarArchive.Open(globalVariables.globalFilePath + "\\ServiceMSD.rar"))
+            {
+                foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                {
+                    entry.WriteToDirectory(globalVariables.globalFilePath, new ExtractionOptions()
+                    {
+                        ExtractFullPath = true,
+                        Overwrite = true
+                    });
+                }
+            }
+
+            //create the files for the service publishing
+            //if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD"))
+            //{
+            //    Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD");
+            //}
+
+            //if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo"))
+            //{
+            //    Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo");
+            //}
+
+            //if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\metadata"))
+            //{
+            //    Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\metadata");
+            //}
+
+            //if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\thumbnail"))
+            //{
+            //    Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\thumbnail");
+            //}
+
+
+            //if (!Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD\\v101"))
+            //{
+            //    Directory.CreateDirectory(globalVariables.globalFilePath + "\\ServiceMSD\\v101");
+            //}
+
+            //foreach (string name in JSONnames)
+            //{
+            //    if (name.Contains("initialcachesettings.json"))
+            //    {
+            //        File.WriteAllBytes((globalVariables.globalFilePath + "\\ServiceMSD\\initialcachesettings.json"), Properties.Resources.initialcachesettings);
+            //    }
+
+            //    if (name.Contains("manifest.xml"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\manifest.xml";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //    if (name.Contains("serviceconfiguration.json"))
+            //    {
+            //        File.WriteAllBytes((globalVariables.globalFilePath + "\\ServiceMSD\\serviceconfiguration.json"), Properties.Resources.serviceconfiguration);
+            //    }
+
+            //    if (name.Contains("tilingservice.xml"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\tilingservice.xml";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //    if (name.Contains("metadata.xml"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\metadata\\metadata.xml";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //    if (name.Contains("item.pkinfo"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\item.pkinfo";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+
+            //    if (name.Contains("iteminfo.xml"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\iteminfo.xml";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //    if (name.Contains("thumbnail.png"))
+            //    {
+            //        Stream stream = a.GetManifestResourceStream(name); 
+            //        Image image = Image.FromStream(stream);
+            //        image.Save(globalVariables.globalFilePath + "\\ServiceMSD\\esriinfo\\thumbnail\\thumbnail.png"); 
+            //    }
+
+            //    if (name.Contains("SystemProfilerTestMapService.msd"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\v101\\SystemProfilerTestMapService.msd";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //    if (name.Contains("SystemProfilerTestMapService.mxd"))
+            //    {
+            //        XElement resource = XElement.Parse(Properties.Resources.metadata);
+            //        string s = globalVariables.globalFilePath + "\\ServiceMSD\\v101\\SystemProfilerTestMapService.mxd";
+            //        using (FileStream fs = new FileStream(s, FileMode.Create))
+            //            resource.Save(fs);
+            //    }
+
+            //}
+
 
 
             String tokenStr = "";
@@ -229,7 +380,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                //logg to file
+                //log to file
                 if (loggingEnabled)
                 {
                     FileStream objFilestream = new FileStream(globalVariables.strFileName, FileMode.Append, FileAccess.Write);
@@ -313,11 +464,34 @@ namespace ArcGIS_System_Profiler
                     File.Delete(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip");
                 }
 
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.mapServiceConfig))
+                {
+                    File.Delete(globalVariables.mapServiceConfig);
+                }
+
+
+                //delete the file if it exists
+                if (File.Exists(globalVariables.globalFilePath + "\\ServiceMSD.rar"))
+                {
+                    File.Delete(globalVariables.globalFilePath + "\\ServiceMSD.rar");
+                }
+
+
                 string foldername = "tables";
                 if (Directory.Exists(globalVariables.globalFilePath + "\\" + foldername))
                 {
                     Directory.Delete(globalVariables.globalFilePath + "\\" + foldername);
                 }
+
+
+                if (Directory.Exists(globalVariables.globalFilePath + "\\ServiceMSD"))
+                {
+                    Directory.Delete(globalVariables.globalFilePath + "\\ServiceMSD", true);
+                }
+
+
             }
             catch (Exception)
             {
@@ -325,6 +499,7 @@ namespace ArcGIS_System_Profiler
 
             }
             Application.Exit();
+
         }
     }
 

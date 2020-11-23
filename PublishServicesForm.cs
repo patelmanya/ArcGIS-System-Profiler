@@ -177,9 +177,15 @@ namespace ArcGIS_System_Profiler
                 //    }
                 //}
 
-                globalVariables.mapServiceMSDFile = Path.Combine(Environment.CurrentDirectory, "resources\\ServiceMSD\\v101\\SystemProfilerTestMapService.msd");
+                //globalVariables.mapServiceMSDFile = Path.Combine(Environment.CurrentDirectory, "resources\\ServiceMSD\\v101\\SystemProfilerTestMapService.msd");
 
-                globalVariables.mapServiceConfig = Path.Combine(Environment.CurrentDirectory, "mapServiceConfig.json");
+                //ZipFile.ExtractToDirectory(globalVariables.globalFilePath + "\\SystemProfilerTestMapService.zip", globalVariables.globalFilePath + "\\ServiceMSD");
+
+
+
+                globalVariables.mapServiceMSDFile = globalVariables.globalFilePath + "\\ServiceMSD\\v101\\SystemProfilerTestMapService.msd";
+
+                // globalVariables.mapServiceConfig = Path.Combine(Environment.CurrentDirectory, "resources\\mapServiceConfig.json");
                 globalVariables.mapServiceConfigcontent = File.ReadAllText(globalVariables.mapServiceConfig);
                 JObject rss = JObject.Parse(globalVariables.mapServiceConfigcontent);
 
@@ -543,6 +549,7 @@ namespace ArcGIS_System_Profiler
                         else
                         {
                             txtBx_GenServStatus.Text += "Status: Error \r\n";
+                            txtBx_GenServStatus.Text += responseString;
                         }
                     }
                 }
@@ -563,15 +570,18 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
-                globalVariables.globalForm.loadingIconPic.Visible = true;
-                string token = "";
-                globalVariables gV = new globalVariables();
-                token = gV.GetToken();
-                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-                String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/VIC_Open_data_MIL2/MapServer?f=jsapi&token=" + token;
-                // textBox1.Text = agsServerURL;
-                webBrowser1.Visible = true;
-                webBrowser1.Navigate(agsServerURL);
+                //System.Diagnostics.Process.Start("https://lea-305263.services.esriaustralia.com.au/server/rest/services/VIC_Open_data_MIL1/MapServer?f=jsapi");
+                String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/VIC_Open_data_MIL2/MapServer?f=jsapi";
+                System.Diagnostics.Process.Start(agsServerURL);
+                //globalVariables.globalForm.loadingIconPic.Visible = true;
+                //string token = "";
+                //globalVariables gV = new globalVariables();
+                //token = gV.GetToken();
+                //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+                //String agsServerURL = "https://" + globalVariables.global_serverHostname + "/" + globalVariables.agsServerInstanceName + "/rest/services/VIC_Open_data_MIL2/MapServer?f=jsapi&token=" + token;
+                //// textBox1.Text = agsServerURL;
+                //webBrowser1.Visible = true;
+                //webBrowser1.Navigate(agsServerURL);
                 globalVariables.globalForm.loadingIconPic.Visible = false;
             }
             catch (Exception ex)

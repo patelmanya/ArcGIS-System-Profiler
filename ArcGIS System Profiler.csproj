@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -83,7 +83,13 @@
       <HintPath>packages\Office.12.0.0\lib\net40\Office.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -97,6 +103,16 @@
       <HintPath>packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
     </Reference>
     <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -127,6 +143,12 @@
     </Compile>
     <Compile Include="AppTasks.Designer.cs">
       <DependentUpon>AppTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLogger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorLogger.Designer.cs">
+      <DependentUpon>ErrorLogger.cs</DependentUpon>
     </Compile>
     <Compile Include="formWaiting.cs">
       <SubType>Form</SubType>
@@ -227,6 +249,9 @@
     <EmbeddedResource Include="AppTasks.resx">
       <DependentUpon>AppTasks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ErrorLogger.resx">
+      <DependentUpon>ErrorLogger.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formWaiting.resx">
       <DependentUpon>formWaiting.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,9 +299,9 @@
       <DependentUpon>TasksInclude.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ArcGIS System Profiler_TemporaryKey.pfx" />
-    <None Include="mapServiceConfig.json">
+    <EmbeddedResource Include="resources\mapServiceConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -290,24 +315,7 @@
     <EmbeddedResource Include="resources\Report Template EA2.dotx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="resources\initialcachesettings.json" />
     <None Include="resources\Report Template.dotx" />
-    <None Include="resources\serviceconfiguration.json" />
-    <None Include="resources\ServiceMSD\initialcachesettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\ServiceMSD\serviceconfiguration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\ServiceMSD\v101\SystemProfilerTestMapService.msd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\ServiceMSD\v101\SystemProfilerTestMapService.mxd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\SystemProfilerTestMapService.msd" />
-    <None Include="resources\SystemProfilerTestMapService.mxd" />
-    <None Include="resources\SystemProfilerTestMapService.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -336,29 +344,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="resources\ServiceMSD.rar" />
     <None Include="resources\successIcon.png" />
     <None Include="resources\errorIcon.png" />
     <None Include="resources\initIcon.png" />
-    <Content Include="resources\ServiceMSD\esriinfo\item.pkinfo" />
-    <Content Include="resources\ServiceMSD\esriinfo\iteminfo.xml" />
-    <Content Include="resources\ServiceMSD\esriinfo\metadata\metadata.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="resources\ServiceMSD\esriinfo\thumbnail\thumbnail.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="resources\ServiceMSD\manifest.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="resources\ServiceMSD\tilingservice.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="resources\thumbnail.png" />
-    <None Include="resources\metadata.xml" />
-    <None Include="resources\iteminfo.xml" />
-    <None Include="resources\item.pkinfo" />
-    <None Include="resources\tilingservice.xml" />
-    <None Include="resources\manifest.xml" />
     <EmbeddedResource Include="resources\report.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

@@ -152,8 +152,9 @@ namespace ArcGIS_System_Profiler
             ActivateButton(sender, RGBCOlors.color2);
             //OpenChildForm(new StepsConfirmationForm());
             //OpenChildForm(new AppTasks());
-            OpenChildForm(new TasksInclude());
+            OpenChildForm(new TasksInclude());            
         }
+ 
 
         public void btn_Services_Click(object sender, EventArgs e)
         {
@@ -203,6 +204,12 @@ namespace ArcGIS_System_Profiler
         {
             ActivateButton(sender, RGBCOlors.color5);
             OpenChildForm(new SystemVerification());
+        }
+
+        private void errorButton_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBCOlors.color5);
+            OpenChildForm(new ErrorLogger());
         }
 
         public void iconButton1_Click(object sender, EventArgs e)
@@ -592,5 +599,7 @@ namespace ArcGIS_System_Profiler
             }
             btn_Tasks.Parent.Controls.SetChildIndex(btn_Tasks, btn_Tasks.Parent.Controls.GetChildIndex(btn_Home) - 1);
         }
+
+       
     }
 }

@@ -744,11 +744,12 @@ namespace ArcGIS_System_Profiler
 
                 }
                 globalVariables.globalForm.loadingIconPic.Visible = false;
+                btn_ValidateALLDataStores.Text = "Validate All Datastores";
                 //capture the screen for report later
                 //int imgHeight = (AGSDS_dataGridView.Rows.GetRowsHeight)
                 //AGSDS_dataGridView.Rows.GetRowsHeight
                 //double htRow = (double)AGSDS_dataGridView.Rows.Count;
-                
+
             }
             catch (System.Exception ex)
             {
@@ -796,6 +797,7 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                btn_ValidateALLDataStores.Text = "Procesing...";
                 globalVariables.globalForm.loadingIconPic.Visible = true;
                 foreach (DataGridViewRow row in AGSDS_dataGridView.Rows)
                 {

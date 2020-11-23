@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaunchForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.errorButton = new FontAwesome.Sharp.IconButton();
             this.btnCreateReport = new FontAwesome.Sharp.IconButton();
             this.btnSetTheme = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -63,6 +64,7 @@
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panelLoadingIconBartimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -72,11 +74,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelShadow.SuspendLayout();
             this.panelDesktop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.panelMenu.Controls.Add(this.errorButton);
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btnSetTheme);
             this.panelMenu.Controls.Add(this.panel2);
@@ -95,6 +99,32 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 821);
             this.panelMenu.TabIndex = 0;
+            // 
+            // errorButton
+            // 
+            this.errorButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.errorButton.FlatAppearance.BorderSize = 0;
+            this.errorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.errorButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.errorButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorButton.ForeColor = System.Drawing.Color.White;
+            this.errorButton.IconChar = FontAwesome.Sharp.IconChar.PaintBrush;
+            this.errorButton.IconColor = System.Drawing.Color.White;
+            this.errorButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.errorButton.IconSize = 36;
+            this.errorButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.errorButton.Location = new System.Drawing.Point(0, 800);
+            this.errorButton.Name = "errorButton";
+            this.errorButton.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.errorButton.Rotation = 0D;
+            this.errorButton.Size = new System.Drawing.Size(220, 60);
+            this.errorButton.TabIndex = 15;
+            this.errorButton.Text = "Error";
+            this.errorButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.errorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.errorButton.UseVisualStyleBackColor = true;
+            this.errorButton.Visible = false;
+            this.errorButton.Click += new System.EventHandler(this.errorButton_Click);
             // 
             // btnCreateReport
             // 
@@ -408,6 +438,7 @@
             // panelLogo
             // 
             this.panelLogo.Controls.Add(this.loadingIconPic);
+            this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Controls.Add(this.iconButton1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -449,6 +480,7 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Visible = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // panelTitleBar
@@ -642,6 +674,18 @@
             // 
             this.panelLoadingIconBartimer.Tick += new System.EventHandler(this.panelLoadingIconBartimer_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,6 +695,7 @@
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LaunchForm";
             this.Text = "LaunchForm";
             this.panelMenu.ResumeLayout(false);
@@ -664,6 +709,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.panelShadow.ResumeLayout(false);
             this.panelDesktop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -703,5 +749,7 @@
         private System.Windows.Forms.Timer panelLoadingIconBartimer;
         internal System.Windows.Forms.Panel panelLoadingIconBar;
         internal FontAwesome.Sharp.IconButton btn_AGOLServices;
+        internal FontAwesome.Sharp.IconButton errorButton;
+        internal System.Windows.Forms.PictureBox pictureBox1;
     }
 }

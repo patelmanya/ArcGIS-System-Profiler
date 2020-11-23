@@ -133,40 +133,7 @@
   </data>
   <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\report.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SystemProfilerTestMapService" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\SystemProfilerTestMapService.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="initialcachesettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\initialcachesettings.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="item" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\item.pkinfo;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="iteminfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\iteminfo.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="manifest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\manifest.xml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="metadata" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\metadata.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="serviceconfiguration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\serviceconfiguration.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SystemProfilerTestMapService1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\SystemProfilerTestMapService.msd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SystemProfilerTestMapService2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\SystemProfilerTestMapService.mxd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tilingservice" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\tilingservice.xml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  </data> 
   <data name="errorIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\errorIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,5 +145,11 @@
   </data>
   <data name="Report_Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Report Template.dotx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mapServiceConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapServiceConfig.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ServiceMSD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\ServiceMSD.rar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
