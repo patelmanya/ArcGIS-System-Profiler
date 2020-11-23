@@ -63,6 +63,7 @@
             this.globalTimer1 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panelLoadingIconBartimer = new System.Windows.Forms.Timer(this.components);
+            this.errorButton = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -77,6 +78,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.panelMenu.Controls.Add(this.errorButton);
             this.panelMenu.Controls.Add(this.btnCreateReport);
             this.panelMenu.Controls.Add(this.btnSetTheme);
             this.panelMenu.Controls.Add(this.panel2);
@@ -642,6 +644,32 @@
             // 
             this.panelLoadingIconBartimer.Tick += new System.EventHandler(this.panelLoadingIconBartimer_Tick);
             // 
+            // errorButton
+            // 
+            this.errorButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.errorButton.FlatAppearance.BorderSize = 0;
+            this.errorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.errorButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.errorButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorButton.ForeColor = System.Drawing.Color.White;
+            this.errorButton.IconChar = FontAwesome.Sharp.IconChar.PaintBrush;
+            this.errorButton.IconColor = System.Drawing.Color.White;
+            this.errorButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.errorButton.IconSize = 36;
+            this.errorButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.errorButton.Location = new System.Drawing.Point(0, 800);
+            this.errorButton.Name = "errorButton";
+            this.errorButton.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.errorButton.Rotation = 0D;
+            this.errorButton.Size = new System.Drawing.Size(220, 60);
+            this.errorButton.TabIndex = 15;
+            this.errorButton.Text = "Error";
+            this.errorButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.errorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.errorButton.UseVisualStyleBackColor = true;
+            this.errorButton.Visible = false;
+            this.errorButton.Click += new System.EventHandler(this.errorButton_Click);
+            // 
             // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,5 +731,6 @@
         private System.Windows.Forms.Timer panelLoadingIconBartimer;
         internal System.Windows.Forms.Panel panelLoadingIconBar;
         internal FontAwesome.Sharp.IconButton btn_AGOLServices;
+        internal FontAwesome.Sharp.IconButton errorButton;
     }
 }

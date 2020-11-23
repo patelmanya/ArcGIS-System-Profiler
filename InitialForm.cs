@@ -106,6 +106,7 @@ namespace ArcGIS_System_Profiler
                         {
                             globalVariables.globalForm.btn_Tasks.Visible = true;
                             globalVariables.globalForm.btn_Tasks.PerformClick();
+                            
                         }
                        
                        

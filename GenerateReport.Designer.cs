@@ -120,7 +120,7 @@
             this.txtBx_GenRepStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.txtBx_GenRepStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBx_GenRepStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBx_GenRepStatus.Font = new System.Drawing.Font("Arial", 14F);
+            this.txtBx_GenRepStatus.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.txtBx_GenRepStatus.ForeColor = System.Drawing.Color.White;
             this.txtBx_GenRepStatus.Location = new System.Drawing.Point(20, 0);
             this.txtBx_GenRepStatus.Name = "txtBx_GenRepStatus";

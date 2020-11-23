@@ -110,16 +110,6 @@ namespace ArcGIS_System_Profiler.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] initialcachesettings {
-            get {
-                object obj = ResourceManager.GetObject("initialcachesettings", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap initIcon {
@@ -132,70 +122,10 @@ namespace ArcGIS_System_Profiler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] item {
+        internal static byte[] mapServiceConfig {
             get {
-                object obj = ResourceManager.GetObject("item", resourceCulture);
+                object obj = ResourceManager.GetObject("mapServiceConfig", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;ESRI_ItemInformation Culture=&apos;en-AU&apos;&gt;
-        ///&lt;name&gt;SystemProfilerTestMapService&lt;/name&gt;
-        ///&lt;guid&gt;BCF7E0A3-CF5C-4199-BD03-9169BA905E92&lt;/guid&gt;
-        ///&lt;catalogpath&gt;&lt;/catalogpath&gt;
-        ///&lt;snippet&gt;Test Map Service for System Profiler app&lt;/snippet&gt;
-        ///&lt;description&gt;Test Map Service for System Profiler app&lt;/description&gt;
-        ///&lt;summary&gt;Test Map Service for System Profiler app&lt;/summary&gt;
-        ///&lt;title&gt;SystemProfilerTestMapService&lt;/title&gt;
-        ///&lt;tags&gt;mapserviceTest&lt;/tags&gt;
-        ///&lt;type&gt;Service Definition&lt;/type&gt;
-        ///&lt;typekeywo [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string iteminfo {
-            get {
-                return ResourceManager.GetString("iteminfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] manifest {
-            get {
-                object obj = ResourceManager.GetObject("manifest", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-        ///&lt;metadata xml:lang=&quot;en&quot;&gt;
-        ///&lt;Esri&gt;
-        ///&lt;CreaDate&gt;20201104&lt;/CreaDate&gt;
-        ///&lt;CreaTime&gt;19572800&lt;/CreaTime&gt;
-        ///&lt;ArcGISFormat&gt;1.0&lt;/ArcGISFormat&gt;
-        ///&lt;SyncOnce&gt;TRUE&lt;/SyncOnce&gt;
-        ///&lt;/Esri&gt;
-        ///&lt;dataIdInfo&gt;
-        ///&lt;idAbs&gt;Test Map Service for System Profiler app&lt;/idAbs&gt;
-        ///&lt;searchKeys&gt;
-        ///&lt;keyword&gt;mapserviceTest&lt;/keyword&gt;
-        ///&lt;/searchKeys&gt;
-        ///&lt;idPurp&gt;Test Map Service for System Profiler app&lt;/idPurp&gt;
-        ///&lt;idCredit&gt;&lt;/idCredit&gt;
-        ///&lt;resConst&gt;
-        ///&lt;Consts&gt;
-        ///&lt;useLimit&gt;&lt;/useLimit&gt;
-        ///&lt;/Consts&gt;
-        ///&lt;/resConst&gt;
-        ///&lt;/dataIdInfo&gt;
-        ///&lt;Bina [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string metadata {
-            get {
-                return ResourceManager.GetString("metadata", resourceCulture);
             }
         }
         
@@ -222,9 +152,9 @@ namespace ArcGIS_System_Profiler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] serviceconfiguration {
+        internal static byte[] ServiceMSD {
             get {
-                object obj = ResourceManager.GetObject("serviceconfiguration", resourceCulture);
+                object obj = ResourceManager.GetObject("ServiceMSD", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -236,56 +166,6 @@ namespace ArcGIS_System_Profiler.Properties {
             get {
                 object obj = ResourceManager.GetObject("successIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SystemProfilerTestMapService {
-            get {
-                object obj = ResourceManager.GetObject("SystemProfilerTestMapService", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SystemProfilerTestMapService1 {
-            get {
-                object obj = ResourceManager.GetObject("SystemProfilerTestMapService1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SystemProfilerTestMapService2 {
-            get {
-                object obj = ResourceManager.GetObject("SystemProfilerTestMapService2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap thumbnail {
-            get {
-                object obj = ResourceManager.GetObject("thumbnail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] tilingservice {
-            get {
-                object obj = ResourceManager.GetObject("tilingservice", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }
