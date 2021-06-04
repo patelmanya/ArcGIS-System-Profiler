@@ -19,6 +19,7 @@ namespace ArcGIS_System_Profiler
             //Application.Run(new TemplateForm());
             //Application.Run(new InitPage());
             Application.Run(new LaunchForm());
+            //Application.Run(new StartPage());
         }
     }
 }

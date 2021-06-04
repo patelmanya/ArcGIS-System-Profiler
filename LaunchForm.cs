@@ -143,7 +143,18 @@ namespace ArcGIS_System_Profiler
         {
             btnSetTheme.Visible = true;
             ActivateButton(sender, RGBCOlors.color1);
-            OpenChildForm(new InitialForm());
+            //OpenChildForm(new InitialForm());
+            globalVariables gV = new globalVariables();
+            OpenChildForm(new StartPage());
+            if (globalVariables.global_PreCheckFormFlag)
+            {
+                OpenChildForm(new InitialForm());
+            }
+            else if (globalVariables.global_PostCheckFormFlag)
+            {
+                 OpenChildForm(new InitialForm());
+            }
+
         }
 
         public void btn_Tasks_Click(object sender, EventArgs e)

@@ -36,6 +36,7 @@ namespace ArcGIS_System_Profiler
         public static bool loggingEnabled = false;
         public static string strFileName = globalVariables.globalFilePath + "\\SystemProfilerLog_" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".log";
 
+
         public static string strDebugFileName = globalVariables.globalFilePath + "\\SystemProfilerDebugLog_" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".txt";
         public static globalVariables Debuggv = new globalVariables();
         public static string globalReportIcon = "";
@@ -51,6 +52,8 @@ namespace ArcGIS_System_Profiler
         public static string global_portalHostname = "";
         public static string global_serverHostname = "";
         public static string global_datastoreHostname = "";
+        public static bool global_PreCheckFormFlag = false;
+        public static bool global_PostCheckFormFlag = false;
 
         public static string reportTemplateFileName = @"C:\temp\Report Template EA2.dotx";
 
@@ -374,6 +377,15 @@ namespace ArcGIS_System_Profiler
                 // MessageBox.Show("Error generating token. Please check the parameters, URL, instance, credentials, etc" + ex.Message.ToString());
             }
             return tokenStr;
+        }
+
+        public void loggerFunc(string msgStr)
+        {
+            FileStream objFilestream = new FileStream(globalVariables.strDebugFileName, FileMode.Append, FileAccess.Write);
+            StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+            objStreamWriter.WriteLine(msgStr);
+            objStreamWriter.Close();
+            objFilestream.Close();
         }
 
         public void onErrorClearGeneratedFiles(string errorMessageStr)

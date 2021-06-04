@@ -72,11 +72,13 @@ namespace ArcGIS_System_Profiler
         {
             try
             {
+                globalVariables gv = new globalVariables();
+
                 tableLayoutPanel1.Visible = false;
                 tableLayoutPanel1.RowCount = 1;
                 tableLayoutPanel1.Controls.Clear(); //to remove all controls
-
-                ////to remove control by Name
+                
+                ////to remove control by Name     
                 //foreach (Control item in tableLayoutPanel1.Controls.OfType<Control>())
                 //{
                 //    if (item.Name == "MACHINENAMEICON")
@@ -126,10 +128,10 @@ namespace ArcGIS_System_Profiler
                     //OPERATING SYSTEM
                     //lblOperatingSystem.Text = "Operating System: ";
                     //statusOS.Visible = true;
-
+                    gv.loggerFunc("OPERATING SYSTEM");
                     var name = (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
                                 select x.GetPropertyValue("Caption")).FirstOrDefault();
-
+                    gv.loggerFunc(name.ToString());
                     tableLayoutPanel1.RowCount += 1;
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 
@@ -140,6 +142,8 @@ namespace ArcGIS_System_Profiler
                     lblOperatingSystem.Dock = DockStyle.Fill;
                     lblOperatingSystem.TextAlign = ContentAlignment.MiddleLeft;
                     tableLayoutPanel1.Controls.Add(lblOperatingSystem, 0, tableLayoutPanel1.RowCount - 1);
+                    
+                    gv.loggerFunc("OPERATING SYSTEM - details");
 
                     IconPictureBox statusOS = new IconPictureBox();
                     statusOS.Dock = DockStyle.Fill;
@@ -148,10 +152,14 @@ namespace ArcGIS_System_Profiler
                     statusOS.Margin = new Padding(50, 3, 3, 3);
                     tableLayoutPanel1.Controls.Add(statusOS, 1, tableLayoutPanel1.RowCount - 1);
 
+                    gv.loggerFunc("OPERATING SYSTEM - icon");
 
 
 
                     //PROCESSOR TYPE
+
+                    gv.loggerFunc("PROCESSOR TYPE");
+
                     tableLayoutPanel1.RowCount += 1;
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 
@@ -160,6 +168,8 @@ namespace ArcGIS_System_Profiler
                     lblProcessorType.ForeColor = Color.White;
                     lblProcessorType.Dock = DockStyle.Fill;
                     lblProcessorType.TextAlign = ContentAlignment.MiddleLeft;
+
+                    gv.loggerFunc("PROCESSOR TYPE _ Details");
 
                     IconPictureBox statusProcessor = new IconPictureBox();
                     statusProcessor.Dock = DockStyle.Fill;
@@ -195,6 +205,8 @@ namespace ArcGIS_System_Profiler
                         statusProcessor.IconChar = IconChar.TimesCircle;
                     }
 
+                    gv.loggerFunc("OPERATING SYSTEM - ICON");
+
                     tableLayoutPanel1.Controls.Add(lblProcessorType, 0, tableLayoutPanel1.RowCount - 1);
                     tableLayoutPanel1.Controls.Add(statusProcessor, 1, tableLayoutPanel1.RowCount - 1);
 
@@ -209,7 +221,13 @@ namespace ArcGIS_System_Profiler
                     //Specifies the number, in kilobytes, of virtual memory currently unused and available.
 
                     //MEMORY
+
+                    gv.loggerFunc("MEMORY");
+
                     ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+                    
+                    gv.loggerFunc(wql.ToString());
+
                     ManagementObjectSearcher searcher = new ManagementObjectSearcher(wql);
                     ManagementObjectCollection results = searcher.Get();
 
@@ -225,6 +243,7 @@ namespace ArcGIS_System_Profiler
                     lblMemory.Dock = DockStyle.Fill;
                     lblMemory.TextAlign = ContentAlignment.MiddleLeft;
 
+                    gv.loggerFunc("MEMORY Details");
 
                     IconPictureBox statusMemory = new IconPictureBox();
                     statusMemory.Dock = DockStyle.Fill;
@@ -257,12 +276,18 @@ namespace ArcGIS_System_Profiler
 
                     tableLayoutPanel1.Controls.Add(lblMemory, 0, tableLayoutPanel1.RowCount - 1);
                     tableLayoutPanel1.Controls.Add(statusMemory, 1, tableLayoutPanel1.RowCount - 1);
-
+                    gv.loggerFunc("MEMORY - icon");
 
 
                     //DISK SPACE 
+                    
+                    gv.loggerFunc("DISK SPACE");
                     tableLayoutPanel1.RowCount += 1;
+
+                    gv.loggerFunc("DISK SPACE rowcount+1");
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+
+                    gv.loggerFunc("DISK SPACE row add styles");
 
                     Label lblDiskSpaceTitle = new Label();
                     lblDiskSpaceTitle.Text = "Disk Space Requirements";
@@ -271,29 +296,50 @@ namespace ArcGIS_System_Profiler
                     lblDiskSpaceTitle.Dock = DockStyle.Fill;
                     lblDiskSpaceTitle.TextAlign = ContentAlignment.MiddleLeft;
                     tableLayoutPanel1.Controls.Add(lblDiskSpaceTitle, 0, tableLayoutPanel1.RowCount - 1);
-
+                    gv.loggerFunc("DISK SPACE details");
 
 
 
 
                     foreach (var drive in DriveInfo.GetDrives())
                     {
+                        gv.loggerFunc("DISK SPACE GetDrives");
+                        if (drive.DriveType.ToString() == "Removable")
+                        {
+                            continue;
+                        }
+                        gv.loggerFunc(drive.DriveType.ToString());
+                        gv.loggerFunc(drive.IsReady.ToString());
+                        gv.loggerFunc(drive.VolumeLabel.ToString());
+                        gv.loggerFunc(drive.DriveFormat.ToString());
+                        gv.loggerFunc(drive.TotalSize.ToString());
+                        gv.loggerFunc(drive.RootDirectory.ToString());
 
                         tableLayoutPanel1.RowCount += 1;
                         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-
+                        
+                        gv.loggerFunc("DISK SPACE add new row and styles");
+                        gv.loggerFunc(drive.Name.Substring(0, 1));
                         double freeSpace = drive.TotalFreeSpace;
+                        gv.loggerFunc("DISK SPACE freeSpace");
                         double totalSpace = drive.TotalSize;
+                        gv.loggerFunc("DISK SPACE totalSpace");
                         double percentFree = (freeSpace / totalSpace) * 100;
+                        gv.loggerFunc("DISK SPACE percentFree");
                         float num = (float)percentFree;
+                        gv.loggerFunc("DISK SPACE num");
                         lblDiskSpaceTitle = new Label();
                         lblDiskSpaceTitle.Name = "driveLabel" + drive.Name.Substring(0, 1);
+                        
+                        gv.loggerFunc("DISK SPACE driveName");
+
+
                         lblDiskSpaceTitle.Font = new Font("Arial", 14);
                         lblDiskSpaceTitle.ForeColor = Color.White;
                         lblDiskSpaceTitle.Dock = DockStyle.Fill;
                         lblDiskSpaceTitle.TextAlign = ContentAlignment.MiddleLeft;
                         lblDiskSpaceTitle.Text = drive.Name.Substring(0, 1) + " drive " + (Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)).ToString() + " GB free of " + (Math.Round((totalSpace / (1024 * 1024 * 1024)), 0)).ToString() + " GB ";
-
+                        gv.loggerFunc("DISK SPACE details");
                         if ((Math.Round((freeSpace / (1024 * 1024 * 1024)), 2)) > 10)
                         {
                             statusMemory = new IconPictureBox();
@@ -310,14 +356,18 @@ namespace ArcGIS_System_Profiler
                             statusMemory.ForeColor = Color.Red;
                             statusMemory.IconChar = IconChar.TimesCircle;
                         }
-
+                        gv.loggerFunc("DISK SPACE icon");
                         tableLayoutPanel1.Controls.Add(lblDiskSpaceTitle, 0, tableLayoutPanel1.RowCount - 1);
                         tableLayoutPanel1.Controls.Add(statusMemory, 1, tableLayoutPanel1.RowCount - 1);
+                        gv.loggerFunc("DISK SPACE control added");
                     }
-
+                    gv.loggerFunc("MEMORY - Details and Icon");
 
 
                     //MACHINE NAME
+
+                    gv.loggerFunc("MACHINE NAME");
+
                     string domainName = IPGlobalProperties.GetIPGlobalProperties().DomainName;
                     string hostName = Dns.GetHostName();
 
@@ -401,12 +451,13 @@ namespace ArcGIS_System_Profiler
                         tableLayoutPanel1.Controls.Add(iCPicBxMachineName, 1, tableLayoutPanel1.RowCount - 1);
 
                     }
-
+                    gv.loggerFunc("MACHINE NAME Details and Icon");
                     //lblMachineName.Text = "Machine name: " + hostName.ToString();
 
 
 
                     //INTERNET ACCESS
+                    gv.loggerFunc("INTERNET ACCESS");
                     bool interAccess = CheckForInternetConnection();
                     if (interAccess)
                     {
@@ -456,8 +507,13 @@ namespace ArcGIS_System_Profiler
                         tableLayoutPanel1.Controls.Add(iCPicBxMachineName, 1, tableLayoutPanel1.RowCount - 1);
                     }
 
+                    gv.loggerFunc("INTERNET ACCESS Details and Icon");
+
 
                     //ENTRY IN HOSTS FILE
+
+                    gv.loggerFunc("HOSTS FILE");
+
                     //Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SystemProfilerReport");
                     string[] HostFiletext = System.IO.File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), @"drivers\etc\hosts"));
                     bool hostnameFoundinHostFile = false;
@@ -514,7 +570,7 @@ namespace ArcGIS_System_Profiler
                         iCPicBx2.Margin = new Padding(50, 3, 3, 3);
                         tableLayoutPanel1.Controls.Add(iCPicBx2, 1, tableLayoutPanel1.RowCount - 1);
                     }
-
+                    gv.loggerFunc("HOSTS FILE Details and Icon");
 
                     tableLayoutPanel1.Visible = true;
                 }
